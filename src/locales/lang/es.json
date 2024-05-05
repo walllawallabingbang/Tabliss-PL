@@ -114,7 +114,7 @@
   "settings.persist.button": "Aplicar",
   "settings.persist.description": "¿Quiere que Tabliss pida guardar su configuración al navegador\n          continuamente?",
   "settings.persist.error": "No es posible guardar la configuración persistente en este momento.",
-  "settings.persist.title": "Coniguración persistente",
+  "settings.persist.title": "Configuración persistente",
   "settings.position": "Posición",
   "settings.reset": "reset",
   "settings.translationCredits": "Spanish translation by Gastón Alegre Stotzer & Saúl Palacios. Proofreading by Álex GM.",
