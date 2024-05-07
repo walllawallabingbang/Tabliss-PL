@@ -16,8 +16,10 @@ import todo from "./todo";
 import weather from "./weather";
 import workHours from "./workHours";
 import joke from "./joke";
+import bookmarks from "./bookmarks";
 
 export const widgetConfigs = [
+  bookmarks,
   css,
   github,
   greeting,
