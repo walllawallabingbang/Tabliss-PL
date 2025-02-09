@@ -17,16 +17,9 @@ Install dependencies with `npm install` before running the following scripts.
 To develop with external services you will additionally need to signup for your own API keys
 and enter them into your `.env` file. Get started by copying the example provided `cp .env.example .env`.
 
-For Windows install cross-env and modify your package.json:
+## Contributing
 
-`npm install cross-env --save-dev`
-
-```
-"scripts": {
-  "dev": "npm run dev:web",
-  "dev:web": "cross-env BUILD_TARGET=web webpack serve"
-}
-```
+Take a look at the guide to [contributing](CONTRIBUTING.md) before starting.
 
 ## Translations
 
