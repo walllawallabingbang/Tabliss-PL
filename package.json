@@ -11,7 +11,7 @@
     "dev": "npm run dev:web",
     "dev:chromium": "BUILD_TARGET=chromium webpack --watch",
     "dev:firefox": "BUILD_TARGET=firefox webpack --watch",
-    "dev:web": "BUILD_TARGET=web webpack serve",
+    "dev:web": "cross-env BUILD_TARGET=web webpack serve",
     "test": "tsc -p tsconfig.test.json && jest",
     "translations": "node ./scripts/translations.js"
   },
@@ -29,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.12",
     "react-intl": "^6.6.0",
+    "sass": "^1.84.0",
     "tlds": "^1.248.0",
     "webextension-polyfill": "^0.10.0"
   },
@@ -39,6 +40,7 @@
     "@types/webextension-polyfill": "^0.10.7",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^12.0.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.9.0",
     "dotenv": "^16.3.1",
     "file-loader": "^6.2.0",
