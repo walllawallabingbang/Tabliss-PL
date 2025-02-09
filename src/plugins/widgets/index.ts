@@ -1,4 +1,5 @@
 import countdown from './countdown';
+import since from './since';
 import css from "./css";
 import github from "./github";
 import greeting from "./greeting";
@@ -23,6 +24,7 @@ import bookmarks from "./bookmarks";
 export const widgetConfigs = [
   countdown,
   bookmarks,
+  since,
   css,
   github,
   greeting,
