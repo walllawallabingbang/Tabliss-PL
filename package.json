@@ -16,6 +16,7 @@
     "translations": "node ./scripts/translations.js"
   },
   "dependencies": {
+    "@iconify-icon/react": "^2.3.0",
     "@sentry/browser": "^7.93.0",
     "core-js": "^3.40.0",
     "date-fns": "^2.30.0",
