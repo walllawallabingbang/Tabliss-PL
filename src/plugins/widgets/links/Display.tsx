@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import { defineMessages, useIntl } from "react-intl";
 
-import { Icon } from '@iconify-icon/react';
+import { Icon } from "../../../views/shared";
 import { Link } from "./types";
 
 const displayUrl = (url: string): string => {
@@ -72,7 +72,7 @@ const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbe
           </i>
         ) : null
       ) : icon ? (
-        <Icon icon={icon} />
+        <Icon name={icon} />
       ) : null}
       {icon && name && " "}
       <span className="LinkText">
