@@ -1,3 +1,4 @@
+import countdown from './countdown';
 import css from "./css";
 import github from "./github";
 import greeting from "./greeting";
@@ -20,6 +21,7 @@ import CustomText from "./customText";
 import bookmarks from "./bookmarks";
 
 export const widgetConfigs = [
+  countdown,
   bookmarks,
   css,
   github,
