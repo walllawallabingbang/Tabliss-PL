@@ -17,7 +17,6 @@ I cloned the repository and implemented several of the  pull requests to bring i
 - Continued updates and bug fixes.
 - Adding new features from community contributions.
 - Keeping dependencies up to date.
-- I couldn't get the old translations to work, so I left them out. If anyone wants to help fix them, feel free to contribute!
 
 If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let's keep Tabliss alive!
 
