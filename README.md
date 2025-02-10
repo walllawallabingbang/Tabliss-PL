@@ -22,7 +22,9 @@ If you were a contributor to the original repo or have ideas for improvements, f
 
 ---
 
+## Installation
 
+Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my version of the extension isn't on any extension stores.
 
 ## Usage
 
