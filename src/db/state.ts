@@ -17,7 +17,10 @@ export interface State {
   locale: string;
   /** Time zone selected, if any */
   timeZone: string | null;
+  /** Whether highlighting is enabled */
+  highlightingEnabled: boolean;
 }
+
 
 export interface BackgroundState {
   id: string;
@@ -87,7 +90,9 @@ const initData: State = {
   focus: false,
   locale: defaultLocale,
   timeZone: null,
+  highlightingEnabled: true, // Initialize as true
 };
+
 
 // Database storage
 export const db = DB.init<State>(initData);

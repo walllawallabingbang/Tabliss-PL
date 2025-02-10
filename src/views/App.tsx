@@ -9,6 +9,20 @@ import { Dashboard } from "./dashboard";
 import { Settings } from "./settings";
 import Errors from "./shared/Errors";
 import StoreError from "./shared/StoreError";
+import { db } from "../db/state";
+
+function setHighlighting(){
+  const checked = db.cache.get('highlightingEnabled');
+  console.log(checked);
+  const element = document.querySelector(".Widgets") as HTMLElement;
+  if (element) {
+    if (checked || checked === undefined) {
+      element.style.userSelect = "auto";
+    } else{
+      element.style.userSelect = "none";
+    }
+  }
+}
 
 const messages = defineMessages({
   pageTitle: {
@@ -80,6 +94,9 @@ const Root: React.FC = () => {
     subscriptions.then(() => {
       setReady(true);
       migrate();
+      setTimeout(() => {
+        setHighlighting();
+      }, 1);
     });
 
     return () => {

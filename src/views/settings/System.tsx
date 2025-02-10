@@ -7,6 +7,19 @@ import TimeZoneInput from "../shared/timeZone/TimeZoneInput";
 const System: React.FC = () => {
   const [locale, setLocale] = useKey(db, "locale");
   const [timeZone, setTimeZone] = useKey(db, "timeZone");
+  const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
+
+  function setHighlighting(checked: boolean){
+    setHighlightingEnabled(checked);
+    const element = document.querySelector(".Widgets") as HTMLElement;
+    if (element) {
+      if (checked) {
+        element.style.userSelect = "auto";
+      } else{
+        element.style.userSelect = "none";
+      }
+    }
+  }
 
   return (
     <div>
@@ -183,6 +196,24 @@ const System: React.FC = () => {
       >
         Time Zone
         <TimeZoneInput timeZone={timeZone} onChange={setTimeZone} />
+      </label>
+        
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
+          gridTemplateColumns: "1fr 2fr",
+          width: "100%",
+          margin: 0,
+        }}
+      >
+        <span>Allow Highlighting</span>
+        <input
+          type="checkbox"
+          checked={highlightingEnabled}
+          onChange={(e) => setHighlighting(e.target.checked)}
+        />
       </label>
     </div>
   );
