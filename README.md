@@ -4,7 +4,26 @@
 
 ![Tabliss Screenshot](screenshot.png)
 
-<p align="center"><a href="https://tabliss.io">https://tabliss.io</a></p>
+# Notice: Maintained Fork of Tabliss
+
+This repository was originally the main development hub for Tabliss, a beautiful and customizable new tab page for Firefox and Chrome. However, the project has been abandoned, with no updates for over a year and numerous pull requests left unmerged.
+
+## Why This Fork?
+
+I cloned the repository and implemented several of the  pull requests to bring in  improvements and bug fixes. Moving forward, I will be maintaining and updating this fork to keep Tabliss functional and up to date.
+
+## What's Next?
+
+- Continued updates and bug fixes.
+- Adding new features from community contributions.
+- Keeping dependencies up to date.
+- I couldn't get the old translations to work, so I left them out. If anyone wants to help fix them, feel free to contribute!
+
+If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let's keep Tabliss alive!
+
+---
+
+
 
 ## Usage
 
@@ -14,8 +33,7 @@ Install dependencies with `npm install` before running the following scripts.
 - `npm run build[:target]` Production build
 - `npm run translations` Manage translation files
 
-To develop with external services you will additionally need to signup for your own API keys
-and enter them into your `.env` file. Get started by copying the example provided `cp .env.example .env`.
+To develop with external services, you will additionally need to sign up for your own API keys and enter them into your `.env` file. Get started by copying the example provided: `cp .env.example .env`.
 
 ## Contributing
 
@@ -23,4 +41,4 @@ Take a look at the guide to [contributing](CONTRIBUTING.md) before starting.
 
 ## Translations
 
-Checkout the guide to [adding translations](TRANSLATING.md).
+Check out the guide to [adding translations](TRANSLATING.md).
