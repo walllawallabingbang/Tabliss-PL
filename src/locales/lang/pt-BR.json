@@ -10,7 +10,7 @@
   "plugin.greeting.withoutName": "{hour, select,\n      0 {Durma bem}\n      1 {Durma bem}\n      2 {Durma bem}\n      3 {Vamos levantar}\n      4 {Vamos levantar}\n      5 {Vamos levantar}\n      6 {Bom dia}\n      7 {Bom dia}\n      8 {Bom dia}\n      9 {Bom dia}\n      10 {Olá}\n      11 {Olá}\n      12 {Olá}\n      13 {Olá}\n      14 {Boa tarde}\n      15 {Boa tarde}\n      16 {Boa tarde}\n      17 {Boa tarde}\n      18 {Boa noite}\n      19 {Boa noite}\n      20 {Boa noite}\n      21 {Boa noite}\n      22 {Boa noite}\n      23 {Boa noite}\n    other {Unknown}}",
   "plugins.links.shortcutHint": "Aperte {number} ou clique para visitar",
   "plugins.links.standardHint": "Clique para visitar",
-  "plugins.search.placeholder": "Pesquisar...",
+  "plugins.search.placeholder": "Digite para pesquisar",
   "plugins.unsplash.photoLink": "Foto",
   "plugins.weather.apparent": "Sensação térmica",
   "plugins.weather.high": "Máxima",

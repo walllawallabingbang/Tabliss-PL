@@ -1,7 +1,7 @@
 {
   "app.pageTitle": "Nuova scheda",
   "background": "Sfondo",
-  "dashboard.errorHint": "Show errors",
+  "dashboard.errorHint": "Mostra errori",
   "dashboard.focusHint": "Escludi i widget",
   "dashboard.fullscreenHint": "Passa a schermo intero",
   "dashboard.loadingHint": "Carica nuovi contenuti",
@@ -17,6 +17,6 @@
   "plugins.weather.humidity": "Umidità",
   "plugins.weather.low": "Minima",
   "settings": "Impostazioni",
-  "settings.translationCredits": "Italian translations by Gianni, Blackcat-917 and Gioxx",
+  "settings.translationCredits": "Italian translations by Gianni, Blackcat-917, Gioxx and Saúl Palacios",
   "widgets": "Widget"
 }

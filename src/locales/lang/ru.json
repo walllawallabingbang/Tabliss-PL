@@ -1,7 +1,7 @@
 {
   "app.pageTitle": "Новая вкладка",
   "background": "Фон",
-  "dashboard.errorHint": "Show errors",
+  "dashboard.errorHint": "Показать ошибки",
   "dashboard.focusHint": "Видимость виджетов",
   "dashboard.fullscreenHint": "Полный экран",
   "dashboard.loadingHint": "Загрузка нового контента",
@@ -17,6 +17,6 @@
   "plugins.weather.humidity": "Влажность",
   "plugins.weather.low": "Минимум",
   "settings": "Настройки",
-  "settings.translationCredits": "Перевёл на русский Илья Бирюков",
+  "settings.translationCredits": "Перевёл на русский Илья Бирюков, дополнил thejenja",
   "widgets": "Виджеты"
 }
