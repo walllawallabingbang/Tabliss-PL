@@ -12,6 +12,8 @@ import literatureClock from "./literatureClock";
 import message from "./message";
 // import nba from "./nba";
 import notes from "./notes";
+import randomMessage from "./randomMessage";
+import nba from "./nba";
 import quote from "./quote";
 import search from "./search";
 import time from "./time";
@@ -37,6 +39,8 @@ export const widgetConfigs = [
   message,
   // nba,
   notes,
+  randomMessage,
+  nba,
   quote,
   search,
   time,
