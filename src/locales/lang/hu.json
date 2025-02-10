@@ -17,6 +17,6 @@
   "plugins.weather.humidity": "Páratartalom",
   "plugins.weather.low": "Alacsony",
   "settings": "Beállítások",
-  "settings.translationCredits": "",
+  "settings.translationCredits": " ",
   "widgets": "Modulok"
 }
