@@ -13,4 +13,4 @@ Translations are currently only available for the main dashboard (not the settin
 8. Commit your updated files
 9. Submit a Pull Request back to the Tabliss repository!
 
-You can test your changes at anytime by running a local development build of Tabliss with `npm start`.
+You can test your changes at anytime by running a local development build of Tabliss with `npm run dev`.
