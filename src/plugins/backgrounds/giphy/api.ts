@@ -13,6 +13,10 @@ export async function getGif(
   const tags = tag.split(",").map((t) => t.trim());
   const randomTag = tags[Math.floor(Math.random() * tags.length)];
 
+  if (!GIPHY_API_KEY) {
+    throw new Error("You must set the GIPHY_API_KEY environment variable.");
+  }
+
   const request = new Request(
     "https://api.giphy.com/v1/gifs/random" +
       `?api_key=${GIPHY_API_KEY}` +

@@ -15,7 +15,13 @@ export async function getPicture(
   const url = "https://api.nasa.gov/planetary/apod";
   const params = new URLSearchParams();
 
-  params.set("api_key", NASA_API_KEY);
+  if (NASA_API_KEY) {
+    params.set("api_key", NASA_API_KEY);
+  } else {
+    console.log("You must set the NASA_API_KEY environment variable. Falling back to key DEMO_KEY.");
+    params.set("api_key", "DEMO_KEY");
+  }
+
   params.set("thumbs", "true");
 
   if (data.date === "custom" && data.customDate) {
