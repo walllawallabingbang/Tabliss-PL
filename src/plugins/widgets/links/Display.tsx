@@ -49,6 +49,7 @@ const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbe
   );
 
   const domain = useMemo(() => getDomain(url), [url]);
+  const size = "256"
 
   return (
     <a
@@ -62,12 +63,30 @@ const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbe
           ? <span className="LinkNumber">{number} </span>
           : null
       }
-      {icon === "_favicon" ? (
+      {icon === "_favicon_duckduckgo" ? (
         domain ? (
           <i>
             <img
               alt={domain}
               src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
+            />
+          </i>
+        ) : null
+      ) : icon === "_favicon_google" ? (
+        domain ? (
+          <i>
+            <img
+              alt={domain}
+              src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`}
+            />
+          </i>
+        ) : null
+      ) : icon === "_favicon_favicone" ? (
+        domain ? (
+          <i>
+            <img
+              alt={domain}
+              src = {`https://favicone.com/${domain}?s=${size}`}
             />
           </i>
         ) : null
@@ -84,3 +103,4 @@ const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbe
 };
 
 export default Display;
+

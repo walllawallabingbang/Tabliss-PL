@@ -66,7 +66,11 @@ const Input: FC<Props> = (props) => (
         onChange={(event) => props.onChange({ icon: event.target.value })}
       >
         <option value={""}>None</option>
-        <option value="_favicon">Website Icon</option>
+        <optgroup label="Website Icons">
+          <option value="_favicon_google">From Google</option>
+          <option value="_favicon_duckduckgo">From DuckDuckGo</option>
+          <option value="_favicon_favicone">From Favicone</option>
+        </optgroup>
         <optgroup label="Feather Icons">
           {iconList.map((key) => (
             <option key={key}>{key}</option>
