@@ -1,4 +1,4 @@
-import { nanoid as generateId } from "nanoid-cjs";
+import { nanoid as generateId } from "nanoid";
 
 export function addTodo(contents = "") {
   return {
