@@ -1,45 +1,74 @@
-<h1 align="center">Tabliss</h1>
 
-<p align="center">A beautiful, customisable New Tab page for Firefox and Chrome.</p>
+# Tabliss
 
 ![Tabliss Screenshot](screenshot.png)
 
-# Notice: Maintained Fork of Tabliss
+## 🚀 Maintained Fork of Tabliss
 
-This repository was originally the main development hub for Tabliss, a beautiful and customizable new tab page for Firefox and Chrome. However, the project has been abandoned, with no updates for over a year and numerous pull requests left unmerged.
+This repository is a maintained fork of Tabliss, originally a customizable new tab page for Firefox and Chrome. The original project has been abandoned, with no updates for over a year and numerous unmerged pull requests.
 
-## Why This Fork?
+### Why This Fork?
 
-I cloned the repository and implemented several of the  pull requests to bring in  improvements and bug fixes. Moving forward, I will be maintaining and updating this fork to keep Tabliss functional and up to date.
+I cloned the repository and merged several pending pull requests to bring in improvements and bug fixes. Moving forward, I will actively maintain and update this fork to keep Tabliss functional and up to date.
 
-## What's Next?
+### What's Next?
 
-- Continued updates and bug fixes.
-- Adding new features from community contributions.
-- Keeping dependencies up to date.
+-   Continued updates and bug fixes
+-   Adding new features from community contributions
+-   Keeping dependencies up to date
 
-If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let's keep Tabliss alive!
+If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let’s keep Tabliss alive!
 
----
+----------
 
-## Installation
+## 🛠 Installation
+Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my version of the extension isn't on any extension stores. API keys are included with the release.
 
-Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my version of the extension isn't on any extension stores.
+## 💻 Running Locally
 
-## Usage
+First, install dependencies:
 
-Install dependencies with `npm install` before running the following scripts.
+```sh
+npm install
+```
 
-- `npm run dev[:target]` Local development server
-- `npm run build[:target]` Production build
-- `npm run translations` Manage translation files
+### Available Commands:
 
-To develop with external services, you will additionally need to sign up for your own API keys and enter them into your `.env` file. Get started by copying the example provided: `cp .env.example .env`.
+-   `npm run dev` — Start a local development server
+-   `npm run build` — Build the project
+-   `npm run test` — Run tests
+-   `npm run translations` — Manage translation files (see TRANSLATING.md)
 
-## Contributing
+By default, these commands will target the web version. To specify a platform (Chromium or Firefox), append `:chromium` or `:firefox` to the command. For example:
+
+```sh
+npm run dev:chromium
+npm run build:firefox
+```
+
+To develop with external services, you'll need to sign up for API keys and enter them into your `.env` file. Start by copying the example:
+
+```sh
+cp .env.example .env
+```
+
+Then, fill in your API keys:
+
+```ini
+GIPHY_API_KEY=your_key_here
+UNSPLASH_API_KEY=your_key_here
+NASA_API_KEY=your_key_here
+```
+
+## 🙌 Credits
+
+Special thanks to **joelshepherd** for originally creating and maintaining this project.  
+Also, huge appreciation to everyone who contributed, especially those whose pull requests I merged!
+
+## 🤝 Contributing
 
 Take a look at the guide to [contributing](CONTRIBUTING.md) before starting.
 
-## Translations
+## 🌍 Translations
 
 Check out the guide to [adding translations](TRANSLATING.md).
