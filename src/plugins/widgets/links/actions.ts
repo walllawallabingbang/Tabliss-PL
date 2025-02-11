@@ -13,6 +13,13 @@ export function updateLink(index: number, link: Link) {
   } as const;
 }
 
+export function updateIconSize(index: number, iconSize: number) {
+  return {
+    type: "UPDATE_ICON_SIZE",
+    data: { index, iconSize },
+  } as const;
+}
+
 export function removeLink(index: number) {
   return {
     type: "REMOVE_LINK",
@@ -29,6 +36,7 @@ export function reorderLink(index: number, to: number) {
 
 export type Action =
   | ReturnType<typeof addLink>
+  | ReturnType<typeof updateIconSize>
   | ReturnType<typeof updateLink>
   | ReturnType<typeof removeLink>
   | ReturnType<typeof reorderLink>;

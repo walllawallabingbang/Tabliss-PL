@@ -35,9 +35,9 @@ const messages = defineMessages({
   },
 });
 
-type Props = Link & { number: number; linkOpenStyle: boolean; linksNumbered: boolean };
+type Props = Link & { number: number; linkOpenStyle: boolean; linksNumbered: boolean; iconSize?: number };
 
-const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbered: linksNumbered }) => {
+const Display: FC<Props> = ({ icon, iconSize, name, number, url, linkOpenStyle, linksNumbered: linksNumbered }) => {
   const intl = useIntl();
 
   const title = useMemo(
@@ -49,7 +49,7 @@ const Display: FC<Props> = ({ icon, name, number, url, linkOpenStyle, linksNumbe
   );
 
   const domain = useMemo(() => getDomain(url), [url]);
-  const size = "256"
+  const size = iconSize;
 
   return (
     <a
