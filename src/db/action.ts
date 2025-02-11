@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+import { nanoid } from "nanoid-cjs";
 import { DB } from "../lib";
 import migrateFrom2 from "./migrations/migrate2";
 import { selectWidgets } from "./select";
