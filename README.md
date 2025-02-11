@@ -26,8 +26,12 @@ Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my ver
 
 ## 💻 Running Locally
 
-First, install dependencies:
-
+First, clone the repo:
+```sh
+https://github.com/BookCatKid/tabliss-maintained.git
+cd tabliss-maintained
+```
+Then install the dependencies:
 ```sh
 npm install
 ```
