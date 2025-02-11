@@ -13,7 +13,6 @@ import { db } from "../db/state";
 
 function setHighlighting(){
   const checked = db.cache.get('highlightingEnabled');
-  console.log(checked);
   const element = document.querySelector(".Widgets") as HTMLElement;
   if (element) {
     if (checked || checked === undefined) {
