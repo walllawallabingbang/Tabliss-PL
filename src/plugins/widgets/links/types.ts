@@ -4,6 +4,8 @@ export type Link = {
   name?: string;
   icon?: string;
   url: string;
+  iconSize?: number;
+  IconString?: string;
 };
 
 export type Data = {

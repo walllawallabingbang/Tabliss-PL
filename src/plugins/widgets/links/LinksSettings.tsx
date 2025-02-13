@@ -64,12 +64,6 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
           onChange={(values) =>
             dispatch(updateLink(index, { ...link, ...values }))
           }
-          setIconSize={(iconSize) => 
-            dispatch(updateIconSize(index, iconSize))
-          }
-          setCustomIcon={(IconString) => 
-            dispatch(updateCustomIcon(index, IconString))
-          }
           onMoveUp={
             index !== 0
               ? () => dispatch(reorderLink(index, index - 1))

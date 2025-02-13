@@ -12,8 +12,6 @@ import { Link } from "./types";
 type Props = Link & {
   number: number;
   onChange: (values: Partial<Link>) => void;
-  setIconSize: (iconSize: number) => void;
-  setCustomIcon: (IconString: string) => void;
   onMoveUp?: () => void;
   onMoveDown?: () => void;
   onRemove: () => void;
@@ -92,7 +90,7 @@ const Input: FC<Props> = (props) => {
         <label>
           Icon Size
           <select
-            onChange={(event) => props.setIconSize(Number(event.target.value))}
+            onChange={(event) => props.onChange({ iconSize: Number(event.target.value) })}
           >
             <option value="16">16x16</option>
             <option value="32">32x32</option>
@@ -108,7 +106,7 @@ const Input: FC<Props> = (props) => {
           Custom Text
           <input
             type="text"
-            onChange={(event) => props.setCustomIcon(event.target.value)}
+            onChange={(event) => props.onChange({ IconString: event.target.value })}
           />
         </label>
       )}
