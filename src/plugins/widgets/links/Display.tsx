@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from "react";
 import { defineMessages, useIntl } from "react-intl";
-
-import { Icon } from "../../../views/shared";
+import { Icon } from "@iconify/react";
 import { Link } from "./types";
 
 const displayUrl = (url: string): string => {
@@ -35,9 +34,9 @@ const messages = defineMessages({
   },
 });
 
-type Props = Link & { number: number; linkOpenStyle: boolean; linksNumbered: boolean; iconSize?: number };
+type Props = Link & { number: number; linkOpenStyle: boolean; linksNumbered: boolean; iconSize?: number, IconString?: string };
 
-const Display: FC<Props> = ({ icon, iconSize, name, number, url, linkOpenStyle, linksNumbered: linksNumbered }) => {
+const Display: FC<Props> = ({ icon, iconSize, IconString, name, number, url, linkOpenStyle, linksNumbered: linksNumbered }) => {
   const intl = useIntl();
 
   const title = useMemo(
@@ -49,7 +48,6 @@ const Display: FC<Props> = ({ icon, iconSize, name, number, url, linkOpenStyle, 
   );
 
   const domain = useMemo(() => getDomain(url), [url]);
-  const size = iconSize;
 
   return (
     <a
@@ -77,7 +75,7 @@ const Display: FC<Props> = ({ icon, iconSize, name, number, url, linkOpenStyle, 
           <i>
             <img
               alt={domain}
-              src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`}
+              src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize}`}
             />
           </i>
         ) : null
@@ -86,12 +84,17 @@ const Display: FC<Props> = ({ icon, iconSize, name, number, url, linkOpenStyle, 
           <i>
             <img
               alt={domain}
-              src = {`https://favicone.com/${domain}?s=${size}`}
+              src = {`https://favicone.com/${domain}?s=${iconSize}`}
             />
           </i>
         ) : null
-      ) : icon ? (
-        <Icon name={icon} />
+      ) : icon === "_custom_iconify" ? (
+        IconString && (
+          <Icon icon={IconString}></Icon>
+        )
+      )
+      : icon ? (
+        <Icon icon={"feather:" + icon} />
       ) : null}
       {icon && name && " "}
       <span className="LinkText">

@@ -20,6 +20,13 @@ export function updateIconSize(index: number, iconSize: number) {
   } as const;
 }
 
+export function updateCustomIcon(index: number, IconString: string) {
+  return {
+    type: "UPDATE_CUSTOM_ICON",
+    data: { index, IconString },
+  } as const;
+}
+
 export function removeLink(index: number) {
   return {
     type: "REMOVE_LINK",
@@ -37,6 +44,7 @@ export function reorderLink(index: number, to: number) {
 export type Action =
   | ReturnType<typeof addLink>
   | ReturnType<typeof updateIconSize>
+  | ReturnType<typeof updateCustomIcon>
   | ReturnType<typeof updateLink>
   | ReturnType<typeof removeLink>
   | ReturnType<typeof reorderLink>;

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
-import { addLink, removeLink, reorderLink, updateIconSize, updateLink } from "./actions";
+import { addLink, removeLink, reorderLink, updateIconSize, updateCustomIcon, updateLink } from "./actions";
 import { reducer } from "./reducer";
 import { Link, Props, defaultData } from "./types";
 
@@ -66,6 +66,9 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
           }
           setIconSize={(iconSize) => 
             dispatch(updateIconSize(index, iconSize))
+          }
+          setCustomIcon={(IconString) => 
+            dispatch(updateCustomIcon(index, IconString))
           }
           onMoveUp={
             index !== 0

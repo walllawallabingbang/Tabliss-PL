@@ -13,6 +13,7 @@ type Props = Link & {
   number: number;
   onChange: (values: Partial<Link>) => void;
   setIconSize: (iconSize: number) => void;
+  setCustomIcon: (IconString: string) => void;
   onMoveUp?: () => void;
   onMoveDown?: () => void;
   onRemove: () => void;
@@ -22,6 +23,7 @@ const iconList = Object.keys(icons);
 
 const Input: FC<Props> = (props) => {
   const isGoogleOrFavicone = props.icon === "_favicon_google" || props.icon === "_favicon_favicone";
+  const isCustomText = props.icon === "_custom_iconify";
 
   return (
     <div className="LinkInput">
@@ -75,6 +77,9 @@ const Input: FC<Props> = (props) => {
             <option value="_favicon_duckduckgo">From DuckDuckGo</option>
             <option value="_favicon_favicone">From Favicone</option>
           </optgroup>
+          <optgroup label="Custom">
+            <option value="_custom_iconify">From Iconify</option>
+          </optgroup>
           <optgroup label="Feather Icons">
             {iconList.map((key) => (
               <option key={key}>{key}</option>
@@ -87,7 +92,6 @@ const Input: FC<Props> = (props) => {
         <label>
           Icon Size
           <select
-            // value={props.iconSize}
             onChange={(event) => props.setIconSize(Number(event.target.value))}
           >
             <option value="16">16x16</option>
@@ -99,11 +103,20 @@ const Input: FC<Props> = (props) => {
         </label>
       )}
 
+      {isCustomText && (
+        <label>
+          Custom Text
+          <input
+            type="text"
+            onChange={(event) => props.setCustomIcon(event.target.value)}
+          />
+        </label>
+      )}
+
       <hr />
     </div>
   );
 };
 
 export default Input;
-
 
