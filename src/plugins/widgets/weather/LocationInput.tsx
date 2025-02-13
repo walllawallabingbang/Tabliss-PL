@@ -1,6 +1,6 @@
 import React from "react";
 import { useToggle } from "../../../hooks";
-import { Icon } from "../../../views/shared";
+import { Icon } from "@iconify/react";
 import { geocodeLocation, requestLocation } from "./api";
 import "./LocationInput.sass";
 import { Coordinates } from "./types";
@@ -39,7 +39,7 @@ const GeocodeInput: React.FC<Props> = ({ onChange }) => {
         />
 
         <button type="submit" className="button--primary button--icon">
-          <Icon name="search" />
+          <Icon icon="feather:search" />
         </button>
       </div>
     </form>
@@ -98,7 +98,7 @@ const CoordinateInput: React.FC<Props> = ({
             className="button--primary button--icon"
             onClick={handleLocate}
           >
-            <Icon name="navigation" />
+            <Icon icon="feather:navigation" />
           </button>
         )}
       </div>

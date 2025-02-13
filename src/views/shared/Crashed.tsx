@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { FallbackProps } from "react-error-boundary";
 
-import { Icon } from "./icons";
+import { Icon } from "@iconify/react";
 
 const Crashed: FC<FallbackProps> = () => (
   <div className="Crashed">
-    <Icon name="alert-triangle" /> Sorry this plugin has crashed!
+    <Icon icon="feather:alert-triangle" /> Sorry this plugin has crashed!
   </div>
 );
 

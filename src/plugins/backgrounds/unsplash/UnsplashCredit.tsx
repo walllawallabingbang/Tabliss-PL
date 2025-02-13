@@ -1,6 +1,6 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import { Icon } from "../../../views/shared";
+import { Icon } from "@iconify/react";
 import { Image } from "./types";
 
 export const UTM =
@@ -42,13 +42,13 @@ const UnsplashCredit: React.FC<Props> = ({
 
     <div className="controls">
       <a className={onPrev ? "" : "hidden"} onClick={onPrev ?? undefined}>
-        <Icon name="arrow-left" />
+        <Icon icon="feather:arrow-left" />
       </a>{" "}
       <a onClick={onPause}>
-        <Icon name={paused ? "play" : "pause"} />
+        <Icon icon={paused ? "feather:play" : "feather:pause"} />
       </a>{" "}
       <a className={onNext ? "" : "hidden"} onClick={onNext ?? undefined}>
-        <Icon name="arrow-right" />
+        <Icon icon="feather:arrow-right" />
       </a>
     </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { useKeyPress } from "../../../hooks";
-import { Icon } from "../../../views/shared";
+import { Icon } from "@iconify/react";
 
 interface Props
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "onChange"> {
@@ -53,12 +53,12 @@ const Input: React.FC<Props> = ({ onChange, value, ...props }) => {
       {isEditing ? (
         <div style={{ position: "absolute", top: "-1.25em", right: "0" }}>
           <a>
-            <Icon name="check" />
+            <Icon icon="feather:check" />
           </a>
         </div>
       ) : value === "" ? (
         <a onClick={() => span.current?.focus()}>
-          <Icon name="edit" />
+          <Icon icon="feather:edit" />
         </a>
       ) : null}
     </div>

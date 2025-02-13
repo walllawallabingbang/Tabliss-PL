@@ -6,7 +6,7 @@ import { toggleFocus } from "../../db/action";
 import { db } from "../../db/state";
 import { useFormatMessages, useFullscreen, useKeyPress } from "../../hooks";
 import { useValue } from "../../lib/db/react";
-import { Icon } from "../shared";
+import { Icon } from "@iconify/react";
 import "./Overlay.sass";
 
 const messages = defineMessages({
@@ -54,18 +54,18 @@ const Overlay: React.FC = () => {
   return (
     <div className="Overlay">
       <a onClick={toggleSettings} title={`${translated.settingsHint} (S)`}>
-        <Icon name="settings" />
+        <Icon icon="feather:settings" />
       </a>
 
       {errors.length > 0 ? (
         <a onClick={toggleErrors} title={translated.errorHint}>
-          <Icon name="alert-triangle" />
+          <Icon icon="feather:alert-triangle" />
         </a>
       ) : null}
 
       {pending > 0 ? (
         <span title={translated.loadingHint}>
-          <Icon name="zap" />
+          <Icon icon="feather:zap" />
         </span>
       ) : null}
 
@@ -74,7 +74,7 @@ const Overlay: React.FC = () => {
         onClick={toggleFocus}
         title={`${translated.focusHint} (W)`}
       >
-        <Icon name={focus ? "eye-off" : "eye"} />
+        <Icon icon={`feather:${focus ? "eye-off" : "eye"}`} />
       </a>
 
       {handleToggleFullscreen ? (
@@ -83,7 +83,7 @@ const Overlay: React.FC = () => {
           onClick={handleToggleFullscreen}
           title={`${translated.fullscreenHint} (F)`}
         >
-          <Icon name={isFullscreen ? "minimize-2" : "maximize-2"} />
+          <Icon icon={`feather:${isFullscreen ? "minimize-2" : "maximize-2"}`} />
         </a>
       ) : null}
     </div>

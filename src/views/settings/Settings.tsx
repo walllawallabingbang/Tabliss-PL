@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { UiContext } from "../../contexts/ui";
 import { exportStore, importStore, resetStore } from "../../db/action";
 import { useKeyPress } from "../../hooks";
-import { Icon } from "../shared";
+import { Icon } from "@iconify/react";
 import Logo from "../shared/Logo";
 import Background from "./Background";
 import Persist from "./Persist";
@@ -102,12 +102,12 @@ const Settings: React.FC = () => {
               className="button button--primary"
               title="I do love coffee"
             >
-              <Icon name="coffee" /> Donate a coffee 😍
+              <Icon icon="feather:coffee" /> Donate a coffee 😍
             </a>
           </p>
           <p>
             <a href="https://tabliss.io/" target="_blank">
-              <Icon name="globe" /> Website
+              <Icon icon="feather:globe" /> Website
             </a>
             &nbsp;&nbsp;
             <a
@@ -115,7 +115,7 @@ const Settings: React.FC = () => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Icon name="twitter" /> Twitter
+              <Icon icon="feather:twitter" /> Twitter
             </a>
             &nbsp;&nbsp;
             <a
@@ -123,7 +123,7 @@ const Settings: React.FC = () => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <Icon name="github" /> GitHub
+              <Icon icon="feather:github" /> GitHub
             </a>
           </p>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { defineMessages } from "react-intl";
 import { useCachedEffect, useFormatMessages, useTime } from "../../../hooks";
 import { HOURS } from "../../../utils";
-import { Icon } from "../../../views/shared";
+import { Icon } from "@iconify/react";
 import { getForecast } from "./api";
 import { findCurrent, weatherCodes } from "./conditions";
 import { defaultData, Props } from "./types";
@@ -43,7 +43,10 @@ const Weather: React.FC<Props> = ({
         title="Toggle weather details"
       >
         {data.name && data.showCity ? <span>{data.name}</span> : null}
-        <Icon name={weatherCodes[conditions.weatherCode]} />
+        <Icon
+          icon={`feather:` + weatherCodes[conditions.weatherCode]}
+          style={{ marginLeft: 10, marginRight: 10 }}
+        />
         <span className="temperature">
           {Math.round(conditions.temperature)}˚
         </span>
