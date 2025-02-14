@@ -97,4 +97,9 @@ export const engines: Engine[] = [
     name: "Kagi",
     search_url: "https://kagi.com/search?q={searchTerms}",
   },
+  {
+    key: "metacrawler",
+    name: "MetaCrawler",
+    search_url: "https://www.metacrawler.com/serp?q={searchTerms}",
+  },
 ];
