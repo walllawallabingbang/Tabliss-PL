@@ -32,6 +32,17 @@ const WorkHoursSettings: FC<Props> = ({ data = defaultData, setData }) => (
         onChange={(event) => setData({ ...data, endTime: event.target.value })}
       />
     </label>
+    <label>
+      Flip percentage?
+      <input
+        style = {{marginLeft: "10px"}}
+        type="checkbox"
+        checked={data.flipPercentage}
+        onChange={(event) =>
+          setData({ ...data, flipPercentage: event.target.checked })
+        }
+      />
+    </label>
     {daysList.map((day, index) => (
       <div key={day}>
         <label>
@@ -55,3 +66,4 @@ const WorkHoursSettings: FC<Props> = ({ data = defaultData, setData }) => (
 );
 
 export default WorkHoursSettings;
+

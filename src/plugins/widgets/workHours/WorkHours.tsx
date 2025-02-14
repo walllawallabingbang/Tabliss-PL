@@ -16,20 +16,23 @@ const WorkHours: React.FC<Props> = ({ data = defaultData }) => {
     <div className="WorkHours">
       {isWorkDay(data.days) && (
         <>
-          <h2>{hoursProgress(time, start, end)}%</h2>
+          <h2>{hoursProgress(time, start, end, data.flipPercentage)}%</h2>
         </>
       )}
     </div>
   );
 };
 
-const hoursProgress = (current: Date, start: Date, end: Date): number => {
+const hoursProgress = (current: Date, start: Date, end: Date, flipPercentage: boolean): number => {
   if (current < start) return 0;
   if (current > end) return 100;
 
   const total = end.getTime() - start.getTime();
   const progress = current.getTime() - start.getTime();
 
+  if (flipPercentage == true) {
+    return 100 - Math.floor((progress / total) * 100);
+  }
   return Math.floor((progress / total) * 100);
 };
 
