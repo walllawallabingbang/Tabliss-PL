@@ -1,5 +1,8 @@
 name: Push
-on: push
+on:
+  push:
+    branches:
+      - '*'  # Run on any branch
 
 jobs:
   test:
@@ -41,7 +44,9 @@ jobs:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
+      # Only commit and push to artifact_builds if on the main branch
       - name: Commit and Push to artifact_builds Branch
+        if: github.ref == 'refs/heads/main'  # Only run on the main branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -51,4 +56,3 @@ jobs:
           git push origin artifact_builds
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
