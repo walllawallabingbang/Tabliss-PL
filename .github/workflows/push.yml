@@ -43,6 +43,8 @@ jobs:
 
       - name: Commit and Push to artifact_builds Branch
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git checkout artifact_builds || git checkout -b artifact_builds
           git add -f dist/${{ matrix.build_target }}  # Force add ignored files
           git commit -m "Updated for: ${{ github.event.head_commit.message }}"
