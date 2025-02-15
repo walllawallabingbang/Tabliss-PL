@@ -52,18 +52,19 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin artifact_builds || git checkout -b artifact_builds  # Fetch or create the branch
           git checkout artifact_builds  # Switch to artifact_builds branch
-          
-          # If the branch is clean, ensure no changes are staged
-          git reset --hard origin/artifact_builds || true  # Don't overwrite any local changes
 
-          # Add the dist folder files, without clearing previous changes
-          git add dist/${{ matrix.build_target }}  # Add only the dist folder files
+          # Remove all files except for the dist folder
+          find . -path ./dist -prune -o -exec rm -rf {} +
 
-          # Commit only the newly added files from dist
-          git commit -m "Updated for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
+          # Add the dist folder files
+          git add dist/${{ matrix.build_target }}
+
+          # Commit the changes
+          git commit -m "Updated ${{ matrix.build_target }} build for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
 
           # Force push to the branch
           git push --force origin artifact_builds  # Force push if necessary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
