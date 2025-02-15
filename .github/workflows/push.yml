@@ -50,11 +50,20 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          # Create a new empty branch, no files from 'main' will be carried over
-          git checkout --orphan artifact_builds  # Creates an orphan branch, no files carried over
-          git reset --hard  # Ensures no files are staged or tracked
+          git fetch origin artifact_builds || git checkout -b artifact_builds  # Fetch or create the branch
+          git checkout artifact_builds  # Switch to artifact_builds branch
+          
+          # If the branch is clean, ensure no changes are staged
+          git reset --hard origin/artifact_builds || true  # Don't overwrite any local changes
+
+          # Add the dist folder files, without clearing previous changes
           git add dist/${{ matrix.build_target }}  # Add only the dist folder files
-          git commit -m "Updated for: ${{ github.event.head_commit.message }}"
-          git push --force origin artifact_builds  # Force push if the branch was cleared
+
+          # Commit only the newly added files from dist
+          git commit -m "Updated for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
+
+          # Force push to the branch
+          git push --force origin artifact_builds  # Force push if necessary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
