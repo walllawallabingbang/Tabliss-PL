@@ -50,8 +50,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout artifact_builds || git checkout -b artifact_builds
-          git add -f dist/${{ matrix.build_target }}  # Force add ignored files
+          # Create a new empty branch, no files from 'main' will be carried over
+          git checkout --orphan artifact_builds  # Creates an orphan branch, no files carried over
+          git reset --hard  # Ensures no files are staged or tracked
+          git add dist/${{ matrix.build_target }}  # Add only the dist folder files
           git commit -m "Updated for: ${{ github.event.head_commit.message }}"
           git push --force origin artifact_builds  # Force push if the branch was cleared
         env:
