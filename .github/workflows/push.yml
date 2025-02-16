@@ -54,9 +54,9 @@ jobs:
           git checkout artifact_builds  # Switch to artifact_builds branch
 
           # Remove all files except for the dist folder
-          rm -rf node_modules
-          rm -rf package-lock.json
-          find . -path ./dist -prune -o -type f -exec rm -f {} +
+          # rm -rf node_modules
+          # rm -rf package-lock.json
+          # find . -path ./dist -prune -o -type f -exec rm -f {} +
 
           # Add the dist folder files
           git add dist/${{ matrix.build_target }}
