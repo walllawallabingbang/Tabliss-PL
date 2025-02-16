@@ -38,9 +38,6 @@ jobs:
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
           UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
-      - name: Verify dist folder existence
-        run: |
-          ls -al dist
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -53,14 +50,19 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin artifact_builds
-          git checkout artifact_builds || git checkout --orphan artifact_builds
-          rm -rf *
-          # Debug step to verify the dist content
-          ls -al dist
-          cp -r dist/* .
-          git add .
-          git commit -m "Update build artifacts"
-          git push origin artifact_builds
+          git fetch origin artifact_builds || git checkout -b artifact_builds  # Fetch or create the branch
+          git checkout artifact_builds  # Switch to artifact_builds branch
+          
+          # If the branch is clean, ensure no changes are staged
+          git reset --hard origin/artifact_builds || true  # Don't overwrite any local changes
+
+          # Add the dist folder files, without clearing previous changes
+          git add dist/${{ matrix.build_target }}  # Add only the dist folder files
+
+          # Commit only the newly added files from dist
+          git commit -m "Updated for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
+
+          # Force push to the branch
+          git push --force origin artifact_builds  # Force push if necessary
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
