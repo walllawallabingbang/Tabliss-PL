@@ -56,7 +56,7 @@ jobs:
       - name: Download Web Artifact
         uses: actions/download-artifact@v4
         with:
-          name: tabliss-web
+          name: tabliss-web.zip
           path: dist
 
       - name: Unzip the downloaded artifact
