@@ -56,14 +56,11 @@ jobs:
       - name: Download Web Artifact
         uses: actions/download-artifact@v4
         with:
-          name: tabliss-web.zip
-          path: dist
+          name: tabliss-web
+          path: dist  # This extracts the artifact as a folder, not a ZIP file
 
-      - name: Unzip the downloaded artifact
-        run: unzip dist/tabliss-web.zip -d dist
-
-      - name: List downloaded and unzipped files (debug)
-        run: ls -R dist
+      - name: List downloaded files (debug)
+        run: ls -R dist  # Check what's inside `dist/`
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -71,9 +68,10 @@ jobs:
       - name: Upload Web Version to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist  # Deploys the contents of `dist/`
 
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v3
+
 
