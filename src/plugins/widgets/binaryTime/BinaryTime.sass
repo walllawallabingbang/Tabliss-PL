@@ -1,0 +1,36 @@
+.Time
+    font-variant-numeric: tabular-nums
+    hr
+        border: 0
+        border-top: 2px solid #ecf0f1
+        margin: 1rem 0
+
+.BinaryTime
+    .binary-clock
+        display: flex
+        justify-content: center
+        margin-bottom: 1rem
+
+    .binary-digit-group
+        display: flex
+        margin: 0 6px
+
+    .binary-digit
+        display: flex
+        flex-direction: column
+
+    .pip
+        width: 17px
+        height: 17px
+        margin: 7px
+        background-color: #525252
+        border-radius: 100%
+        transition: all .3s ease-in
+
+        &--on
+            background-color: #48d8b8
+            transform: scale(1.1)
+
+    h2
+        text-align: center
+        margin: 0

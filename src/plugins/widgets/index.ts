@@ -10,7 +10,7 @@ import js from "./js";
 import links from "./links";
 import literatureClock from "./literatureClock";
 import message from "./message";
-// import nba from "./nba";
+// import nba from "./nba";  TODO: FIX (IT'S BROKEN)
 import notes from "./notes";
 import randomMessage from "./randomMessage";
 import nba from "./nba";
@@ -23,9 +23,11 @@ import workHours from "./workHours";
 import joke from "./joke";
 import CustomText from "./customText";
 import bookmarks from "./bookmarks";
+import binarytime from './binaryTime';
 
 export const widgetConfigs = [
   countdown,
+  binarytime,
   bookmarks,
   since,
   bitcoin,
@@ -48,7 +50,7 @@ export const widgetConfigs = [
   weather,
   workHours,
   joke,
-  CustomText
+  CustomText,
 ];
 
 if (BUILD_TARGET === "web") {
