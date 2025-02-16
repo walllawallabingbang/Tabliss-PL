@@ -38,6 +38,9 @@ jobs:
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
           UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+      - name: Verify dist folder existence
+        run: |
+          ls -al dist
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -53,6 +56,8 @@ jobs:
           git fetch origin artifact_builds
           git checkout artifact_builds || git checkout --orphan artifact_builds
           rm -rf *
+          # Debug step to verify the dist content
+          ls -al dist
           cp -r dist/* .
           git add .
           git commit -m "Update build artifacts"
