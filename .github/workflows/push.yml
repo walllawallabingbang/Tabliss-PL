@@ -1,8 +1,5 @@
 name: Push
-on:
-  push:
-    branches:
-      - '*'  # Run on any branch
+on: push
 
 jobs:
   test:
@@ -44,26 +41,14 @@ jobs:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
-      # Only commit and push to artifact_builds if on the main branch
       - name: Commit and Push to artifact_builds Branch
-        if: github.ref == 'refs/heads/main'  # Only run on the main branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin artifact_builds || git checkout -b artifact_builds  # Fetch or create the branch
-          git checkout artifact_builds  # Switch to artifact_builds branch
-          
-          # If the branch is clean, ensure no changes are staged
-          git reset --hard origin/artifact_builds || true  # Don't overwrite any local changes
-
-          # Add the dist folder files, without clearing previous changes
-          git add .  # Add only the dist folder files
-          ls
-
-          # Commit only the newly added files from dist
-          git commit -m "Updated for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
-
-          # Force push to the branch
-          git push --force origin artifact_builds  # Force push if necessary
+          git checkout artifact_builds || git checkout -b artifact_builds
+          git add -f dist/${{ matrix.build_target }}  # Force add ignored files
+          git commit -m "Updated for: ${{ github.event.head_commit.message }}"
+          git push origin artifact_builds
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
