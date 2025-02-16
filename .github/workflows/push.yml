@@ -35,18 +35,30 @@ jobs:
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
           UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+
+      # Use upload-pages-artifact only for web
       - uses: actions/upload-pages-artifact@v3
+        if: matrix.build_target == 'web'
+        with:
+          name: tabliss-web
+          path: dist/web
+
+      # Use upload-artifact for other build targets
+      - uses: actions/upload-artifact@v4
+        if: matrix.build_target != 'web'
         with:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
+
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    if: github.ref == 'refs/heads/main'  # Only deploy on main branch
     runs-on: ubuntu-latest
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -56,8 +68,4 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: tabliss-web  # Artifact name used here
-          timeout: "600000"  # Optional timeout setting
-          error_count: "10"  # Optional error count before canceling
-          reporting_interval: "5000"  # Optional reporting interval
-
+          artifact_name: tabliss-web
