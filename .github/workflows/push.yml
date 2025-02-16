@@ -57,7 +57,8 @@ jobs:
           git reset --hard origin/artifact_builds || true  # Don't overwrite any local changes
 
           # Add the dist folder files, without clearing previous changes
-          git add dist/${{ matrix.build_target }}  # Add only the dist folder files
+          git add dist/*  # Add only the dist folder files
+          ls
 
           # Commit only the newly added files from dist
           git commit -m "Updated for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
