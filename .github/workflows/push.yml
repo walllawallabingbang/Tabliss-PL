@@ -1,11 +1,6 @@
 name: Push
 on: push
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 jobs:
   test:
     name: Run tests
@@ -18,7 +13,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
-
   build:
     name: Build ${{ matrix.build_target }}
     runs-on: ubuntu-latest
@@ -44,19 +38,3 @@ jobs:
         with:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: tabliss-web
-
-      - name: Display deployed site URL
-        run: |
-            echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
-
