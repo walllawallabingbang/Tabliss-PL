@@ -52,11 +52,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Download Web Artifact
         uses: actions/download-artifact@v4
         with:
           name: tabliss-web
           path: dist
+
+      - name: Unzip the downloaded artifact
+        run: unzip dist/tabliss-web.zip -d dist
+
+      - name: List downloaded and unzipped files (debug)
+        run: ls -R dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -69,3 +76,4 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v3
+
