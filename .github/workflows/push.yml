@@ -35,7 +35,7 @@ jobs:
           GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
           UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-pages-artifact@v4
         with:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
@@ -60,3 +60,4 @@ jobs:
           timeout: "600000"  # Optional timeout setting
           error_count: "10"  # Optional error count before canceling
           reporting_interval: "5000"  # Optional reporting interval
+
