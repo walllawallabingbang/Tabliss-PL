@@ -1,0 +1,25 @@
+name: Deploy GitHub Pages site
+
+on:
+  push:
+    branches:
+      - main  # Or your default branch
+
+jobs:
+  # Deploy job
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: tabliss-web
+
+      - name: Display deployed site URL
+        run: |
+            echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
