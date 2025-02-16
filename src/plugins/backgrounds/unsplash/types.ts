@@ -11,6 +11,7 @@ export interface Data {
   search: string;
   topics: string;
   timeout: number;
+  locationSource: string;
 }
 
 export interface Image {
@@ -35,4 +36,5 @@ export const defaultData: Data = {
   search: "",
   topics: "bo8jQKTaE0Y",
   timeout: 900,
+  locationSource: "google-maps",
 };

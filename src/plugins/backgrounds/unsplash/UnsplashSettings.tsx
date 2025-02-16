@@ -117,7 +117,17 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         />
       </label>
     )}
+
+    <label>
+      Location On-Click Source
+      <select onChange={(event) => setData({ ...data, locationSource: event.target.value })}>
+        <option value="google-maps">Google Maps</option>
+        <option value="google">Google Search</option>
+        <option value="duckduckgo">DuckDuckGo Search</option>
+      </select>
+    </label>
   </div>
 );
 
 export default UnsplashSettings;
+

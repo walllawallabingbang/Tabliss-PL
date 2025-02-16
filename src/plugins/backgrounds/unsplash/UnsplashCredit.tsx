@@ -8,14 +8,27 @@ export const UTM =
 
 interface Props {
   credit: Image["credit"];
+  locationSource: string | undefined;
   paused: boolean;
   onPause: () => void;
   onPrev: (() => void) | null;
   onNext: (() => void) | null;
 }
 
+const clickLocation = (location: string | undefined, locationSource: string | undefined) => {
+  if (!location) return;
+  if (!locationSource) return;
+  const urls = {
+    "google-maps": `https://www.google.com/maps/search/?api=1&query=${location}`,
+    "google": `https://www.google.com/search?tbm=isch&q=${location}`,
+    "duckduckgo": `https://duckduckgo.com/?q=${location}&iax=images&ia=images`,
+  };
+  window.open(urls[locationSource as keyof typeof urls], "_blank");
+};
+
 const UnsplashCredit: React.FC<Props> = ({
   credit,
+  locationSource,
   paused,
   onPause,
   onPrev,
@@ -52,7 +65,7 @@ const UnsplashCredit: React.FC<Props> = ({
       </a>
     </div>
 
-    <div className="location">{credit.location}</div>
+    <a className="location" onClick={() => clickLocation(credit.location, locationSource)}>{credit.location}</a>
   </div>
 );
 

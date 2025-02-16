@@ -82,6 +82,7 @@ const Unsplash: React.FC<Props> = ({
       {item ? (
         <UnsplashCredit
           credit={item.credit}
+          locationSource={data.locationSource}
           paused={data.paused ?? false}
           onPause={handlePause}
           onPrev={go(-1)}
