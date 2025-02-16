@@ -46,16 +46,17 @@ jobs:
           path: dist/${{ matrix.build_target }}
 
   deploy:
-    needs: build  # Ensure deploy runs after build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
-          name: tabliss-web  # Use the appropriate artifact name here
+          name: tabliss-web
+          downloadPath: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -63,7 +64,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: tabliss-web
+          path: dist/tablis-web
 
       - name: Display deployed site URL
         run: |
             echo "Deployed to: ${{ steps.deployment.outputs.page_url }}"
+
