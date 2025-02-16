@@ -50,23 +50,12 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin artifact_builds || git checkout -b artifact_builds  # Fetch or create the branch
-          git checkout artifact_builds  # Switch to artifact_builds branch
-
-          # Remove all files except for the dist folder
-          # rm -rf node_modules
-          # rm -rf package-lock.json
-          # find . -path ./dist -prune -o -type f -exec rm -f {} +
-
-          # Add the dist folder files
-          git add dist/${{ matrix.build_target }}
-
-          # Commit the changes
-          git commit -m "Updated ${{ matrix.build_target }} build for: ${{ github.event.head_commit.message }}" || echo "No changes to commit"
-
-          # Force push to the branch
-          git push --force origin artifact_builds  # Force push if necessary
+          git fetch origin artifact_builds
+          git checkout artifact_builds || git checkout --orphan artifact_builds
+          rm -rf *
+          cp -r dist/* .
+          git add .
+          git commit -m "Update build artifacts"
+          git push origin artifact_builds
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
