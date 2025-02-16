@@ -48,7 +48,7 @@ jobs:
           git checkout artifact_builds || git checkout -b artifact_builds
           git add -f dist/${{ matrix.build_target }}  # Force add ignored files
           git commit -m "Updated for: ${{ github.event.head_commit.message }}"
-          git push origin artifact_builds
+          git push --force origin artifact_builds
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
