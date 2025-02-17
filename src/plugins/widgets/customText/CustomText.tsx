@@ -6,7 +6,7 @@ const CustomText: FC<Props> = ({data= defaultData}) => {
 
   // Code for unbiased rand from https://pthree.org/2018/06/13/why-the-multiply-and-floor-rng-method-is-biased
   const unbiasedRand = (range: number) => {
-    let max = Math.floor(2**32/range) * range;
+    const max = Math.floor(2**32/range) * range;
     let x;
     do {
       x = Math.floor(Math.random() * 2**32);

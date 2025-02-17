@@ -38,7 +38,7 @@ const BinaryDigitGroup: FC<BinaryDigitGroupProps> = ({ group }) => (
 
 function numberToBinary(base10Number: number): number[] {
   const base2Values = [8, 4, 2, 1];
-  let output = [0, 0, 0, 0];
+  const output = [0, 0, 0, 0];
   let remainder = base10Number;
   
   base2Values.forEach((val, idx) => {
