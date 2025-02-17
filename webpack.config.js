@@ -20,7 +20,7 @@ const config = {
   },
   output: {
     path: path.resolve("dist", buildTarget),
-    publicPath: "/",
+    publicPath: "./",
     filename: isWeb ? "[name].[contenthash:12].js" : "[name].js",
   },
   mode: isProduction ? "production" : "development",
