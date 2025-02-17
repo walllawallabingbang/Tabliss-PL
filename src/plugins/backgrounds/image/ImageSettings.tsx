@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useObjectUrls } from "../../../hooks";
 import { IconButton, RemoveIcon } from "../../../views/shared";
 import "./ImageSettings.sass";
@@ -6,6 +6,7 @@ import { defaultCache, Props } from "./types";
 
 const ImageSettings: React.FC<Props> = ({ cache = defaultCache, setCache }) => {
   const urls = useObjectUrls(cache);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const addImages = (files: FileList) =>
     setCache(cache.concat(Array.from(files)));
@@ -28,19 +29,25 @@ const ImageSettings: React.FC<Props> = ({ cache = defaultCache, setCache }) => {
         />
       </label>
 
+      <p className="info">
+        {cache.length} images uploaded.{" "}
+        <a className="link" onClick={() => setIsExpanded(!isExpanded)}>
+          {isExpanded ? "Collapse" : "Expand"}
+        </a>
+      </p>
+
       <div className="grid">
-        {urls &&
-          urls.map((url, index) => (
-            <div className="preview" key={index}>
-              <img src={url} />
-              <IconButton
-                onClick={() => removeImage(index)}
-                title="Remove image"
-              >
-                <RemoveIcon />
-              </IconButton>
-            </div>
-          ))}
+        {isExpanded && urls && urls.map((url, index) => (
+          <div className="preview" key={index}>
+            <img src={url} />
+            <IconButton
+              onClick={() => removeImage(index)}
+              title="Remove image"
+            >
+              <RemoveIcon />
+            </IconButton>
+          </div>
+        ))}
       </div>
 
       {largeImages && (
