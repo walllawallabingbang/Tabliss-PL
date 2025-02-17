@@ -1,5 +1,5 @@
-import countdown from './countdown';
-import since from './since';
+import countdown from "./countdown";
+import since from "./since";
 import bitcoin from "./bitcoin";
 import css from "./css";
 import github from "./github";
@@ -23,7 +23,7 @@ import workHours from "./workHours";
 import joke from "./joke";
 import CustomText from "./customText";
 import bookmarks from "./bookmarks";
-import binarytime from './binaryTime';
+import binarytime from "./binaryTime";
 
 export const widgetConfigs = [
   countdown,

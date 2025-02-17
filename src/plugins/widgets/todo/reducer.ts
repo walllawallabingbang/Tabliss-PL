@@ -20,7 +20,11 @@ export function reducer(state: State, action: Action) {
     case "TOGGLE_TODO":
       return state.map((todo) =>
         todo.id === action.data.id
-          ? { ...todo, completed: !todo.completed, completedAt: todo.completed ? null : new Date().toISOString() }
+          ? {
+              ...todo,
+              completed: !todo.completed,
+              completedAt: todo.completed ? null : new Date().toISOString(),
+            }
           : todo,
       );
 

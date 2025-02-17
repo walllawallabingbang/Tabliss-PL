@@ -1,7 +1,7 @@
 import { API } from "../../types";
 
 export type Data = {
-    url?: string;
+  url?: string;
 };
 
 export type Props = API<Data>;

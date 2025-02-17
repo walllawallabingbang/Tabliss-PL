@@ -9,41 +9,47 @@ This repository is a maintained fork of Tabliss, originally a customizable new t
 
 ### Why This Fork?
 
-I cloned the repository and merged several pending pull requests to bring in improvements and bug fixes. Moving forward, I will actively maintain and update this fork to keep Tabliss functional and up to date.
+I cloned the repository and merged most pending pull requests to bring in improvements and bug fixes. Moving forward, I will actively maintain and update this fork to keep Tabliss functional and up to date.
 
 ### What's Next?
 
--   Continued updates and bug fixes
--   Adding new features from community contributions
--   Keeping dependencies up to date
+- Continued updates and bug fixes
+- Adding new features from community contributions
+- Keeping dependencies up to date
 
 If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let’s keep Tabliss alive!
 
 ----------
 
 ## 🛠 Installation
+
 Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my version of the extension isn't on any extension stores. API keys are included with the release.
 
 ## 💻 Running Locally
 
 First, clone the repo:
+
 ```sh
 https://github.com/BookCatKid/tabliss-maintained.git
 cd tabliss-maintained
 ```
+
 Then install the dependencies:
+
 ```sh
 npm install
 ```
 
-### Available Commands:
+### Available Commands
 
--   `npm run dev` — Start a local development server
--   `npm run build` — Build the project
--   `npm run test` — Run tests
--   `npm run translations` — Manage translation files (see TRANSLATING.md)
+- `npm run dev` — Start a local development server
+- `npm run build` — Build the project
+- `npm run test` — Run tests
+- `npm run translations` — Manage translation files (see TRANSLATING.md)
+- `npm run lint:fix` — Run ESLint with --fix (or just `npm run lint` for checking)
+- `npm run prettier` — Run Prettier with --write (or npm run `prettier:check` for checking)
 
-By default, these commands will target the web version. To specify a platform (Chromium or Firefox), append `:chromium` or `:firefox` to the command. For example:
+By default, build and dev will target the web version. To specify a platform (Chromium or Firefox), append `:chromium` or `:firefox` to the command. For example:
 
 ```sh
 npm run dev:chromium

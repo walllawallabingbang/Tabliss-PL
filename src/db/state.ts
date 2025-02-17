@@ -21,7 +21,6 @@ export interface State {
   highlightingEnabled: boolean;
 }
 
-
 export interface BackgroundState {
   id: string;
   key: string;
@@ -92,7 +91,6 @@ const initData: State = {
   timeZone: null,
   highlightingEnabled: true, // Initialize as true
 };
-
 
 // Database storage
 export const db = DB.init<State>(initData);

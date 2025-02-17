@@ -60,7 +60,7 @@ export const fetchImages = async ({
       },
     }));
   } else {
-    console.error('Expected an array, but received:', body);
+    console.error("Expected an array, but received:", body);
     return [];
   }
 };

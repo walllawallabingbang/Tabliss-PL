@@ -12,14 +12,14 @@ export const fetchFeaturedContent = async ({
   formattedDate: string;
 }): Promise<any> => {
   const url = `https://api.wikimedia.org/feed/v1/wikipedia/${language}/featured/${formattedDate}`;
-  
+
   const res = await fetch(url);
   const body = await res.json();
 
   if (res.ok) {
     return body;
   } else {
-    console.error('Error fetching featured content:', body);
+    console.error("Error fetching featured content:", body);
     return null;
   }
 };

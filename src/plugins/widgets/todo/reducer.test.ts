@@ -165,7 +165,7 @@ describe("todo/reducer", () => {
             id: "5678",
             contents: "Second existing todo",
             completed: false,
-            completedAt: null
+            completedAt: null,
           },
         ],
         updateTodo("1234", "Existing todo: edited"),
@@ -175,7 +175,7 @@ describe("todo/reducer", () => {
         id: "1234",
         contents: "Existing todo: edited",
         completed: true,
-        completedAt: "2022-30-12T12:44:38"
+        completedAt: "2022-30-12T12:44:38",
       },
       {
         id: "5678",
@@ -210,7 +210,7 @@ describe("todo/reducer", () => {
         id: "1234",
         contents: "Existing todo",
         completed: true,
-        completedAt: "2022-30-12T12:44:38"
+        completedAt: "2022-30-12T12:44:38",
       },
     ]);
   });

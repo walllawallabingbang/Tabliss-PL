@@ -1,4 +1,4 @@
-import { API } from '../../types';
+import { API } from "../../types";
 
 type Data = {
   time: number;

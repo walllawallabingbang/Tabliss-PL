@@ -21,8 +21,6 @@
   - Click Load Unpacked
   - Select the folder you unzipped to. (make sure it has manifest.json in it)
 
-
-
 ## Notes
 
 - If you need extra help just create an issue and I will help.

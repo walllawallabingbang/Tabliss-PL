@@ -19,9 +19,10 @@ export function buildUrl(query: string, engineUrl: string) {
 }
 
 export function getSearchUrl(key: string, custom?: string) {
-  const engine = key === SEARCH_ENGINE_CUSTOM
-    ? custom
-    : engines.find((engine) => engine.key === key)?.search_url;
+  const engine =
+    key === SEARCH_ENGINE_CUSTOM
+      ? custom
+      : engines.find((engine) => engine.key === key)?.search_url;
 
   return engine || engines[0].search_url;
 }

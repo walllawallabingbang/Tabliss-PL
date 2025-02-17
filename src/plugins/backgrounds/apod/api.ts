@@ -18,7 +18,9 @@ export async function getPicture(
   if (NASA_API_KEY) {
     params.set("api_key", NASA_API_KEY);
   } else {
-    console.log("You must set the NASA_API_KEY environment variable. Falling back to key DEMO_KEY.");
+    console.log(
+      "You must set the NASA_API_KEY environment variable. Falling back to key DEMO_KEY.",
+    );
     params.set("api_key", "DEMO_KEY");
   }
 

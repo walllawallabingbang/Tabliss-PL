@@ -9,4 +9,9 @@ type Data = {
 
 export type Props = API<Data>;
 
-export const defaultData: Data = {text: "", strings: [""], separator: "", atNewline: true};
+export const defaultData: Data = {
+  text: "",
+  strings: [""],
+  separator: "",
+  atNewline: true,
+};

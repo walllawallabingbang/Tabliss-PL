@@ -20,7 +20,10 @@ export function reducer(state: State, action: Action) {
       return state.map((link) => ({ ...link, iconSize: action.data.iconSize }));
 
     case "UPDATE_CUSTOM_ICON":
-      return state.map((link) => ({ ...link, IconString: action.data.IconString }));
+      return state.map((link) => ({
+        ...link,
+        IconString: action.data.IconString,
+      }));
 
     case "REORDER_LINK":
       const links = [...state];
@@ -31,4 +34,3 @@ export function reducer(state: State, action: Action) {
       throw new Error("Unknown action");
   }
 }
-

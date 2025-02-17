@@ -1,11 +1,11 @@
-import { Config } from '../../types';
-import Countdown from './Countdown';
-import CountdownSettings from './CountdownSettings';
+import { Config } from "../../types";
+import Countdown from "./Countdown";
+import CountdownSettings from "./CountdownSettings";
 
 const config: Config = {
-  key: 'widget/countdown',
-  name: 'Countdown',
-  description: 'Literally counting down the days.',
+  key: "widget/countdown",
+  name: "Countdown",
+  description: "Literally counting down the days.",
   dashboardComponent: Countdown,
   settingsComponent: CountdownSettings,
 };

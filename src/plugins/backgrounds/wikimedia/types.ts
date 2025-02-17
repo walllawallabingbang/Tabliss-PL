@@ -20,7 +20,7 @@ export interface Image {
     };
     image: {
       source: any;
-    }
+    };
   };
 }
 
