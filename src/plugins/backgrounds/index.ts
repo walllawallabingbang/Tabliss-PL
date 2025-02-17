@@ -1,6 +1,6 @@
 import colour from "./colour";
 import gradient from "./gradient";
-import image from "./image";
+import media from "./media";
 import online from "./online";
 import unsplash from "./unsplash";
 import giphy from "./giphy";
@@ -11,7 +11,7 @@ export const backgroundConfigs = [
   colour,
   giphy,
   gradient,
-  image,
+  media,
   online,
   unsplash,
   apod,
