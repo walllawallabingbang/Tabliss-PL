@@ -1,0 +1,106 @@
+# Building Tabliss Maintained Extension
+
+This document provides detailed instructions for building the Tabliss-Maintained browser extension from source code.
+
+## System Requirements
+
+### Required Software
+
+- Node.js Version: 16.x or higher
+- Version: 11.x
+
+## Build Script
+
+A convenience build script is provided to automate the build process for Firefox. Save this as `build.sh` (Linux/macOS) or `build.bat` (Windows) in the project root:
+
+### Windows (build.bat):
+
+```batch
+@echo off
+
+echo Building Tabliss Extension...
+
+:: Check Node.js installation
+node --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Error: Node.js is not installed
+    exit /b 1
+)
+
+:: Install dependencies
+echo Installing dependencies...
+call npm install || (
+    echo Error: Failed to install dependencies
+    exit /b 1
+)
+
+:: Build Firefox extension
+echo Building Firefox extension...
+call npm run build:firefox || (
+    echo Error: Build failed
+    exit /b 1
+)
+
+:: Zip the build output
+echo Zipping build output...
+powershell Compress-Archive -Path dist/firefox/* -DestinationPath dist/firefox.zip || (
+    echo Error: Failed to zip build output
+    exit /b 1
+)
+
+echo Build completed successfully!
+echo Firefox extension is available in dist/firefox/
+echo Zipped archive available at dist/firefox.zip
+```
+
+### Linux/macOS (build.sh):
+
+```bash
+#!/bin/bash
+
+set -e
+
+echo "Building Tabliss Maintained Extension..."
+
+# Check Node.js installation
+if ! command -v node &> /dev/null; then
+    echo "Error: Node.js is not installed"
+    exit 1
+fi
+
+# Install dependencies
+echo "Installing dependencies..."
+npm install
+
+# Build Firefox extension
+echo "Building Firefox extension..."
+npm run build:firefox
+
+# Zip the build output
+echo "Zipping build output..."
+zip -r dist/firefox.zip dist/firefox/
+
+echo "Build completed successfully!"
+echo "Firefox extension is available in dist/firefox/"
+echo "Zipped archive available at dist/firefox.zip"
+```
+
+Make the script executable on Linux/macOS:
+
+```bash
+chmod +x build.sh
+```
+
+## Support
+
+If you encounter any issues during the build process, please:
+
+1. Check the [GitHub Issues](https://github.com/BookCatKid/tabliss-maintained/issues) page
+2. Create a new issue if your problem hasn't been reported
+
+## Notes
+
+- The build process requires an active internet connection to download dependencies
+- Build time varies depending on your system specifications (typically 2-5 minutes)
+- Ensure you have at least 2GB of free disk space before building
+
