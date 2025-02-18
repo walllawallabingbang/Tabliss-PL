@@ -23,15 +23,44 @@ const Node = ({ url, title, depth, wrap }: {
 };
 
 const Bookmarks: FC<Props> = ({ data = defaultData }) => {
-
   const [tree, setTree] = useState<BookmarkTreeNode>();
+  const [hasPermission, setHasPermission] = useState<boolean>(true);
 
   useEffect(() => {
-    const treePromise = data.rootBookmark
-      ? browser.bookmarks.getSubTree(data.rootBookmark)
-      : browser.bookmarks.getTree();
-    treePromise.then((tree) => setTree(tree[0]));
+    const checkPermission = async () => {
+      const granted = await browser.permissions.contains({ permissions: ["bookmarks"] });
+      if (granted) {
+        const treePromise = data.rootBookmark
+          ? browser.bookmarks.getSubTree(data.rootBookmark)
+          : browser.bookmarks.getTree();
+        treePromise.then((tree) => setTree(tree[0]));
+      } else {
+        setHasPermission(false);
+      }
+    };
+    checkPermission();
   }, [data.rootBookmark]);
+
+  const requestPermission = async () => {
+    const granted = await browser.permissions.request({ permissions: ["bookmarks"] });
+    setHasPermission(granted);
+    if (granted) {
+      const treePromise = data.rootBookmark
+        ? browser.bookmarks.getSubTree(data.rootBookmark)
+        : browser.bookmarks.getTree();
+      treePromise.then((tree) => setTree(tree[0]));
+    }
+  };
+
+  if (!hasPermission) {
+    return (
+      <div className="Bookmarks">
+        <button className="request-permission" style={{ padding: "0.5em 1em" }} onClick={requestPermission}>
+          Bookmarks permission required for this widget (click to request)
+        </button>
+      </div>
+    );
+  }
 
   const items: React.JSX.Element[] = [];
 
@@ -59,3 +88,4 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
 };
 
 export default Bookmarks;
+
