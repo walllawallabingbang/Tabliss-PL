@@ -44,7 +44,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
-    "react-intl": "^7.1/.6",
+    "react-intl": "^7.1.6",
     "sass": "^1.85.0",
     "tlds": "^1.255.0",
     "webextension-polyfill": "^0.12.0"
@@ -52,8 +52,8 @@
   "devDependencies": {
     "@eslint/js": "^9.20.0",
     "@types/jest": "^29.5.14",
-    "@types/react": "^19.0.9",
-    "@types/react-dom": "^19.0.3",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@types/webextension-polyfill": "^0.12.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^12.0.2",
@@ -75,7 +75,7 @@
     "sass-loader": "^16.0.5",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.0",
+    "typescript-eslint": "^8.24.1",
     "typescript-react-intl": "^0.4.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.98.0",
