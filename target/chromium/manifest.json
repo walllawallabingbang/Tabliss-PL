@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Tabliss - A Beautiful New Tab",
+  "name": "Tabliss - A Beautiful New Tab (Maintained)",
   "short_name": "Tabliss",
   "version": "2.6.0",
-  "description": "A beautiful New Tab page with many customisable backgrounds and widgets that does not require any permissions.",
+  "description": "A beautiful, customizable New Tab page with various backgrounds and widgets. This is an actively maintained fork of the original Tabliss, with merged community contributions and ongoing updates.",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
@@ -20,4 +20,3 @@
     "bookmarks"
   ]
 }
-

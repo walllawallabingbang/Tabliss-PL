@@ -1,8 +1,19 @@
 {
   "name": "tabliss-maintained",
-  "version": "2.6.0",
+  "version": "1.0.0",
+  "description": "A beautiful, customizable New Tab page. This is an actively maintained fork of the original Tabliss project.",
   "license": "GPL-3.0",
   "private": true,
+  "author": {
+    "name": "BookCatKid",
+    "url": "https://github.com/BookCatKid"
+  },
+  "contributors": [
+    {
+      "name": "Joel Shepherd",
+      "url": "https://github.com/joelshepherd"
+    }
+  ],
   "scripts": {
     "build": "npm run build:web",
     "build:chromium": "cross-env NODE_ENV=production BUILD_TARGET=chromium webpack",
@@ -33,7 +44,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
-    "react-intl": "^7.1.6",
+    "react-intl": "^7.1/.6",
     "sass": "^1.85.0",
     "tlds": "^1.255.0",
     "webextension-polyfill": "^0.12.0"
