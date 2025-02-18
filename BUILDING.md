@@ -60,7 +60,7 @@ echo Zipped archive available at dist/firefox.zip
 
 set -e
 
-echo "Building Tabliss Maintained Extension..."
+echo "Building Tabliss Extension..."
 
 # Check Node.js installation
 if ! command -v node &> /dev/null; then
@@ -76,9 +76,17 @@ npm install
 echo "Building Firefox extension..."
 npm run build:firefox
 
-# Zip the build output
+# Ensure the output directory exists
+if [ ! -d "dist/firefox" ]; then
+    echo "Error: Build output directory does not exist!"
+    exit 1
+fi
+
+# Zip the build output while preserving directory structure
 echo "Zipping build output..."
-zip -r dist/firefox.zip dist/firefox/
+cd dist/firefox
+zip -r ../firefox.zip ./*
+cd ../..
 
 echo "Build completed successfully!"
 echo "Firefox extension is available in dist/firefox/"
