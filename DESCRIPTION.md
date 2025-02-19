@@ -2,7 +2,7 @@
 
 > **Important**: This is a maintained fork of the original Tabliss project, which was abandoned. I've cloned the repository, merged all existing pull requests, and am actively maintaining it with bug fixes and new features. The original extension is no longer maintained, but this fork keeps Tabliss alive and improving! Github page: <https://github.com/BookCatKid/tabliss-maintained>
 
-Transform your new tab page into something beautiful and uniquely yours. This fork of Tabliss continues the legacy of the original project while adding new features and fixing long-standing issues. All the customization you love, now actively maintained and improved.
+Transform your new tab page into something beautiful and uniquely yours. Tabliss offers all the customization you love, with the added benefit of no required permissions: your privacy is respected.
 
 ## Why This Fork?
 
