@@ -26,10 +26,17 @@ const IpInfoSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
     <label>
       <input
         type="checkbox"
+        checked={data.hideIP}
+        onChange={() => setData({ ...data, hideIP: !data.hideIP })}
+      />
+      Hide IP
+    </label>
+
+    <label>
+      <input
+        type="checkbox"
         checked={data.maskIP}
-        onChange={() =>
-          setData({ ...data, maskIP: !data.maskIP })
-        }
+        onChange={() => setData({ ...data, maskIP: !data.maskIP })}
       />
       Mask IP
     </label>
@@ -37,3 +44,4 @@ const IpInfoSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
 );
 
 export default IpInfoSettings;
+

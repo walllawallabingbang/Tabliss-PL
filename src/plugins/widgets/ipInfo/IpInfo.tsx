@@ -19,7 +19,8 @@ const IpInfo: React.FC<Props> = ({
   }
 
   const ip = data.maskIP ? cache.ip.split('.').map((s, i) => i > 0 && i < 3 ? s.replace(/[\d]+/, '*') : s).join('.') : cache.ip;
-  const info = [ip];
+  const info = [];
+  if (!data.hideIP) info.push(ip);
   if (data.displayCity) info.push(cache.city);
   if (data.displayCountry) info.push(cache.country);
 
@@ -27,3 +28,4 @@ const IpInfo: React.FC<Props> = ({
 };
 
 export default IpInfo;
+
