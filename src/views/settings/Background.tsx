@@ -99,6 +99,19 @@ const Background: React.FC = () => {
                 <label>
                   <input
                     type="checkbox"
+                    checked={data.display.scale}
+                    onChange={(e) => {
+                      setBackgroundDisplay({
+                        scale: e.target.checked,
+                      });
+                    }}
+                  />{" "}
+                  Scale background to fit
+                </label>
+
+                <label>
+                  <input
+                    type="checkbox"
                     checked={data.display.nightDim}
                     onChange={(e) => {
                       setBackgroundDisplay({
@@ -118,3 +131,4 @@ const Background: React.FC = () => {
 };
 
 export default Background;
+

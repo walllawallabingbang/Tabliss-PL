@@ -22,7 +22,7 @@ const Backdrop: React.FC<Props> = ({
   const focus = useValue(db, "focus");
   // TODO: Consider passing display in via prop
   const background = useValue(db, "background");
-  const { blur, luminosity = 0, nightDim } = background.display;
+  const { blur, luminosity = 0, nightDim, scale } = background.display;
   const isNight = useIsNight();
 
   style = { ...style };
@@ -38,6 +38,13 @@ const Backdrop: React.FC<Props> = ({
     } else {
       style["opacity"] = 1 - Math.abs(luminosity);
     }
+  }
+
+  if (scale) {
+    style["backgroundSize"] = "cover";
+  } else if (!scale) {
+    style["backgroundSize"] = "contain";
+    style["backgroundRepeat"] = "no-repeat";
   }
 
   return (
@@ -56,3 +63,4 @@ const Backdrop: React.FC<Props> = ({
 };
 
 export default Backdrop;
+
