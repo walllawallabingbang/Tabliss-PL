@@ -23,7 +23,8 @@ If you were a contributor to the original repo or have ideas for improvements, f
 
 ## 🛠 Installation
 
-Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my version of the extension isn't on any extension stores. API keys are included with the release.
+If you use firefox, the extension is available in the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/tabliss-maintained/)! Unfortunately, the extension is not available in the Chrome Web Store.
+If you want to install for chrome, or want to install the firefox extension manually, see Instructions in [INSTALL.md](INSTALL.md).
 
 ## 💻 Running Locally
 

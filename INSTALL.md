@@ -1,4 +1,4 @@
-# How to Download the extension and add it to your browser:
+# How to Download the extension and add it to your browser
 
 ## Step 1: Download the Extension from GitHub Actions
 
