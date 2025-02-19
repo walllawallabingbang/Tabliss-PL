@@ -13,7 +13,7 @@ This document provides detailed instructions for building the Tabliss-Maintained
 
 A convenience build script is provided to automate the build process for Firefox. Save this as `build.sh` (Linux/macOS) or `build.bat` (Windows) in the project root:
 
-### Windows (build.bat):
+### Windows (build.bat)
 
 ```batch
 @echo off
@@ -53,7 +53,7 @@ echo Firefox extension is available in dist/firefox/
 echo Zipped archive available at dist/firefox.zip
 ```
 
-### Linux/macOS (build.sh):
+### Linux/macOS (build.sh)
 
 ```bash
 #!/bin/bash
@@ -111,4 +111,3 @@ If you encounter any issues during the build process, please:
 - The build process requires an active internet connection to download dependencies
 - Build time varies depending on your system specifications (typically 2-5 minutes)
 - Ensure you have at least 2GB of free disk space before building
-

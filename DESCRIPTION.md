@@ -1,10 +1,11 @@
 # Tabliss - A Maintained Fork of the Beautiful New Tab Extension
 
-> **Important**: This is a maintained fork of the original Tabliss project, which was abandoned. I've cloned the repository, merged all existing pull requests, and am actively maintaining it with bug fixes and new features. The original extension is no longer maintained, but this fork keeps Tabliss alive and improving!
+> **Important**: This is a maintained fork of the original Tabliss project, which was abandoned. I've cloned the repository, merged all existing pull requests, and am actively maintaining it with bug fixes and new features. The original extension is no longer maintained, but this fork keeps Tabliss alive and improving! Github page: <https://github.com/BookCatKid/tabliss-maintained>
 
 Transform your new tab page into something beautiful and uniquely yours. This fork of Tabliss continues the legacy of the original project while adding new features and fixing long-standing issues. All the customization you love, now actively maintained and improved.
 
 ## Why This Fork?
+
 - Actively maintained with regular updates
 - All community pull requests have been merged
 - Existing bugs are being fixed
@@ -15,6 +16,7 @@ Transform your new tab page into something beautiful and uniquely yours. This fo
 - Supports 40+ languages
 
 ## Backgrounds
+
 - **Unsplash Photos**: Millions of high-quality, curated photographs
 - **GIPHY**: Endless animated GIFs for a dynamic new tab
 - **NASA APOD**: Daily astronomy pictures with scientific descriptions
@@ -24,6 +26,7 @@ Transform your new tab page into something beautiful and uniquely yours. This fo
 - **Online Image**: Provide a url to display an image
 
 ## Widgets
+
 - **Bitcoin Mempool**: Track Bitcoin mempool statistics
 - **Binary Clock**: Time displayed in binary format for the tech-savvy
 - **Bookmarks**: Browser bookmark integration for easy access (requires Bookmarks permission)
@@ -49,7 +52,8 @@ Transform your new tab page into something beautiful and uniquely yours. This fo
 - **Work Hours**: Count down your work day in a percentage with customizable start/end times
 
 ## Development & Contributing
+
 This fork is actively maintained! Found a bug? Have a feature request? Want to contribute? Visit:
-https://github.com/BookCatKid/tabliss-maintained
+<https://github.com/BookCatKid/tabliss-maintained>
 
 Original project by Joel Shepherd ([@joelshepherd](https://github.com/joelshepherd)) - Thank you for creating Tabliss!

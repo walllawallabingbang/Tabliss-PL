@@ -27,12 +27,16 @@ Instructions in [INSTALL.md](INSTALL.md). You have to install manually as my ver
 
 ## 💻 Running Locally
 
+For local development, you'll need Node.js and NPM installed. Latest versions should work.
+
 First, clone the repo:
 
 ```sh
 https://github.com/BookCatKid/tabliss-maintained.git
 cd tabliss-maintained
 ```
+
+If you want a simple build script after cloning the repo, see [BUILDING.md](BUILDING.md).
 
 Then install the dependencies:
 
