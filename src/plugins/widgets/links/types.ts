@@ -6,6 +6,8 @@ export type Link = {
   url: string;
   iconSize?: number;
   IconString?: string;
+  SvgString?: string;
+  customIconSize?: number;
 };
 
 export type Data = {
@@ -14,6 +16,7 @@ export type Data = {
   visible: boolean;
   linkOpenStyle: boolean;
   linksNumbered: boolean;
+  customIconSize: number;
 };
 
 export type Props = API<Data>;
@@ -24,4 +27,5 @@ export const defaultData = {
   visible: true,
   linkOpenStyle: false,
   linksNumbered: false,
+  customIconSize: 24,
 };

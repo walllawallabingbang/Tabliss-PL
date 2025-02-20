@@ -91,3 +91,4 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
 };
 
 export default LinksSettings;
+

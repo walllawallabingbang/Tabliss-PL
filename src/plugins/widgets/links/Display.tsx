@@ -21,6 +21,10 @@ const getDomain = (url: string): string | null => {
   }
 };
 
+function sanitizeSvg(svgString: string) {
+  return svgString.replace(/(width|height)="[^"]*"/g, ''); // Remove width and height
+}
+
 const messages = defineMessages({
   shortcutHint: {
     id: "plugins.links.shortcutHint",
@@ -34,9 +38,28 @@ const messages = defineMessages({
   },
 });
 
-type Props = Link & { number: number; linkOpenStyle: boolean; linksNumbered: boolean; iconSize?: number, IconString?: string };
+type Props = Link & {
+  number: number;
+  linkOpenStyle: boolean;
+  linksNumbered: boolean;
+  iconSize?: number;
+  customIconSize?: number;
+  IconString?: string;
+  SvgString?: string;
+};
 
-const Display: FC<Props> = ({ icon, iconSize, IconString, name, number, url, linkOpenStyle, linksNumbered: linksNumbered }) => {
+const Display: FC<Props> = ({
+  icon,
+  iconSize,
+  IconString,
+  customIconSize,
+  SvgString,
+  name,
+  number,
+  url,
+  linkOpenStyle,
+  linksNumbered: linksNumbered,
+}) => {
   const intl = useIntl();
 
   const title = useMemo(
@@ -56,11 +79,7 @@ const Display: FC<Props> = ({ icon, iconSize, IconString, name, number, url, lin
       target={linkOpenStyle ? "_blank" : "_self"}
       title={title}
     >
-      {
-        linksNumbered
-          ? <span className="LinkNumber">{number} </span>
-          : null
-      }
+      {linksNumbered ? <span className="LinkNumber">{number} </span> : null}
       {icon === "_favicon_duckduckgo" ? (
         domain ? (
           <i>
@@ -84,16 +103,32 @@ const Display: FC<Props> = ({ icon, iconSize, IconString, name, number, url, lin
           <i>
             <img
               alt={domain}
-              src = {`https://favicone.com/${domain}?s=${iconSize}`}
+              src={`https://favicone.com/${domain}?s=${iconSize}`}
             />
           </i>
         ) : null
       ) : icon === "_custom_iconify" ? (
-        IconString && (
-          <Icon icon={IconString}></Icon>
+        IconString && <Icon icon={IconString} />
+      ) : icon === "_custom_svg" ? (
+        SvgString && (
+          <span
+            className="custom-svg"
+            style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
+            dangerouslySetInnerHTML={{ __html: sanitizeSvg(SvgString) }}
+          ></span>
         )
-      )
-      : icon ? (
+      ) : icon === "_custom_ico" ? (
+        domain ? (
+          <i>
+            <img
+              alt={IconString}
+              src={IconString}
+            />
+          </i>
+        ) : null
+      // TODO: Add support for uploading custom icos/svgs
+      // TODO: Add support for resizing all icons, not just custom svgs
+      ) : icon ? (
         <Icon icon={"feather:" + icon} />
       ) : null}
       {icon && name && " "}

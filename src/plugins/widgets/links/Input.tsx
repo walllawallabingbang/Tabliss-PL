@@ -22,6 +22,8 @@ const iconList = Object.keys(icons);
 const Input: FC<Props> = (props) => {
   const isGoogleOrFavicone = props.icon === "_favicon_google" || props.icon === "_favicon_favicone";
   const isCustomText = props.icon === "_custom_iconify";
+  const isCustomSvg = props.icon === "_custom_svg";
+  const isCustomICON = props.icon === "_custom_ico";
 
   return (
     <div className="LinkInput">
@@ -77,6 +79,8 @@ const Input: FC<Props> = (props) => {
           </optgroup>
           <optgroup label="Custom">
             <option value="_custom_iconify">From Iconify</option>
+            <option value="_custom_svg">Custom SVG</option>
+            <option value="_custom_ico">Custom ICO url</option>
           </optgroup>
           <optgroup label="Feather Icons">
             {iconList.map((key) => (
@@ -104,6 +108,37 @@ const Input: FC<Props> = (props) => {
       {isCustomText && (
         <label>
           Custom Text
+          <input
+            type="text"
+            onChange={(event) => props.onChange({ IconString: event.target.value })}
+          />
+        </label>
+      )}
+
+      {isCustomSvg && (
+        <label>
+          Custom SVG
+          <textarea
+            value={props.SvgString}
+            onChange={(event) => props.onChange({ SvgString: event.target.value })}
+          />
+        </label>
+      )}
+
+      {isCustomSvg && (
+        <label>
+          Custom SVG Size
+          <input
+            type="number"
+            value={props.customIconSize}
+            onChange={(event) => props.onChange({ customIconSize: Number(event.target.value) })}
+          />
+      </label>
+      )}
+
+      {isCustomICON && (
+        <label>
+          Custom ICO
           <input
             type="text"
             onChange={(event) => props.onChange({ IconString: event.target.value })}
