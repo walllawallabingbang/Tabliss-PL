@@ -6,6 +6,7 @@ export type Link = {
   url: string;
   iconSize?: number;
   IconString?: string;
+  IconStringIco?: string;
   SvgString?: string;
   customIconSize?: number;
 };

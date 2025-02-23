@@ -45,6 +45,7 @@ type Props = Link & {
   iconSize?: number;
   customIconSize?: number;
   IconString?: string;
+  IconStringIco?: string;
   SvgString?: string;
 };
 
@@ -52,6 +53,7 @@ const Display: FC<Props> = ({
   icon,
   iconSize,
   IconString,
+  IconStringIco,
   customIconSize,
   SvgString,
   name,
@@ -121,8 +123,8 @@ const Display: FC<Props> = ({
         domain ? (
           <i>
             <img
-              alt={IconString}
-              src={IconString}
+              alt={IconStringIco}
+              src={IconStringIco}
             />
           </i>
         ) : null
