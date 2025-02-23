@@ -24,6 +24,44 @@ const Input: FC<Props> = (props) => {
   const isCustomIconify = props.icon === "_custom_iconify";
   const isCustomSvg = props.icon === "_custom_svg";
   const isCustomICON = props.icon === "_custom_ico";
+  const isCustomUpload = props.icon === "_custom_upload";
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const result = e.target?.result;
+      if (typeof result === 'string') {
+        if (file.type === 'image/svg+xml') {
+          props.onChange({
+            uploadedIconData: result,
+            uploadedIconType: 'svg',
+            uploadedIconSize: props.uploadedIconSize || 24
+          });
+        } else if (file.type === 'image/x-icon') {
+          props.onChange({
+            uploadedIconData: result,
+            uploadedIconType: 'ico',
+            uploadedIconSize: props.uploadedIconSize || 24
+          });
+        } else {
+          props.onChange({
+            uploadedIconData: result,
+            uploadedIconType: 'image',
+            uploadedIconSize: props.uploadedIconSize || 24
+          });
+        }
+      }
+    };
+
+    if (file.type === 'image/svg+xml') {
+      reader.readAsText(file);
+    } else {
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="LinkInput">
@@ -81,6 +119,7 @@ const Input: FC<Props> = (props) => {
             <option value="_custom_iconify">From Iconify</option>
             <option value="_custom_svg">Custom SVG HTML</option>
             <option value="_custom_ico">Custom ICO url</option>
+            <option value="_custom_upload">Upload Custom Icon</option>
           </optgroup>
           <optgroup label="Feather Icons">
             {iconList.map((key) => (
@@ -131,7 +170,6 @@ const Input: FC<Props> = (props) => {
             <a href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153" target="_blank" rel="noopener noreferrer">this GitHub issue</a>.
           </p>
         </label>
-        
       )}
 
       {isCustomSvg && (
@@ -142,7 +180,7 @@ const Input: FC<Props> = (props) => {
             value={props.customIconSize}
             onChange={(event) => props.onChange({ customIconSize: Number(event.target.value) })}
           />
-      </label>
+        </label>
       )}
 
       {isCustomICON && (
@@ -157,10 +195,61 @@ const Input: FC<Props> = (props) => {
         </label>
       )}
 
+      {isCustomUpload && (
+        <>
+          <label>
+            Upload Icon
+            <input
+              type="file"
+              accept="image/*,.svg,.ico"
+              onChange={handleFileUpload}
+            />
+          </label>
+          
+          {props.uploadedIconData && (
+            <div className="icon-preview" style={{ marginTop: '10px', textAlign: 'center' }}>
+              <p>Preview:</p>
+              {props.uploadedIconType === 'svg' ? (
+                <span
+                  className="custom-svg-preview"
+                  style={{
+                    width: `100%`,
+                    height: `auto`,
+                    }}
+                  dangerouslySetInnerHTML={{ __html: props.uploadedIconData }}
+                />
+              ) : (
+                <img
+                  src={props.uploadedIconData}
+                  alt="Icon Preview"
+                  style={{
+                    width: `100%`,
+                    height: `auto`,
+                    objectFit: 'contain'
+                  }}
+                />
+              )}
+              
+              <label style={{ display: 'block', marginTop: '10px' }}>
+                Icon Size
+                <select
+                  value={props.uploadedIconSize}
+                  onChange={(event) => props.onChange({ uploadedIconSize: Number(event.target.value) })}
+                >
+                  <option value="16">16x16</option>
+                  <option value="24">24x24</option>
+                  <option value="32">32x32</option>
+                  <option value="48">48x48</option>
+                  <option value="64">64x64</option>
+                </select>
+              </label>
+            </div>
+          )}
+        </>
+      )}
       <hr />
     </div>
   );
 };
 
 export default Input;
-

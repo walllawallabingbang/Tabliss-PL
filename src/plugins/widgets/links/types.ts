@@ -9,6 +9,10 @@ export type Link = {
   IconStringIco?: string;
   SvgString?: string;
   customIconSize?: number;
+  // New fields for custom uploaded icons
+  uploadedIconData?: string;
+  uploadedIconType?: 'image' | 'svg' | 'ico';
+  uploadedIconSize?: number;
 };
 
 export type Data = {

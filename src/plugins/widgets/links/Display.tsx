@@ -47,6 +47,9 @@ type Props = Link & {
   IconString?: string;
   IconStringIco?: string;
   SvgString?: string;
+  uploadedIconData?: string;
+  uploadedIconType?: string;
+  uploadedIconSize?: number;
 };
 
 const Display: FC<Props> = ({
@@ -61,6 +64,9 @@ const Display: FC<Props> = ({
   url,
   linkOpenStyle,
   linksNumbered: linksNumbered,
+  uploadedIconData,
+  uploadedIconType,
+  uploadedIconSize,
 }) => {
   const intl = useIntl();
 
@@ -120,16 +126,41 @@ const Display: FC<Props> = ({
           ></span>
         )
       ) : icon === "_custom_ico" ? (
-        domain ? (
+        IconStringIco && (
           <i>
             <img
-              alt={IconStringIco}
+              alt="Custom Icon"
               src={IconStringIco}
+              style={{ width: `${iconSize || customIconSize || 24}px`, height: `${iconSize || customIconSize || 24}px` }}
             />
           </i>
-        ) : null
-      // TODO: Add support for uploading custom icos/svgs
-      // TODO: Add support for resizing all icons, not just custom svgs
+        )
+      ) : icon === "_custom_upload" ? (
+        uploadedIconData && (
+          <i>
+            {uploadedIconType === 'svg' ? (
+              <span
+                className="custom-svg"
+                style={{
+                  width: `${uploadedIconSize}px`,
+                  height: `${uploadedIconSize}px`,
+                  display: "inline-block"
+                }}
+                dangerouslySetInnerHTML={{ __html: sanitizeSvg(uploadedIconData) }}
+              />
+            ) : (
+              <img
+                alt="Custom Icon"
+                src={uploadedIconData}
+                style={{
+                  width: `${uploadedIconSize}px`,
+                  height: `${uploadedIconSize}px`,
+                  objectFit: 'contain'
+                }}
+              />
+            )}
+          </i>
+        )
       ) : icon ? (
         <Icon icon={"feather:" + icon} />
       ) : null}
@@ -143,4 +174,3 @@ const Display: FC<Props> = ({
 };
 
 export default Display;
-
