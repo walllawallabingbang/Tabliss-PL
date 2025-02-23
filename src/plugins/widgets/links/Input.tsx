@@ -112,6 +112,10 @@ const Input: FC<Props> = (props) => {
             type="text"
             onChange={(event) => props.onChange({ IconString: event.target.value })}
           />
+          <p>
+            Enter the iconify identifier for the icon you want to use in your links. For more detailed info see&nbsp;
+            <a href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153" target="_blank" rel="noopener noreferrer">this GitHub issue</a>.
+          </p>
         </label>
       )}
 
@@ -122,7 +126,12 @@ const Input: FC<Props> = (props) => {
             value={props.SvgString}
             onChange={(event) => props.onChange({ SvgString: event.target.value })}
           />
+          <p>
+            Enter your custom SVG HTML code above to use an icon in your links. For more detailed info see&nbsp;
+            <a href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153" target="_blank" rel="noopener noreferrer">this GitHub issue</a>.
+          </p>
         </label>
+        
       )}
 
       {isCustomSvg && (
@@ -144,6 +153,7 @@ const Input: FC<Props> = (props) => {
             value={props.IconStringIco}
             onChange={(event) => props.onChange({ IconStringIco: event.target.value })}
           />
+          <p>Enter a url on the internet for a .ico file</p>
         </label>
       )}
 
