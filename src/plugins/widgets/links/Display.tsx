@@ -137,29 +137,27 @@ const Display: FC<Props> = ({
         )
       ) : icon === "_custom_upload" ? (
         uploadedIconData && (
-          <i>
-            {uploadedIconType === 'svg' ? (
-              <span
-                className="custom-svg"
-                style={{
-                  width: `${uploadedIconSize}px`,
-                  height: `${uploadedIconSize}px`,
-                  display: "inline-block"
-                }}
-                dangerouslySetInnerHTML={{ __html: sanitizeSvg(uploadedIconData) }}
-              />
-            ) : (
-              <img
-                alt="Custom Icon"
-                src={uploadedIconData}
-                style={{
-                  width: `${uploadedIconSize}px`,
-                  height: `${uploadedIconSize}px`,
-                  objectFit: 'contain'
-                }}
-              />
-            )}
-          </i>
+          uploadedIconType === "svg" ? (
+            <span
+              className="custom-svg"
+              style={{
+                width: `${uploadedIconSize}px`,
+                height: `${uploadedIconSize}px`,
+                display: "inline-block",
+              }}
+              dangerouslySetInnerHTML={{ __html: sanitizeSvg(uploadedIconData) }}
+            />
+          ) : (
+            <img
+              alt="Custom Icon"
+              src={uploadedIconData}
+              style={{
+                width: `${uploadedIconSize}px`,
+                height: `${uploadedIconSize}px`,
+                objectFit: "contain",
+              }}
+            />
+          )
         )
       ) : icon ? (
         <Icon icon={"feather:" + icon} />

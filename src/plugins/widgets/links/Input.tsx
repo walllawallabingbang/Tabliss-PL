@@ -17,6 +17,10 @@ type Props = Link & {
   onRemove: () => void;
 };
 
+const sanitizeSvg = (svgString: string) => {
+  return svgString.replace(/(width|height)="[^"]*"/g, ''); // Remove width and height
+};
+
 const iconList = Object.keys(icons);
 
 const Input: FC<Props> = (props) => {
@@ -36,7 +40,7 @@ const Input: FC<Props> = (props) => {
       if (typeof result === 'string') {
         if (file.type === 'image/svg+xml') {
           props.onChange({
-            uploadedIconData: result,
+            uploadedIconData: sanitizeSvg(result),
             uploadedIconType: 'svg',
             uploadedIconSize: props.uploadedIconSize || 24
           });
@@ -162,8 +166,8 @@ const Input: FC<Props> = (props) => {
         <label>
           Custom SVG HTML
           <textarea
-            value={props.SvgString}
-            onChange={(event) => props.onChange({ SvgString: event.target.value })}
+            value={sanitizeSvg(props.SvgString || '')}
+            onChange={(event) => props.onChange({ SvgString: sanitizeSvg(event.target.value) })}
           />
           <p>
             Enter your custom SVG HTML code above to use an icon in your links. For more detailed info see&nbsp;
@@ -232,16 +236,14 @@ const Input: FC<Props> = (props) => {
               
               <label style={{ display: 'block', marginTop: '10px' }}>
                 Icon Size
-                <select
+                <input
+                  type="number"
+                  step="1"
+                  min="16"
+                  max="640"
                   value={props.uploadedIconSize}
                   onChange={(event) => props.onChange({ uploadedIconSize: Number(event.target.value) })}
-                >
-                  <option value="16">16x16</option>
-                  <option value="24">24x24</option>
-                  <option value="32">32x32</option>
-                  <option value="48">48x48</option>
-                  <option value="64">64x64</option>
-                </select>
+                />
               </label>
             </div>
           )}
@@ -253,3 +255,4 @@ const Input: FC<Props> = (props) => {
 };
 
 export default Input;
+
