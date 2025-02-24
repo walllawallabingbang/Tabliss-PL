@@ -8,6 +8,7 @@ import {
 } from "../../../views/shared";
 import { Link, IconCacheItem, Cache } from "./types";
 import { Icon } from "@iconify/react";
+import { addIconData } from "../../../utils/iconCache";
 import "./Input.sass";
 
 type Props = Link & {
@@ -31,6 +32,7 @@ const Input: FC<Props> = (props) => {
   const handleCloseModal = () => setIsModalOpen(false);
 
   const handleIconSelect = (icon: string, identifier: string) => {
+    addIconData(identifier + icon);
     props.onChange({ iconifyIdentifier: identifier, iconifyValue: icon });
     setIsModalOpen(false);
   };
