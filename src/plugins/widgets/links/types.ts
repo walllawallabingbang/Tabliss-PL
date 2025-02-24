@@ -9,6 +9,8 @@ export type Link = {
   IconStringIco?: string;
   SvgString?: string;
   customIconSize?: number;
+  iconifyIdentifier?: string;
+  iconifyValue?: string;
   // Reference to cached icon data
   iconCacheKey?: string;
 };
@@ -28,6 +30,8 @@ export type Data = {
   linkOpenStyle: boolean;
   linksNumbered: boolean;
   customIconSize: number;
+  iconifyIdentifier: string;
+  iconifyValue?: string;
 };
 
 export type Props = API<Data, Cache>;
@@ -39,6 +43,7 @@ export const defaultData: Data = {
   linkOpenStyle: false,
   linksNumbered: false,
   customIconSize: 24,
+  iconifyIdentifier: "feather:",
 };
 
 export const defaultCache: Cache = {};

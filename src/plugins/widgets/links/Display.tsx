@@ -72,6 +72,8 @@ const Display: FC<Props> = ({
   url,
   linkOpenStyle,
   linksNumbered,
+  iconifyIdentifier,
+  iconifyValue,
   iconCacheKey,
   cache,
 }) => {
@@ -129,10 +131,22 @@ const Display: FC<Props> = ({
             />
           )}
         </span>
-      ) : icon ? (
+      ) : icon === "_feather" ? (
         <i>
-          <Icon icon={"feather:" + icon} />
+          <Icon icon={"feather:" + iconifyValue} />
         </i>
+      ) : icon ? (
+        // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
+        <>
+          <i>
+            <Icon icon={"feather:" + icon} />
+          </i>
+          {(() => {
+            iconifyValue = icon;
+            icon = "_feather";
+            return null;
+          })()}
+        </>
       ) : null}
       {name || displayUrl(url)}
     </a>

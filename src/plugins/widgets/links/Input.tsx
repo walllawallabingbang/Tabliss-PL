@@ -1,6 +1,5 @@
 import icons from "feather-icons/dist/icons.json";
-import React, { FC } from "react";
-
+import React, { FC, useState, useRef, useEffect } from "react";
 import {
   IconButton,
   RemoveIcon,
@@ -8,6 +7,8 @@ import {
   UpIcon,
 } from "../../../views/shared";
 import { Link, IconCacheItem, Cache } from "./types";
+import { Icon } from "@iconify/react";
+import "./Input.sass";
 
 type Props = Link & {
   number: number;
@@ -22,11 +23,33 @@ type Props = Link & {
 const iconList = Object.keys(icons);
 
 const Input: FC<Props> = (props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const selectRef = useRef<HTMLSelectElement>(null);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleIconSelect = (icon: string, identifier: string) => {
+    props.onChange({ iconifyIdentifier: identifier, iconifyValue: icon });
+    setIsModalOpen(false);
+  };
+
+  // Filter icons based on search query
+  const filteredIcons = iconList.filter((icon) => {
+    const searchQueryNoSpaces = searchQuery.replace(/\s/g, '-');
+    return (
+      icon.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      icon.toLowerCase().includes(searchQueryNoSpaces)
+    );
+  });
+
   const isGoogleOrFavicone = props.icon === "_favicon_google" || props.icon === "_favicon_favicone";
   const isCustomIconify = props.icon === "_custom_iconify";
   const isCustomSvg = props.icon === "_custom_svg";
   const isCustomICON = props.icon === "_custom_ico";
   const isCustomUpload = props.icon === "_custom_upload";
+  const isFeather = props.iconifyIdentifier === "feather:" || props.icon === "_feather";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -82,6 +105,24 @@ const Input: FC<Props> = (props) => {
     }
   };
 
+  const getSelectValues = () => {
+    const values: string[] = [];
+    if (selectRef.current) {
+      const options = selectRef.current.options;
+      for (let i = 0; i < options.length; i++) {
+        values.push(options[i].value);
+      }
+    }
+    return values;
+  };
+
+  useEffect(() => {
+    if (props.icon && !getSelectValues().includes(props.icon)) {
+      console.warn(`Invalid icon value: ${props.icon}. Migrating to new icon value`);
+      props.onChange({ iconifyValue: props.icon, icon: "_feather" });
+    }
+  }, [props.icon]);
+
   return (
     <div className="LinkInput">
       <h5>
@@ -125,6 +166,7 @@ const Input: FC<Props> = (props) => {
       <label>
         Icon <span className="text--grey">(optional)</span>
         <select
+          ref={selectRef}
           value={props.icon}
           onChange={(event) => props.onChange({ icon: event.target.value })}
         >
@@ -140,10 +182,8 @@ const Input: FC<Props> = (props) => {
             <option value="_custom_ico">Custom ICO url</option>
             <option value="_custom_upload">Upload Custom Icon</option>
           </optgroup>
-          <optgroup label="Feather Icons">
-            {iconList.map((key) => (
-              <option key={key}>{key}</option>
-            ))}
+          <optgroup label="Iconify Icons">
+            <option value="_feather">Feather</option>
           </optgroup>
         </select>
       </label>
@@ -236,6 +276,51 @@ const Input: FC<Props> = (props) => {
               </label>
             </div>
           )}
+          </div>
+        )}
+
+        {isFeather && (
+          <div className="icon-picker">
+            <button onClick={handleOpenModal} className="custom-select">
+              {props.icon ? `Open icon picker` : "Choose an Icon"}
+            </button>
+          </div>
+        )}
+
+        {isModalOpen && (
+        <div className="Modal-container" onClick={handleCloseModal}>
+          <div className="Modal" onClick={(event) => event.stopPropagation()}>
+            <h2>Select an Icon</h2>
+
+            <input
+              type="text"
+              placeholder="Search icons..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="search-bar"
+            />
+
+            <div className="icon-grid">
+              {filteredIcons.length > 0 ? (
+                filteredIcons.map((icon) => (
+                  <button
+                    key={icon}
+                    className="icon-box"
+                    onClick={() => handleIconSelect(icon, "feather:")}
+                  >
+                    <Icon icon={"feather:" + icon} />
+                    <span>{icon.replace(/-/g, ' ')}</span>
+                  </button>
+                ))
+              ) : (
+                <p className="no-results">No icons found</p>
+              )}
+            </div>
+
+            <button className="close-button" onClick={handleCloseModal}>
+              Cancel
+            </button>
+          </div>
         </div>
       )}
       <hr />
