@@ -3,10 +3,10 @@ import React, { FC } from "react";
 import { useKeyPress, useToggle } from "../../../hooks";
 import { Icon } from "@iconify/react";
 import Display from "./Display";
-import { Props, defaultData } from "./types";
+import { Props, defaultData, defaultCache } from "./types";
 import "./Links.sass";
 
-const Links: FC<Props> = ({ data = defaultData }) => {
+const Links: FC<Props> = ({ data = defaultData, cache = defaultCache }) => {
   const [visible, toggleVisible] = useToggle();
 
   useKeyPress(
@@ -37,6 +37,8 @@ const Links: FC<Props> = ({ data = defaultData }) => {
             number={index + 1}
             linkOpenStyle={data.linkOpenStyle}
             linksNumbered={data.linksNumbered}
+            customIconSize={data.customIconSize}
+            cache={cache}
             {...link}
           />
         ))

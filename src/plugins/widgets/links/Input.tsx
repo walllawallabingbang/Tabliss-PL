@@ -7,7 +7,7 @@ import {
   DownIcon,
   UpIcon,
 } from "../../../views/shared";
-import { Link } from "./types";
+import { Link, IconCacheItem, Cache } from "./types";
 
 type Props = Link & {
   number: number;
@@ -15,6 +15,8 @@ type Props = Link & {
   onMoveUp?: () => void;
   onMoveDown?: () => void;
   onRemove: () => void;
+  cache?: Cache;
+  setCache: (cache: Cache) => void;
 };
 
 const sanitizeSvg = (svgString: string) => {
@@ -38,29 +40,46 @@ const Input: FC<Props> = (props) => {
     reader.onload = (e) => {
       const result = e.target?.result;
       if (typeof result === 'string') {
+        const iconSize = props.customIconSize || 24;
+        const cacheKey = `icon_${Date.now()}`;
+        
+        let iconData: IconCacheItem;
         if (file.type === 'image/svg+xml') {
-          props.onChange({
-            uploadedIconData: sanitizeSvg(result),
-            uploadedIconType: 'svg',
-            uploadedIconSize: props.uploadedIconSize || 24
-          });
+          iconData = {
+            data: sanitizeSvg(result),
+            type: 'svg',
+            size: iconSize
+          };
         } else if (file.type === 'image/x-icon') {
-          props.onChange({
-            uploadedIconData: result,
-            uploadedIconType: 'ico',
-            uploadedIconSize: props.uploadedIconSize || 24
-          });
+          iconData = {
+            data: result,
+            type: 'ico',
+            size: iconSize
+          };
         } else {
-          props.onChange({
-            uploadedIconData: result,
-            uploadedIconType: 'image',
-            uploadedIconSize: props.uploadedIconSize || 24
-          });
+          iconData = {
+            data: result,
+            type: 'image',
+            size: iconSize
+          };
         }
+        
+        // Update cache with new icon data
+        props.setCache({ 
+          ...(props.cache || {}), 
+          [cacheKey]: iconData 
+        });
+
+        // Update link with reference to cached icon
+        props.onChange({
+          icon: "_custom_upload",
+          iconCacheKey: cacheKey,
+          customIconSize: iconSize
+        });
       }
     };
 
-    if (file.type === 'image/svg+xml') {
+    if (file.type === 'image/svg+xml' || file.type === 'image/x-icon') {
       reader.readAsText(file);
     } else {
       reader.readAsDataURL(file);
@@ -200,54 +219,28 @@ const Input: FC<Props> = (props) => {
       )}
 
       {isCustomUpload && (
-        <>
+        <div>
           <label>
             Upload Icon
             <input
               type="file"
-              accept="image/*,.svg,.ico"
+              accept=".svg,.ico,image/*"
               onChange={handleFileUpload}
             />
           </label>
-          
-          {props.uploadedIconData && (
-            <div className="icon-preview" style={{ marginTop: '10px', textAlign: 'center' }}>
-              <p>Preview:</p>
-              {props.uploadedIconType === 'svg' ? (
-                <span
-                  className="custom-svg-preview"
-                  style={{
-                    width: `100%`,
-                    height: `auto`,
-                    }}
-                  dangerouslySetInnerHTML={{ __html: props.uploadedIconData }}
-                />
-              ) : (
-                <img
-                  src={props.uploadedIconData}
-                  alt="Icon Preview"
-                  style={{
-                    width: `100%`,
-                    height: `auto`,
-                    objectFit: 'contain'
-                  }}
-                />
-              )}
-              
-              <label style={{ display: 'block', marginTop: '10px' }}>
+          {props.iconCacheKey && props.cache && (
+            <div>
+              <label>
                 Icon Size
                 <input
                   type="number"
-                  step="1"
-                  min="16"
-                  max="640"
-                  value={props.uploadedIconSize}
-                  onChange={(event) => props.onChange({ uploadedIconSize: Number(event.target.value) })}
+                  value={props.customIconSize}
+                  onChange={(event) => props.onChange({ customIconSize: Number(event.target.value) })}
                 />
               </label>
             </div>
           )}
-        </>
+        </div>
       )}
       <hr />
     </div>
@@ -255,4 +248,3 @@ const Input: FC<Props> = (props) => {
 };
 
 export default Input;
-

@@ -4,9 +4,9 @@ import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
 import { addLink, removeLink, reorderLink, updateIconSize, updateCustomIcon, updateLink } from "./actions";
 import { reducer } from "./reducer";
-import { Link, Props, defaultData } from "./types";
+import { Link, Props, defaultData, defaultCache, Cache } from "./types";
 
-const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
+const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = defaultCache, setCache }) => {
   const saveLinks = (links: Link[]) => setData({ ...data, links });
   const dispatch = useSavedReducer(reducer, data.links, saveLinks);
 
@@ -75,6 +75,8 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
               : undefined
           }
           onRemove={() => dispatch(removeLink(index))}
+          cache={cache}
+          setCache={setCache}
         />
       ))}
 
@@ -91,4 +93,3 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData }) => {
 };
 
 export default LinksSettings;
-

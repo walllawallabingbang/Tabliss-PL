@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
-import { Link } from "./types";
+import { Link, Cache } from "./types";
 
 const displayUrl = (url: string): string => {
   try {
@@ -47,9 +47,7 @@ type Props = Link & {
   IconString?: string;
   IconStringIco?: string;
   SvgString?: string;
-  uploadedIconData?: string;
-  uploadedIconType?: string;
-  uploadedIconSize?: number;
+  cache?: Cache;
 };
 
 const Display: FC<Props> = ({
@@ -64,9 +62,8 @@ const Display: FC<Props> = ({
   url,
   linkOpenStyle,
   linksNumbered: linksNumbered,
-  uploadedIconData,
-  uploadedIconType,
-  uploadedIconSize,
+  iconCacheKey,
+  cache,
 }) => {
   const intl = useIntl();
 
@@ -80,8 +77,11 @@ const Display: FC<Props> = ({
 
   const domain = useMemo(() => getDomain(url), [url]);
 
+  console.log(icon)
+
   return (
     <a
+      className={`Link ${linkOpenStyle ? "Link--open" : ""}`}
       href={url}
       rel="noopener noreferrer"
       target={linkOpenStyle ? "_blank" : "_self"}
@@ -115,58 +115,49 @@ const Display: FC<Props> = ({
             />
           </i>
         ) : null
-      ) : icon === "_custom_iconify" ? (
-        IconString && <Icon icon={IconString} />
-      ) : icon === "_custom_svg" ? (
-        SvgString && (
-          <span
-            className="custom-svg"
+      ) : icon === "_custom_iconify" && IconString ? (
+        <i>
+          <Icon icon={IconString} width={customIconSize} height={customIconSize} />
+        </i>
+      ) : icon === "_custom_svg" && SvgString ? (
+        <span
+            className="custom-icon"
             style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
             dangerouslySetInnerHTML={{ __html: sanitizeSvg(SvgString) }}
-          ></span>
-        )
-      ) : icon === "_custom_ico" ? (
-        IconStringIco && (
-          <i>
-            <img
-              alt="Custom Icon"
-              src={IconStringIco}
-              style={{ width: `${iconSize || customIconSize || 24}px`, height: `${iconSize || customIconSize || 24}px` }}
-            />
-          </i>
-        )
-      ) : icon === "_custom_upload" ? (
-        uploadedIconData && (
-          uploadedIconType === "svg" ? (
+        ></span>
+      ) : icon === "_custom_ico" && IconStringIco ? (
+        <i>
+          <img
+            src={IconStringIco}
+            alt=""
+            style={{
+              width: customIconSize,
+              height: customIconSize,
+              display: "inline-block",
+            }}
+          />
+        </i>
+      ) : icon === "_custom_upload" && iconCacheKey && cache?.[iconCacheKey] ? (
+        <span className="custom-icon">
+          {cache[iconCacheKey].type === "svg" ? (
             <span
-              className="custom-svg"
-              style={{
-                width: `${uploadedIconSize}px`,
-                height: `${uploadedIconSize}px`,
-                display: "inline-block",
-              }}
-              dangerouslySetInnerHTML={{ __html: sanitizeSvg(uploadedIconData) }}
+              dangerouslySetInnerHTML={{ __html: sanitizeSvg(cache[iconCacheKey].data) }}
+              style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
             />
           ) : (
             <img
-              alt="Custom Icon"
-              src={uploadedIconData}
-              style={{
-                width: `${uploadedIconSize}px`,
-                height: `${uploadedIconSize}px`,
-                objectFit: "contain",
-              }}
+              alt={name}
+              src={cache[iconCacheKey].data}
+              style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
             />
-          )
-        )
+          )}
+        </span>
       ) : icon ? (
-        <Icon icon={"feather:" + icon} />
+        <i>
+          <Icon icon={"feather:" + icon}/>
+        </i>
       ) : null}
-      {icon && name && " "}
-      <span className="LinkText">
-        {name}
-        {!name && !icon && displayUrl(url)}
-      </span>
+      {name || displayUrl(url)}
     </a>
   );
 };

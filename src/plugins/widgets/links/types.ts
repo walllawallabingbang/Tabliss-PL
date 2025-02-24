@@ -9,11 +9,17 @@ export type Link = {
   IconStringIco?: string;
   SvgString?: string;
   customIconSize?: number;
-  // New fields for custom uploaded icons
-  uploadedIconData?: string;
-  uploadedIconType?: 'image' | 'svg' | 'ico';
-  uploadedIconSize?: number;
+  // Reference to cached icon data
+  iconCacheKey?: string;
 };
+
+export type IconCacheItem = {
+  data: string;
+  type: 'image' | 'svg' | 'ico';
+  size: number;
+};
+
+export type Cache = Record<string, IconCacheItem>;
 
 export type Data = {
   columns: number;
@@ -24,9 +30,9 @@ export type Data = {
   customIconSize: number;
 };
 
-export type Props = API<Data>;
+export type Props = API<Data, Cache>;
 
-export const defaultData = {
+export const defaultData: Data = {
   columns: 1,
   links: [{ url: "https://tabliss.io" }],
   visible: true,
@@ -34,3 +40,5 @@ export const defaultData = {
   linksNumbered: false,
   customIconSize: 24,
 };
+
+export const defaultCache: Cache = {};
