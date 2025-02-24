@@ -19,10 +19,6 @@ type Props = Link & {
   setCache: (cache: Cache) => void;
 };
 
-const sanitizeSvg = (svgString: string) => {
-  return svgString.replace(/(width|height)="[^"]*"/g, ''); // Remove width and height
-};
-
 const iconList = Object.keys(icons);
 
 const Input: FC<Props> = (props) => {
@@ -46,7 +42,7 @@ const Input: FC<Props> = (props) => {
         let iconData: IconCacheItem;
         if (file.type === 'image/svg+xml') {
           iconData = {
-            data: sanitizeSvg(result),
+            data: result,
             type: 'svg',
             size: iconSize
           };
@@ -79,7 +75,7 @@ const Input: FC<Props> = (props) => {
       }
     };
 
-    if (file.type === 'image/svg+xml' || file.type === 'image/x-icon') {
+    if (file.type === 'image/svg+xml') {
       reader.readAsText(file);
     } else {
       reader.readAsDataURL(file);
@@ -185,8 +181,8 @@ const Input: FC<Props> = (props) => {
         <label>
           Custom SVG HTML
           <textarea
-            value={sanitizeSvg(props.SvgString || '')}
-            onChange={(event) => props.onChange({ SvgString: sanitizeSvg(event.target.value) })}
+            value={props.SvgString}
+            onChange={(event) => props.onChange({ SvgString: event.target.value })}
           />
           <p>
             Enter your custom SVG HTML code above to use an icon in your links. For more detailed info see&nbsp;

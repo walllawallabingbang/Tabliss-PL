@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",
+    "@svgdotjs/svg.js": "^3.2.4",
     "core-js": "^3.40.0",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",

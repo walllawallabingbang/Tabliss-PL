@@ -14,16 +14,26 @@ const displayUrl = (url: string): string => {
 
 const getDomain = (url: string): string | null => {
   try {
-    const parsed = new URL(url);
-    return parsed.hostname;
+    return new URL(url).hostname;
   } catch (e) {
     return null;
   }
 };
 
-function sanitizeSvg(svgString: string) {
-  return svgString.replace(/(width|height)="[^"]*"/g, ''); // Remove width and height
-}
+const parseSvg = (svgString: string, size?: number) => {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(svgString, "image/svg+xml");
+    const svg = doc.querySelector("svg");
+    if (!svg) return null;
+
+    svg.setAttribute("width", `${size ?? 24}`);
+    svg.setAttribute("height", `${size ?? 24}`);
+    return <span dangerouslySetInnerHTML={{ __html: svg.outerHTML }} />;
+  } catch {
+    return null;
+  }
+};
 
 const messages = defineMessages({
   shortcutHint: {
@@ -61,12 +71,11 @@ const Display: FC<Props> = ({
   number,
   url,
   linkOpenStyle,
-  linksNumbered: linksNumbered,
+  linksNumbered,
   iconCacheKey,
   cache,
 }) => {
   const intl = useIntl();
-
   const title = useMemo(
     () =>
       number < 10
@@ -74,10 +83,8 @@ const Display: FC<Props> = ({
         : intl.formatMessage(messages.standardHint),
     [intl, number],
   );
-
   const domain = useMemo(() => getDomain(url), [url]);
-
-  console.log(icon)
+  const parsedSvg = useMemo(() => (SvgString ? parseSvg(SvgString, customIconSize) : null), [SvgString, customIconSize]);
 
   return (
     <a
@@ -88,62 +95,32 @@ const Display: FC<Props> = ({
       title={title}
     >
       {linksNumbered ? <span className="LinkNumber">{number} </span> : null}
-      {icon === "_favicon_duckduckgo" ? (
-        domain ? (
-          <i>
-            <img
-              alt={domain}
-              src={`https://icons.duckduckgo.com/ip3/${domain}.ico`}
-            />
-          </i>
-        ) : null
-      ) : icon === "_favicon_google" ? (
-        domain ? (
-          <i>
-            <img
-              alt={domain}
-              src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize}`}
-            />
-          </i>
-        ) : null
-      ) : icon === "_favicon_favicone" ? (
-        domain ? (
-          <i>
-            <img
-              alt={domain}
-              src={`https://favicone.com/${domain}?s=${iconSize}`}
-            />
-          </i>
-        ) : null
+      {icon === "_favicon_duckduckgo" && domain ? (
+        <i>
+          <img alt={domain} src={`https://icons.duckduckgo.com/ip3/${domain}.ico`} />
+        </i>
+      ) : icon === "_favicon_google" && domain ? (
+        <i>
+          <img alt={domain} src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize}`} />
+        </i>
+      ) : icon === "_favicon_favicone" && domain ? (
+        <i>
+          <img alt={domain} src={`https://favicone.com/${domain}?s=${iconSize}`} />
+        </i>
       ) : icon === "_custom_iconify" && IconString ? (
         <i>
           <Icon icon={IconString} width={customIconSize} height={customIconSize} />
         </i>
-      ) : icon === "_custom_svg" && SvgString ? (
-        <span
-            className="custom-icon"
-            style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
-            dangerouslySetInnerHTML={{ __html: sanitizeSvg(SvgString) }}
-        ></span>
+      ) : icon === "_custom_svg" && parsedSvg ? (
+        <span className="custom-icon">{parsedSvg}</span>
       ) : icon === "_custom_ico" && IconStringIco ? (
         <i>
-          <img
-            src={IconStringIco}
-            alt=""
-            style={{
-              width: customIconSize,
-              height: customIconSize,
-              display: "inline-block",
-            }}
-          />
+          <img src={IconStringIco} alt="" width={customIconSize} height={customIconSize} />
         </i>
       ) : icon === "_custom_upload" && iconCacheKey && cache?.[iconCacheKey] ? (
         <span className="custom-icon">
           {cache[iconCacheKey].type === "svg" ? (
-            <span
-              dangerouslySetInnerHTML={{ __html: sanitizeSvg(cache[iconCacheKey].data) }}
-              style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
-            />
+            parseSvg(cache[iconCacheKey].data, customIconSize)
           ) : (
             <img
               alt={name}
@@ -154,7 +131,7 @@ const Display: FC<Props> = ({
         </span>
       ) : icon ? (
         <i>
-          <Icon icon={"feather:" + icon}/>
+          <Icon icon={"feather:" + icon} />
         </i>
       ) : null}
       {name || displayUrl(url)}
