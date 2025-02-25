@@ -12,7 +12,7 @@ import literatureClock from "./literatureClock";
 import message from "./message";
 // import nba from "./nba";  TODO: FIX (IT'S BROKEN)
 import notes from "./notes";
-import randomMessage from "./randomMessage";
+// import randomMessage from "./randomMessage"; removed, use customText
 import nba from "./nba";
 import quote from "./quote";
 import search from "./search";
@@ -41,7 +41,6 @@ export const widgetConfigs = [
   message,
   // nba,
   notes,
-  randomMessage,
   nba,
   quote,
   search,
