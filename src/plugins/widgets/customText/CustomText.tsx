@@ -1,34 +1,52 @@
-import React, { FC } from "react";
-import {defaultData, Props} from "./types";
+import React, { FC, useEffect, useState } from "react";
+import { defaultData, Props } from "./types";
 
-
-const CustomText: FC<Props> = ({data= defaultData}) => {
+const CustomText: FC<Props> = ({ data = defaultData }) => {
+  const [currentText, setCurrentText] = useState<string>("");
+  const [lastUpdate, setLastUpdate] = useState<number>(Date.now());
 
   // Code for unbiased rand from https://pthree.org/2018/06/13/why-the-multiply-and-floor-rng-method-is-biased
   const unbiasedRand = (range: number) => {
-    const max = Math.floor(2**32/range) * range;
+    const max = Math.floor(2 ** 32 / range) * range;
     let x;
     do {
-      x = Math.floor(Math.random() * 2**32);
+      x = Math.floor(Math.random() * 2 ** 32);
     } while (x >= max);
 
-    return(x % range);
-  }
+    return x % range;
+  };
 
-  let sep: string;
-  if (data.atNewline)
-    sep = "\n";
-  else
-    sep = data.separator;
+  const updateText = () => {
+    let sep: string = data.atNewline ? "\n" : data.separator;
+    const texts = data.text.split(sep);
+    const result = texts[unbiasedRand(texts.length)];
+    setCurrentText(result);
+    setLastUpdate(Date.now());
+  };
 
-  const result = data.text.split(sep)[unbiasedRand(data.text.split(sep).length)];
+  // Initial text update
+  useEffect(() => {
+    updateText();
+  }, [data.text, data.separator, data.atNewline]);
+
+  // Handle timing updates
+  useEffect(() => {
+    if (data.paused || data.timeout === 0) return;
+
+    const interval = setInterval(() => {
+      if (Date.now() - lastUpdate >= data.timeout * 1000) {
+        updateText();
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [data.timeout, data.paused, lastUpdate]);
 
   return (
     <div className="CustomText">
-      <h3>{result}</h3>
+      <h3>{currentText}</h3>
     </div>
   );
-
 };
 
 export default CustomText;

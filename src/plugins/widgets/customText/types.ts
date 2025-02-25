@@ -5,6 +5,8 @@ type Data = {
   separator: string;
   strings: string[];
   atNewline: boolean;
+  timeout: number;
+  paused: boolean;
 };
 
 export type Props = API<Data>;
@@ -14,4 +16,6 @@ export const defaultData: Data = {
   strings: [""],
   separator: "",
   atNewline: true,
+  timeout: 0,
+  paused: false,
 };
