@@ -9,11 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add option for scaling widgets with CSS transform. [#41a8b08](https://github.com/BookCatKid/tabliss-maintained/commit/41a8b0821e6a09fe438d7389f597b63008363f8c)
+
 - Move the icon preloading to the existing utils.ts. [#5254ef6](https://github.com/BookCatKid/tabliss-maintained/commit/5254ef6d889c1266def0587088695f54ac47580c)
 
 - Add caching for icons. [#ea317ff](https://github.com/BookCatKid/tabliss-maintained/commit/ea317ff29fb48a65ff0c585d347d8cec097962de)
 
 - Add a modal for selecting the icon. [#d221677](https://github.com/BookCatKid/tabliss-maintained/commit/d2216777af3be64366a97bb09f3a273afc116cc5)
+
+- Change the location url for unsplash to be an href instead of js. [#f077ccd](https://github.com/BookCatKid/tabliss-maintained/commit/f077ccd6f0c298c6ef18bd70ff9a3c3dd38f3625)
 
 ### Fixed
 
