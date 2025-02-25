@@ -26,6 +26,16 @@ const clickLocation = (location: string | undefined, locationSource: string | un
   window.open(urls[locationSource as keyof typeof urls], "_blank");
 };
 
+const getLocationUrl = (location: string | undefined, locationSource: string | undefined) => {
+  if (!location || !locationSource) return "#";
+  const urls = {
+    "google-maps": `https://www.google.com/maps/search/?api=1&query=${location}`,
+    "google": `https://www.google.com/search?tbm=isch&q=${location}`,
+    "duckduckgo": `https://duckduckgo.com/?q=${location}&iax=images&ia=images`,
+  };
+  return urls[locationSource as keyof typeof urls];
+};
+
 const UnsplashCredit: React.FC<Props> = ({
   credit,
   locationSource,
@@ -65,7 +75,15 @@ const UnsplashCredit: React.FC<Props> = ({
       </a>
     </div>
 
-    <a className="location" onClick={() => clickLocation(credit.location, locationSource)}>{credit.location}</a>
+    <a
+      className="location"
+      href={getLocationUrl(credit.location, locationSource)}
+      // TODO: Could ad an option on where to open it, but it might just cause clutter
+      target="_self"
+      rel="noopener noreferrer"
+    >
+      {credit.location}
+    </a>
   </div>
 );
 
