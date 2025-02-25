@@ -9,6 +9,12 @@ import ToggleSection from "../shared/ToggleSection";
 import "./Widget.sass";
 import WidgetDisplay from "./WidgetDisplay";
 
+interface Config {
+  name: string;
+  description: string;
+  settingsComponent?: React.ComponentType<any>;
+}
+
 interface Props {
   plugin: WidgetState;
   onMoveUp?: () => void;
@@ -24,7 +30,7 @@ const Widget: React.FC<Props> = ({
 }) => {
   const [isOpen, toggleIsOpen] = useToggle(onRemove === undefined);
   const [error, setError] = React.useState<Error | null>(null);
-  const [config, setConfig] = React.useState({
+  const [config, setConfig] = React.useState<Config>({
     name: 'Loading...',
     description: 'Loading widget configuration...',
     settingsComponent: undefined
