@@ -45,6 +45,7 @@ export interface WidgetDisplay {
   colour?: string;
   fontFamily?: string;
   fontSize?: number;
+  scale?: number;
   fontWeight?: number;
   position: WidgetPosition;
 }
