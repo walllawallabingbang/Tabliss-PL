@@ -8,7 +8,7 @@ import {
 } from "../../../views/shared";
 import { Link, IconCacheItem, Cache } from "./types";
 import { Icon } from "@iconify/react";
-import { addIconData } from "../../../utils/iconCache";
+import { addIconData } from "../../../utils";
 import "./Input.sass";
 
 type Props = Link & {
