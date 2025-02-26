@@ -20,15 +20,15 @@ const getDomain = (url: string): string | null => {
   }
 };
 
-const parseSvg = (svgString: string, size?: number) => {
+const parseSvg = (svgString: string, width?: number, height?: number) => {
   try {
     const parser = new DOMParser();
     const doc = parser.parseFromString(svgString, "image/svg+xml");
     const svg = doc.querySelector("svg");
     if (!svg) return null;
 
-    svg.setAttribute("width", `${size ?? 24}`);
-    svg.setAttribute("height", `${size ?? 24}`);
+    svg.setAttribute("width", `${width ?? 24}`);
+    svg.setAttribute("height", `${height ?? 24}`);
     return <span dangerouslySetInnerHTML={{ __html: svg.outerHTML }} />;
   } catch {
     return null;
@@ -53,11 +53,13 @@ type Props = Link & {
   linkOpenStyle: boolean;
   linksNumbered: boolean;
   iconSize?: number;
-  customIconSize?: number;
   IconString?: string;
   IconStringIco?: string;
   SvgString?: string;
   cache?: Cache;
+  customWidth?: number;
+  customHeight?: number;
+  conserveAspectRatio?: boolean;
 };
 
 const Display: FC<Props> = ({
@@ -65,7 +67,6 @@ const Display: FC<Props> = ({
   iconSize,
   IconString,
   IconStringIco,
-  customIconSize,
   SvgString,
   name,
   number,
@@ -76,6 +77,9 @@ const Display: FC<Props> = ({
   iconifyValue,
   iconCacheKey,
   cache,
+  customWidth,
+  customHeight,
+  conserveAspectRatio,
 }) => {
   const intl = useIntl();
   const title = useMemo(
@@ -86,7 +90,7 @@ const Display: FC<Props> = ({
     [intl, number],
   );
   const domain = useMemo(() => getDomain(url), [url]);
-  const parsedSvg = useMemo(() => (SvgString ? parseSvg(SvgString, customIconSize) : null), [SvgString, customIconSize]);
+  const parsedSvg = useMemo(() => (SvgString ? parseSvg(SvgString, customWidth, customHeight) : null), [SvgString, customWidth, customHeight]);
 
   return (
     <a
@@ -111,29 +115,41 @@ const Display: FC<Props> = ({
         </i>
       ) : icon === "_custom_iconify" && IconString ? (
         <i>
-          <Icon icon={IconString} width={customIconSize} height={customIconSize} />
+          <Icon icon={IconString} width={customWidth} height={customWidth} />
         </i>
       ) : icon === "_custom_svg" && parsedSvg ? (
         <span className="custom-icon">{parsedSvg}</span>
       ) : icon === "_custom_ico" && IconStringIco ? (
         <i>
-          <img src={IconStringIco} alt="" width={customIconSize} height={customIconSize} />
+          <img
+            src={IconStringIco}
+            alt={name}
+            style={{
+              width: conserveAspectRatio ? `${customWidth}px` : `${customWidth}px`,
+              height: conserveAspectRatio ? "auto" : `${customHeight}px`,
+              display: "inline-block",
+            }}
+          />
         </i>
       ) : icon === "_custom_upload" && iconCacheKey && cache?.[iconCacheKey] ? (
         <span className="custom-icon">
           {cache[iconCacheKey].type === "svg" ? (
-            parseSvg(cache[iconCacheKey].data, customIconSize)
+            parseSvg(cache[iconCacheKey].data, customWidth, customHeight)
           ) : (
             <img
               alt={name}
               src={cache[iconCacheKey].data}
-              style={{ width: `${customIconSize}px`, height: `${customIconSize}px`, display: "inline-block" }}
+              style={{
+                width: conserveAspectRatio ? `${customWidth}px` : `${customWidth}px`,
+                height: conserveAspectRatio ? "auto" : `${customHeight}px`,
+                display: "inline-block",
+              }}
             />
           )}
         </span>
       ) : icon === "_feather" ? (
         <i>
-          <Icon icon={"feather:" + iconifyValue} />
+          <Icon icon={iconifyIdentifier ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
         </i>
       ) : icon ? (
         // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
@@ -141,11 +157,6 @@ const Display: FC<Props> = ({
           <i>
             <Icon icon={"feather:" + icon} />
           </i>
-          {(() => {
-            iconifyValue = icon;
-            icon = "_feather";
-            return null;
-          })()}
         </>
       ) : null}
       {name || displayUrl(url)}

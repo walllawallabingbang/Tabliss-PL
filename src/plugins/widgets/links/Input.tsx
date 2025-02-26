@@ -39,19 +39,21 @@ const Input: FC<Props> = (props) => {
 
   // Filter icons based on search query
   const filteredIcons = iconList.filter((icon) => {
-    const searchQueryNoSpaces = searchQuery.replace(/\s/g, '-');
+    const searchQueryNoSpaces = searchQuery.replace(/\s/g, "-");
     return (
       icon.toLowerCase().includes(searchQuery.toLowerCase()) ||
       icon.toLowerCase().includes(searchQueryNoSpaces)
     );
   });
 
-  const isGoogleOrFavicone = props.icon === "_favicon_google" || props.icon === "_favicon_favicone";
+  const isGoogleOrFavicone =
+    props.icon === "_favicon_google" || props.icon === "_favicon_favicone";
   const isCustomIconify = props.icon === "_custom_iconify";
   const isCustomSvg = props.icon === "_custom_svg";
   const isCustomICON = props.icon === "_custom_ico";
   const isCustomUpload = props.icon === "_custom_upload";
-  const isFeather = props.iconifyIdentifier === "feather:" || props.icon === "_feather";
+  const isFeather =
+    props.iconifyIdentifier === "feather:" || props.icon === "_feather";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -60,47 +62,47 @@ const Input: FC<Props> = (props) => {
     const reader = new FileReader();
     reader.onload = (e) => {
       const result = e.target?.result;
-      if (typeof result === 'string') {
-        const iconSize = props.customIconSize || 24;
+      if (typeof result === "string") {
+        const iconSize = props.customWidth || 24;
         const cacheKey = `icon_${Date.now()}`;
-        
+
         let iconData: IconCacheItem;
-        if (file.type === 'image/svg+xml') {
+        if (file.type === "image/svg+xml") {
           iconData = {
             data: result,
-            type: 'svg',
-            size: iconSize
+            type: "svg",
+            size: iconSize,
           };
-        } else if (file.type === 'image/x-icon') {
+        } else if (file.type === "image/x-icon") {
           iconData = {
             data: result,
-            type: 'ico',
-            size: iconSize
+            type: "ico",
+            size: iconSize,
           };
         } else {
           iconData = {
             data: result,
-            type: 'image',
-            size: iconSize
+            type: "image",
+            size: iconSize,
           };
         }
-        
+
         // Update cache with new icon data
-        props.setCache({ 
-          ...(props.cache || {}), 
-          [cacheKey]: iconData 
+        props.setCache({
+          ...(props.cache || {}),
+          [cacheKey]: iconData,
         });
 
         // Update link with reference to cached icon
         props.onChange({
           icon: "_custom_upload",
           iconCacheKey: cacheKey,
-          customIconSize: iconSize
+          customWidth: iconSize,
         });
       }
     };
 
-    if (file.type === 'image/svg+xml') {
+    if (file.type === "image/svg+xml") {
       reader.readAsText(file);
     } else {
       reader.readAsDataURL(file);
@@ -118,9 +120,9 @@ const Input: FC<Props> = (props) => {
     return values;
   };
 
+  // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
   useEffect(() => {
     if (props.icon && !getSelectValues().includes(props.icon)) {
-      console.warn(`Invalid icon value: ${props.icon}. Migrating to new icon value`);
       props.onChange({ iconifyValue: props.icon, icon: "_feather" });
     }
   }, [props.icon]);
@@ -181,7 +183,7 @@ const Input: FC<Props> = (props) => {
           <optgroup label="Custom">
             <option value="_custom_iconify">From Iconify</option>
             <option value="_custom_svg">Custom SVG HTML</option>
-            <option value="_custom_ico">Custom ICO url</option>
+            <option value="_custom_ico">Custom Image URL</option>
             <option value="_custom_upload">Upload Custom Icon</option>
           </optgroup>
           <optgroup label="Iconify Icons">
@@ -190,31 +192,27 @@ const Input: FC<Props> = (props) => {
         </select>
       </label>
 
-      {isGoogleOrFavicone && (
-        <label>
-          Icon Size
-          <select
-            onChange={(event) => props.onChange({ iconSize: Number(event.target.value) })}
-          >
-            <option value="16">16x16</option>
-            <option value="32">32x32</option>
-            <option value="64">64x64</option>
-            <option value="128">128x128</option>
-            <option value="256">256x256</option>
-          </select>
-        </label>
-      )}
-
       {isCustomIconify && (
         <label>
           Custom Iconify Identifier
           <input
             type="text"
-            onChange={(event) => props.onChange({ IconString: event.target.value })}
+            value={props.IconString}
+            onChange={(event) =>
+              props.onChange({ IconString: event.target.value })
+            }
           />
           <p>
-            Enter the iconify identifier for the icon you want to use in your links. For more detailed info see&nbsp;
-            <a href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153" target="_blank" rel="noopener noreferrer">this GitHub issue</a>.
+            Enter the iconify identifier for the icon you want to use in your
+            links. For more detailed info see&nbsp;
+            <a
+              href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              this GitHub issue
+            </a>
+            .
           </p>
         </label>
       )}
@@ -224,35 +222,36 @@ const Input: FC<Props> = (props) => {
           Custom SVG HTML
           <textarea
             value={props.SvgString}
-            onChange={(event) => props.onChange({ SvgString: event.target.value })}
+            onChange={(event) =>
+              props.onChange({ SvgString: event.target.value })
+            }
           />
           <p>
-            Enter your custom SVG HTML code above to use an icon in your links. For more detailed info see&nbsp;
-            <a href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153" target="_blank" rel="noopener noreferrer">this GitHub issue</a>.
+            Enter your custom SVG HTML code above to use an icon in your links.
+            For more detailed info see&nbsp;
+            <a
+              href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              this GitHub issue
+            </a>
+            .
           </p>
-        </label>
-      )}
-
-      {isCustomSvg && (
-        <label>
-          Custom SVG Size
-          <input
-            type="number"
-            value={props.customIconSize}
-            onChange={(event) => props.onChange({ customIconSize: Number(event.target.value) })}
-          />
         </label>
       )}
 
       {isCustomICON && (
         <label>
-          Custom ICO url
+          Custom Image URL
           <input
             type="text"
             value={props.IconStringIco}
-            onChange={(event) => props.onChange({ IconStringIco: event.target.value })}
+            onChange={(event) =>
+              props.onChange({ IconStringIco: event.target.value })
+            }
           />
-          <p>Enter a url on the internet for a .ico file</p>
+          <p>Enter a url on the internet for an image file</p>
         </label>
       )}
 
@@ -266,30 +265,119 @@ const Input: FC<Props> = (props) => {
               onChange={handleFileUpload}
             />
           </label>
-          {props.iconCacheKey && props.cache && (
-            <div>
+        </div>
+      )}
+
+      {isFeather && (
+        <div className="icon-picker">
+          <button onClick={handleOpenModal} className="custom-select">
+            {props.icon ? `Open icon picker` : "Choose an Icon"}
+          </button>
+        </div>
+      )}
+
+      {(isCustomICON ||
+        (isCustomUpload &&
+          props.iconCacheKey &&
+          props.cache &&
+          props.cache[props.iconCacheKey]?.type !== "svg")) && (
+        <>
+          <label>
+            Conserve Aspect Ratio
+            <input
+              className="conserveAspectRatioButton"
+              type="checkbox"
+              checked={props.conserveAspectRatio}
+              onChange={(event) =>
+                props.onChange({ conserveAspectRatio: event.target.checked })
+              }
+            />
+          </label>
+          {props.conserveAspectRatio ? (
+            <label>
+              Scale
+              <input
+                type="number"
+                value={props.customWidth}
+                onChange={(event) => {
+                  props.onChange({
+                    customWidth: Number(event.target.value),
+                    customHeight: Number(event.target.value),
+                  });
+                }}
+              />
+            </label>
+          ) : (
+            <>
               <label>
-                Icon Size
+                Icon Width
                 <input
                   type="number"
-                  value={props.customIconSize}
-                  onChange={(event) => props.onChange({ customIconSize: Number(event.target.value) })}
+                  value={props.customWidth ?? 24}
+                  onChange={(event) =>
+                    props.onChange({ customWidth: Number(event.target.value) })
+                  }
                 />
               </label>
-            </div>
+              <label>
+                Icon Height
+                <input
+                  type="number"
+                  value={props.customHeight ?? 24}
+                  onChange={(event) =>
+                    props.onChange({ customHeight: Number(event.target.value) })
+                  }
+                />
+              </label>
+            </>
           )}
-          </div>
-        )}
+        </>
+      )}
 
-        {isFeather && (
-          <div className="icon-picker">
-            <button onClick={handleOpenModal} className="custom-select">
-              {props.icon ? `Open icon picker` : "Choose an Icon"}
-            </button>
-          </div>
-        )}
+      {(isCustomSvg ||
+        (isCustomUpload &&
+          props.iconCacheKey &&
+          props.cache &&
+          props.cache[props.iconCacheKey]?.type === "svg")) && (
+        <div>
+          <label>
+            Icon Size
+            <input
+              type="number"
+              value={props.customWidth ?? 24}
+              onChange={(event) => {
+                props.onChange({
+                  customWidth: Number(event.target.value),
+                  customHeight: Number(event.target.value),
+                });
+              }}
+            />
+          </label>
+          <p className="no-svg-scaling-warning">
+            Currently svgs do not support custom dimensions.
+          </p>
+        </div>
+      )}
 
-        {isModalOpen && (
+      {isGoogleOrFavicone && (
+        <label>
+          Icon Size
+          <select
+            value={props.iconSize}
+            onChange={(event) =>
+              props.onChange({ iconSize: Number(event.target.value) })
+            }
+          >
+            <option value="16">16x16</option>
+            <option value="32">32x32</option>
+            <option value="64">64x64</option>
+            <option value="128">128x128</option>
+            <option value="256">256x256</option>
+          </select>
+        </label>
+      )}
+
+      {isModalOpen && (
         <div className="Modal-container" onClick={handleCloseModal}>
           <div className="Modal" onClick={(event) => event.stopPropagation()}>
             <h2>Select an Icon</h2>
@@ -298,7 +386,7 @@ const Input: FC<Props> = (props) => {
               type="text"
               placeholder="Search icons..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(event) => setSearchQuery(event.target.value)}
               className="search-bar"
             />
 
@@ -311,7 +399,7 @@ const Input: FC<Props> = (props) => {
                     onClick={() => handleIconSelect(icon, "feather:")}
                   >
                     <Icon icon={"feather:" + icon} />
-                    <span>{icon.replace(/-/g, ' ')}</span>
+                    <span>{icon.replace(/-/g, " ")}</span>
                   </button>
                 ))
               ) : (

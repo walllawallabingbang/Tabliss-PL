@@ -8,16 +8,18 @@ export type Link = {
   IconString?: string;
   IconStringIco?: string;
   SvgString?: string;
-  customIconSize?: number;
+  customWidth?: number;
+  customHeight?: number;
   iconifyIdentifier?: string;
   iconifyValue?: string;
   // Reference to cached icon data
   iconCacheKey?: string;
+  conserveAspectRatio?: boolean;
 };
 
 export type IconCacheItem = {
   data: string;
-  type: 'image' | 'svg' | 'ico';
+  type: "image" | "svg" | "ico";
   size: number;
 };
 
@@ -29,9 +31,11 @@ export type Data = {
   visible: boolean;
   linkOpenStyle: boolean;
   linksNumbered: boolean;
-  customIconSize: number;
+  customWidth: number;
+  customHeight?: number;
   iconifyIdentifier: string;
   iconifyValue?: string;
+  conserveAspectRatio?: boolean;
 };
 
 export type Props = API<Data, Cache>;
@@ -42,8 +46,10 @@ export const defaultData: Data = {
   visible: true,
   linkOpenStyle: false,
   linksNumbered: false,
-  customIconSize: 24,
+  customWidth: 24,
+  customHeight: 24,
   iconifyIdentifier: "feather:",
+  conserveAspectRatio: false,
 };
 
 export const defaultCache: Cache = {};

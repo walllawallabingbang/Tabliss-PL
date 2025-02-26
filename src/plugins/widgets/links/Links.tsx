@@ -37,7 +37,8 @@ const Links: FC<Props> = ({ data = defaultData, cache = defaultCache }) => {
             number={index + 1}
             linkOpenStyle={data.linkOpenStyle}
             linksNumbered={data.linksNumbered}
-            customIconSize={data.customIconSize}
+            customWidth={data.customWidth}
+            customHeight={data.customHeight}
             cache={cache}
             {...link}
           />

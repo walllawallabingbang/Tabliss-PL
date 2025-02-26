@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
-import { addLink, removeLink, reorderLink, updateIconSize, updateCustomIcon, updateLink } from "./actions";
+import { addLink, removeLink, reorderLink, updateLink } from "./actions";
 import { reducer } from "./reducer";
-import { Link, Props, defaultData, defaultCache, Cache } from "./types";
+import { Link, Props, defaultData, defaultCache } from "./types";
 
 const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = defaultCache, setCache }) => {
   const saveLinks = (links: Link[]) => setData({ ...data, links });
