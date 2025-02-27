@@ -49,7 +49,6 @@ const baseIcons = [
   "feather:settings",
   "feather:alert-triangle",
   "feather:zap",
-  "feather:coffee",
   "feather:globe",
   "feather:twitter",
   "feather:github",

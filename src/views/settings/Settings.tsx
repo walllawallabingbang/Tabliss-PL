@@ -93,37 +93,15 @@ const Settings: React.FC = () => {
         <Persist />
 
         <div style={{ textAlign: "center" }} className="Widget">
-          <h4>Support Tabliss</h4>
+          <h4>Support Tabliss - Maintained</h4>
           <p>
             <a
-              href="https://www.paypal.com/donate/?hosted_button_id=FK7VRWS9A2EW4"
+              href="https://github.com/BookCatKid/tabliss-maintained"
               target="_blank"
               rel="noopener noreferrer"
               className="button button--primary"
-              title="I do love coffee"
             >
-              <Icon icon="feather:coffee" /> Donate a coffee 😍
-            </a>
-          </p>
-          <p>
-            <a href="https://tabliss.io/" target="_blank" rel="noreferrer">
-              <Icon icon="feather:globe" /> Website
-            </a>
-            &nbsp;&nbsp;
-            <a
-              href="https://twitter.com/tabliss"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Icon icon="feather:twitter" /> Twitter
-            </a>
-            &nbsp;&nbsp;
-            <a
-              href="https://github.com/joelshepherd/tabliss"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Icon icon="feather:github" /> GitHub
+              <Icon icon="feather:github" /> Star the github repository! 🌟😍
             </a>
           </p>
         </div>
