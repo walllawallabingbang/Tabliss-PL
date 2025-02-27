@@ -43,7 +43,6 @@ Transform your new tab page into something beautiful and uniquely yours. Tabliss
 - **NBA Scores**: Live game scores and updates for basketball fans (BROKEN)
 - **Quick Links**: Fast access to your favorite sites with customizable icons
 - **Quotes**: Daily inspirational (or not) quotes with category filtering
-- **Random Messages**: Display random messages from your custom list
 - **Search Box**: Multi-engine search supporting Google, DuckDuckGo, Bing, and more. Also supports custom search engines
 - **Since**: Keep track of time elapsed since specific events and countdown to future events
 - **Time**: Display the current time with timezone support
