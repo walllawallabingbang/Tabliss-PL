@@ -26,37 +26,37 @@ export const formatBytes = (
 
 // Code for unbiased rand from https://pthree.org/2018/06/13/why-the-multiply-and-floor-rng-method-is-biased
 export const unbiasedRand = (range: number) => {
-  const max = Math.floor(2**32/range) * range;
+  const max = Math.floor(2 ** 32 / range) * range;
   let x;
   do {
-    x = Math.floor(Math.random() * 2**32);
+    x = Math.floor(Math.random() * 2 ** 32);
   } while (x >= max);
 
-  return(x % range);
-}
+  return x % range;
+};
 
 // List of all icons used in the application
 // Add icons here as they are used in the application
 const baseIcons = [
-  'feather:arrow-left',
-  'feather:arrow-right',
-  'feather:play',
-  'feather:pause',
-  'feather:check',
-  'feather:edit',
-  'feather:search',
-  'feather:navigation',
-  'feather:settings',
-  'feather:alert-triangle',
-  'feather:zap',
-  'feather:coffee',
-  'feather:globe',
-  'feather:twitter',
-  'feather:github',
-  'feather:eye-off',
-  'feather:eye',
-  'feather:maximize-2',
-  'feather:minimize-2',
+  "feather:arrow-left",
+  "feather:arrow-right",
+  "feather:play",
+  "feather:pause",
+  "feather:check",
+  "feather:edit",
+  "feather:search",
+  "feather:navigation",
+  "feather:settings",
+  "feather:alert-triangle",
+  "feather:zap",
+  "feather:coffee",
+  "feather:globe",
+  "feather:twitter",
+  "feather:github",
+  "feather:eye-off",
+  "feather:eye",
+  "feather:maximize-2",
+  "feather:minimize-2",
 ];
 
 /**
@@ -65,19 +65,21 @@ const baseIcons = [
  */
 export async function preloadBaseIcons() {
   try {
-    await Promise.all(baseIcons.map(async (iconName) => {
-      try {
-        const iconData = await loadIcon(iconName);
-        if (iconData) {
-          addIcon(iconName, iconData);
+    await Promise.all(
+      baseIcons.map(async (iconName) => {
+        try {
+          const iconData = await loadIcon(iconName);
+          if (iconData) {
+            addIcon(iconName, iconData);
+          }
+        } catch (error) {
+          console.warn(`Failed to load icon: ${iconName}`, error);
         }
-      } catch (error) {
-        console.warn(`Failed to load icon: ${iconName}`, error);
-      }
-    }));
-    console.log('Icons pre-cached successfully');
+      }),
+    );
+    console.log("Icons pre-cached successfully");
   } catch (error) {
-    console.error('Failed to pre-cache icons:', error);
+    console.error("Failed to pre-cache icons:", error);
   }
 }
 
