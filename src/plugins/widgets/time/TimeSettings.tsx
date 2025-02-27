@@ -26,13 +26,13 @@ const TimeSettings: FC<Props> = ({ data = defaultData, setData }) => (
     <label>
       <input
         type="checkbox"
-        checked={data.showTime}
-        onChange={() => setData({ ...data, showTime: !data.showTime })}
+        checked={!data.hideTime}
+        onChange={() => setData({ ...data, hideTime: !data.hideTime })}
       />{" "}
       Display time
     </label>
 
-    {data.showTime && (
+    {!data.hideTime && (
     <>
       <label>
         <input

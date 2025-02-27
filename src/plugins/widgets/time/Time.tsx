@@ -14,7 +14,7 @@ const Time: FC<Props> = ({ data = defaultData }) => {
     mode,
     name,
     showDate,
-    showTime,
+    hideTime,
     showMinutes,
     showSeconds,
     timeZone,
@@ -28,7 +28,7 @@ const Time: FC<Props> = ({ data = defaultData }) => {
 
   return (
     <div className="Time">
-      {showTime && (
+      {!hideTime && (
         <>
           {mode === "analogue" ? (
             <Analogue
@@ -54,7 +54,7 @@ const Time: FC<Props> = ({ data = defaultData }) => {
 
       {showDate && (
         <>
-          {(showTime || name) && (
+          {(!hideTime || name) && (
             <hr />
           )}
           <h3>
