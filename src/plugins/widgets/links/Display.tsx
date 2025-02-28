@@ -132,7 +132,7 @@ const Display: FC<Props> = ({
           />
         </i>
       ) : icon === "_custom_upload" && iconCacheKey && cache?.[iconCacheKey] ? (
-        <span className="custom-icon">
+        <i className="custom-icon">
           {cache[iconCacheKey].type === "svg" ? (
             parseSvg(cache[iconCacheKey].data, customWidth, customHeight)
           ) : (
@@ -146,18 +146,16 @@ const Display: FC<Props> = ({
               }}
             />
           )}
-        </span>
+        </i>
       ) : icon === "_feather" ? (
         <i>
           <Icon icon={iconifyIdentifier ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
         </i>
       ) : icon ? (
         // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
-        <>
-          <i>
-            <Icon icon={"feather:" + icon} />
-          </i>
-        </>
+        <i>
+          <Icon icon={"feather:" + icon} />
+        </i>
       ) : null}
       {name}
     </a>
