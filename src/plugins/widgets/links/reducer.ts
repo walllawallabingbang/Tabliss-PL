@@ -17,8 +17,12 @@ export function reducer(state: State, action: Action) {
       );
 
     case "REORDER_LINK":
+      const { index, to } = action.data;
+      if (index < 0 || index >= state.length || to < 0 || to >= state.length) {
+        return state;
+      }
       const links = [...state];
-      links.splice(action.data.to, 0, links.splice(action.data.index, 1)[0]);
+      links.splice(to, 0, links.splice(index, 1)[0]);
       return links;
 
     default:

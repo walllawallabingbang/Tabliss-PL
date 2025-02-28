@@ -71,4 +71,56 @@ describe("links/reducer()", () => {
   it("should throw on unknown action", () => {
     expect(() => reducer([], { type: "UNKNOWN" } as any)).toThrow();
   });
+
+  it("should handle adding multiple links", () => {
+    let state = reducer([], addLink());
+    state = reducer(state, addLink());
+    state = reducer(state, addLink());
+    expect(state).toEqual([
+      { url: "https://" },
+      { url: "https://" },
+      { url: "https://" },
+    ]);
+  });
+
+  it("should handle removing the last link", () => {
+    const state = reducer([{ url: "https://tabliss.io/" }], removeLink(0));
+    expect(state).toEqual([]);
+  });
+
+  it("should handle updating a non-existent link", () => {
+    const state = reducer(
+      [{ url: "https://tabliss.io/" }],
+      updateLink(1, { url: "https://example.com/" }),
+    );
+    expect(state).toEqual([{ url: "https://tabliss.io/" }]);
+  });
+
+  it("should handle reordering with invalid indices", () => {
+    const state = reducer(
+      [
+        { url: "https://tabliss.io/" },
+        { url: "https://tabliss.io/about.html" },
+      ],
+      reorderLink(2, 0),
+    );
+    expect(state).toEqual([
+      { url: "https://tabliss.io/" },
+      { url: "https://tabliss.io/about.html" },
+    ]);
+  });
+
+  it("should handle reordering to the same position", () => {
+    const state = reducer(
+      [
+        { url: "https://tabliss.io/" },
+        { url: "https://tabliss.io/about.html" },
+      ],
+      reorderLink(1, 1),
+    );
+    expect(state).toEqual([
+      { url: "https://tabliss.io/" },
+      { url: "https://tabliss.io/about.html" },
+    ]);
+  });
 });
