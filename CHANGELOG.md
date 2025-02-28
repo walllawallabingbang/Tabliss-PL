@@ -6,9 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix the open feather modal always being visible. [#9763891](https://github.com/BookCatKid/tabliss-maintained/commit/976389118713eb53071caa31c66afed963f34b66)
+
+- Fix custom modal styles to apply only to quick links. [#37ee4fa](https://github.com/BookCatKid/tabliss-maintained/commit/37ee4fa4e4d552cfad6f404afa0a1931c2833f42)
+
 ### Changed
 
-- Change link display, so if the name is blank it displays a blank name instead of a formatted url.
+- Make the custom uploads have the correct styles. [ba43558](https://github.com/BookCatKid/tabliss-maintained/commit/ba435588e1de85ad2704fd366370962d53a9c589)
+
+- Change link display, so if the name is blank it displays a blank name instead of a formatted url. [#13de553](https://github.com/BookCatKid/tabliss-maintained/commit/13de5537c39d4ae17b194cbed5afd1ae4d62e7fe)
 
 ## [1.2.0] - 2/26/2025
 
