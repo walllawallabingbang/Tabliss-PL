@@ -53,7 +53,7 @@ const Input: FC<Props> = (props) => {
   const isCustomICON = props.icon === "_custom_ico";
   const isCustomUpload = props.icon === "_custom_upload";
   const isFeather =
-    props.iconifyIdentifier === "feather:" || props.icon === "_feather";
+    props.iconifyIdentifier === "feather:" && props.icon === "_feather";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
