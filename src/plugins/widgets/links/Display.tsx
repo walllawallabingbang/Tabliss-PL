@@ -159,7 +159,7 @@ const Display: FC<Props> = ({
           </i>
         </>
       ) : null}
-      {name || displayUrl(url)}
+      {name}
     </a>
   );
 };

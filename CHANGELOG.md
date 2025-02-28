@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- Change link display, so if the name is blank it displays a blank name instead of a formatted url.
+
 ## [1.2.0] - 2/26/2025
 
 ### Added
