@@ -62,9 +62,10 @@ jobs:
       - name: Get latest commit message
         id: commit
         run: |
-          echo "message=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
-          title=$(echo "${{ github.event.head_commit.message }}" | head -n 1)
-          body=$(echo "${{ github.event.head_commit.message }}" | tail -n +2)
+          message="${{ github.event.head_commit.message }}"
+          echo "message=$message" >> $GITHUB_ENV
+          title=$(echo "$message" | head -n 1)
+          body=$(echo "$message" | tail -n +2)
           echo "title=$title" >> $GITHUB_ENV
           echo "body=$body" >> $GITHUB_ENV
 
@@ -72,7 +73,8 @@ jobs:
         id: version
         run: |
           if [[ "${{ env.title }}" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-            echo "version=${BASH_REMATCH[1]}" >> $GITHUB_ENV
+            version="${BASH_REMATCH[1]}"
+            echo "version=$version" >> $GITHUB_ENV
             echo "should_release=true" >> $GITHUB_ENV
           else
             echo "should_release=false" >> $GITHUB_ENV
