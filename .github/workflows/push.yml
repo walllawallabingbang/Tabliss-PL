@@ -1,4 +1,5 @@
 name: Push
+
 on: push
 
 jobs:
@@ -37,7 +38,7 @@ jobs:
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
 
       # Use upload-pages-artifact only for web
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: matrix.build_target == 'web'
         with:
           name: tabliss-web
@@ -50,25 +51,6 @@ jobs:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-    if: github.ref == 'refs/heads/main'  # Only deploy on main branch
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: tabliss-web
-
   create-release:
     name: Create Draft GitHub Release
     needs: build
@@ -77,27 +59,72 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get latest commit title
+      - name: Get latest commit message
         id: commit
-        run: echo "message=$(git log -1 --pretty=%s)" >> $GITHUB_ENV
+        run: |
+          echo "message=${{ github.event.head_commit.message }}" >> $GITHUB_ENV
+          title=$(echo "${{ github.event.head_commit.message }}" | head -n 1)
+          body=$(echo "${{ github.event.head_commit.message }}" | tail -n +2)
+          echo "title=$title" >> $GITHUB_ENV
+          echo "body=$body" >> $GITHUB_ENV
 
       - name: Extract version number
         id: version
         run: |
-          if [[ "${{ env.message }}" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+          if [[ "${{ env.title }}" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
             echo "version=${BASH_REMATCH[1]}" >> $GITHUB_ENV
             echo "should_release=true" >> $GITHUB_ENV
           else
             echo "should_release=false" >> $GITHUB_ENV
           fi
 
-      - name: Create Draft Release
+      - name: Download build artifacts (web)
         if: env.should_release == 'true'
-        uses: softprops/action-gh-release@v2
+        uses: actions/download-artifact@v3
+        with:
+          name: tabliss-web
+
+      - name: Download build artifacts (chromium)
+        if: env.should_release == 'true'
+        uses: actions/download-artifact@v3
+        with:
+          name: tabliss-chromium
+
+      - name: Download build artifacts (firefox)
+        if: env.should_release == 'true'
+        uses: actions/download-artifact@v3
+        with:
+          name: tabliss-firefox
+
+      - name: Upload build artifacts to release (web)
+        if: env.should_release == 'true'
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ env.version }}
-          name: Version ${{ env.version }}
-          body: ${{ env.message }}
+          name: Version ${{ env.version }} - Web
+          body: ${{ env.body }}
           draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: tabliss-web/*  # Upload web build artifacts
+
+      - name: Upload build artifacts to release (chromium)
+        if: env.should_release == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.version }}
+          name: Version ${{ env.version }} - Chromium
+          body: ${{ env.body }}
+          draft: true
+          files: tabliss-chromium/*  # Upload chromium build artifacts
+
+      - name: Upload build artifacts to release (firefox)
+        if: env.should_release == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.version }}
+          name: Version ${{ env.version }} - Firefox
+          body: ${{ env.body }}
+          draft: true
+          files: tabliss-firefox/*  # Upload firefox build artifacts
+          
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
