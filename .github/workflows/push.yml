@@ -63,68 +63,64 @@ jobs:
         id: commit
         run: |
           message="${{ github.event.head_commit.message }}"
-          echo "message=$message" >> $GITHUB_ENV
           title=$(echo "$message" | head -n 1)
           body=$(echo "$message" | tail -n +2)
-          echo "title=$title" >> $GITHUB_ENV
-          echo "body=$body" >> $GITHUB_ENV
 
       - name: Extract version number
         id: version
         run: |
-          if [[ "${{ env.title }}" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+          if [[ "$title" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
             version="${BASH_REMATCH[1]}"
-            echo "version=$version" >> $GITHUB_ENV
-            echo "should_release=true" >> $GITHUB_ENV
+            echo "::set-output name=should_release::true"
           else
-            echo "should_release=false" >> $GITHUB_ENV
+            echo "::set-output name=should_release::false"
           fi
 
       - name: Download build artifacts (web)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: actions/download-artifact@v4
         with:
           name: tabliss-web
 
       - name: Download build artifacts (chromium)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: actions/download-artifact@v4
         with:
           name: tabliss-chromium
 
       - name: Download build artifacts (firefox)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: actions/download-artifact@v4
         with:
           name: tabliss-firefox
 
       - name: Upload build artifacts to release (web)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.version }}
-          name: Version ${{ env.version }} - Web
-          body: ${{ env.body }}
+          tag_name: v$version
+          name: Version $version - Web
+          body: $body
           draft: true
           files: tabliss-web/*  # Upload web build artifacts
 
       - name: Upload build artifacts to release (chromium)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.version }}
-          name: Version ${{ env.version }} - Chromium
-          body: ${{ env.body }}
+          tag_name: v$version
+          name: Version $version - Chromium
+          body: $body
           draft: true
           files: tabliss-chromium/*  # Upload chromium build artifacts
 
       - name: Upload build artifacts to release (firefox)
-        if: env.should_release == 'true'
+        if: ${{ steps.version.outputs.should_release == 'true' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.version }}
-          name: Version ${{ env.version }} - Firefox
-          body: ${{ env.body }}
+          tag_name: v$version
+          name: Version $version - Firefox
+          body: $body
           draft: true
           files: tabliss-firefox/*  # Upload firefox build artifacts
 
