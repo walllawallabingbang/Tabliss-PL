@@ -80,25 +80,25 @@ jobs:
 
       - name: Download build artifacts (web)
         if: env.should_release == 'true'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tabliss-web
 
       - name: Download build artifacts (chromium)
         if: env.should_release == 'true'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tabliss-chromium
 
       - name: Download build artifacts (firefox)
         if: env.should_release == 'true'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: tabliss-firefox
 
       - name: Upload build artifacts to release (web)
         if: env.should_release == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.version }}
           name: Version ${{ env.version }} - Web
@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload build artifacts to release (chromium)
         if: env.should_release == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.version }}
           name: Version ${{ env.version }} - Chromium
@@ -118,13 +118,13 @@ jobs:
 
       - name: Upload build artifacts to release (firefox)
         if: env.should_release == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ env.version }}
           name: Version ${{ env.version }} - Firefox
           body: ${{ env.body }}
           draft: true
           files: tabliss-firefox/*  # Upload firefox build artifacts
-          
+
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
