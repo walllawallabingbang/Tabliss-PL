@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix errors on Wikimedia Image of the Day. [#21d79ba](https://github.com/BookCatKid/tabliss-maintained/commit/21d79bada0ede075772098e7ba99e3045e17af54)
+
 - Fix the open feather modal always being visible. [#9763891](https://github.com/BookCatKid/tabliss-maintained/commit/976389118713eb53071caa31c66afed963f34b66)
 
 - Fix custom modal styles to apply only to quick links. [#37ee4fa](https://github.com/BookCatKid/tabliss-maintained/commit/37ee4fa4e4d552cfad6f404afa0a1931c2833f42)
