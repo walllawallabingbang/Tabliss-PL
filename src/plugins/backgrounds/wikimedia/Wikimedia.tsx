@@ -37,8 +37,8 @@ const Wikimedia: React.FC<Props> = ({ cache, data = defaultData, setCache }) => 
 
       {picture && data.showTitle && (
         <WikimediaTitle
-          title={picture.image.description.html}
-          copyright={picture.image?.artist?.html}
+          title={picture.image?.description?.html || ""}
+          copyright={picture.image?.artist?.html || ""}
         />
       )}
     </div>
