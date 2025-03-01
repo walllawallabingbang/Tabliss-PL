@@ -50,7 +50,6 @@ jobs:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
-
   deploy:
     name: Deploy to GitHub Pages
     needs: build
@@ -69,3 +68,37 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: tabliss-web
+
+  create-release:
+    name: Create Draft GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get latest commit message
+        id: commit
+        run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+
+      - name: Extract version number
+        id: version
+        run: |
+          if [[ "${{ env.message }}" =~ ^Version\ ([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+            echo "version=${BASH_REMATCH[1]}" >> $GITHUB_ENV
+            echo "should_release=true" >> $GITHUB_ENV
+          else
+            echo "should_release=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create Draft Release
+        if: env.should_release == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.version }}
+          name: Version ${{ env.version }}
+          body: ${{ env.message }}
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
