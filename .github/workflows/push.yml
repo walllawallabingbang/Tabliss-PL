@@ -77,9 +77,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Get latest commit message
+      - name: Get latest commit title
         id: commit
-        run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+        run: echo "message=$(git log -1 --pretty=%s)" >> $GITHUB_ENV
 
       - name: Extract version number
         id: version
@@ -101,4 +101,3 @@ jobs:
           draft: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
