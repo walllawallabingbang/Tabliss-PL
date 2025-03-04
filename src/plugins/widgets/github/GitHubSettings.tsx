@@ -8,20 +8,43 @@ const GitHubSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       GitHub Username
       <DebounceInput
         type="text"
-        value={data.username}
+        value={data.username || ""}
         onChange={(username) => setData({ ...data, username })}
       />
     </label>
-    {/* <label>
+
+    <label>
       <input
         type="checkbox"
-        checked={data.showSummary}
+        checked={data.showColorLegend}
         onChange={(event) =>
-          setData({ ...data, showSummary: !data.showSummary })
+          setData({ ...data, showColorLegend: !data.showColorLegend })
         }
       />{" "}
-      Show summary overview
-    </label>*/}
+      Show color legend
+    </label>
+
+    <label>
+      <input
+        type="checkbox"
+        checked={data.showMonthLabels}
+        onChange={(event) =>
+          setData({ ...data, showMonthLabels: !data.showMonthLabels })
+        }
+      />{" "}
+      Show month labels
+    </label>
+
+    <label>
+      <input
+        type="checkbox"
+        checked={data.showTotalCount}
+        onChange={(event) =>
+          setData({ ...data, showTotalCount: !data.showTotalCount })
+        }
+      />{" "}
+      Show total count
+    </label>
   </div>
 );
 
