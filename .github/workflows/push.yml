@@ -38,7 +38,7 @@ jobs:
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
 
       # Use upload-pages-artifact only for web
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-pages-artifact@v3
         if: matrix.build_target == 'web'
         with:
           name: tabliss-web
