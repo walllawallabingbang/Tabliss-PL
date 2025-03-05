@@ -6,8 +6,7 @@ This document provides detailed instructions for building the Tabliss-Maintained
 
 ### Required Software
 
-- Node.js Version: 16.x or higher
-- Version: 11.x
+- Node.js Version: 22.x or higher
 
 ## Build Script
 
