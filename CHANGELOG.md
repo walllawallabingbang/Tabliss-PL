@@ -4,12 +4,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Changed
-
-- Move to react-github-calendar [#3be1dfa](https://github.com/BookCatKid/tabliss-maintained/commit/3be1dfa53f751c7cadb526283788060f52a4075b)
-
 ## [1.2.1] - 2/28/2025
 
 ### Fixed
@@ -21,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix custom modal styles to apply only to quick links. [#37ee4fa](https://github.com/BookCatKid/tabliss-maintained/commit/37ee4fa4e4d552cfad6f404afa0a1931c2833f42)
 
 ### Changed
+
+- Move to react-github-calendar [#3be1dfa](https://github.com/BookCatKid/tabliss-maintained/commit/3be1dfa53f751c7cadb526283788060f52a4075b)
 
 - Make the custom uploads have the correct styles. [ba43558](https://github.com/BookCatKid/tabliss-maintained/commit/ba435588e1de85ad2704fd366370962d53a9c589)
 
