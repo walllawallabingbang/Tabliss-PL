@@ -7,7 +7,7 @@ import { getPicture } from "./api";
 import ApodTitle from "./ApodTitle";
 import "./Apod.sass";
 
-const Unsplash: React.FC<Props> = ({
+const Apod: React.FC<Props> = ({
   cache,
   data = defaultData,
   loader,
@@ -47,4 +47,4 @@ const Unsplash: React.FC<Props> = ({
   );
 };
 
-export default Unsplash;
+export default Apod;

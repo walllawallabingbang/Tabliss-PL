@@ -6,7 +6,7 @@ import { format } from "date-fns";
 
 const maxDate = format(new Date(), "yyyy-MM-dd");
 
-const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
+const ApodSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   <div className="ApodSettings">
     <label>
       Date of the picture
@@ -47,4 +47,4 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   </div>
 );
 
-export default UnsplashSettings;
+export default ApodSettings;
