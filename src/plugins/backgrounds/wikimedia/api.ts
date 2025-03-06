@@ -13,9 +13,9 @@ export const fetchFeaturedContent = async ({
 }): Promise<any> => {
   const url = `https://api.wikimedia.org/feed/v1/wikipedia/${language}/featured/${formattedDate}`;
   const headers = {
-    "origin": "*", // <-- this is the magic ingredient!
+    origin: "*", // <-- this is the magic ingredient!
   };
-  
+
   const res = await fetch(url);
   const body = await res.json();
 

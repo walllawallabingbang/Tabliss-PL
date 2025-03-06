@@ -5,7 +5,7 @@ type Data = {
   showColorLegend: boolean;
   showMonthLabels: boolean;
   showTotalCount: boolean;
-  clickAction: 'none' | 'github' | 'profile';
+  clickAction: "none" | "github" | "profile";
 };
 
 export type Props = API<Data>;
@@ -15,5 +15,5 @@ export const defaultData: Data = {
   showColorLegend: false,
   showMonthLabels: false,
   showTotalCount: false,
-  clickAction: 'none',
+  clickAction: "none",
 };

@@ -49,7 +49,7 @@ export const fetchImages = async ({
   const res = await fetch(`${url}?${params}`, { headers, cache: "no-cache" });
   const body = await res.json();
 
-  if (res.status != 200) {  
+  if (res.status != 200) {
     const empty: Image[] = [
       {
         src: "",
@@ -58,11 +58,11 @@ export const fetchImages = async ({
           location: undefined,
           userName: "",
           userLink: "",
-        }
-      }
-    ]
+        },
+      },
+    ];
     return empty;
-  };
+  }
 
   if (Array.isArray(body)) {
     return body.map((item: any) => ({
