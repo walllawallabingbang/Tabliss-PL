@@ -45,6 +45,20 @@ const GitHubSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       />{" "}
       Show total count
     </label>
+
+    <label>
+      Click Action
+      <select
+        value={data.clickAction}
+        onChange={(event) =>
+          setData({ ...data, clickAction: event.target.value as 'none' | 'github' | 'profile' })
+        }
+      >
+        <option value="none">Do nothing</option>
+        <option value="github">Go to GitHub.com</option>
+        <option value="profile">Go to profile page</option>
+      </select>
+    </label>
   </div>
 );
 

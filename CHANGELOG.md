@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add more error handling to unsplash.
+- Add click action to GitHub widget.
+- Add more error handling to unsplash. [#f6728cd](https://github.com/BookCatKid/tabliss-maintained/commit/f6728cdf9c5fbc18e67341ca976f39785623d9da)
 
 ## [1.2.1] - 3/4/2025
 
