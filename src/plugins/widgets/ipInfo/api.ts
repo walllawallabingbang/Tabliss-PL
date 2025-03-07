@@ -7,8 +7,18 @@ export async function getIpInfo(loader: API["loader"]): Promise<IpData> {
   const primary = fetch("https://ipwho.is")
     .then((res) => res.json())
     .catch(() =>
-      fetch("https://ipinfo.io/json?inc=ip,city,country,region") // FALLBACK: The request has been failing due to adblockers, but this one seems to work. other options: ip,city,region,country,loc,org,postal
-        .then((res) => res.json()),
+      fetch("https://www.gogeoip.com/json/?user")
+        .then((res) => res.json())
+        .then((data) => ({
+          ip: data.network.ip,
+          city: data.location.city,
+          country: data.location.country.name,
+          region: data.location.region_name,
+        }))
+        .catch(() =>
+          fetch("https://ipinfo.io/json?inc=ip,city,country,region")
+            .then((res) => res.json())
+        )
     );
 
   const data = await primary.finally(() => loader.pop());

@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add the option for unsplash for "Location On-Click Source" in unsplash widget.
+- Add a third ip info fallback api
+
+- Add the option for "Location On-Click Source" in Unsplash widget. [#29a968e](https://github.com/BookCatKid/tabliss-maintained/commit/29a968e694c8ab3943f4fb4c84a9356b4445204d)
 
 - Add crossfade animation to unsplash. [#e5197e68](https://github.com/BookCatKid/tabliss-maintained/commit/e5197e68a35e35a1730af973de98c81eb629098c)
 
