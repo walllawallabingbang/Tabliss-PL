@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a third ip info fallback api
+- Add a third ip info fallback api (https://github.com/BookCatKid/tabliss-maintained/commit/c46955dc532aed2a4c4db7676ca16b0d145f1f35)
 
 - Add the option for "Location On-Click Source" in Unsplash widget. [#29a968e](https://github.com/BookCatKid/tabliss-maintained/commit/29a968e694c8ab3943f4fb4c84a9356b4445204d)
 
