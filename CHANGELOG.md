@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update Supporting, Error and Storage Error modal
+- Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
+
+- Add the option for unsplash for "Location On-Click Source" in unsplash widget.
 
 - Add crossfade animation to unsplash. [#e5197e68](https://github.com/BookCatKid/tabliss-maintained/commit/e5197e68a35e35a1730af973de98c81eb629098c)
 
