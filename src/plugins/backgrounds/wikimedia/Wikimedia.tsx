@@ -1,11 +1,9 @@
 import React from "react";
-
 import Backdrop from "../../../views/shared/Backdrop";
-
-import { defaultData, Props } from "./types";
 import { fetchFeaturedContent, formatDateForApi } from "./api";
 import WikimediaTitle from "./WikimediaTitle";
 import "./Wikimedia.sass";
+import { defaultData, Props } from "./types";
 
 const Wikimedia: React.FC<Props> = ({ cache, data = defaultData, setCache }) => {
   const [picture, setPicture] = React.useState(cache);
@@ -18,7 +16,6 @@ const Wikimedia: React.FC<Props> = ({ cache, data = defaultData, setCache }) => 
     const language = "en";
     const params = { language, formattedDate};
     fetchFeaturedContent(params).then((result) => {
-      console.log(result);
       setCache(result);
       if (mounted.current || !picture) setPicture(result);
     });
@@ -30,17 +27,15 @@ const Wikimedia: React.FC<Props> = ({ cache, data = defaultData, setCache }) => 
       <Backdrop
         className="picture fullscreen"
         ready={!!picture?.image?.image?.source}
-        style={{
-          backgroundImage: `url(${picture?.image?.image?.source})`,
-        }}
-      />
-
-      {picture && data.showTitle && (
-        <WikimediaTitle
-          title={picture.image?.description?.html || ""}
-          copyright={picture.image?.artist?.html || ""}
-        />
-      )}
+        url={picture?.image?.image?.source}
+      >
+        {picture && data.showTitle && (
+          <WikimediaTitle
+            title={picture.image?.description?.html || ""}
+            copyright={picture.image?.artist?.html || ""}
+          />
+        )}
+      </Backdrop>
     </div>
   );
 };

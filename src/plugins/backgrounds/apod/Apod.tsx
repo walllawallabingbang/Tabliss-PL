@@ -22,27 +22,21 @@ const Apod: React.FC<Props> = ({
     mounted.current = true;
   }, [data.customDate, data.date]);
 
+  const imageUrl = picture?.media_type === "image"
+    ? picture?.hdurl || picture?.url
+    : picture?.thumbnail_url;
+
   return (
     <div className="Apod fullscreen">
       <Backdrop
         className="picture fullscreen"
-        ready={
-          !!(picture?.media_type === "image"
-            ? picture?.hdurl || picture?.url
-            : picture?.thumbnail_url)
-        }
-        style={{
-          backgroundImage: `url(${
-            picture?.media_type === "image"
-              ? picture?.hdurl || picture?.url
-              : picture?.thumbnail_url
-          })`,
-        }}
-      />
-
-      {picture && data.showTitle && (
-        <ApodTitle title={picture.title} copyright={picture.copyright} />
-      )}
+        ready={!!imageUrl}
+        url={imageUrl}
+      >
+        {picture && data.showTitle && (
+          <ApodTitle title={picture.title} copyright={picture.copyright} />
+        )}
+      </Backdrop>
     </div>
   );
 };

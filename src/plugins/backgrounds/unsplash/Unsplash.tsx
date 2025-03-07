@@ -76,7 +76,7 @@ const Unsplash: React.FC<Props> = ({
       <Backdrop
         className="image fullscreen"
         ready={url !== null}
-        style={{ backgroundImage: url ? `url(${url})` : undefined }}
+        url={url}
       />
 
       {item ? (

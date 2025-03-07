@@ -29,11 +29,9 @@ const Giphy: React.FC<Props> = ({
     <div className="Giphy fullscreen">
       <Backdrop
         className="gif fullscreen"
-        style={{
-          backgroundImage: `url(${url})`,
-          backgroundSize: data.expand ? "cover" : undefined,
-        }}
-      />
+        url={url}
+      >
+      </Backdrop>
       <Credit link={gif.link} />
     </div>
   );

@@ -1,24 +1,21 @@
 import React from "react";
+import { CrossFade } from "react-crossfade-simple";
 import { db } from "../../db/state";
 import { useValue } from "../../lib/db/react";
 import { useIsNight } from "../../hooks";
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
   ready?: boolean;
+  url?: string | null;
 };
 
 const Backdrop: React.FC<Props> = ({
   children,
   ready = true,
+  url,
   style = {},
   ...rest
 }) => {
-  // Lag one frame behind to show the animation
-  const [show, setShow] = React.useState(false);
-  React.useEffect(() => {
-    setShow(ready);
-  }, [ready]);
-
   const focus = useValue(db, "focus");
   // TODO: Consider passing display in via prop
   const background = useValue(db, "background");
@@ -48,16 +45,21 @@ const Backdrop: React.FC<Props> = ({
   }
 
   return (
-    <div
-      className="fullscreen"
-      style={{
-        opacity: show ? 1 : 0,
-        transition: "opacity 150ms ease-in-out",
-      }}
-    >
-      <div style={style} {...rest}>
-        {children}
-      </div>
+    <div className="fullscreen">
+      <CrossFade
+        contentKey={url || ''}
+        timeout={2500}
+      >
+        <div 
+          style={{
+            ...style,
+            backgroundImage: url ? `url(${url})` : undefined
+          }} 
+          {...rest}
+        >
+          {children}
+        </div>
+      </CrossFade>
     </div>
   );
 };

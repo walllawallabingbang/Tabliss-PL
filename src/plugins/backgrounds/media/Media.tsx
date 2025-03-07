@@ -19,9 +19,7 @@ const Media: React.FC<Props> = ({ cache = defaultCache }) => {
   return (
     <Backdrop
       className="Image fullscreen"
-      style={{
-        backgroundImage: isVideo ? undefined : `url(${url})`,
-      }}
+      url={isVideo ? undefined : url}
     >
       {isVideo && <video autoPlay loop className="video" src={url} />}
     </Backdrop>
