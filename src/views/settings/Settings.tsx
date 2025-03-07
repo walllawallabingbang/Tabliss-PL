@@ -104,6 +104,16 @@ const Settings: React.FC = () => {
               <Icon icon="feather:github" /> Star the github repository! 🌟😍
             </a>
           </p>
+          <p style={{ marginTop: "1rem" }} className="Widget">
+            <a
+              href="https://github.com/BookCatKid/tabliss-maintained/blob/master/CONTRIBUTING.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button button--primary"
+            >
+              <Icon icon="feather:code" /> Contribute to the project!
+            </a>
+          </p>
         </div>
 
         <FormattedMessage

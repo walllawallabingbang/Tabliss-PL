@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update Supporting, Error and Storage Error modal
+
 ### Added
 
-- Add crossfade animation to unsplash.
+- Add crossfade animation to unsplash. [#e5197e68](https://github.com/BookCatKid/tabliss-maintained/commit/e5197e68a35e35a1730af973de98c81eb629098c)
 
 - Add click action to GitHub widget. [#5c48b7fc](https://github.com/BookCatKid/tabliss-maintained/commit/5c48b7fc4e6376b0c6b1b92b196059769d393608)
 

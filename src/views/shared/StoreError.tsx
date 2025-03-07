@@ -23,21 +23,9 @@ const StoreError: React.FC<Props> = ({ onClose }) => {
         <p>
           If they do not return, the{" "}
           <a href="https://tabliss.io/support.html">support guide</a> covers the
-          common causes and how to resolve them. Otherwise, contact{" "}
-          <a href="mailto:support@tabliss.io">support@tabliss.io</a> if you are
-          still unable to solve the issue.
+          common causes and how to resolve them. Otherwise, create an issue at{" "}
+          <a href="https://github.com/BookCatKid/tabliss-maintained/issues/new">GitHub</a> if you are still unable to solve the issue.
         </p>
-        <div className="Modal-footer">
-          <a
-            className="button button--primary"
-            href="https://tabliss.io/support.html"
-            style={{ fontSize: "1.1em" }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Support Guide
-          </a>
-        </div>
       </div>
     </Modal>
   );
