@@ -15,7 +15,7 @@ const Quote: React.FC<Props> = ({
 }) => {
   useCachedEffect(
     () => {
-      getQuote(loader, data.category ?? "inspire").then(setCache);
+      getQuote(loader, data.category ?? "quotable").then(setCache);
     },
     cache ? cache.timestamp + EXPIRE_IN : 0,
     [data.category],

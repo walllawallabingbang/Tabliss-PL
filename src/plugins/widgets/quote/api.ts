@@ -2,7 +2,7 @@ import { API } from "../../types";
 import { Quote } from "./types";
 
 // Get developer excuse
-async function getDeveloperExcuse() {
+async function getDeveloperExcuse(): Promise<{ quote: string }> {
   try {
     const res = await fetch("https://api.tabliss.io/v1/developer-excuses");
     const body = await res.json();
@@ -17,68 +17,112 @@ async function getDeveloperExcuse() {
   }
 }
 
-// Get quote of the day
-async function getQuoteOfTheDay(category?: string) {
-  const res = await fetch(
-    "https://quotes.rest/qod.json" + (category ? `?category=${category}` : ""),
-  );
-  const body = await res.json();
+async function getRandomQuotableQuote(): Promise<{
+  quote: string;
+  author: string | undefined;
+}> {
+  try {
+    const res = await fetch("http://api.quotable.io/quotes/random?limit=1");
+    const body = await res.json();
+    const quote = body[0];
 
-  if (res.status === 429) {
     return {
-      author: body.error.message.split(".")[1] + ".",
-      quote: "Too many requests this hour.",
+      quote: quote.content,
+      author: quote.author,
+    };
+  } catch (err) {
+    return {
+      quote: "Unable to get qotable quote.",
+      author: undefined,
     };
   }
-
-  if (
-    body &&
-    body.contents &&
-    body.contents.quotes &&
-    body.contents.quotes[0]
-  ) {
-    return {
-      author: body.contents.quotes[0].author,
-      quote: body.contents.quotes[0].quote,
-    };
-  }
-
-  return {
-    author: null,
-    quote: null,
-  };
 }
+
+async function getRandomDwylQuote(): Promise<{
+  quote: string;
+  author: string | undefined;
+}> {
+  try {
+    const res = await fetch(
+      "https://raw.githubusercontent.com/dwyl/quotes/refs/heads/main/quotes.json",
+    );
+    const body = await res.json();
+    const quote = body[Math.floor(Math.random() * body.length)];
+
+    return {
+      quote: quote.quote,
+      author: quote.author,
+    };
+  } catch (err) {
+    return {
+      quote: "Unable to get dwyl quote.",
+      author: undefined,
+    };
+  }
+}
+
+// Get quote of the day
+// async function getQuoteOfTheDay(category?: string) {
+//   const res = await fetch(
+//     "https://quotes.rest/qod.json" + (category ? `?category=${category}` : ""),
+//   );
+//   const body = await res.json();
+
+//   if (res.status === 429) {
+//     return {
+//       author: body.error.message.split(".")[1] + ".",
+//       quote: "Too many requests this hour.",
+//     };
+//   }
+
+//   if (
+//     body &&
+//     body.contents &&
+//     body.contents.quotes &&
+//     body.contents.quotes[0]
+//   ) {
+//     return {
+//       author: body.contents.quotes[0].author,
+//       quote: body.contents.quotes[0].quote,
+//     };
+//   }
+
+//   return {
+//     author: null,
+//     quote: null,
+//   };
+// }
 
 // Get bible verse of the day
-async function getBibleVerse() {
-  const res = await fetch("https://quotes.rest/bible/vod.json");
+// async function getBibleVerse() {
+//   const res = await fetch("https://quotes.rest/bible/vod.json");
 
-  const body = await res.json();
+//   const body = await res.json();
 
-  if (res.status === 429) {
-    return {
-      author: body.error.message.split(".")[1] + ".",
-      quote: "Too many requests this hour.",
-    };
-  }
+//   if (res.status === 429) {
+//     return {
+//       author: body.error.message.split(".")[1] + ".",
+//       quote: "Too many requests this hour.",
+//     };
+//   }
 
-  if (body && body.contents) {
-    return {
-      author:
-        body.contents.book +
-        " " +
-        body.contents.chapter +
-        ":" +
-        body.contents.number,
-      quote: body.contents.verse,
-    };
-  }
+//   if (body && body.contents) {
+//     return {
+//       author:
+//         body.contents.book +
+//         " " +
+//         body.contents.chapter +
+//         ":" +
+//         body.contents.number,
+//       quote: body.contents.verse,
+//     };
+//   }
 
-  return {
-    author: null,
-    quote: null,
-  };
-}
+//   return {
+//     author: null,
+//     quote: null,
+//   };
+// }
 
 export async function getQuote(
   loader: API["loader"],
@@ -89,9 +133,10 @@ export async function getQuote(
   const data =
     category === "developerexcuses"
       ? await getDeveloperExcuse()
-      : category === "bible"
-        ? await getBibleVerse()
-        : await getQuoteOfTheDay(category);
+      : await getRandomQuotableQuote();
+  // : category === "bible"
+  //   ? await getBibleVerse()
+  //   : await getQuoteOfTheDay(category);
 
   loader.pop();
 

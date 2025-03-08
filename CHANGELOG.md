@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Unify invalid widget error handling.
+- Replace theysaidso with quotable and dwyl.
+
+- Unify invalid widget error handling. [#16d163b](https://github.com/BookCatKid/tabliss-maintained/commit/16d163bb65984c45f02351ea0bc5fb1a87aa7ffc)
 
 - Update error handling for invalid plugins. [#3b4a3ba](https://github.com/BookCatKid/tabliss-maintained/commit/3b4a3ba9d888e7d62e8e3591eebf8e0aec39feb0) and [#975898f](https://github.com/BookCatKid/tabliss-maintained/commit/975898f4e5a0c6afb48a63c0e75d5f643b01bd82)
 

@@ -7,7 +7,7 @@ export type Quote = {
 };
 
 type Data = {
-  category?: string;
+  category: string;
 };
 
 type Cache = Quote;
@@ -15,5 +15,5 @@ type Cache = Quote;
 export type Props = API<Data, Cache>;
 
 export const defaultData: Data = {
-  category: "inspire",
+  category: "quotable",
 };
