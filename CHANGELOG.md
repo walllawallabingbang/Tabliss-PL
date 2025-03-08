@@ -8,11 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update unsplash topics.
+- Update unsplash topics. [#41f8ab0](https://github.com/BookCatKid/tabliss-maintained/commit/41f8ab00d87143fd6f59dda8fa3111620e32647c)
 
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
+
+- Add multiselect to unsplash topics.
 
 - Add a third ip info fallback api (https://github.com/BookCatKid/tabliss-maintained/commit/c46955dc532aed2a4c4db7676ca16b0d145f1f35)
 

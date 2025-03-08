@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { DebounceInput } from "../../shared";
 import topics from "./topics.json";
 import { defaultData, Props } from "./types";
+import Multiselect from "multiselect-react-dropdown";
 
 const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   <div className="UnsplashSettings">
@@ -44,7 +45,7 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.by === "topics"}
         onChange={() => setData({ ...data, by: "topics" })}
       />{" "}
-      Topic
+      Topics
     </label>
 
     <label>
@@ -67,17 +68,56 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
 
     {data.by === "topics" && (
       <label>
-        Topic
-        <select
-          value={data.topics}
-          onChange={(event) => setData({ ...data, topics: event.target.value })}
-        >
-          {topics.map((topic) => (
-            <option key={topic.id} value={topic.id}>
-              {topic.title}
-            </option>
-          ))}
-        </select>
+        Topics
+        <Multiselect
+          options={topics.map(topic => ({ id: topic.id, name: topic.title }))}
+          selectedValues={topics
+            .map(topic => ({ id: topic.id, name: topic.title }))
+            .filter(topic => data.topics.includes(topic.id))
+          }
+          onSelect={(selectedList: Array<{ id: string; name: string }>) => {
+            setData({
+              ...data,
+              topics: selectedList.map(item => item.id)
+            });
+          }}
+          onRemove={(selectedList: Array<{ id: string; name: string }>) => {
+            setData({
+              ...data,
+              topics: selectedList.map(item => item.id)
+            });
+          }}
+          displayValue="name"
+          showCheckbox={true}
+          style={{
+            chips: {
+              background: '#3498db',
+              color: 'white',
+              padding: '5px 10px',
+              borderRadius: '2em',
+            },
+            searchBox: {
+              border: '1px solid #bdc3c7',
+              borderRadius: '0.2em',
+              padding: '0.5em',
+              marginTop: '0.5em',
+              width: '100%',
+            },
+            optionContainer: {
+              border: '1px solid #bdc3c7',
+              borderRadius: '0.2em',
+              marginTop: '0.2em',
+            },
+            option: {
+              padding: '0.5em',
+              color: 'inherit',
+              '&:hover': {
+                backgroundColor: '#ecf0f1',
+              },
+            },
+          }}
+        />
+        <i>Select one or more topics</i>
       </label>
     )}
 
@@ -120,7 +160,7 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
 
     <label>
       Location On-Click Source
-      <select 
+      <select
         value={data.locationSource}
         onChange={(event) => setData({ ...data, locationSource: event.target.value })}
       >

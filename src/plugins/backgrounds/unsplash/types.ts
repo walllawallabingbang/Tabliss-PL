@@ -9,7 +9,7 @@ export interface Data {
   featured: boolean;
   paused?: boolean;
   search: string;
-  topics: string;
+  topics: string[];
   timeout: number;
   locationSource: string;
 }
@@ -34,7 +34,7 @@ export const defaultData: Data = {
   featured: false,
   paused: false,
   search: "",
-  topics: "bo8jQKTaE0Y",
+  topics: ["bo8jQKTaE0Y"],
   timeout: 900,
   locationSource: "google-maps",
 };
