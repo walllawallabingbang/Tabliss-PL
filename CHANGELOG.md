@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update unsplash topics.
+
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
