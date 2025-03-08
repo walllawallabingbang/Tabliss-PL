@@ -45,6 +45,7 @@
     "react-crossfade-simple": "^1.0.7",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
+    "react-github-btn": "^1.4.0",
     "react-github-calendar": "^4.5.5",
     "react-intl": "^7.1.6",
     "sass": "^1.85.0",

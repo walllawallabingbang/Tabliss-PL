@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add multiselect to unsplash topics.
+- Added version number and better watch and star buttons to settings.
+
+- Add multiselect to unsplash topics. [#e11ca71](https://github.com/BookCatKid/tabliss-maintained/commit/e11ca71f8670c0013c697741fb2ed20c68df0d20)
 
 - Add a third ip info fallback api (https://github.com/BookCatKid/tabliss-maintained/commit/c46955dc532aed2a4c4db7676ca16b0d145f1f35)
 

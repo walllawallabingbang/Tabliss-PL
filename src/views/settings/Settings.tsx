@@ -10,6 +10,7 @@ import Persist from "./Persist";
 import "./Settings.sass";
 import System from "./System";
 import Widgets from "./Widgets";
+import GitHubButton from "react-github-btn";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
@@ -77,21 +78,59 @@ const Settings: React.FC = () => {
 
       <div className="plane">
         <Logo />
-
+        <div style={{
+          textAlign: "center",
+          margin: "-0.5rem 0 1.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "0.5rem"
+        }}>
+          <span style={{
+            background: "#f0f0f0",
+            padding: "0.3rem 0.8rem",
+            borderRadius: "1rem",
+            fontSize: "0.9rem",
+            color: "#666",
+            fontWeight: 500,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.3rem"
+          }}>
+            <Icon icon="feather:tag" style={{ fontSize: "0.9em" }} />
+            Tabliss Maintained v{VERSION}
+          </span>
+        </div>
+        <p style={{ textAlign: "center" }}>
+          <GitHubButton
+            href="https://github.com/BookCatKid/tabliss-maintained/subscription"
+            data-icon="octicon-eye"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Watch BookCatKid/tabliss-maintained on GitHub"
+          >
+            Watch
+          </GitHubButton>
+          <span style={{ margin: "0 1rem" }} />
+          <GitHubButton
+            href="https://github.com/BookCatKid/tabliss-maintained"
+            data-icon="octicon-star"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star BookCatKid/tabliss-maintained on GitHub"
+          >
+            Star
+          </GitHubButton>
+        </p>
         <Background />
-
         <Widgets />
-
         <System />
-
         <p style={{ marginBottom: "2rem" }}>
           <a onClick={handleImport}>Import</a>,{" "}
           <a onClick={handleExport}>export</a> or{" "}
           <a onClick={handleReset}>reset</a> your settings
         </p>
-
         <Persist />
-
         <div style={{ textAlign: "center" }} className="Widget">
           <h4>Support Tabliss - Maintained</h4>
           <p>
@@ -111,7 +150,7 @@ const Settings: React.FC = () => {
               rel="noopener noreferrer"
               className="button button--primary"
             >
-              <Icon icon="feather:code" /> Contribute to the project!
+              <Icon icon="feather:code" /> Contribute to the project! 😍🌟
             </a>
           </p>
         </div>
