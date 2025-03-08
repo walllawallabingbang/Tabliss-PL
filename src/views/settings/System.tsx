@@ -8,6 +8,7 @@ const System: React.FC = () => {
   const [locale, setLocale] = useKey(db, "locale");
   const [timeZone, setTimeZone] = useKey(db, "timeZone");
   const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
+  const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
 
   function setHighlighting(checked: boolean){
     setHighlightingEnabled(checked);
@@ -203,9 +204,8 @@ const System: React.FC = () => {
           alignItems: "center",
           display: "grid",
           gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 2fr",
+          gridTemplateColumns: "1fr 1fr",
           width: "100%",
-          margin: 0,
         }}
       >
         <span>Allow Highlighting</span>
@@ -213,6 +213,22 @@ const System: React.FC = () => {
           type="checkbox"
           checked={highlightingEnabled}
           onChange={(e) => setHighlighting(e.target.checked)}
+        />
+      </label>
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
+          gridTemplateColumns: "1fr 1fr",
+          width: "100%",
+        }}
+      >
+        <span>Hide Settings Icon</span>
+        <input
+          type="checkbox"
+          checked={hideSettingsIcon}
+          onChange={(e) => setHideSettingsIcon(e.target.checked)}
         />
       </label>
     </div>

@@ -19,6 +19,8 @@ export interface State {
   timeZone: string | null;
   /** Whether highlighting is enabled */
   highlightingEnabled: boolean;
+  /** Whether the settings icon is hidden */
+  hideSettingsIcon: boolean;
 }
 
 export interface BackgroundState {
@@ -92,7 +94,8 @@ const initData: State = {
   focus: false,
   locale: defaultLocale,
   timeZone: null,
-  highlightingEnabled: true, // Initialize as true
+  highlightingEnabled: true,
+  hideSettingsIcon: false,
 };
 
 // Database storage

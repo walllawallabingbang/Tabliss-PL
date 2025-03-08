@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Replace theysaidso with quotable and dwyl.
+- Replace theysaidso with quotable and dwyl. [#8b3f8a5](https://github.com/BookCatKid/tabliss-maintained/commit/8b3f8a52ed853c57e2fb08fd3b20880d52cabbbd)
 
 - Unify invalid widget error handling. [#16d163b](https://github.com/BookCatKid/tabliss-maintained/commit/16d163bb65984c45f02351ea0bc5fb1a87aa7ffc)
 
@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
+
+- Added to only show settings icon on hover.
 
 - Add version number and improved watch and star buttons to settings. [#c078136](https://github.com/BookCatKid/tabliss-maintained/commit/c0781363c7ddde7a5db5caf40a6d513fa80234c2)
 

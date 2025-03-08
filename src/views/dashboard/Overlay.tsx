@@ -5,7 +5,7 @@ import { UiContext } from "../../contexts/ui";
 import { toggleFocus } from "../../db/action";
 import { db } from "../../db/state";
 import { useFormatMessages, useFullscreen, useKeyPress } from "../../hooks";
-import { useValue } from "../../lib/db/react";
+import { useValue, useKey } from "../../lib/db/react";
 import { Icon } from "@iconify/react";
 import "./Overlay.sass";
 
@@ -43,6 +43,7 @@ const Overlay: React.FC = () => {
   const focus = useValue(db, "focus");
   const { errors } = React.useContext(ErrorContext);
   const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
+  const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
 
   useKeyPress(toggleFocus, ["w"]);
   useKeyPress(toggleSettings, ["s"]);
@@ -53,7 +54,11 @@ const Overlay: React.FC = () => {
 
   return (
     <div className="Overlay">
-      <a onClick={toggleSettings} title={`${translated.settingsHint} (S)`}>
+      <a 
+        onClick={toggleSettings} 
+        title={`${translated.settingsHint} (S)`}
+        className={hideSettingsIcon ? "on-hover" : ""}
+      >
         <Icon icon="feather:settings" />
       </a>
 
