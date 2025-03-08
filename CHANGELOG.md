@@ -20,7 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added to only show settings icon on hover.
+- Added a random gradient option.
+
+- Added a setting to only show settings icon on hover. [#029b94b](https://github.com/BookCatKid/tabliss-maintained/commit/029b94bfacd1a79f024a58475db7eee84da992f6)
 
 - Add version number and improved watch and star buttons to settings. [#c078136](https://github.com/BookCatKid/tabliss-maintained/commit/c0781363c7ddde7a5db5caf40a6d513fa80234c2)
 
