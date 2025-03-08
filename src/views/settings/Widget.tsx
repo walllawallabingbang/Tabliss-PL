@@ -29,51 +29,24 @@ const Widget: React.FC<Props> = ({
   onRemove,
 }) => {
   const [isOpen, toggleIsOpen] = useToggle(onRemove === undefined);
-  const [error, setError] = React.useState<Error | null>(null);
-  const [config, setConfig] = React.useState<Config>({
-    name: 'Loading...',
-    description: 'Loading widget configuration...',
-    settingsComponent: undefined
-  });
 
-  React.useEffect(() => {
-    try {
-      const widgetConfig = getConfig(plugin.key);
-      setConfig(widgetConfig);
-      setError(null);
-    } catch (e) {
-      if (e instanceof Error) {
-        setError(e);
-      } else {
-        setError(new Error('Unknown error loading widget configuration'));
-      }
-      setConfig({
-        name: 'Unavailable Widget',
-        description: `Unable to load widget: ${plugin.key}`,
-        settingsComponent: undefined
-      });
-    }
-  }, [plugin.key]);
-
-  const { description, name, settingsComponent } = config;
+  const { description, name, settingsComponent } = getConfig(plugin.key);
 
   const setDisplay = setWidgetDisplay.bind(null, plugin.id);
 
   return (
-    <fieldset className={`Widget ${error ? 'has-error' : ''}`}>
+    <fieldset className="Widget">
       <div className="title--buttons">
         <IconButton onClick={onRemove} title="Remove widget">
           <RemoveIcon />
         </IconButton>
 
-        {settingsComponent && (
-          <IconButton
-            onClick={toggleIsOpen}
-            title={`${isOpen ? "Close" : "Edit"} widget settings`}
-          >
-            <Icon name="settings" />
-          </IconButton>
-        )}
+        <IconButton
+          onClick={toggleIsOpen}
+          title={`${isOpen ? "Close" : "Edit"} widget settings`}
+        >
+          <Icon name="settings" />
+        </IconButton>
 
         {onMoveDown && (
           <IconButton onClick={onMoveDown} title="Move widget down">

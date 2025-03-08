@@ -8,13 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Unify invalid widget error handling.
+
+- Update error handling for invalid plugins. [#3b4a3ba](https://github.com/BookCatKid/tabliss-maintained/commit/3b4a3ba9d888e7d62e8e3591eebf8e0aec39feb0) and [#975898f](https://github.com/BookCatKid/tabliss-maintained/commit/975898f4e5a0c6afb48a63c0e75d5f643b01bd82)
+
 - Update unsplash topics. [#41f8ab0](https://github.com/BookCatKid/tabliss-maintained/commit/41f8ab00d87143fd6f59dda8fa3111620e32647c)
 
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
 
-- Added version number and better watch and star buttons to settings.
+- Add version number and improved watch and star buttons to settings. [#c078136](https://github.com/BookCatKid/tabliss-maintained/commit/c0781363c7ddde7a5db5caf40a6d513fa80234c2)
 
 - Add multiselect to unsplash topics. [#e11ca71](https://github.com/BookCatKid/tabliss-maintained/commit/e11ca71f8670c0013c697741fb2ed20c68df0d20)
 
