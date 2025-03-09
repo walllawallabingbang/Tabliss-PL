@@ -98,7 +98,7 @@ const Settings: React.FC = () => {
             gap: "0.3rem"
           }}>
             <Icon icon="feather:tag" style={{ fontSize: "0.9em" }} />
-            Tabliss Maintained v{VERSION}
+            Tabliss Maintained v{VERSION} {DEV ? "DEV " : ""}
           </span>
         </div>
         <p style={{ textAlign: "center" }}>
