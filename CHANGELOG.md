@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Change multiselect library, old one was very outdated, didn't work and broke the CI pipeline.
+- Update multiselect library due to outdated version causing CI pipeline failures. [#8d4cd57](https://github.com/BookCatKid/tabliss-maintained/commit/8d4cd571cd81d486fd8ebfaa5083cdc8ed8c86d0)
 
 - Replace theysaidso with quotable and dwyl. [#8b3f8a5](https://github.com/BookCatKid/tabliss-maintained/commit/8b3f8a52ed853c57e2fb08fd3b20880d52cabbbd)
 
@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
+
+- Add radial gradient support and more settings for random gradients.
 
 - Added a random gradient option. [#4812438](https://github.com/BookCatKid/tabliss-maintained/commit/4812438df7ff55bec9041d8cb62a09bc80ca134c)
 

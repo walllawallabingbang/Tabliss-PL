@@ -24,6 +24,37 @@ const GradientSettings: FC<Props> = ({ data = defaultData, setData }) => (
       </p>
     )}
 
+    <label>
+      Type
+      <select
+        value={data.type}
+        onChange={(event) =>
+          setData({
+            ...data,
+            type: event.target.value as "linear-gradient" | "radial-gradient",
+          })
+        }
+      >
+        <option value="linear-gradient">Linear</option>
+        <option value="radial-gradient">Radial</option>
+      </select>
+    </label>
+
+    {data.type === "linear-gradient" && (
+      <label>
+        Angle (0-360)
+        <input
+          type="number"
+          value={data.angle}
+          onChange={(event) =>
+            setData({ ...data, angle: Number(event.target.value) })
+          }
+          min={0}
+          max={360}
+        />
+      </label>
+    )}
+
     {!data.isRandom && (
       <>
         <label>
@@ -42,35 +73,6 @@ const GradientSettings: FC<Props> = ({ data = defaultData, setData }) => (
             value={data.to}
             onChange={(event) => setData({ ...data, to: event.target.value })}
           />
-        </label>
-
-        <label>
-          Angle (0-360)
-          <input
-            type="number"
-            value={data.angle}
-            onChange={(event) =>
-              setData({ ...data, angle: Number(event.target.value) })
-            }
-            min={0}
-            max={360}
-          />
-        </label>
-
-        <label>
-          Type
-          <select
-            value={data.type}
-            onChange={(event) =>
-              setData({
-                ...data,
-                type: event.target.value as "linear-gradient" | "radial-gradient",
-              })
-            }
-          >
-            <option value="linear-gradient">Linear</option>
-            <option value="radial-gradient">Radial</option>
-          </select>
         </label>
       </>
     )}
