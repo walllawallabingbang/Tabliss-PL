@@ -8,11 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix unsplash credit location extending too far.
+- Fix unsplash credit location extending too far. [#ab83b44](https://github.com/BookCatKid/tabliss-maintained/commit/ab83b449512b685fb89dd361a852e02c653f9047)
 
 - Make the scale option for background default to true. [#cfd5134](https://github.com/BookCatKid/tabliss-maintained/commit/cfd51340cf89a15b55bef91fe43a6125301be5b1)
 
 ### Changed
+
+- Compact the GitHub and version at top of settings.
 
 - Update multiselect library due to outdated version causing CI pipeline failures. [#8d4cd57](https://github.com/BookCatKid/tabliss-maintained/commit/8d4cd571cd81d486fd8ebfaa5083cdc8ed8c86d0)
 

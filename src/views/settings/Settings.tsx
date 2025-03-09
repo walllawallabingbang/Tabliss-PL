@@ -80,7 +80,7 @@ const Settings: React.FC = () => {
         <Logo />
         <div style={{
           textAlign: "center",
-          margin: "-0.5rem 0 1.5rem",
+          margin: "-0.5rem 0 1rem",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -101,7 +101,7 @@ const Settings: React.FC = () => {
             Tabliss Maintained v{VERSION} {DEV ? "DEV " : ""}
           </span>
         </div>
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: "center", marginTop: 0, marginBottom: 0 }}>
           <GitHubButton
             href="https://github.com/BookCatKid/tabliss-maintained/subscription"
             data-icon="octicon-eye"
