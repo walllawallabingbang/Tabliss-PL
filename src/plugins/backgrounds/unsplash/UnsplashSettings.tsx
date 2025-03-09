@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { DebounceInput } from "../../shared";
 import topics from "./topics.json";
 import { defaultData, Props } from "./types";
-import Multiselect from "multiselect-react-dropdown";
+import Select from "react-dropdown-select";
 
 const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   <div className="UnsplashSettings">
@@ -69,52 +69,45 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
     {data.by === "topics" && (
       <label>
         Topics
-        <Multiselect
-          options={topics.map(topic => ({ id: topic.id, name: topic.title }))}
-          selectedValues={topics
-            .map(topic => ({ id: topic.id, name: topic.title }))
-            .filter(topic => data.topics.includes(topic.id))
-          }
-          onSelect={(selectedList: Array<{ id: string; name: string }>) => {
+        <Select
+          options={topics.map(topic => ({ value: topic.id, label: topic.title }))}
+          values={topics
+            .map(topic => ({ value: topic.id, label: topic.title }))
+            .filter(topic => data.topics.includes(topic.value))}
+          onChange={(selected) => {
             setData({
               ...data,
-              topics: selectedList.map(item => item.id)
+              topics: selected.map(item => item.value)
             });
           }}
-          onRemove={(selectedList: Array<{ id: string; name: string }>) => {
-            setData({
-              ...data,
-              topics: selectedList.map(item => item.id)
-            });
-          }}
-          displayValue="name"
-          showCheckbox={true}
+          multi
+          searchable
+          dropdownHeight="300px"
           style={{
-            chips: {
-              background: '#3498db',
-              color: 'white',
-              padding: '5px 10px',
-              borderRadius: '2em',
-            },
-            searchBox: {
-              border: '1px solid #bdc3c7',
-              borderRadius: '0.2em',
-              padding: '0.5em',
-              marginTop: '0.5em',
-              width: '100%',
-            },
-            optionContainer: {
-              border: '1px solid #bdc3c7',
-              borderRadius: '0.2em',
-              marginTop: '0.2em',
-            },
-            option: {
-              padding: '0.5em',
-              color: 'inherit',
-              '&:hover': {
-                backgroundColor: '#ecf0f1',
-              },
-            },
+            width: '100%',
+            marginTop: '0.5em',
+            borderRadius: '0.2em',
+          }}
+          contentRenderer={({ props }) => {
+            if (props.values.length === 0) return <div>Select topics...</div>;
+            return (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25em', padding: '0.25em' }}>
+                {props.values.map((item: any) => (
+                  <span 
+                    key={item.value}
+                    style={{
+                      background: '#3498db',
+                      color: 'white',
+                      padding: '2px 8px',
+                      borderRadius: '1em',
+                      fontSize: '0.9em',
+                    }}
+                  >
+                    {item.label}
+                  </span>
+                ))}
+              </div>
+            );
           }}
         />
         <i>Select one or more topics</i>

@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Make the scale option for background default to true.
+- Make the scale option for background default to true. [#cfd5134](https://github.com/BookCatKid/tabliss-maintained/commit/cfd51340cf89a15b55bef91fe43a6125301be5b1)
 
 ### Changed
+
+- Change multiselect library, old one was very outdated, didn't work and broke the CI pipeline.
 
 - Replace theysaidso with quotable and dwyl. [#8b3f8a5](https://github.com/BookCatKid/tabliss-maintained/commit/8b3f8a52ed853c57e2fb08fd3b20880d52cabbbd)
 
