@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.3.0] - 3/11/2025
+## [1.3.0] - 3/9/2025
 
 ### Fixed
 
-- Kinda fix unsplash images changing on reload.
+- Fix unsplash images changing on reload. [#4357fd2](https://github.com/BookCatKid/tabliss-maintained/commit/4357fd293d8dbe7b41ff3d1310bf84b2bf18b799)
 
 - Fix unsplash credit location extending too far. [#ab83b44](https://github.com/BookCatKid/tabliss-maintained/commit/ab83b449512b685fb89dd361a852e02c653f9047)
 
@@ -25,8 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replace theysaidso with quotable and dwyl. [#8b3f8a5](https://github.com/BookCatKid/tabliss-maintained/commit/8b3f8a52ed853c57e2fb08fd3b20880d52cabbbd)
 
 - Unify invalid widget error handling. [#16d163b](https://github.com/BookCatKid/tabliss-maintained/commit/16d163bb65984c45f02351ea0bc5fb1a87aa7ffc)
-
-- Update error handling for invalid plugins. [#3b4a3ba](https://github.com/BookCatKid/tabliss-maintained/commit/3b4a3ba9d888e7d62e8e3591eebf8e0aec39feb0) and [#975898f](https://github.com/BookCatKid/tabliss-maintained/commit/975898f4e5a0c6afb48a63c0e75d5f643b01bd82)
 
 - Update unsplash topics. [#41f8ab0](https://github.com/BookCatKid/tabliss-maintained/commit/41f8ab00d87143fd6f59dda8fa3111620e32647c)
 
@@ -48,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add multiselect to unsplash topics. [#e11ca71](https://github.com/BookCatKid/tabliss-maintained/commit/e11ca71f8670c0013c697741fb2ed20c68df0d20)
 
-- Add a third ip info fallback api (https://github.com/BookCatKid/tabliss-maintained/commit/c46955dc532aed2a4c4db7676ca16b0d145f1f35)
+- Add a third ip info fallback api [#c46955d](https://github.com/BookCatKid/tabliss-maintained/commit/c46955dc532aed2a4c4db7676ca16b0d145f1f35)
 
 - Add the option for "Location On-Click Source" in Unsplash widget. [#29a968e](https://github.com/BookCatKid/tabliss-maintained/commit/29a968e694c8ab3943f4fb4c84a9356b4445204d)
 
