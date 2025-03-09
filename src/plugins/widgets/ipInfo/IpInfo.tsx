@@ -10,14 +10,20 @@ const IpInfo: React.FC<Props> = ({
   loader,
 }) => {
   const pushError = usePushError();
+  const mounted = React.useRef(false);
 
   const refreshData = React.useCallback(() => {
     getIpInfo(loader).then(setCache).catch(pushError);
   }, [loader, setCache, pushError]);
 
   React.useEffect(() => {
-    refreshData();
-  }, [refreshData]);
+    if (!mounted.current) {
+      mounted.current = true;
+      if (!cache) {
+        refreshData();
+      }
+    }
+  }, [cache]); // Only depend on cache to trigger initial load
 
   if (!cache) {
     return null;

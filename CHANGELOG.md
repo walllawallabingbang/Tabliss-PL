@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add click-to-refresh option to IP Info widget.
+- Add click-to-refresh option to IP Info widget. [#823a471](https://github.com/BookCatKid/tabliss-maintained/commit/823a471e731da7c5e1b9eb4dce646bb08f428ecd)
 
 - Add dev to version number if running dev version. [#a26e820](https://github.com/BookCatKid/tabliss-maintained/commit/a26e820e369e0fa79232a5de500a27f84778833d)
 
