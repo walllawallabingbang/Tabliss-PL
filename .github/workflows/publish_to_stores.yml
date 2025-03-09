@@ -3,6 +3,13 @@ on:
   push:
     tags:
       - v*.*.*
+  workflow_dispatch:
+    inputs:
+      skip_firefox_upload:
+        description: 'Skip Firefox Store upload'
+        type: boolean
+        default: false
+
 jobs:
   build:
     name: Build ${{ matrix.build_target }}
@@ -30,6 +37,7 @@ jobs:
 
   upload-firefox-store:
     needs: build
+    if: ${{ !inputs.skip_firefox_upload }}
     name: Upload extension to Firefox Store
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +70,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
-          
       - name: Create ZIP files
         run: |
           cd artifacts/tabliss-firefox
