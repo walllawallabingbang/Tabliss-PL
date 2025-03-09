@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Compact the GitHub and version at top of settings.
+- Compact the GitHub and version at top of settings. [#a6200c5](https://github.com/BookCatKid/tabliss-maintained/commit/a6200c5e75a4d60a39a149b0b682c6946599afe8)
 
 - Update multiselect library due to outdated version causing CI pipeline failures. [#8d4cd57](https://github.com/BookCatKid/tabliss-maintained/commit/8d4cd571cd81d486fd8ebfaa5083cdc8ed8c86d0)
 
@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update Supporting, Error and Storage Error modal. [#5d76cd7](https://github.com/BookCatKid/tabliss-maintained/commit/5d76cd7bba2cd4b1e381153773305ce87f2a279f)
 
 ### Added
+
+- Add click-to-refresh option to IP Info widget.
 
 - Add dev to version number if running dev version. [#a26e820](https://github.com/BookCatKid/tabliss-maintained/commit/a26e820e369e0fa79232a5de500a27f84778833d)
 

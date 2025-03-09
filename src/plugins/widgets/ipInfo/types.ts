@@ -5,6 +5,7 @@ type Data = {
   displayCountry: boolean;
   hideIP: boolean;
   maskIP: boolean;
+  clickToRefresh: boolean;
 };
 
 export type IpData = {
@@ -22,4 +23,5 @@ export const defaultData: Data = {
   displayCountry: true,
   hideIP: false,
   maskIP: false,
+  clickToRefresh: true,
 };

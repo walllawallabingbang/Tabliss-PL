@@ -40,6 +40,15 @@ const IpInfoSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       />
       Mask IP
     </label>
+
+    <label>
+      <input
+        type="checkbox"
+        checked={data.clickToRefresh}
+        onChange={() => setData({ ...data, clickToRefresh: !data.clickToRefresh })}
+      />
+      Enable Click to Refresh
+    </label>
   </div>
 );
 
