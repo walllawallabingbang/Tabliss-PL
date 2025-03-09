@@ -51,6 +51,29 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
           {/* <option value="1.5" label="+0.5" /> */}
         </datalist>
       </label>
+
+      <label>
+        Rotation
+        <br />
+        <input
+          type="range"
+          value={display.rotation ?? 0}
+          min="-180"
+          max="180"
+          step="0.1"
+          list="rotation-markers"
+          onChange={(event) =>
+            onChange({ rotation: Number(event.target.value) })
+          }
+        />
+        <datalist id="rotation-markers">
+          <option value="-180" label="-180°" />
+          <option value="-90" label="-90°" />
+          <option value="0" label="0°" />
+          <option value="90" label="90°" />
+          <option value="180" label="180°" />
+        </datalist>
+      </label>
     </div>
   );
 };

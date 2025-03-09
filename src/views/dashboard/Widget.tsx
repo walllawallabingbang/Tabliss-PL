@@ -7,6 +7,7 @@ const Widget: React.FC<React.PropsWithChildren<WidgetDisplay>> = ({
   fontFamily,
   fontSize = 24,
   scale = 1,
+  rotation = 0,
   fontWeight,
 }) => (
   <div
@@ -16,7 +17,7 @@ const Widget: React.FC<React.PropsWithChildren<WidgetDisplay>> = ({
       fontFamily,
       fontSize: `${fontSize}px`,
       fontWeight,
-      transform: `scale(${scale})`,
+      transform: `scale(${scale}) rotate(${rotation}deg)`,
     }}
   >
     {children}

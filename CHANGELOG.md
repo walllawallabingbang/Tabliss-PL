@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Binary Clock: option to set custom colors for dots.
+- Add rotation option to widget display settings
+
+- Binary Clock: option to set custom colors for dots. [#6c60391](https://github.com/BookCatKid/tabliss-maintained/commit/6c60391301f0d4f68f2e5ddc1f7f0b3b6a04a99a)
 
 ## [1.3.0] - 3/9/2025
 
