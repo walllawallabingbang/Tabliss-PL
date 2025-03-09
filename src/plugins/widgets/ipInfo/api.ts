@@ -16,9 +16,10 @@ export async function getIpInfo(loader: API["loader"]): Promise<IpData> {
           region: data.location.region_name,
         }))
         .catch(() =>
-          fetch("https://ipinfo.io/json?inc=ip,city,country,region")
-            .then((res) => res.json())
-        )
+          fetch("https://ipinfo.io/json?inc=ip,city,country,region").then(
+            (res) => res.json(),
+          ),
+        ),
     );
 
   const data = await primary.finally(() => loader.pop());

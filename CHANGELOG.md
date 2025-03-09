@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add dev to version number if running dev version.
+- Add dev to version number if running dev version. [#a26e820](https://github.com/BookCatKid/tabliss-maintained/commit/a26e820e369e0fa79232a5de500a27f84778833d)
 
 - Add radial gradient support and more settings for random gradients. [#43b2484](https://github.com/BookCatKid/tabliss-maintained/commit/43b2484ba39f2324c7fac9773012d83af335c52a)
 
