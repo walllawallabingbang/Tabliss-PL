@@ -9,6 +9,11 @@ on:
         description: 'Skip Firefox Store upload'
         type: boolean
         default: false
+      ref:
+        description: 'Git ref (tag/branch) to build from'
+        required: false
+        type: string
+        default: 'main'
 
 jobs:
   build:
@@ -19,6 +24,7 @@ jobs:
         build_target:
           - chromium
           - firefox
+          - web
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -67,6 +73,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
@@ -82,14 +90,17 @@ jobs:
       - name: Get version without v prefix
         id: version
         run: |
-          VERSION=${GITHUB_REF_NAME#v}
+          REF=${{ inputs.ref || github.ref_name }}
+          VERSION=${REF#v}
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "ref=$REF" >> $GITHUB_OUTPUT
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: softprops/action-gh-release@v1
         with:
           name: Version ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.ref }}
           files: |
             tabliss-firefox.zip
             tabliss-chromium.zip
