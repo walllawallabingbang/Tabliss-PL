@@ -65,15 +65,18 @@ const UnsplashCredit: React.FC<Props> = ({
       </a>
     </div>
 
-    <a
-      className="location"
-      href={getLocationUrl(credit.location, locationSource)}
-      // TODO: Could ad an option on where to open it, but it might just cause clutter
-      target="_self"
-      rel="noopener noreferrer"
-    >
-      {credit.location}
-    </a>
+    {credit.location && (
+      <span className="location-wrapper">
+        <a
+          className="location"
+          href={getLocationUrl(credit.location, locationSource)}
+          target="_self"
+          rel="noopener noreferrer"
+        >
+          {credit.location}
+        </a>
+      </span>
+    )}
   </div>
 );
 
