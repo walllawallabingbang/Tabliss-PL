@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Kinda fix unsplash images changing on reload.
+
 - Fix unsplash credit location extending too far. [#ab83b44](https://github.com/BookCatKid/tabliss-maintained/commit/ab83b449512b685fb89dd361a852e02c653f9047)
 
 - Make the scale option for background default to true. [#cfd5134](https://github.com/BookCatKid/tabliss-maintained/commit/cfd51340cf89a15b55bef91fe43a6125301be5b1)
