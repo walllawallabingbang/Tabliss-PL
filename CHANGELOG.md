@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Make the scale option for background default to true.
+
 ### Changed
 
 - Replace theysaidso with quotable and dwyl. [#8b3f8a5](https://github.com/BookCatKid/tabliss-maintained/commit/8b3f8a52ed853c57e2fb08fd3b20880d52cabbbd)
@@ -20,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a random gradient option.
+- Added a random gradient option. [#4812438](https://github.com/BookCatKid/tabliss-maintained/commit/4812438df7ff55bec9041d8cb62a09bc80ca134c)
 
 - Added a setting to only show settings icon on hover. [#029b94b](https://github.com/BookCatKid/tabliss-maintained/commit/029b94bfacd1a79f024a58475db7eee84da992f6)
 

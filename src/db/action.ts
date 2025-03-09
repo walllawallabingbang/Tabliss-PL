@@ -15,7 +15,7 @@ export const setBackground = (key: string): void => {
   DB.put(db, "background", {
     id,
     key,
-    display: { blur: 0, luminosity: -0.2, nightDim: false },
+    display: { blur: 0, luminosity: -0.2, nightDim: false, scale: true },
   });
   DB.del(db, `data/${current.id}`);
   DB.del(cache, current.id);
