@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Binary Clock: option to set custom colors for dots.
+
 ## [1.3.0] - 3/9/2025
 
 ### Fixed

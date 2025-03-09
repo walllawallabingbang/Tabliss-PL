@@ -6,6 +6,8 @@ type Data = {
   showSeconds: boolean;
   timeZone: string | null;
   name?: string;
+  onColor: string;
+  offColor: string;
 };
 
 export type Props = API<Data>;
@@ -15,4 +17,6 @@ export const defaultData: Data = {
   showMinutes: true,
   showSeconds: true,
   timeZone: null,
+  onColor: "#48d8b8",
+  offColor: "#525252",
 };

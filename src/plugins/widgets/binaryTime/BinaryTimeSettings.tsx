@@ -49,6 +49,24 @@ const TimeSettings: FC<Props> = ({ data = defaultData, setData }) => (
       />{" "}
       Display hours
     </label>
+
+    <label>
+      Active Color
+      <input
+        type="color"
+        value={data.onColor}
+        onChange={(event) => setData({ ...data, onColor: event.target.value })}
+      />
+    </label>
+
+    <label>
+      Inactive Color
+      <input
+        type="color"
+        value={data.offColor}
+        onChange={(event) => setData({ ...data, offColor: event.target.value })}
+      />
+    </label>
   </div>
 );
 
