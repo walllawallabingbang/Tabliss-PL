@@ -47,6 +47,6 @@ jobs:
         with:
           api_key: ${{ secrets.AMO_ISSUER }}
           api_secret: ${{ secrets.AMO_SECRET }}
-          guid: "{93ee6d07-88c2-42fe-86e3-79b5877ce2fb}"
+          guid: "extension@tabliss-maintained"
           xpi_path: release.zip
           src_path: source.zip
