@@ -1,0 +1,52 @@
+name: Update Extension on Stores
+on:
+  push:
+    tags:
+      - v*.*.*
+jobs:
+  build:
+    name: Build ${{ matrix.build_target }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_target:
+          - chromium
+          - firefox
+    steps:
+      - uses: actions/checkout@v3.5.3
+      - uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm run build:${{ matrix.build_target }}
+        env:
+          GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
+          UNSPLASH_API_KEY: ${{ secrets.UNSPLASH_API_KEY }}
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: tabliss-${{ matrix.build_target }}
+          path: dist/${{ matrix.build_target }}
+
+  upload-firefox-store:
+    needs: build
+    name: Upload extension to Firefox Store
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3.7.0
+        with:
+          node-version: 18
+      - uses: actions/download-artifact@v3
+        with:
+          name: tabliss-firefox
+      - run: zip release.zip ./* -r; mv release.zip ../release.zip; rm -rf *
+      - uses: actions/checkout@v3.5.3
+      - run: zip source.zip ./* -r; mv source.zip ../source.zip; rm -rf *
+      - run: mv ../release.zip release.zip; mv ../source.zip source.zip
+      - uses: yayuyokitano/firefox-addon@v0.0.6-alpha
+        with:
+          api_key: ${{ secrets.AMO_ISSUER }}
+          api_secret: ${{ secrets.AMO_SECRET }}
+          guid: "{93ee6d07-88c2-42fe-86e3-79b5877ce2fb}"
+          xpi_path: release.zip
+          src_path: source.zip
