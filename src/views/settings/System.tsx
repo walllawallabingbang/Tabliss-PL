@@ -4,11 +4,33 @@ import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
 import TimeZoneInput from "../shared/timeZone/TimeZoneInput";
 
+import { Icon, IconButton } from "../shared";
+
+const positions = [
+  {
+    value: "topLeft",
+    icon: "arrow-up-left",
+  },
+  {
+    value: "topRight",
+    icon: "arrow-up-right",
+  },
+  {
+    value: "bottomLeft",
+    icon: "arrow-down-left",
+  },
+  {
+    value: "bottomRight",
+    icon: "arrow-down-right",
+  },
+] as const;
+
 const System: React.FC = () => {
   const [locale, setLocale] = useKey(db, "locale");
   const [timeZone, setTimeZone] = useKey(db, "timeZone");
   const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
   const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
+  const [settingsIconPosition, setSettingsIconPosition] = useKey(db, "settingsIconPosition");
 
   function setHighlighting(checked: boolean){
     setHighlightingEnabled(checked);
@@ -197,6 +219,37 @@ const System: React.FC = () => {
       >
         Time Zone
         <TimeZoneInput timeZone={timeZone} onChange={setTimeZone} />
+      </label>
+
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
+          gridTemplateColumns: "1.7fr 1fr",
+          width: "100%",
+        }}
+      >
+        Settings Icon Position
+        <div className="PositionInput">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 35px)",
+              gridTemplateRows: "repeat(2, 35px)",
+            }}
+          >
+            {positions.map((position) => (
+              <IconButton
+                key={position.value}
+                onClick={() => setSettingsIconPosition(position.value)}
+                primary={settingsIconPosition === position.value}
+              >
+                <Icon name={position.icon} />
+              </IconButton>
+            ))}
+          </div>
+        </div>
       </label>
         
       <label

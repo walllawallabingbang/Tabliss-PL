@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add rotation option to widget display settings
+- Add an option to change the location of the settings icon!
+
+- Add rotation option to widget display settings [#2960ed0](https://github.com/BookCatKid/tabliss-maintained/commit/2960ed074415580c5d6c0400aab4183991f0a005)
 
 - Binary Clock: option to set custom colors for dots. [#6c60391](https://github.com/BookCatKid/tabliss-maintained/commit/6c60391301f0d4f68f2e5ddc1f7f0b3b6a04a99a)
 

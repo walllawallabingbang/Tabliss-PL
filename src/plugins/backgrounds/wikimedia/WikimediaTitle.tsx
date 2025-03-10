@@ -8,9 +8,10 @@ interface Props {
 
 const Credit: React.FC<Props> = ({ title, copyright }) => (
   <div className="title" style={{ lineHeight: 0 }}>
-    <p dangerouslySetInnerHTML={{ __html: title }}></p>
+    <p className="wikimedia-credit-title" dangerouslySetInnerHTML={{ __html: title }}></p>
     {copyright && (
       <p
+        className = "wikimedia-credit-copyright"
         style={{ textAlign: "right" }}
         dangerouslySetInnerHTML={{ __html: `&copy; ${copyright}` }}
       ></p>

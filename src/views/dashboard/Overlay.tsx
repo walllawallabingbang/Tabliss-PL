@@ -38,12 +38,41 @@ const messages = defineMessages({
   },
 });
 
+type Position = 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+
+const mapping: Record<Position, React.CSSProperties> = {
+  topLeft: {
+    top: '0',
+    bottom: 'auto',
+    left: '0',
+  },
+  topRight: {
+    top: '0',
+    right: '0',
+    left: 'auto',
+    flexDirection: 'row-reverse'
+  },
+  bottomLeft: {
+    bottom: '0',
+    top: 'auto',
+    left: '0',
+  },
+  bottomRight: {
+    bottom: '0',
+    right: '0',
+    top: 'auto',
+    left: 'auto',
+    flexDirection: 'row-reverse'
+  }
+};
+
 const Overlay: React.FC = () => {
   const translated = useFormatMessages(messages);
   const focus = useValue(db, "focus");
   const { errors } = React.useContext(ErrorContext);
   const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
   const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
+  const [settingsIconPosition] = useKey(db, "settingsIconPosition");
 
   useKeyPress(toggleFocus, ["w"]);
   useKeyPress(toggleSettings, ["s"]);
@@ -52,8 +81,37 @@ const Overlay: React.FC = () => {
   const [isFullscreen, handleToggleFullscreen] = useFullscreen();
   if (handleToggleFullscreen) useKeyPress(handleToggleFullscreen, ["f"]);
 
+  const unsplashCreditPhotoElement = document.querySelector(".credit .photo") as HTMLElement;
+  const unsplashCreditLocationElement = document.querySelector(".credit .location-wrapper") as HTMLElement;
+  const wikimediaTitleCredit = document.querySelector(".wikimedia-credit-title") as HTMLElement;
+  const wikimediaCopyrightCredit = document.querySelector(".wikimedia-credit-copyright") as HTMLElement;
+  const giphyCreditElement = document.querySelector(".credit:has(.giphy-logo)") as HTMLElement;
+  const apodCreditElement = document.querySelector(".apod-credit") as HTMLElement;
+
+  if (unsplashCreditPhotoElement) {
+    unsplashCreditPhotoElement.style.transform = settingsIconPosition === "bottomLeft" ? "translateY(-2.5em)" : "0";
+  }
+  if (unsplashCreditLocationElement) {
+    unsplashCreditLocationElement.style.transform = settingsIconPosition === "bottomRight" ? "translateY(-2.5em)" : "0";
+  }
+  if (wikimediaTitleCredit) {
+    wikimediaTitleCredit.style.transform = settingsIconPosition === "bottomLeft" ? "translateY(-2em)" : "0";
+  }
+  if (wikimediaCopyrightCredit) {
+    wikimediaCopyrightCredit.style.transform = settingsIconPosition === "bottomRight" ? "translateY(-3em)" : "0";
+  }
+  if (giphyCreditElement) {
+    giphyCreditElement.style.transform = settingsIconPosition === "bottomLeft" ? "translateY(-2em)" : "0";
+  }
+  if (apodCreditElement) {
+    apodCreditElement.style.transform = settingsIconPosition === "bottomLeft" ? "translateY(-3em)" : "0";
+  }
+
   return (
-    <div className="Overlay">
+    <div 
+      className={`Overlay ${settingsIconPosition}`} 
+      style={mapping[settingsIconPosition as Position] || mapping.topLeft}
+    >
       <a 
         onClick={toggleSettings} 
         title={`${translated.settingsHint} (S)`}

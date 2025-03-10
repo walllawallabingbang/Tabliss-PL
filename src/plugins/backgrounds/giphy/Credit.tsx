@@ -11,6 +11,7 @@ const Credit: React.FC<Props> = ({ link }) => (
       href={link || "https://giphy.com/"}
       target="_blank"
       rel="noopener noreferrer"
+      className="giphy-logo"
     >
       <img src={giphyLogo} />
     </a>

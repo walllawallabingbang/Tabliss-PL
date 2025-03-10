@@ -21,6 +21,8 @@ export interface State {
   highlightingEnabled: boolean;
   /** Whether the settings icon is hidden */
   hideSettingsIcon: boolean;
+  /** Position of the settings icon */
+  settingsIconPosition: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft';
 }
 
 export interface BackgroundState {
@@ -97,6 +99,7 @@ const initData: State = {
   timeZone: null,
   highlightingEnabled: true,
   hideSettingsIcon: false,
+  settingsIconPosition: 'topLeft',
 };
 
 // Database storage

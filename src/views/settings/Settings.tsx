@@ -11,9 +11,14 @@ import "./Settings.sass";
 import System from "./System";
 import Widgets from "./Widgets";
 import GitHubButton from "react-github-btn";
+import { db } from "../../db/state";
+import { useKey } from "../../lib/db/react";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
+  const [settingsIconPosition] = useKey(db, "settingsIconPosition");
+
+  const settingsOnRight = settingsIconPosition === "bottomRight" || settingsIconPosition === "topRight";
 
   const handleReset = () => {
     if (
@@ -76,7 +81,7 @@ const Settings: React.FC = () => {
     <div className="Settings">
       <a onClick={toggleSettings} className="fullscreen" />
 
-      <div className="plane">
+      <div className="plane" style={{ left: settingsOnRight ? "auto" : 0, right: settingsOnRight ? 0 : "auto", borderRadius: settingsOnRight ? "1rem 0 0 1rem" : "0 1rem 1rem 0" }}>
         <Logo />
         <div style={{
           textAlign: "center",
