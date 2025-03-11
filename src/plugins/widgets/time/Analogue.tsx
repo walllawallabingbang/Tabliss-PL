@@ -5,9 +5,11 @@ type Props = {
   showMinutes: boolean;
   showSeconds: boolean;
   time: Date;
+  color: string;
+  colorCircles: boolean;
 };
 
-const Analogue: FC<Props> = ({ time, showMinutes, showSeconds }) => {
+const Analogue: FC<Props> = ({ time, showMinutes, showSeconds, colorCircles, color }) => {
   const hoursAngle = time.getHours() * 30 + time.getMinutes() * 0.5;
   const minutesAngle = time.getHours() * 360 + time.getMinutes() * 6;
   const secondsAngle =
@@ -16,7 +18,7 @@ const Analogue: FC<Props> = ({ time, showMinutes, showSeconds }) => {
   return (
     <div className="Time Analogue">
       <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" className="bezel theme-stroke" />
+        <circle cx="50" cy="50" r="45" className="bezel theme-stroke" style={{ stroke: colorCircles ? color : "white" }} />
 
         <line
           x1="50"
@@ -24,7 +26,7 @@ const Analogue: FC<Props> = ({ time, showMinutes, showSeconds }) => {
           x2="50"
           y2="30"
           className="hours theme-stroke"
-          style={{ transform: `rotate(${hoursAngle}deg)` }}
+          style={{ transform: `rotate(${hoursAngle}deg)`, stroke: color }}
         />
 
         {showMinutes && (
@@ -34,7 +36,7 @@ const Analogue: FC<Props> = ({ time, showMinutes, showSeconds }) => {
             x2="50"
             y2="15"
             className="minutes theme-stroke"
-            style={{ transform: `rotate(${minutesAngle}deg)` }}
+            style={{ transform: `rotate(${minutesAngle}deg)`, stroke: color }}
           />
         )}
 
@@ -45,11 +47,11 @@ const Analogue: FC<Props> = ({ time, showMinutes, showSeconds }) => {
             x2="50"
             y2="10"
             className="seconds theme-stroke"
-            style={{ transform: `rotate(${secondsAngle}deg)` }}
+            style={{ transform: `rotate(${secondsAngle}deg)`, stroke: color }}
           />
         )}
 
-        <circle cx="50" cy="50" r="3" className="cap theme-fill" />
+        <circle cx="50" cy="50" r="3" className="cap theme-fill" style={{ fill: colorCircles ? color : "white" }} />
       </svg>
     </div>
   );

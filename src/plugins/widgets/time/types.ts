@@ -10,6 +10,7 @@ type Data = {
   showDayPeriod?: boolean;
   timeZone: string | null;
   name?: string;
+  colorCircles: boolean;
 };
 
 export type Props = API<Data>;
@@ -23,4 +24,5 @@ export const defaultData: Data = {
   showSeconds: false,
   showDayPeriod: true,
   timeZone: null,
+  colorCircles: true,
 };

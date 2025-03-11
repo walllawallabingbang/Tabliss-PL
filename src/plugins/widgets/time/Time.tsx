@@ -1,6 +1,5 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 import { FormattedDate } from "react-intl";
-
 import { useTime } from "../../../hooks";
 import Analogue from "./Analogue";
 import Digital from "./Digital";
@@ -13,6 +12,7 @@ const Time: FC<Props> = ({ data = defaultData }) => {
     hour12,
     mode,
     name,
+    colorCircles,
     showDate,
     hideTime,
     showMinutes,
@@ -21,6 +21,9 @@ const Time: FC<Props> = ({ data = defaultData }) => {
     showDayPeriod = true,
   } = data;
   let time = useTime(timeZone ? "absolute" : "zoned");
+
+  const h3Ref = useRef<HTMLHeadingElement | null>(null);
+  const color = h3Ref.current && window.getComputedStyle(h3Ref.current).color || "white";
 
   if (timeZone) {
     time = toZonedTime(time, timeZone);
@@ -35,6 +38,8 @@ const Time: FC<Props> = ({ data = defaultData }) => {
               time={time}
               showMinutes={showMinutes}
               showSeconds={showSeconds}
+              color={color}
+              colorCircles={colorCircles}
             />
           ) : (
             <Digital
@@ -55,9 +60,13 @@ const Time: FC<Props> = ({ data = defaultData }) => {
       {showDate && (
         <>
           {(!hideTime || name) && (
-            <hr />
+            <hr
+              style={{
+                borderColor: color,
+              }}
+            />
           )}
-          <h3>
+          <h3 ref={h3Ref}>
             <FormattedDate
               value={time}
               day="numeric"

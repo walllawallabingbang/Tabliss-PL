@@ -43,6 +43,17 @@ const TimeSettings: FC<Props> = ({ data = defaultData, setData }) => (
         Analogue
       </label>
 
+      {data.mode === "analogue" && (
+        <label>
+          <input
+            type="checkbox"
+            checked={data.colorCircles}
+            onChange={() => setData({ ...data, colorCircles: !data.colorCircles })}
+          />{" "}
+          Color circles
+        </label>
+      )}
+
       <label>
         <input
           type="radio"

@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Make the time widget analogue and line between inherit color.
+
 ### Added
 
-- Add an option to change the location of the settings icon!
+- Add an option to change the location of the settings icon! [#cddddb5](https://github.com/BookCatKid/tabliss-maintained/commit/cddddb5dca90ab27dd29166063104e9ee71da395)
 
 - Add rotation option to widget display settings [#2960ed0](https://github.com/BookCatKid/tabliss-maintained/commit/2960ed074415580c5d6c0400aab4183991f0a005)
 
