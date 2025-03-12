@@ -4,11 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.3.1] - 3/11/2025
 
 ### Fixed
 
-- Large bugfixes in Quick Links.
+- Large bugfixes in Quick Links. [f4b339f](https://github.com/BookCatKid/tabliss-maintained/commit/f4b339f49b2d1979bc80b9f6622cc163f3c48585)
 
 ### Changed
 
