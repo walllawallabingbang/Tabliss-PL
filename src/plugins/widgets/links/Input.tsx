@@ -52,8 +52,7 @@ const Input: FC<Props> = (props) => {
   const isCustomSvg = props.icon === "_custom_svg";
   const isCustomICON = props.icon === "_custom_ico";
   const isCustomUpload = props.icon === "_custom_upload";
-  const isFeather =
-    props.iconifyIdentifier === "feather:" && props.icon === "_feather";
+  const isFeather = props.icon === "_feather";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -122,7 +121,9 @@ const Input: FC<Props> = (props) => {
 
   // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
   useEffect(() => {
-    if (props.icon && !getSelectValues().includes(props.icon)) {
+    if (props.icon === "_favicon") {
+      props.onChange({ icon: "_favicon_google" });
+    } else if (props.icon && !getSelectValues().includes(props.icon)) {
       props.onChange({ iconifyValue: props.icon, icon: "_feather" });
     }
   }, [props.icon]);
@@ -363,7 +364,7 @@ const Input: FC<Props> = (props) => {
         <label>
           Icon Size
           <select
-            value={props.iconSize}
+            value={props.iconSize ?? 256}
             onChange={(event) =>
               props.onChange({ iconSize: Number(event.target.value) })
             }

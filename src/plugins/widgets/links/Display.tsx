@@ -52,14 +52,7 @@ type Props = Link & {
   number: number;
   linkOpenStyle: boolean;
   linksNumbered: boolean;
-  iconSize?: number;
-  IconString?: string;
-  IconStringIco?: string;
-  SvgString?: string;
   cache?: Cache;
-  customWidth?: number;
-  customHeight?: number;
-  conserveAspectRatio?: boolean;
 };
 
 const Display: FC<Props> = ({
@@ -105,13 +98,13 @@ const Display: FC<Props> = ({
         <i>
           <img alt={domain} src={`https://icons.duckduckgo.com/ip3/${domain}.ico`} />
         </i>
-      ) : icon === "_favicon_google" && domain ? (
+      ) : icon === "_favicon_google" && domain || icon === "_favicon" && domain ? (
         <i>
-          <img alt={domain} src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize}`} />
+          <img alt={domain} src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize ?? 256}`} />
         </i>
       ) : icon === "_favicon_favicone" && domain ? (
         <i>
-          <img alt={domain} src={`https://favicone.com/${domain}?s=${iconSize}`} />
+          <img alt={domain} src={`https://favicone.com/${domain}?s=${iconSize ?? 256}`} />
         </i>
       ) : icon === "_custom_iconify" && IconString ? (
         <i>
@@ -151,8 +144,8 @@ const Display: FC<Props> = ({
         <i>
           <Icon icon={iconifyIdentifier ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
         </i>
-      ) : icon ? (
-        // Migrate to new method of storing icons, the old one would cause the select to display the wrong value after my changes
+      )
+       : icon ? (
         <i>
           <Icon icon={"feather:" + icon} />
         </i>

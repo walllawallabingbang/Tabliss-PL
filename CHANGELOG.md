@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Large bugfixes in Quick Links.
+
 ### Changed
 
-- Make the time widget analogue and line between inherit color.
+- Make the time widget analogue and line between inherit color. [#1787a87](https://github.com/BookCatKid/tabliss-maintained/commit/1787a8706ff513c21b5a1180db935eb5af219df9)
 
 ### Added
 
