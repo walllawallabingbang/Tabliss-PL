@@ -121,6 +121,45 @@ const Widget: React.FC<Props> = ({
                   }
                 />
               </label>
+
+              <label>
+                <input
+                  type="checkbox"
+                  checked={plugin.display.textOutline}
+                  onChange={(event) =>
+                    setDisplay({ textOutline: event.target.checked })
+                  }
+                />{" "}
+                Text outline
+              </label>
+
+              {plugin.display.textOutline && (
+                <>
+                  <label>
+                    Outline Color
+                    <input
+                      type="color"
+                      value={plugin.display.textOutlineColor ?? "#000000"}
+                      onChange={(event) =>
+                        setDisplay({ textOutlineColor: event.target.value })
+                      }
+                    />
+                  </label>
+
+                  <label>
+                    Outline Size
+                    <input
+                      type="number"
+                      min="1"
+                      max="20"
+                      value={plugin.display.textOutlineSize ?? 1}
+                      onChange={(event) =>
+                        setDisplay({ textOutlineSize: Number(event.target.value) })
+                      }
+                    />
+                  </label>
+                </>
+              )}
             </>
           </ToggleSection>
         </div>

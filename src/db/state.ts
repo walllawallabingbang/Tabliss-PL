@@ -51,6 +51,9 @@ export interface WidgetDisplay {
   fontSize?: number;
   scale?: number;
   rotation?: number;
+  textOutline?: boolean;
+  textOutlineSize?: number;
+  textOutlineColor?: string;
   fontWeight?: number;
   position: WidgetPosition;
 }
