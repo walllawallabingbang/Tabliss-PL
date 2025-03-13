@@ -45,7 +45,7 @@ const Backdrop: React.FC<Props> = ({
   }
 
   return (
-    <div className="fullscreen">
+    <div className="fullscreen" style={{backgroundColor: luminosity > 0 ? "white" : "black"}}>
       <CrossFade
         contentKey={url || ''}
         timeout={2500}

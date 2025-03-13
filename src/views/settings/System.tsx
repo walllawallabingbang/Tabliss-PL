@@ -48,7 +48,6 @@ const System: React.FC = () => {
   const handleThemeChange = (checked: boolean) => {
     setIsDarkMode(checked);
     document.body.className = checked ? 'dark' : '';
-    localStorage.setItem("theme", checked ? 'dark' : '');
   };
 
   return (

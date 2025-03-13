@@ -12,12 +12,6 @@ const Dashboard: React.FC = () => {
   const darkMode = useValue(db, "darkMode");
   const theme = darkMode ? "dark" : "";
 
-  // Set init theme for pre settings load (see `target/<target>/index.html`)
-  React.useEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
   return (
     <div className={`Dashboard fullscreen ${theme}`}>
       <Background />

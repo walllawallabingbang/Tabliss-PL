@@ -5,6 +5,7 @@ import { UiContext } from "../contexts/ui";
 import { migrate } from "../db/migrate";
 import { cacheStorage, dbStorage } from "../db/state";
 import { Stream } from "../lib";
+import { useValue } from "../lib/db/react";
 import { Dashboard } from "./dashboard";
 import { Settings } from "./settings";
 import Errors from "./shared/Errors";
@@ -41,6 +42,11 @@ const Root: React.FC = () => {
   // Wait for storage to be ready before displaying
   const [ready, setReady] = React.useState(false);
   const [error, setError] = React.useState(false);
+  const darkMode = useValue(db, "darkMode");
+
+  React.useEffect(() => {
+    document.body.className = darkMode ? 'dark' : '';
+  }, [darkMode]);
 
   const pushError = usePushError();
   const handleError =
