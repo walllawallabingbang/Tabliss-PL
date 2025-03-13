@@ -19,6 +19,36 @@
   max-width: 500px;
 }
 
+body.dark .Modal {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
 .Modal-footer {
   text-align: center;
+}
+
+/* Add dark mode styles for any links inside modals */
+body.dark .Modal a {
+  color: #ffffff;
+}
+
+/* Add dark mode styles for any inputs inside modals */
+body.dark .Modal input,
+body.dark .Modal select,
+body.dark .Modal textarea {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #ffffff;
+}
+
+/* Add dark mode styles for any buttons inside modals */
+body.dark .Modal button {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.dark .Modal button:hover {
+  background-color: #3a3a3a;
 }

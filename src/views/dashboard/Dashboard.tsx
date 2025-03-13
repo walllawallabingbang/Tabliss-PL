@@ -9,15 +9,12 @@ import Widgets from "./Widgets";
 
 const Dashboard: React.FC = () => {
   const background = useValue(db, "background");
-  const isNight = useIsNight();
-  const theme =
-    (background.display.luminosity ?? 0) > 0 &&
-    !(background.display.nightDim && isNight)
-      ? "light"
-      : "dark";
+  const darkMode = useValue(db, "darkMode");
+  const theme = darkMode ? "dark" : "";
 
   // Set init theme for pre settings load (see `target/<target>/index.html`)
   React.useEffect(() => {
+    document.body.className = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 

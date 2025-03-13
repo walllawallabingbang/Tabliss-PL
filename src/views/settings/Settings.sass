@@ -1,8 +1,56 @@
 @use "sass:color"
+
+// Dark mode variables
+$dark-bg: #1a1a1a
+$dark-input-bg: #2d2d2d
+$dark-border: #444
+$dark-text: #ffffff
+$dark-secondary-text: #dddddd
+
+// Scrollbar colors
+$scrollbar-track-light: #F2F2F2
+$scrollbar-thumb-light: #BDBDBD
+$scrollbar-thumb-hover-light: #6E6E6E
+$scrollbar-track-dark: #2d2d2d
+$scrollbar-thumb-dark: #444444
+$scrollbar-thumb-hover-dark: #555555
+
+::-webkit-scrollbar
+    width: 10px
+
+::-webkit-scrollbar-track
+    background: $scrollbar-track-light
+    .dark &
+        background: $scrollbar-track-dark
+
+::-webkit-scrollbar-thumb
+    background: $scrollbar-thumb-light
+    border-radius: 5px
+    
+    .dark &
+        background: $scrollbar-thumb-dark
+
+::-webkit-scrollbar-thumb:hover
+    background: $scrollbar-thumb-hover-light
+    
+    .dark &
+        background: $scrollbar-thumb-hover-dark
+
+::-webkit-resizer
+
+    .dark &
+        background-color: $dark-border
+
+*
+    scrollbar-width: thin
+    scrollbar-color: $scrollbar-thumb-light $scrollbar-track-light
+    
+    .dark &
+        scrollbar-color: $scrollbar-thumb-dark $scrollbar-track-dark
+
 .Settings
     h1
         margin: 2rem 0
-
         svg
             fill: #3498db
             width: 100%
@@ -24,6 +72,11 @@
         width: 330px
         transition: transform 0.15s ease-out
 
+        // Add dark mode styles for plane
+        .dark &
+            background-color: $dark-bg
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5)
+
     label
         display: block
         margin: 1rem 0
@@ -31,9 +84,17 @@
         &:last-child
             margin-bottom: 0
 
+        // Add dark mode styles for labels
+        .dark &
+            color: $dark-secondary-text
+
     label + .info
         font-size: 0.9em
         margin-top: -0.75rem
+        
+        // Add dark mode styles for info text
+        .dark &
+            color: $dark-secondary-text
 
     input[type=email],
     input[type=file],
@@ -53,19 +114,35 @@
         width: 100%
         overflow: hidden
 
+        // Add dark mode styles for inputs
+        .dark &
+            background-color: $dark-input-bg
+            border-color: $dark-border
+            color: $dark-text
+
+            &:focus
+                border-color: #3498db
+                outline: none
+
         &.primary
             background-color: #ecf0f1
             border: 0.25em solid #ecf0f1
 
-        & + .input--error
-            display: none
+            // Add dark mode styles for primary inputs
+            .dark &
+                background-color: $dark-input-bg
+                border: none
 
-        &:invalid + .input--error
-            display: block
+    h2, h3, h4
+        .dark &
+            color: $dark-text
 
     input[type=radio],
     input[type=checkbox]
         margin-right: 0.5rem
+
+        .dark &
+            accent-color: #3498db
 
     input[type=color]
         display: block
@@ -81,9 +158,13 @@
         transition: background 0.25s ease-out
         text-align: center
         font-weight: 500
+        
         &:disabled
             background-color: #bdc3c7
             cursor: default
+
+            .dark &
+                background-color: $dark-border
 
         &--primary
             background-color: #3498db
@@ -99,9 +180,19 @@
             &:active
                 background: color.adjust(#bdc3c7, $lightness: -40%)
 
+            .dark &
+                background: color.adjust($dark-border, $lightness: 10%)
+                &:hover
+                    background: color.adjust($dark-border, $lightness: 20%)
+                &:active
+                    background: color.adjust($dark-border, $lightness: 30%)
+
     hr
         border: 1px solid #ecf0f1
         margin: 1rem 0
+
+        .dark &
+            border-color: $dark-border
 
 .button--icon
     background-color: #ecf0f1
@@ -116,8 +207,15 @@
     cursor: pointer
     transition: background-color 0.25s ease-out
 
+    .dark &
+        background-color: $dark-input-bg
+        color: $dark-text
+
     &:hover
         background-color: #bdc3c7 !important
+
+        .dark &
+            background-color: color.adjust($dark-input-bg, $lightness: 10%) !important
 
     &.button--primary
         background-color: #3498db !important

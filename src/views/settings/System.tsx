@@ -31,18 +31,25 @@ const System: React.FC = () => {
   const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
   const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition, setSettingsIconPosition] = useKey(db, "settingsIconPosition");
+  const [isDarkMode, setIsDarkMode] = useKey(db, "darkMode");
 
-  function setHighlighting(checked: boolean){
+  function setHighlighting(checked: boolean) {
     setHighlightingEnabled(checked);
     const element = document.querySelector(".Widgets") as HTMLElement;
     if (element) {
       if (checked) {
         element.style.userSelect = "auto";
-      } else{
+      } else {
         element.style.userSelect = "none";
       }
     }
   }
+
+  const handleThemeChange = (checked: boolean) => {
+    setIsDarkMode(checked);
+    document.body.className = checked ? 'dark' : '';
+    localStorage.setItem("theme", checked ? 'dark' : '');
+  };
 
   return (
     <div>
@@ -252,6 +259,22 @@ const System: React.FC = () => {
         </div>
       </label>
         
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
+          gridTemplateColumns: "1fr 1fr",
+          width: "100%",
+        }}
+      >
+        <span>Dark Mode</span>
+        <input
+          type="checkbox"
+          checked={isDarkMode}
+          onChange={(e) => handleThemeChange(e.target.checked)}
+        />
+      </label>
       <label
         style={{
           alignItems: "center",

@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a text-outline option to font settings.
+- Add dark mode!
+
+- Added a text-outline option to font settings. [1f4a6c0](https://github.com/BookCatKid/tabliss-maintained/commit/1f4a6c0fbf1e4094bbcebdc47ef03d57db43bf47)
 
 ## [1.3.1] - 3/11/2025
 

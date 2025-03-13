@@ -1,3 +1,9 @@
+// Dark mode variables
+$dark-bg: #2d2d2d
+$dark-button-bg: #3a3a3a
+$dark-border: #444
+$dark-text: #ffffff
+
 .Settings .Widget
     border: none
     border-radius: 0.5rem
@@ -5,13 +11,28 @@
     margin: 1em 0
     padding: 1em
 
+    .dark &
+        background: $dark-bg
+        color: $dark-text
+
     h4
         margin: 0
+        
+        .dark &
+            color: $dark-text
 
     .title--buttons
         button
             float: right
             margin: -0.25em 0 0 0.5em
+
+            .dark &
+                background: $dark-button-bg
+                color: $dark-text
+                border-color: $dark-border
+
+                &:hover
+                    background: lighten($dark-button-bg, 10%)
 
         h4
             cursor: pointer
@@ -24,3 +45,10 @@
 
     .button--icon
         background-color: white
+
+        .dark &
+            background-color: $dark-button-bg
+            color: $dark-text
+
+            &:hover
+                background-color: lighten($dark-button-bg, 10%)
