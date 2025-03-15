@@ -23,8 +23,8 @@ export interface State {
   hideSettingsIcon: boolean;
   /** Position of the settings icon */
   settingsIconPosition: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft';
-  /** Whether dark mode is enabled */
-  darkMode: boolean;
+  /** Theme preference (light/dark/system) */
+  themePreference: 'light' | 'dark' | 'system';
 }
 
 export interface BackgroundState {
@@ -105,7 +105,7 @@ const initData: State = {
   highlightingEnabled: true,
   hideSettingsIcon: false,
   settingsIconPosition: 'topLeft',
-  darkMode: true,
+  themePreference: 'system',
 };
 
 // Database storage

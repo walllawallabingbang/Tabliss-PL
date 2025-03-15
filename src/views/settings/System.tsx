@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
 import TimeZoneInput from "../shared/timeZone/TimeZoneInput";
-
+import { useSystemTheme } from "../../hooks/useSystemTheme";
 import { Icon, IconButton } from "../shared";
 
 const positions = [
@@ -31,7 +31,8 @@ const System: React.FC = () => {
   const [highlightingEnabled, setHighlightingEnabled] = useKey(db, "highlightingEnabled");
   const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition, setSettingsIconPosition] = useKey(db, "settingsIconPosition");
-  const [isDarkMode, setIsDarkMode] = useKey(db, "darkMode");
+  const [themePreference, setThemePreference] = useKey(db, "themePreference");
+  const systemIsDark = useSystemTheme();
 
   function setHighlighting(checked: boolean) {
     setHighlightingEnabled(checked);
@@ -45,9 +46,10 @@ const System: React.FC = () => {
     }
   }
 
-  const handleThemeChange = (checked: boolean) => {
-    setIsDarkMode(checked);
-    document.body.className = checked ? 'dark' : '';
+  const handleThemeChange = (value: 'light' | 'dark' | 'system') => {
+    setThemePreference(value);
+    const isDark = value === 'system' ? systemIsDark : value === 'dark';
+    document.body.className = isDark ? 'dark' : '';
   };
 
   return (
@@ -267,12 +269,16 @@ const System: React.FC = () => {
           width: "100%",
         }}
       >
-        <span>Dark Mode</span>
-        <input
-          type="checkbox"
-          checked={isDarkMode}
-          onChange={(e) => handleThemeChange(e.target.checked)}
-        />
+        <span>Theme</span>
+        <select 
+          value={themePreference}
+          onChange={(e) => handleThemeChange(e.target.value as 'light' | 'dark' | 'system')}
+          style={{ margin: 0 }}
+        >
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="system">System</option>
+        </select>
       </label>
       <label
         style={{

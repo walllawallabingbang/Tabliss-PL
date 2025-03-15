@@ -12,13 +12,14 @@ import System from "./System";
 import Widgets from "./Widgets";
 import GitHubButton from "react-github-btn";
 import { db } from "../../db/state";
-import { useKey, useValue } from "../../lib/db/react";
+import { useKey } from "../../lib/db/react";
+import { useTheme } from "../../hooks/useTheme";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
-  const darkMode = useValue(db, "darkMode");
-
+  const { isDark } = useTheme();
+  
   const settingsOnRight = settingsIconPosition === "bottomRight" || settingsIconPosition === "topRight";
 
   const handleReset = () => {
@@ -93,11 +94,11 @@ const Settings: React.FC = () => {
           gap: "0.5rem"
         }}>
           <span style={{
-            background: darkMode ? "#2d2d2d" : "#f0f0f0",
+            background: isDark ? "#2d2d2d" : "#f0f0f0",
             padding: "0.3rem 0.8rem",
             borderRadius: "1rem",
             fontSize: "0.9rem",
-            color: darkMode ? "#e0e0e0" : "#666",
+            color: isDark ? "#e0e0e0" : "#666",
             fontWeight: 500,
             display: "inline-flex",
             alignItems: "center",
@@ -113,7 +114,7 @@ const Settings: React.FC = () => {
             data-icon="octicon-eye"
             data-size="large"
             data-show-count="true"
-            data-color-scheme={darkMode ? "dark" : "light"}
+            data-color-scheme={isDark ? "dark" : "light"}
             aria-label="Watch BookCatKid/tabliss-maintained on GitHub"
           >
             Watch
@@ -124,7 +125,7 @@ const Settings: React.FC = () => {
             data-icon="octicon-star"
             data-size="large"
             data-show-count="true"
-            data-color-scheme={darkMode ? "dark" : "light"}
+            data-color-scheme={isDark ? "dark" : "light"}
             aria-label="Star BookCatKid/tabliss-maintained on GitHub"
           >
             Star

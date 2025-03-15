@@ -11,6 +11,7 @@ import { Settings } from "./settings";
 import Errors from "./shared/Errors";
 import StoreError from "./shared/StoreError";
 import { db } from "../db/state";
+import { useSystemTheme } from "../hooks/useSystemTheme";
 
 function setHighlighting(){
   const checked = db.cache.get('highlightingEnabled');
@@ -42,11 +43,13 @@ const Root: React.FC = () => {
   // Wait for storage to be ready before displaying
   const [ready, setReady] = React.useState(false);
   const [error, setError] = React.useState(false);
-  const darkMode = useValue(db, "darkMode");
+  const themePreference = useValue(db, "themePreference");
+  const systemIsDark = useSystemTheme();
 
   React.useEffect(() => {
-    document.body.className = darkMode ? 'dark' : '';
-  }, [darkMode]);
+    const isDark = themePreference === 'system' ? systemIsDark : themePreference === 'dark';
+    document.body.className = isDark ? 'dark' : '';
+  }, [themePreference, systemIsDark]);
 
   const pushError = usePushError();
   const handleError =

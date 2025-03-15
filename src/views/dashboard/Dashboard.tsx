@@ -1,16 +1,13 @@
 import React from "react";
-import { db } from "../../db/state";
-import { useIsNight } from "../../hooks";
-import { useValue } from "../../lib/db/react";
+import { useTheme } from "../../hooks/useTheme";
 import Background from "./Background";
 import "./Dashboard.sass";
 import Overlay from "./Overlay";
 import Widgets from "./Widgets";
 
 const Dashboard: React.FC = () => {
-  const background = useValue(db, "background");
-  const darkMode = useValue(db, "darkMode");
-  const theme = darkMode ? "dark" : "";
+  const { isDark } = useTheme();
+  const theme = isDark ? 'dark' : '';
 
   return (
     <div className={`Dashboard fullscreen ${theme}`}>
