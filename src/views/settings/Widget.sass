@@ -1,3 +1,5 @@
+@use "sass:color"
+
 // Dark mode variables
 $dark-bg: #2d2d2d
 $dark-button-bg: #3a3a3a
@@ -32,7 +34,7 @@ $dark-text: #ffffff
                 border-color: $dark-border
 
                 &:hover
-                    background: lighten($dark-button-bg, 10%)
+                    background: color.adjust($dark-button-bg, $lightness: 10%)
 
         h4
             cursor: pointer
@@ -51,4 +53,4 @@ $dark-text: #ffffff
             color: $dark-text
 
             &:hover
-                background-color: lighten($dark-button-bg, 10%)
+                background-color: color.adjust($dark-button-bg, $lightness: 10%)
