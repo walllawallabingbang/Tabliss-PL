@@ -6,34 +6,77 @@ import "./Bookmarks.sass";
 import Icon from "../../../views/shared/icons/Icon";
 import BookmarkTreeNode = Bookmarks.BookmarkTreeNode;
 
-const Node = ({ url, title, depth, wrap }: {
-  url: string | undefined,
-  title: string,
-  depth: number,
-  wrap: boolean
-}): ReactNode => {
-  const cls = url ? "bookmark" : "folder";
+type NodeProps = {
+  node: BookmarkTreeNode;
+  depth: number;
+  wrap: boolean;
+  navigationStyle: 'drill-down' | 'expand-collapse';
+  onFolderClick?: (folderId: string) => void;
+};
 
-  return <div className={cls} style={{
-    marginLeft: depth + "em",
-    whiteSpace: wrap ? undefined : "pre",
-  }}>
-    <Icon name={cls} />{url ? <a href={url}>{title}</a> : title}
-  </div>;
+const Node: FC<NodeProps> = ({ node, depth, wrap, navigationStyle, onFolderClick }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isFolder = !node.url;
+  const cls = isFolder ? "folder" : "bookmark";
+
+  const handleClick = () => {
+    if (!isFolder) return;
+    
+    if (navigationStyle === 'drill-down') {
+      onFolderClick?.(node.id);
+    } else {
+      setIsExpanded(!isExpanded);
+    }
+  };
+
+  return (
+    <>
+      <div 
+        className={`${cls} ${isExpanded ? 'expanded' : ''}`} 
+        style={{
+          marginLeft: depth + "em",
+          whiteSpace: wrap ? undefined : "pre",
+          cursor: "pointer"
+        }} 
+        onClick={handleClick}
+      >
+        <Icon name={cls} />
+        {node.url ? <a href={node.url}>{node.title}</a> : node.title}
+      </div>
+      
+      {navigationStyle === 'expand-collapse' && isFolder && isExpanded && node.children?.map(child => (
+        <Node
+          key={child.id}
+          node={child}
+          depth={depth + 1}
+          wrap={wrap}
+          navigationStyle={navigationStyle}
+          onFolderClick={onFolderClick}
+        />
+      ))}
+    </>
+  );
 };
 
 const Bookmarks: FC<Props> = ({ data = defaultData }) => {
   const [tree, setTree] = useState<BookmarkTreeNode>();
   const [hasPermission, setHasPermission] = useState<boolean>(true);
+  const [currentFolder, setCurrentFolder] = useState<string | null>(null);
+  const [navigationStack, setNavigationStack] = useState<BookmarkTreeNode[]>([]);
 
   useEffect(() => {
     const checkPermission = async () => {
       const granted = await browser.permissions.contains({ permissions: ["bookmarks"] });
       if (granted) {
-        const treePromise = data.rootBookmark
-          ? browser.bookmarks.getSubTree(data.rootBookmark)
+        const rootId = data.rootBookmark || null;
+        setCurrentFolder(rootId);
+        const treePromise = rootId
+          ? browser.bookmarks.getSubTree(rootId)
           : browser.bookmarks.getTree();
-        treePromise.then((tree) => setTree(tree[0]));
+        treePromise.then((tree) => {
+          setTree(tree[0]);
+          setNavigationStack([tree[0]]);
+        });
       } else {
         setHasPermission(false);
       }
@@ -45,10 +88,31 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
     const granted = await browser.permissions.request({ permissions: ["bookmarks"] });
     setHasPermission(granted);
     if (granted) {
-      const treePromise = data.rootBookmark
-        ? browser.bookmarks.getSubTree(data.rootBookmark)
+      const rootId = data.rootBookmark || null;
+      setCurrentFolder(rootId);
+      const treePromise = rootId
+        ? browser.bookmarks.getSubTree(rootId)
         : browser.bookmarks.getTree();
-      treePromise.then((tree) => setTree(tree[0]));
+      treePromise.then((tree) => {
+        setTree(tree[0]);
+        setNavigationStack([tree[0]]);
+      });
+    }
+  };
+
+  const navigateToFolder = async (folderId: string) => {
+    const folderTree = await browser.bookmarks.getSubTree(folderId);
+    setCurrentFolder(folderId);
+    setNavigationStack(prev => [...prev, folderTree[0]]);
+  };
+
+  const navigateBack = () => {
+    if (navigationStack.length > 1) {
+      const newStack = [...navigationStack];
+      newStack.pop();
+      setNavigationStack(newStack);
+      const previousFolder = newStack[newStack.length - 1];
+      setCurrentFolder(previousFolder.id);
     }
   };
 
@@ -62,29 +126,43 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
     );
   }
 
-  const items: React.JSX.Element[] = [];
+  if (!tree) return null;
 
-  const descendTree = (tree: BookmarkTreeNode | undefined, depth: number) => {
-    if (!tree) {
-      return;
-    }
-
-    if (tree.title && depth) {
-      items.push(<Node url={tree.url} title={tree.title} depth={depth} wrap={data.wrap} />);
-    }
-
-    if (tree.children) {
-      for (const item of tree.children) {
-        descendTree(item, depth + 1);
-      }
-    }
-  };
-
-  descendTree(tree, 0);
-
-  return <div className="Bookmarks" style={{ maxWidth: data.maxWidth + "em" }}>
-    {items}
-  </div>;
+  return (
+    <div className="Bookmarks" style={{ 
+      maxWidth: data.maxWidth + "em",
+      maxHeight: data.maxHeight + "em",
+      overflowY: "auto"
+    }}>
+      {data.navigationStyle === 'drill-down' ? (
+        <>
+          {navigationStack.length > 1 && (
+            <div className="folder" style={{ marginLeft: "0em", cursor: "pointer" }} onClick={navigateBack}>
+              <Icon name="folder" />..
+            </div>
+          )}
+          {navigationStack[navigationStack.length - 1]?.children?.map(item => (
+            <Node
+              key={item.id}
+              node={item}
+              depth={0}
+              wrap={data.wrap}
+              navigationStyle={data.navigationStyle}
+              onFolderClick={navigateToFolder}
+            />
+          ))}
+        </>
+      ) : (
+        <Node
+          node={tree}
+          depth={0}
+          wrap={data.wrap}
+          navigationStyle={data.navigationStyle}
+          onFolderClick={navigateToFolder}
+        />
+      )}
+    </div>
+  );
 };
 
 export default Bookmarks;

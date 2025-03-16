@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add a TopSites widget.
+- Improve Bookmarks widget.
+
+- Add a TopSites widget. [#3c9fbc1](https://github.com/BookCatKid/tabliss-maintained/commit/3c9fbc1b0eea97d89c14dc598f061d2150f001b7)
 
 - Added a custom placeholder for the search bar. [dfb4bc0](https://github.com/BookCatKid/tabliss-maintained/commit/dfb4bc077687034876903ae780afd539d9118f3a)
 
