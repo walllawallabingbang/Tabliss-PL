@@ -5,6 +5,7 @@ type Data = {
   searchEngineCustom?: string;
   suggestionsEngine?: string;
   suggestionsQuantity: number;
+  placeholderText?: string;
 };
 
 export type Props = API<Data>;

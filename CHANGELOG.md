@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Giphy improvements.
+- Giphy improvements. [#7eb761c](https://github.com/BookCatKid/tabliss-maintained/commit/7eb761cdacb4c1cac1a1c73a0f60f13fdd2f1f8a)
 
 ### Added
+
+- Added a custom placeholder for the search bar.
 
 - Add dark mode!
    [fd8a86b](https://github.com/BookCatKid/tabliss-maintained/commit/fd8a86bf61f0163164144eb0f31a771367a97295),

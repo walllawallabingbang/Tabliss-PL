@@ -47,6 +47,21 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => (
       </>
     )}
 
+    <label>
+      Placeholder Text
+      <input
+        type="text"
+        value={data.placeholderText}
+        placeholder="Type to search"
+        onChange={(event) =>
+          setData({
+            ...data,
+            placeholderText: event.target.value,
+          })
+        }
+      />
+    </label>
+    
     {BUILD_TARGET === "web" && (
       <label>
         Suggestions Provider

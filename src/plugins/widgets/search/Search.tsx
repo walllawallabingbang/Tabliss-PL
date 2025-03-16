@@ -23,10 +23,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
   const [suggestions, setSuggestions] = useState<string[]>();
 
   const intl = useIntl();
-  const placeholder = useMemo(
-    () => intl.formatMessage(messages.placeholder),
-    [intl],
-  );
+  const placeholder = data.placeholderText || intl.formatMessage(messages.placeholder);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     previousValue.current = event.target.value;
