@@ -6,7 +6,6 @@ export type Gif = {
 };
 
 export type Data = {
-  expand: boolean;
   nsfw: boolean;
   tag: string;
 };
@@ -16,7 +15,6 @@ export type Cache = Gif;
 export type Props = API<Data, Cache>;
 
 export const defaultData: Data = {
-  expand: false,
   nsfw: false,
   tag: "pattern",
 };

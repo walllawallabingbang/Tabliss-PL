@@ -10,7 +10,8 @@ export async function getGif(
   { tag, nsfw }: Config,
   loader: API["loader"],
 ): Promise<Gif> {
-  const tags = tag.split(",").map((t) => t.trim());
+  // TODO: Add support for multiple tags in one image, and add explanation on how tags are seperated/randomized
+  const tags = tag.split(",").map(t => t.trim());
   const randomTag = tags[Math.floor(Math.random() * tags.length)];
 
   if (!GIPHY_API_KEY) {
@@ -27,6 +28,9 @@ export async function getGif(
 
   loader.push();
   const res = await (await fetch(request)).json();
+  if (!res.data) {
+    throw new Error("No GIF found.");
+  }
   const data = await (await fetch(res.data.images.original.webp)).blob();
   loader.pop();
 

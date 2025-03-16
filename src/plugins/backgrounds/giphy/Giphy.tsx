@@ -13,12 +13,10 @@ const Giphy: React.FC<Props> = ({
   loader,
 }) => {
   const [gif, setGif] = React.useState(cache);
-  const mounted = React.useRef(false);
   React.useEffect(() => {
     const config = { tag: data.tag, nsfw: data.nsfw };
     getGif(config, loader).then(setCache);
-    if (mounted.current || !gif) getGif(config, loader).then(setGif);
-    mounted.current = true;
+    setGif(cache);
   }, [data.tag, data.nsfw]);
 
   const url = useObjectUrl(gif && gif.data);

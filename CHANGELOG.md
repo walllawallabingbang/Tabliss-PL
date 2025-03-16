@@ -6,9 +6,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Giphy improvements.
+
 ### Added
 
 - Add dark mode!
+   [fd8a86b](https://github.com/BookCatKid/tabliss-maintained/commit/fd8a86bf61f0163164144eb0f31a771367a97295),
+   [f96b23c](https://github.com/BookCatKid/tabliss-maintained/commit/f96b23cab6e8bd3db244aa2d2e6260f5380e0e56),
+   [7735213](https://github.com/BookCatKid/tabliss-maintained/commit/773521328d408a8d6e992771120904b995d274e9),
+   [f384765](https://github.com/BookCatKid/tabliss-maintained/commit/f384765ace3355cf05c0ecb15537d70cd33c6712),
+   [f1bfaf7](https://github.com/BookCatKid/tabliss-maintained/commit/f1bfaf7042985b44db005128cf72eea89f6dda05),
+   [02b8521](https://github.com/BookCatKid/tabliss-maintained/commit/02b85217c03562c2a235f0b703be9241e08da603),
+   [5f51099](https://github.com/BookCatKid/tabliss-maintained/commit/5f51099d8f75f81b43a3146d7c714a55018be3af),
+   [7eb761c](https://github.com/BookCatKid/tabliss-maintained/commit/7eb761cdacb4c1cac1a1c73a0f60f13fdd2f1f8a)
 
 - Added a text-outline option to font settings. [1f4a6c0](https://github.com/BookCatKid/tabliss-maintained/commit/1f4a6c0fbf1e4094bbcebdc47ef03d57db43bf47)
 
