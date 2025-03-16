@@ -17,6 +17,7 @@
     "storage"
   ],
   "optional_permissions": [
-    "bookmarks"
+    "bookmarks",
+    "topSites"
   ]
 }

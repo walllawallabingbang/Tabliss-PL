@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added a custom placeholder for the search bar.
+- Add a TopSites widget.
+
+- Added a custom placeholder for the search bar. [dfb4bc0](https://github.com/BookCatKid/tabliss-maintained/commit/dfb4bc077687034876903ae780afd539d9118f3a)
 
 - Add dark mode!
    [fd8a86b](https://github.com/BookCatKid/tabliss-maintained/commit/fd8a86bf61f0163164144eb0f31a771367a97295),

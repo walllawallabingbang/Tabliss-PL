@@ -21,39 +21,43 @@ import todo from "./todo";
 import weather from "./weather";
 import workHours from "./workHours";
 import joke from "./joke";
-import CustomText from "./customText";
+import customText from "./customText";
 import bookmarks from "./bookmarks";
 import binarytime from "./binaryTime";
+import topSites from "./topSites";
 
 export const widgetConfigs = [
-  countdown,
   binarytime,
-  bookmarks,
-  since,
   bitcoin,
+  countdown,
   css,
+  customText,
   github,
   greeting,
   html,
   ipInfo,
+  joke,
   links,
   literatureClock,
   message,
   // nba,
-  notes,
   nba,
+  notes,
   quote,
   search,
+  since,
   time,
   todo,
   weather,
   workHours,
-  joke,
-  CustomText,
 ];
 
 if (BUILD_TARGET === "web") {
   widgetConfigs.push(js);
+}
+if (BUILD_TARGET != "web") {
+  widgetConfigs.push(topSites);
+  widgetConfigs.push(bookmarks);
 }
 
 widgetConfigs.sort((a, b) => a.name.localeCompare(b.name));
