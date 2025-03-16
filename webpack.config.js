@@ -56,7 +56,15 @@ const config = {
       {
         test: /\.(ts|tsx)$/,
         include: path.resolve("./src"),
-        loader: "ts-loader",
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              experimentalWatchApi: true
+            }
+          }
+        ]
       },
     ],
   },
@@ -90,6 +98,28 @@ const config = {
   stats: {
     warnings: true,
   },
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename]
+    }
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
 };
 
 if (isProduction) {

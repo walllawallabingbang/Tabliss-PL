@@ -10,7 +10,8 @@
     "strict": true,
     "target": "es2017",
     "types": ["jest", "react", "react-dom", "webextension-polyfill"],
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    "typeRoots": ["node_modules/@types", "src/@types"],
+    "incremental": true
   },
   "include": ["src"],
   "exclude": ["**/*.test"]
