@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
 import TimeZoneInput from "../shared/timeZone/TimeZoneInput";
-import { useSystemTheme } from "../../hooks/useSystemTheme";
+import { useSystemTheme } from "../../hooks";
 import { Icon, IconButton } from "../shared";
 
 const positions = [

@@ -13,7 +13,7 @@ import Widgets from "./Widgets";
 import GitHubButton from "react-github-btn";
 import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../hooks";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);

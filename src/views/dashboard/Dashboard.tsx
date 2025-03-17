@@ -1,5 +1,5 @@
 import React from "react";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../hooks";
 import Background from "./Background";
 import "./Dashboard.sass";
 import Overlay from "./Overlay";

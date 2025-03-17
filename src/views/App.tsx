@@ -11,7 +11,7 @@ import { Settings } from "./settings";
 import Errors from "./shared/Errors";
 import StoreError from "./shared/StoreError";
 import { db } from "../db/state";
-import { useSystemTheme } from "../hooks/useSystemTheme";
+import { useSystemTheme } from "../hooks";
 
 function setHighlighting(){
   const checked = db.cache.get('highlightingEnabled');

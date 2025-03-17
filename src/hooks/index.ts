@@ -6,6 +6,8 @@ export * from "./useFullscreen";
 export * from "./useKeyPress";
 export * from "./useObjectUrl";
 export * from "./useSavedReducer";
+export * from "./useSystemTheme";
+export * from "./useTheme";
 export * from "./useTime";
 export * from "./useToggle";
 export * from "./useIsNight";
