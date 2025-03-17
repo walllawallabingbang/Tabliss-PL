@@ -53,6 +53,7 @@ type Props = Link & {
   linkOpenStyle: boolean;
   linksNumbered: boolean;
   cache?: Cache;
+  onLinkClick?: () => void;
 };
 
 const Display: FC<Props> = ({
@@ -73,6 +74,7 @@ const Display: FC<Props> = ({
   customWidth,
   customHeight,
   conserveAspectRatio,
+  onLinkClick,
 }) => {
   const intl = useIntl();
   const title = useMemo(
@@ -85,10 +87,15 @@ const Display: FC<Props> = ({
   const domain = useMemo(() => getDomain(url), [url]);
   const parsedSvg = useMemo(() => (SvgString ? parseSvg(SvgString, customWidth, customHeight) : null), [SvgString, customWidth, customHeight]);
 
+  const handleClick = (e: React.MouseEvent) => {
+    onLinkClick?.();
+  };
+
   return (
     <a
       className={`Link ${linkOpenStyle ? "Link--open" : ""}`}
       href={url}
+      onClick={handleClick}
       rel="noopener noreferrer"
       target={linkOpenStyle ? "_blank" : "_self"}
       title={title}
@@ -144,8 +151,7 @@ const Display: FC<Props> = ({
         <i>
           <Icon icon={iconifyIdentifier ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
         </i>
-      )
-       : icon ? (
+      ) : icon ? (
         <i>
           <Icon icon={"feather:" + icon} />
         </i>

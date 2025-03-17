@@ -1,14 +1,33 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useMemo } from "react";
 
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
 import { addLink, removeLink, reorderLink, updateLink } from "./actions";
 import { reducer } from "./reducer";
-import { Link, Props, defaultData, defaultCache } from "./types";
+import { Link, Props, defaultData, defaultCache, Data } from "./types";
 
 const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = defaultCache, setCache }) => {
   const saveLinks = (links: Link[]) => setData({ ...data, links });
   const dispatch = useSavedReducer(reducer, data.links, saveLinks);
+
+  const sortedLinks = useMemo(() => {
+    if (data.sortBy === 'none') return data.links;
+    
+    return [...data.links].sort((a, b) => {
+      switch (data.sortBy) {
+        case 'name':
+          return (a.name || '').localeCompare(b.name || '');
+        case 'icon':
+          return (a.icon || '').localeCompare(b.icon || '');
+        case 'lastUsed':
+          const bTime = b.lastUsed || 0;
+          const aTime = a.lastUsed || 0;
+          return bTime - aTime; // Most recent first
+        default:
+          return 0;
+      }
+    });
+  }, [data.links, data.sortBy]);
 
   return (
     <div className="LinksSettings">
@@ -22,6 +41,21 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
           }
           min={1}
         />
+      </label>
+
+      <label>
+        Sort links by
+        <select
+          value={data.sortBy}
+          onChange={(event) =>
+            setData({ ...data, sortBy: event.target.value as Data["sortBy"] })
+          }
+        >
+          <option value="none">Manual order</option>
+          <option value="name">Name</option>
+          <option value="icon">Icon type</option>
+          <option value="lastUsed">Most recently used</option>
+        </select>
       </label>
 
       <label>
@@ -56,29 +90,31 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
       </label>
       <hr />
 
-      {data.links.map((link, index) => (
-        <Input
-          {...link}
-          key={index}
-          number={index + 1}
-          onChange={(values) =>
-            dispatch(updateLink(index, { ...link, ...values }))
-          }
-          onMoveUp={
-            index !== 0
-              ? () => dispatch(reorderLink(index, index - 1))
-              : undefined
-          }
-          onMoveDown={
-            index !== data.links.length - 1
-              ? () => dispatch(reorderLink(index, index + 1))
-              : undefined
-          }
-          onRemove={() => dispatch(removeLink(index))}
-          cache={cache}
-          setCache={setCache}
-        />
-      ))}
+      {sortedLinks.map((link, index) => {
+        const originalIndex = data.links.findIndex(l => l.url === link.url);
+        return (
+          <Input
+            {...link}
+            key={link.url}
+            number={index + 1}
+            onChange={(values) =>
+              dispatch(updateLink(originalIndex, { ...link, ...values }))
+            }
+            onMoveUp={
+              data.sortBy === 'none' && index !== 0
+                ? () => dispatch(reorderLink(originalIndex, originalIndex - 1))
+                : undefined
+            }
+            onMoveDown={
+              data.sortBy === 'none' && index !== data.links.length - 1
+                ? () => dispatch(reorderLink(originalIndex, originalIndex + 1))
+                : undefined
+            }
+            onRemove={() => dispatch(removeLink(originalIndex))}
+            setCache={setCache}
+          />
+        );
+      })}
 
       <p style={{ marginTop: "0.5rem" }}>
         <button

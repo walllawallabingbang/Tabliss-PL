@@ -12,7 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Improve Bookmarks widget.
+- Add sorting to quick links.
+
+- Improve Bookmarks widget. [#43e7fea](https://github.com/BookCatKid/tabliss-maintained/commit/43e7fea6e2d8b63a13fe4099242eb999a31c6675)
 
 - Add a TopSites widget. [#3c9fbc1](https://github.com/BookCatKid/tabliss-maintained/commit/3c9fbc1b0eea97d89c14dc598f061d2150f001b7)
 
