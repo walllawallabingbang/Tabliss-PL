@@ -22,8 +22,9 @@ If you were a contributor to the original repo or have ideas for improvements, f
 ----------
 
 ## 🛠 Installation
+
 The extension is available in the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/tabliss-maintained/), and in the [Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/tabliss-a-beautiful-new/mkaphhbkcccpgkfaifhhdfckagnkcmhm)! Unfortunately, the extension is not available in the Chrome Web Store.
-If you want to install for chrome, or want to install the firefox extension manually, see Instructions in [INSTALL.md](INSTALL.md).
+If you want to install for chrome, want to install the firefox extension manually, or want nightly builds, see [INSTALL.md](INSTALL.md).
 
 ## 💻 Running Locally
 
