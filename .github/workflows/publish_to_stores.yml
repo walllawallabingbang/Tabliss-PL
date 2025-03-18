@@ -10,6 +10,10 @@ on:
         description: 'Skip Firefox Store upload'
         type: boolean
         default: false
+      skip_firefox_sign:
+        description: 'Skip Firefox signing'
+        type: boolean
+        default: false
       skip_github_release:
         description: 'Skip GitHub Release creation'
         type: boolean
@@ -50,6 +54,7 @@ jobs:
 
   sign-firefox:
     needs: build
+    if: ${{ !inputs.skip_firefox_sign }}
     name: Sign Firefox Build
     runs-on: ubuntu-latest
     steps:
@@ -116,8 +121,10 @@ jobs:
         run: |
           cd artifacts/tabliss-firefox
           zip -r ../../tabliss-firefox.zip ./*
-          cd ../tabliss-firefox-signed
-          cp *.xpi ../../tabliss-firefox-signed.xpi
+          if [ -d "../tabliss-firefox-signed" ]; then
+            cd ../tabliss-firefox-signed
+            cp *.xpi ../../tabliss-firefox-signed.xpi
+          fi
           cd ../tabliss-chromium
           zip -r ../../tabliss-chromium.zip ./*
           cd ../tabliss-web
