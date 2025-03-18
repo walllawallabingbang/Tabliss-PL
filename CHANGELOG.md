@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 3/18/2025
+
 ### Fixed
 
 - Giphy improvements. [#7eb761c](https://github.com/BookCatKid/tabliss-maintained/commit/7eb761cdacb4c1cac1a1c73a0f60f13fdd2f1f8a)

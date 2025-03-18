@@ -124,7 +124,7 @@ const Input: FC<Props> = (props) => {
     if (props.icon === "_favicon") {
       props.onChange({ icon: "_favicon_google" });
     } else if (props.icon && !getSelectValues().includes(props.icon)) {
-      props.onChange({ iconifyValue: props.icon, iconifyIdentifier: "feather:",icon: "_feather" });
+      props.onChange({ iconifyValue: props.icon, iconifyIdentifier: "feather:", icon: "_feather" });
     }
   }, [props.icon]);
 
