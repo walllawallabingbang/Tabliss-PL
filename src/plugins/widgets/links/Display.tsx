@@ -149,7 +149,7 @@ const Display: FC<Props> = ({
         </i>
       ) : icon === "_feather" ? (
         <i>
-          <Icon icon={iconifyIdentifier ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
+          <Icon icon={iconifyValue ? iconifyIdentifier + iconifyValue : "feather:bookmark"} width={customWidth} height={customHeight} />
         </i>
       ) : icon ? (
         <i>
