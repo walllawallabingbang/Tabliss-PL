@@ -27,7 +27,7 @@ const HtmlSettings: FC<Props> = ({ data = defaultData, setData }) => {
         )}
       </p>
 
-      <button onClick={handleSave}>Apply</button>
+      <button className="button button--primary" onClick={handleSave}>Apply</button>
     </div>
   );
 };

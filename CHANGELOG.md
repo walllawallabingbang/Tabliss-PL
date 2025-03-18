@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add sorting to quick links.
+- Add sorting to quick links. [#202828d](https://github.com/BookCatKid/tabliss-maintained/commit/202828dab383c7f594e9e4b68856105459919cb3)
 
 - Improve Bookmarks widget. [#43e7fea](https://github.com/BookCatKid/tabliss-maintained/commit/43e7fea6e2d8b63a13fe4099242eb999a31c6675)
 

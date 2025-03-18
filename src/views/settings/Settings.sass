@@ -152,6 +152,25 @@ $scrollbar-thumb-hover-dark: #555555
             background-color: #313738
             border: 1px solid #2b2d2f
 
+    input[type=file]::file-selector-button
+        background-color: #d6d8d9
+        border: none
+        border-radius: 0.2em
+        padding: 0.45em 1em
+        transition: background-color 0.25s ease-out
+        cursor: pointer
+        margin-right: 0.5em
+
+        &:hover
+            background-color: #bdc3c7
+
+        .dark &
+            background-color: color.adjust($dark-input-bg, $lightness: 15%)
+            color: $dark-text
+
+            &:hover
+                background-color: color.adjust($dark-input-bg, $lightness: 25%)
+
     .button
         border: 0
         border-radius: 2em
