@@ -10,10 +10,6 @@ on:
         description: 'Skip Firefox Store upload'
         type: boolean
         default: false
-      skip_firefox_sign:
-        description: 'Skip Firefox signing'
-        type: boolean
-        default: false
       skip_github_release:
         description: 'Skip GitHub Release creation'
         type: boolean
@@ -52,30 +48,6 @@ jobs:
           name: tabliss-${{ matrix.build_target }}
           path: dist/${{ matrix.build_target }}
 
-  sign-firefox:
-    needs: build
-    if: ${{ !inputs.skip_firefox_sign }}
-    name: Sign Firefox Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - uses: actions/download-artifact@v4
-        with:
-          name: tabliss-firefox
-          path: firefox-build
-      - name: Install web-ext
-        run: npm install -g web-ext
-      - name: Sign Firefox Extension
-        run: |
-          cd firefox-build
-          web-ext sign --api-key=${{ secrets.AMO_ISSUER }} --api-secret=${{ secrets.AMO_SECRET }} --channel=unlisted
-      - uses: actions/upload-artifact@v4
-        with:
-          name: tabliss-firefox-signed
-          path: firefox-build/web-ext-artifacts/*.xpi
-
   upload-firefox-store:
     needs: build
     if: ${{ !inputs.skip_firefox_upload }}
@@ -104,7 +76,7 @@ jobs:
       - run: echo Now go add the changelog at https://addons.mozilla.org/en-US/developers/addon/tabliss-maintained/versions/
 
   create-release:
-    needs: [build, sign-firefox]
+    needs: [build]
     if: ${{ !inputs.skip_github_release }}
     name: Create GitHub Release
     runs-on: ubuntu-latest
@@ -117,14 +89,10 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: artifacts
-      - name: Create ZIP files and prepare signed XPI
+      - name: Create ZIP files
         run: |
           cd artifacts/tabliss-firefox
           zip -r ../../tabliss-firefox.zip ./*
-          if [ -d "../tabliss-firefox-signed" ]; then
-            cd ../tabliss-firefox-signed
-            cp *.xpi ../../tabliss-firefox-signed.xpi
-          fi
           cd ../tabliss-chromium
           zip -r ../../tabliss-chromium.zip ./*
           cd ../tabliss-web
@@ -145,7 +113,6 @@ jobs:
           name: Version ${{ steps.version.outputs.version }}
           tag_name: ${{ steps.version.outputs.ref }}
           files: |
-            tabliss-firefox-signed.xpi
             tabliss-firefox.zip
             tabliss-chromium.zip
             tabliss-web.zip
