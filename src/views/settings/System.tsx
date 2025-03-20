@@ -234,6 +234,27 @@ const System: React.FC = () => {
           alignItems: "center",
           display: "grid",
           gridGap: "0 0.5rem",
+          gridTemplateColumns: "1fr 2fr",
+          width: "100%",
+          margin: 0,
+        }}
+      >
+        <span>Theme</span>
+        <select 
+          value={themePreference}
+          onChange={(e) => handleThemeChange(e.target.value as 'light' | 'dark' | 'system')}
+        >
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="system">System</option>
+        </select>
+      </label>
+
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
           gridTemplateColumns: "1.7fr 1fr",
           width: "100%",
         }}
@@ -260,26 +281,6 @@ const System: React.FC = () => {
         </div>
       </label>
         
-      <label
-        style={{
-          alignItems: "center",
-          display: "grid",
-          gridGap: "0 0.5rem",
-          gridTemplateColumns: "1fr 1fr",
-          width: "100%",
-        }}
-      >
-        <span>Theme</span>
-        <select 
-          value={themePreference}
-          onChange={(e) => handleThemeChange(e.target.value as 'light' | 'dark' | 'system')}
-          style={{ margin: 0 }}
-        >
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="system">System</option>
-        </select>
-      </label>
       <label
         style={{
           alignItems: "center",
