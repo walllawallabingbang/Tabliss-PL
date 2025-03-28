@@ -2,12 +2,12 @@
   "manifest_version": 2,
   "name": "Tabliss - A Beautiful New Tab (Maintained)",
   "short_name": "Tabliss",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "A beautiful, customizable New Tab page with various backgrounds and widgets. This is an actively maintained fork of the original Tabliss, with merged community contributions and ongoing updates.",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "extension@tabliss-maintained",
-      "strict_min_version": "84.0"
+      "strict_min_version": "55.0"
     }
   },
   "chrome_settings_overrides": {
