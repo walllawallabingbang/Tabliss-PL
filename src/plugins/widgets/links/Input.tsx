@@ -24,6 +24,7 @@ type Props = Link & {
 const iconList = Object.keys(icons);
 
 const Input: FC<Props> = (props) => {
+  const [urlValue, setUrlValue] = useState(props.url);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const selectRef = useRef<HTMLSelectElement>(null);
@@ -154,8 +155,9 @@ const Input: FC<Props> = (props) => {
         URL
         <input
           type="url"
-          value={props.url}
-          onChange={(event) => props.onChange({ url: event.target.value })}
+          value={urlValue}
+          onChange={(e) => setUrlValue(e.target.value)}
+          onBlur={() => props.onChange({ url: urlValue })}
         />
       </label>
 

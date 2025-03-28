@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Move them settings above settings icon position.
+- Move theme settings above settings icon position. [#d5ca060](https://github.com/BookCatKid/tabliss-maintained/commit/d5ca060216e0a72c86399a8df13d8c069ae0cd31)
 
 ### Fixed
+
+- Fix the url input in quick links removing focus.
 
 - Fix dark mode for multiselect. [#68987f1](https://github.com/BookCatKid/tabliss-maintained/commit/68987f12c6e7759cf3a4ec7dcd115fc858875dc2)
 
