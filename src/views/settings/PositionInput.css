@@ -1,7 +1,7 @@
 .PositionInput .grid {
   display: grid;
-  grid-template-columns: repeat(3, 0.15fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 33px);
+  grid-template-rows: repeat(3, 33px);
 }
 
 .PositionInput .grid .button--icon {

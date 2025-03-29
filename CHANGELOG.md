@@ -6,7 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.3.6] - 3/27/2025 | Very small bugfix update
+## [1.3.6] - 3/27/2025 | Small bugfix update
+
+### Added
+
+- feat(Widgets): add draggable positioning for widgets. [BETA]
 
 ### Changed
 
@@ -14,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix the url input in quick links removing focus. [#c2bc27f](https://github.com/BookCatKid/tabliss-maintained/commit/c2bc27f9d4bdaf23f9c83165ef33ace438fb3719)
+- Fix the url input in quick links removing focus. [#12](https://github.com/BookCatKid/tabliss-maintained/issues/12), [#c2bc27f](https://github.com/BookCatKid/tabliss-maintained/commit/c2bc27f9d4bdaf23f9c83165ef33ace438fb3719)
 
 - Fix dark mode for multiselect. [#68987f1](https://github.com/BookCatKid/tabliss-maintained/commit/68987f12c6e7759cf3a4ec7dcd115fc858875dc2)
 

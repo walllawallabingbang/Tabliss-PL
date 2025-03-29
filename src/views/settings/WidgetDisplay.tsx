@@ -13,8 +13,35 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
     <div className="WidgetDisplay">
       <PositionInput
         value={display.position}
-        onChange={(position) => onChange({ position })}
+        onChange={(position) => {
+          onChange({ 
+            position,
+            isEditingPosition: false,
+          });
+        }}
       />
+
+      {display.position === "free" && (
+        <div>
+          <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+            <button 
+              onClick={() => onChange({ isEditingPosition: !display.isEditingPosition })}
+              className={`button button--primary ${display.isEditingPosition ? "active" : ""}`}
+            >
+              {display.isEditingPosition ? "Save Position" : "Edit Position"}
+            </button>
+            <button
+              onClick={() => {onChange({ x: window.innerWidth / 2, y: window.innerHeight / 2 }); window.location.reload();}}
+              className="button button--primary"
+            >
+              Reset Position
+            </button>
+          </div>
+          {display.isEditingPosition && (
+            <p className="info">Drag the widget to adjust its position</p>
+          )}
+        </div>
+      )}
 
       <label>
         Font Size

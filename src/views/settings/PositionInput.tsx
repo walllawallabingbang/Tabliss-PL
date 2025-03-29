@@ -22,7 +22,7 @@ const positions = [
   },
   {
     value: "middleCentre",
-    icon: "move",
+    icon: "crosshair",
   },
   {
     value: "middleRight",
@@ -39,6 +39,10 @@ const positions = [
   {
     value: "bottomRight",
     icon: "arrow-down-right",
+  },
+  {
+    value: "free",
+    icon: "move",
   },
 ] as const;
 

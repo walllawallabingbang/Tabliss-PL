@@ -32,7 +32,11 @@ export const addWidget = (key: string): void => {
     id,
     key,
     order,
-    display: { position: "middleCentre" },
+    display: { 
+      position: "middleCentre",
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2 
+    },
   });
 };
 
@@ -55,10 +59,14 @@ export const reorderWidget = (from: number, to: number): void => {
 /** Set display properties of a widget */
 export const setWidgetDisplay = (
   id: string,
-  display: Partial<WidgetDisplay>,
+  display: Partial<WidgetDisplay>
 ) => {
   const widget = DB.get(db, `widget/${id}`);
-  if (!widget) throw new Error("Widget not found while");
+  if (!widget) {
+    console.error(`Widget ${id} not found`);
+    return;
+  }
+
   DB.put(db, `widget/${id}`, {
     ...widget,
     display: { ...widget.display, ...display },

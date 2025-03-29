@@ -48,11 +48,14 @@ export interface WidgetState {
 }
 
 export interface WidgetDisplay {
+  x?: number;
+  y?: number;
   colour?: string;
   fontFamily?: string;
   fontSize?: number;
   scale?: number;
   rotation?: number;
+  isEditingPosition?: boolean;
   textOutline?: boolean;
   textOutlineSize?: number;
   textOutlineColor?: string;
@@ -69,7 +72,8 @@ export type WidgetPosition =
   | "middleRight"
   | "bottomLeft"
   | "bottomCentre"
-  | "bottomRight";
+  | "bottomRight"
+  | "free";
 
 // Init data for the store
 const initData: State = {
@@ -88,7 +92,7 @@ const initData: State = {
     key: "widget/time",
     order: 0,
     display: {
-      position: "middleCentre",
+      position: "middleCentre"
     },
   },
   "widget/default-greeting": {
@@ -96,7 +100,7 @@ const initData: State = {
     key: "widget/greeting",
     order: 1,
     display: {
-      position: "middleCentre",
+      position: "middleCentre"
     },
   },
   focus: false,
