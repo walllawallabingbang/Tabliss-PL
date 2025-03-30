@@ -22,9 +22,9 @@ export interface State {
   /** Whether the settings icon is hidden */
   hideSettingsIcon: boolean;
   /** Position of the settings icon */
-  settingsIconPosition: 'topRight' | 'topLeft' | 'bottomRight' | 'bottomLeft';
+  settingsIconPosition: "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
   /** Theme preference (light/dark/system) */
-  themePreference: 'light' | 'dark' | 'system';
+  themePreference: "light" | "dark" | "system";
 }
 
 export interface BackgroundState {
@@ -39,7 +39,7 @@ export interface BackgroundDisplay {
   nightDim?: boolean;
   scale?: boolean;
   nightStart?: string; // format "HH:mm" e.g. "21:00"
-  nightEnd?: string;   // format "HH:mm" e.g. "05:00"
+  nightEnd?: string; // format "HH:mm" e.g. "05:00"
 }
 
 export interface WidgetState {
@@ -88,8 +88,8 @@ const initData: State = {
       blur: 0,
       nightDim: false,
       scale: true,
-      nightStart: "21:00",  // 9 PM
-      nightEnd: "05:00",    // 5 AM
+      nightStart: "21:00", // 9 PM
+      nightEnd: "05:00", // 5 AM
     },
   },
   "widget/default-time": {
@@ -97,7 +97,7 @@ const initData: State = {
     key: "widget/time",
     order: 0,
     display: {
-      position: "middleCentre"
+      position: "middleCentre",
     },
   },
   "widget/default-greeting": {
@@ -105,7 +105,7 @@ const initData: State = {
     key: "widget/greeting",
     order: 1,
     display: {
-      position: "middleCentre"
+      position: "middleCentre",
     },
   },
   focus: false,
@@ -113,8 +113,8 @@ const initData: State = {
   timeZone: null,
   highlightingEnabled: true,
   hideSettingsIcon: false,
-  settingsIconPosition: 'topLeft',
-  themePreference: 'system',
+  settingsIconPosition: "topLeft",
+  themePreference: "system",
 };
 
 // Database storage

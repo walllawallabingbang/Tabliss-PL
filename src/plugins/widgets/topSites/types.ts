@@ -20,10 +20,10 @@ export const defaultData: Data = {
   columns: 3,
   linkOpenStyle: false,
   linksNumbered: false,
-  iconProvider: '_favicon_google',
-  maxTextLength: 0
+  iconProvider: "_favicon_google",
+  maxTextLength: 0,
 };
 
 export const defaultCache: Cache = {
-  sites: []
+  sites: [],
 };

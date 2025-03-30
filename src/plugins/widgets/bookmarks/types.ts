@@ -5,8 +5,12 @@ export type Data = {
   maxWidth: number;
   maxHeight: number;
   wrap: boolean;
-  navigationStyle: 'drill-down' | 'expand-collapse';
-  iconProvider: '_default' | '_favicon_duckduckgo' | '_favicon_google' | '_favicon_favicone';
+  navigationStyle: "drill-down" | "expand-collapse";
+  iconProvider:
+    | "_default"
+    | "_favicon_duckduckgo"
+    | "_favicon_google"
+    | "_favicon_favicone";
   shortNames: boolean;
   maxTextLength: number;
 };
@@ -18,8 +22,8 @@ export const defaultData: Data = {
   maxWidth: 30,
   maxHeight: 40,
   wrap: true,
-  navigationStyle: 'drill-down',
-  iconProvider: '_default',
+  navigationStyle: "drill-down",
+  iconProvider: "_default",
   shortNames: false,
-  maxTextLength: 0
+  maxTextLength: 0,
 };

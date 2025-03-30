@@ -11,7 +11,7 @@ export async function getGif(
   loader: API["loader"],
 ): Promise<Gif> {
   // TODO: Add support for multiple tags in one image, and add explanation on how tags are seperated/randomized
-  const tags = tag.split(",").map(t => t.trim());
+  const tags = tag.split(",").map((t) => t.trim());
   const randomTag = tags[Math.floor(Math.random() * tags.length)];
 
   if (!GIPHY_API_KEY) {

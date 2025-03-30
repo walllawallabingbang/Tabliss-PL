@@ -16,7 +16,7 @@ export type Link = {
   // Reference to cached icon data
   iconCacheKey?: string;
   conserveAspectRatio?: boolean;
-}
+};
 
 export type IconCacheItem = {
   data: string;
@@ -34,11 +34,11 @@ export type Data = {
   linksNumbered: boolean;
   customWidth: number;
   customHeight?: number;
-  sortBy: 'none' | 'name' | 'icon' | 'lastUsed';
+  sortBy: "none" | "name" | "icon" | "lastUsed";
   iconifyIdentifier: string;
   iconifyValue?: string;
   conserveAspectRatio?: boolean;
-}
+};
 
 export type Props = API<Data, Cache>;
 
@@ -58,7 +58,7 @@ export const defaultData: Data = {
   visible: true,
   linkOpenStyle: false,
   linksNumbered: false,
-  sortBy: 'none',
+  sortBy: "none",
   customWidth: 24,
   customHeight: 24,
   iconifyIdentifier: "feather:",

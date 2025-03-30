@@ -10,6 +10,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
+- feat(Notes): Support markdown, add text alignment option. [#452c0ab](https://github.com/BookCatKid/tabliss-maintained/commit/452c0ab4af6cb9d5c94f51f906ec7dc48d09fe57)
+
 - feat(Widget): add basic/advanced text outline options. [#9aa5dfb](https://github.com/BookCatKid/tabliss-maintained/commit/9aa5dfb5ff76e330df736a10ee5d072238347d93)
 
 - feat(Bookmarks): Favicons, Short Names, Max Text Length. [#b514e328](https://github.com/BookCatKid/tabliss-maintained/commit/b514e32898ced0cd6c18b50bb3ce20d272270dda)
@@ -255,3 +257,4 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 ## [1.0.0] - 2/18/2025
 
 ### Initial Release, no changes!
+
