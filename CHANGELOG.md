@@ -176,11 +176,74 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed some unused function I added while testing the last release. [#0a0cc5c](https://github.com/BookCatKid/tabliss-maintained/commit/0a0cc5c6e7997c009bb67f58bf1b00b3de780651)
 
-## [1.1.0] - 2/22/2025
+## [1.1.0] - 2/18/2025
 
-### Changes not logged yet
+### Added
 
-## [1.0.0] - 2/24/2025
+- Added Custom Text component [fef61f1](https://github.com/BookCatKid/tabliss-maintained/commit/fef61f1e73bd4a9da4715ccf5793785395ad2a75)
+- Add 'show city name' setting to the Weather plugin [fd809d2](https://github.com/BookCatKid/tabliss-maintained/commit/fd809d245bd5d8da82a31382596b92515576c718)
+- Add 'showTime' in Time widget [d6aef55](https://github.com/BookCatKid/tabliss-maintained/commit/d6aef55cde3af01d3c0a8859f30c60da5999816f)
+- Add ability to set custom search engine #552 [c32a14b](https://github.com/BookCatKid/tabliss-maintained/commit/c32a14bbd852ab4bbb890443259ed91eec06ffb9)
+- Add option to change the luminosity depending on the time of day #625 [dde5752](https://github.com/BookCatKid/tabliss-maintained/commit/dde57528d5e2b57229b273878e36690a1e4f5c02)
+- Add toggle to number links for easy number "speed dial" [f49364b](https://github.com/BookCatKid/tabliss-maintained/commit/f49364bec7d3643b57493ce43a5436ec4f175fbc)
+- Add daily routine feature to Todo widget #559 [74da94c](https://github.com/BookCatKid/tabliss-maintained/commit/74da94c8e9c5730d7296d77bfebd13cb29001dcb)
+- Add mask ip option to IP info widget #657 [4f222fb](https://github.com/BookCatKid/tabliss-maintained/commit/4f222fbb16bbcac29cf2fb868c7c2390ad7639de)
+- Add online image to backgrounds #656 [4eab1c0](https://github.com/BookCatKid/tabliss-maintained/commit/4eab1c07bf03433045ee8c6415eea6445a5867ef)
+- Added Kagi and Vuhuv search engines. [bc84198](https://github.com/BookCatKid/tabliss-maintained/commit/bc84198122bffcded86dcca2466e961efa94a483)
+- Add validation for response body && api key check #681 [a2098a2](https://github.com/BookCatKid/tabliss-maintained/commit/a2098a25d3d0fd90b3c491832657c53678cba52d)
+- Add cloning instructions [96d576d](https://github.com/BookCatKid/tabliss-maintained/commit/96d576d5e779e02950c35aeeab65ac325126236d)
+- Added a switcher for which icon provider to use in quicklinks [a093ea9](https://github.com/BookCatKid/tabliss-maintained/commit/a093ea93787e588b359c5001af70702a11434399)
+- Added an icon size switcher [342be49](https://github.com/BookCatKid/tabliss-maintained/commit/342be49f5a134ee588836d6cce4216325845acbd)
+- Added metacrawler search engine [7bfd103](https://github.com/BookCatKid/tabliss-maintained/commit/7bfd10354889e4524cafe053dd27a50607bd3c32)
+- Added Wikimedia Image of the Day background! [0f59650](https://github.com/BookCatKid/tabliss-maintained/commit/0f596505b707bacd3a2c3b2853128f676f4af509)
 
-### Changes not logged yet :(
+### Changed
 
+- [FEATURE] Add 'show city name' setting to the Weather plugin #615 [32c8aa0](https://github.com/BookCatKid/tabliss-maintained/commit/32c8aa039e70ae3b105a6887ae69ba5d09bc6ae2)
+- [FEATURE] 'Display time' in Time widget #574 [b37c1e0](https://github.com/BookCatKid/tabliss-maintained/commit/b37c1e02e214ebbfec7249aabd5fd0fd432b9f72)
+- Countdown #511 [3f07222](https://github.com/BookCatKid/tabliss-maintained/commit/3f07222b84c79500f4ae8281b797d75702bf29df)
+- Implemeneted APOD!!! [029674b](https://github.com/BookCatKid/tabliss-maintained/commit/029674bf0d86849ffcd8c2ec5c31a0997f6dbcaa)
+- [FEATURE] Time tracking widget for significant events #626 [9789c3a](https://github.com/BookCatKid/tabliss-maintained/commit/9789c3a32f0d70678c67dccca64c23e95aa715e6)
+- [FEATURE] add toggle to number links for easy link "speed dial" #618 [897538a](https://github.com/BookCatKid/tabliss-maintained/commit/897538a002b33834a6c7aa0dfc6b3f9d55bfcf6e)
+- [Feature] Add Bitcoin Mempool widget #486 [117f865](https://github.com/BookCatKid/tabliss-maintained/commit/117f8654353cb412d67b7c5fe91bac280b638afb)
+- Remove NBA Widget (Broken) [bdf6a8f](https://github.com/BookCatKid/tabliss-maintained/commit/bdf6a8fd4523cdd58fb67589dc5bdc069b9ba5ac)
+- Update kp.json #693 [908d2bd](https://github.com/BookCatKid/tabliss-maintained/commit/908d2bd10878ad9f65a2b457c0bc29bb8dba97f6)
+- Update TRANSLATING.md [9f431ac](https://github.com/BookCatKid/tabliss-maintained/commit/9f431ace4a52669775b5484ad31021a0e2d0ee9a)
+- Updated hu.json #676 [2d4201b](https://github.com/BookCatKid/tabliss-maintained/commit/2d4201b7c36d197cf21f5f35784b32e3adefcad2)
+- Updated translation for Farsi [34e15be](https://github.com/BookCatKid/tabliss-maintained/commit/34e15be89f89cdaad075d07c4de8614f1c549562)
+- Update farsi translation files #591 [d2a840f](https://github.com/BookCatKid/tabliss-maintained/commit/d2a840fe82c44b838de0b334257d56274848c756)
+- Tabliss translate strings #687 [6529cf7](https://github.com/BookCatKid/tabliss-maintained/commit/6529cf78ca2e3271483ea739fe35d14eb55e8f65)
+- Finished the previous Translations! [f4ead50](https://github.com/BookCatKid/tabliss-maintained/commit/f4ead5096419e04dc61edbe90e136961354594bd)
+- Random Messages Widget #405 [3fdba86](https://github.com/BookCatKid/tabliss-maintained/commit/3fdba8652b8b1a8c9c369988e60b5698f4dbe204)
+- Based on: Disable user-select on widgets #696 [d9ae2fc](https://github.com/BookCatKid/tabliss-maintained/commit/d9ae2fcf4a35b8ed0d632edaa81ac682fa115b9e)
+- Custom Icons from iconify! [346a8df](https://github.com/BookCatKid/tabliss-maintained/commit/346a8df458d45e65d7e2ac4f476b2148b91db998)
+- Switch to @iconify/react for a bunch of imports [237afd0](https://github.com/BookCatKid/tabliss-maintained/commit/237afd0db36f1210eaaabf8aa7b94f85ebea94d0)
+- Cache the html to prevent flickering [a8215ec](https://github.com/BookCatKid/tabliss-maintained/commit/a8215ece3321a0555dce3435e8c10143857f06fd)
+- Option of seeing the regressive percentage #728 [dadf3e2](https://github.com/BookCatKid/tabliss-maintained/commit/dadf3e2caaa9e558724877d4d806079fec033525)
+- [Feature request] Make the unsplash photo location text a link #289 [1c93190](https://github.com/BookCatKid/tabliss-maintained/commit/1c93190c1b5281ea940122210b1e58153d4ae923)
+- Do not disable the Custom CSS widget when hiding all widgets #242 [18aedf3](https://github.com/BookCatKid/tabliss-maintained/commit/18aedf3f8191f76b7d4663373fb53f24d613d251)
+- [Feature request] Binary Clock #229 [04426fe](https://github.com/BookCatKid/tabliss-maintained/commit/04426fe956274f308165ebd3aa1f8f9e7f93afaa)
+- Update deps, add lint and prettier script [58ed6a5](https://github.com/BookCatKid/tabliss-maintained/commit/58ed6a5c6d320b653131ddce05067254c72c846d)
+- Local photo list should be collapsible. #136 [5e1137e](https://github.com/BookCatKid/tabliss-maintained/commit/5e1137e40e19921548d646d92dc31f1ace623308)
+- Fix paths in compiled web app [65c1e0e](https://github.com/BookCatKid/tabliss-maintained/commit/65c1e0e6dabbc5aade348d89dac395b74d369bf8)
+- PARTLY CLOSES: Load videos, gifs and entire websites as background #35 [a46feaa](https://github.com/BookCatKid/tabliss-maintained/commit/a46feaa26cac36dfdfa4b88ca59cf29c85eab63e)
+- Make the bookmarks permission optional [d6a303a](https://github.com/BookCatKid/tabliss-maintained/commit/d6a303a71daad9ae75f80659cdbf562a9f87d0d6)
+- Make the copyright part of the apod background aligned to the left to use less space [bd5c23e](https://github.com/BookCatKid/tabliss-maintained/commit/bd5c23ef5d717366e32b2571a004ab7cba77a6b3)
+- Update package.json and both manifest.json [e4f51dd](https://github.com/BookCatKid/tabliss-maintained/commit/e4f51dd6f729efc88ead86b7de594b997295be9e)
+
+### Fixed
+
+- Fixed a major bug. (Communal Settings) [dd78d21](https://github.com/BookCatKid/tabliss-maintained/commit/dd78d21ac56e5a414d71f68d39111502edc3a02c)
+- [BUGFIX] add 'cross-env' to package.json #573 [65ad6be](https://github.com/BookCatKid/tabliss-maintained/commit/65ad6be1bde438dcaf6ad2df276d7406b5704b9c)
+
+### Removed
+
+- Removed unused import [bc19ff8](https://github.com/BookCatKid/tabliss-maintained/commit/bc19ff8201a3c6a39c73d9e336fe6f0ae13df5d8)
+- Removed debug statement [90b3232](https://github.com/BookCatKid/tabliss-maintained/commit/90b32327b095843dad314330ad7101a119bd1a7f)
+- Removed debug log [3aeca63](https://github.com/BookCatKid/tabliss-maintained/commit/3aeca63b80dd2c3c49a45e7adf84dc37ebb43aa0)
+- Removed sentry integration [065940e](https://github.com/BookCatKid/tabliss-maintained/commit/065940e733f45b7473e4c635c14af33f2356beff)
+- Remove @sentry/browser [a7d9358](https://github.com/BookCatKid/tabliss-maintained/commit/a7d93582b6b33f6a10c99b26ebd5e3977dff349a)
+
+## [1.0.0] - 2/18/2025
+
+### Initial Release, no changes!
