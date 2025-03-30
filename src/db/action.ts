@@ -15,7 +15,14 @@ export const setBackground = (key: string): void => {
   DB.put(db, "background", {
     id,
     key,
-    display: { blur: 0, luminosity: -0.2, nightDim: false, scale: true },
+    display: {
+      blur: 0,
+      luminosity: -0.2,
+      nightDim: false,
+      scale: true,
+      nightStart: "21:00", // 9 PM
+      nightEnd: "05:00", // 5 AM
+    },
   });
   DB.del(db, `data/${current.id}`);
   DB.del(cache, current.id);
@@ -32,11 +39,7 @@ export const addWidget = (key: string): void => {
     id,
     key,
     order,
-    display: { 
-      position: "middleCentre",
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2 
-    },
+    display: { position: "middleCentre" },
   });
 };
 
@@ -59,7 +62,7 @@ export const reorderWidget = (from: number, to: number): void => {
 /** Set display properties of a widget */
 export const setWidgetDisplay = (
   id: string,
-  display: Partial<WidgetDisplay>
+  display: Partial<WidgetDisplay>,
 ) => {
   const widget = DB.get(db, `widget/${id}`);
   if (!widget) {
