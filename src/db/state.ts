@@ -34,12 +34,12 @@ export interface BackgroundState {
 }
 
 export interface BackgroundDisplay {
-  luminosity: number;
-  blur: number;
-  nightDim: boolean;
-  scale: boolean;
-  nightStart: string; // format "HH:mm" e.g. "21:00"
-  nightEnd: string;   // format "HH:mm" e.g. "05:00"
+  luminosity?: number;
+  blur?: number;
+  nightDim?: boolean;
+  scale?: boolean;
+  nightStart?: string; // format "HH:mm" e.g. "21:00"
+  nightEnd?: string;   // format "HH:mm" e.g. "05:00"
 }
 
 export interface WidgetState {
