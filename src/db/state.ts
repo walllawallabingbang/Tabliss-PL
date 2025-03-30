@@ -34,10 +34,12 @@ export interface BackgroundState {
 }
 
 export interface BackgroundDisplay {
-  blur?: number;
-  luminosity?: number;
-  scale?: boolean;
-  nightDim?: boolean;
+  luminosity: number;
+  blur: number;
+  nightDim: boolean;
+  scale: boolean;
+  nightStart: string; // format "HH:mm" e.g. "21:00"
+  nightEnd: string;   // format "HH:mm" e.g. "05:00"
 }
 
 export interface WidgetState {
@@ -85,6 +87,8 @@ const initData: State = {
       blur: 0,
       nightDim: false,
       scale: true,
+      nightStart: "21:00",  // 9 PM
+      nightEnd: "05:00",    // 5 AM
     },
   },
   "widget/default-time": {

@@ -121,6 +121,36 @@ const Background: React.FC = () => {
                   />{" "}
                   Automatically dim at night
                 </label>
+
+                {data.display.nightDim && (
+                  <>
+                    <label>
+                      Night starts at <br />
+                      <input
+                        type="time"
+                        value={data.display.nightStart}
+                        onChange={(e) => {
+                          setBackgroundDisplay({
+                            nightStart: e.target.value
+                          });
+                        }}
+                      />
+                    </label>
+
+                    <label>
+                      Night ends at <br />
+                      <input
+                        type="time"
+                        value={data.display.nightEnd}
+                        onChange={(e) => {
+                          setBackgroundDisplay({
+                            nightEnd: e.target.value
+                          });
+                        }}
+                      />
+                    </label>
+                  </>
+                )}
               </>
             </ToggleSection>
           )}
