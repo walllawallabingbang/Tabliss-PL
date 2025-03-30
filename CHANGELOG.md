@@ -4,11 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+I attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+
 ## [Unreleased]
 
 ### Added
 
-- feat(Widget): add basic/advanced text outline options.
+- feat(Widget): add basic/advanced text outline options. [#9aa5dfb](https://github.com/BookCatKid/tabliss-maintained/commit/9aa5dfb5ff76e330df736a10ee5d072238347d93)
 
 - feat(Bookmarks): Favicons, Short Names, Max Text Length. [#b514e328](https://github.com/BookCatKid/tabliss-maintained/commit/b514e32898ced0cd6c18b50bb3ce20d272270dda)
 
