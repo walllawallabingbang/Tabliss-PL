@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-
-import { defaultData, Props } from "./types";
+import { defaultData, Props, Data } from "./types";
 import { Bookmarks } from "webextension-polyfill";
 import BookmarkTreeNode = Bookmarks.BookmarkTreeNode;
 
@@ -53,62 +52,108 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
 
   descendTree(tree, "");
 
-  return <div className="BookmarksSettings">
-    <label>
-      Root bookmark folder
-      <select
-        onChange={(evt) =>
-          setData({ ...data, rootBookmark: evt.target.value })}>
-        {items}
-      </select>
-    </label>
+  return (
+    <div className="BookmarksSettings">
+      <label>
+        Root bookmark folder
+        <select
+          onChange={(evt) =>
+            setData({ ...data, rootBookmark: evt.target.value })}>
+          {items}
+        </select>
+      </label>
 
-    <label>
-      Navigation style
-      <select
-        value={data.navigationStyle}
-        onChange={(evt) =>
-          setData({ ...data, navigationStyle: evt.target.value as 'drill-down' | 'expand-collapse' })}>
-        <option value="drill-down">Drill-down navigation</option>
-        <option value="expand-collapse">Expandable folders</option>
-      </select>
-    </label>
+      <label>
+        Navigation style
+        <select
+          value={data.navigationStyle}
+          onChange={(evt) =>
+            setData({ ...data, navigationStyle: evt.target.value as 'drill-down' | 'expand-collapse' })}>
+          <option value="drill-down">Drill-down navigation</option>
+          <option value="expand-collapse">Expandable folders</option>
+        </select>
+      </label>
 
-    <label>
-      Maximum width (em)
-      <input
-        type="number"
-        value={data.maxWidth}
-        onChange={(event) =>
-          setData({ ...data, maxWidth: Number(event.target.value) })
-        }
-        min={1}
-      />
-    </label>
+      <label>
+        Maximum width (em)
+        <input
+          type="number"
+          value={data.maxWidth}
+          onChange={(event) =>
+            setData({ ...data, maxWidth: Number(event.target.value) })
+          }
+          min={1}
+        />
+      </label>
 
-    <label>
-      Maximum height (em)
-      <input
-        type="number"
-        value={data.maxHeight}
-        onChange={(event) =>
-          setData({ ...data, maxHeight: Number(event.target.value) })
-        }
-        min={1}
-      />
-    </label>
+      <label>
+        Maximum height (em)
+        <input
+          type="number"
+          value={data.maxHeight}
+          onChange={(event) =>
+            setData({ ...data, maxHeight: Number(event.target.value) })
+          }
+          min={1}
+        />
+      </label>
 
-    <label>
-      <input
-        type="checkbox"
-        checked={data.wrap}
-        onChange={(event) =>
-          setData({ ...data, wrap: !data.wrap })
-        }
-      />
-      Wrap long titles
-    </label>
-  </div>;
+      <label>
+        <input
+          type="checkbox"
+          checked={data.wrap}
+          onChange={(event) =>
+            setData({ ...data, wrap: !data.wrap })
+          }
+        />
+        Wrap long titles
+      </label>
+
+      <hr />
+
+      <label>
+        Icon Provider
+        <select
+          value={data.iconProvider}
+          onChange={(event) =>
+            setData({ ...data, iconProvider: event.target.value as Data['iconProvider'] })
+          }
+        >
+          <option value="_default">Default</option>
+          <optgroup label="Website Icons">
+            <option value="_favicon_google">Google</option>
+            <option value="_favicon_duckduckgo">DuckDuckGo</option>
+            <option value="_favicon_favicone">Favicone</option>
+          </optgroup>
+        </select>
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          checked={data.shortNames}
+          onChange={(event) =>
+            setData({ ...data, shortNames: event.target.checked })
+          }
+        />
+        Use short names
+      </label>
+
+      {data.shortNames && (
+        <label>
+          Maximum Text Length
+          <input
+            type="number"
+            min="0"
+            value={data.maxTextLength}
+            onChange={(event) =>
+              setData({ ...data, maxTextLength: Number(event.target.value) })
+            }
+          />
+        </label>
+      )}
+    </div>
+  );
 };
 
 export default BookmarksSettings;

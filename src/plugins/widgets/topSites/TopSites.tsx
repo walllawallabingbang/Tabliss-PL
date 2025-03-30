@@ -3,12 +3,12 @@ import { Props, Cache, defaultCache, defaultData } from './types';
 import Display from '../links/Display';
 import './TopSites.sass';
 
-const truncateText = (text: string, maxLength: number): string => {
+export const truncateText = (text: string, maxLength: number): string => {
     if (maxLength === 0 || text.length <= maxLength) return text;
     return `${text.slice(0, maxLength)}...`;
 };
 
-const cleanTitle = (title: string, url: string): string => {
+export const cleanTitle = (title: string, url: string): string => {
     // If no title, use hostname
     if (!title) {
         return new URL(url).hostname;

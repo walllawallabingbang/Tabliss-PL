@@ -1,10 +1,10 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
-
 import { defaultData, Props } from "./types";
 import { Bookmarks } from "webextension-polyfill";
 import "./Bookmarks.sass";
 import Icon from "../../../views/shared/icons/Icon";
 import BookmarkTreeNode = Bookmarks.BookmarkTreeNode;
+import { cleanTitle, truncateText } from '../topSites/TopSites';
 
 type NodeProps = {
   node: BookmarkTreeNode;
@@ -12,9 +12,21 @@ type NodeProps = {
   wrap: boolean;
   navigationStyle: 'drill-down' | 'expand-collapse';
   onFolderClick?: (folderId: string) => void;
+  iconProvider: string;
+  shortNames: boolean;
+  maxTextLength: number;
 };
 
-const Node: FC<NodeProps> = ({ node, depth, wrap, navigationStyle, onFolderClick }) => {
+const Node: FC<NodeProps> = ({ 
+  node, 
+  depth, 
+  wrap, 
+  navigationStyle, 
+  onFolderClick,
+  iconProvider,
+  shortNames,
+  maxTextLength 
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const isFolder = !node.url;
   const cls = isFolder ? "folder" : "bookmark";
@@ -29,6 +41,12 @@ const Node: FC<NodeProps> = ({ node, depth, wrap, navigationStyle, onFolderClick
     }
   };
 
+  const displayTitle = shortNames && node.url 
+    ? truncateText(cleanTitle(node.title, node.url), maxTextLength) 
+    : node.title;
+
+  const domain = node.url ? new URL(node.url).hostname : '';
+
   return (
     <>
       <div 
@@ -40,8 +58,20 @@ const Node: FC<NodeProps> = ({ node, depth, wrap, navigationStyle, onFolderClick
         }} 
         onClick={handleClick}
       >
-        <Icon name={cls} />
-        {node.url ? <a href={node.url}>{node.title}</a> : node.title}
+        {isFolder ? (
+          <Icon name={cls} />
+        ) : (
+          iconProvider === '_favicon_duckduckgo' ? (
+            <img alt="" src={`https://icons.duckduckgo.com/ip3/${domain}.ico`} />
+          ) : iconProvider === '_favicon_google' ? (
+            <img alt="" src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`} />
+          ) : iconProvider === '_favicon_favicone' ? (
+            <img alt="" src={`https://favicone.com/${domain}?s=32`} />
+          ) : (
+            <Icon name={cls} />
+          )
+        )}
+        {node.url ? <a href={node.url}>{displayTitle}</a> : displayTitle}
       </div>
       
       {navigationStyle === 'expand-collapse' && isFolder && isExpanded && node.children?.map(child => (
@@ -52,6 +82,9 @@ const Node: FC<NodeProps> = ({ node, depth, wrap, navigationStyle, onFolderClick
           wrap={wrap}
           navigationStyle={navigationStyle}
           onFolderClick={onFolderClick}
+          iconProvider={iconProvider}
+          shortNames={shortNames}
+          maxTextLength={maxTextLength}
         />
       ))}
     </>
@@ -149,6 +182,9 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
               wrap={data.wrap}
               navigationStyle={data.navigationStyle}
               onFolderClick={navigateToFolder}
+              iconProvider={data.iconProvider}
+              shortNames={data.shortNames}
+              maxTextLength={data.maxTextLength}
             />
           ))}
         </>
@@ -159,6 +195,9 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
           wrap={data.wrap}
           navigationStyle={data.navigationStyle}
           onFolderClick={navigateToFolder}
+          iconProvider={data.iconProvider}
+          shortNames={data.shortNames}
+          maxTextLength={data.maxTextLength}
         />
       )}
     </div>
