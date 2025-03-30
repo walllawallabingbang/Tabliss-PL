@@ -136,6 +136,26 @@ const Widget: React.FC<Props> = ({
               {plugin.display.textOutline && (
                 <>
                   <label>
+                    Outline Style
+                    <select
+                      value={plugin.display.textOutlineStyle ?? "basic"}
+                      onChange={(event) =>
+                        setDisplay({ textOutlineStyle: event.target.value as "basic" | "advanced" })
+                      }
+                    >
+                      <option value="basic">Basic (Text Shadow)</option>
+                      <option value="advanced">Advanced (Stroke)</option>
+                    </select>
+                  </label>
+
+                  <p>
+                    Basic mode uses a text shadow that can only have one size.
+                  </p>
+                  <p>
+                    Advanced mode uses a second element with a text stroke and allows any size.
+                  </p>
+
+                  <label>
                     Outline Color
                     <input
                       type="color"
@@ -146,18 +166,20 @@ const Widget: React.FC<Props> = ({
                     />
                   </label>
 
-                  <label>
-                    Outline Size
-                    <input
-                      type="number"
-                      min="1"
-                      max="20"
-                      value={plugin.display.textOutlineSize ?? 1}
-                      onChange={(event) =>
-                        setDisplay({ textOutlineSize: Number(event.target.value) })
-                      }
-                    />
-                  </label>
+                  {plugin.display.textOutlineStyle === "advanced" && (
+                    <label>
+                      Outline Size
+                      <input
+                        type="number"
+                        min="1"
+                        max="20"
+                        value={plugin.display.textOutlineSize ?? 1}
+                        onChange={(event) =>
+                          setDisplay({ textOutlineSize: Number(event.target.value) })
+                        }
+                      />
+                    </label>
+                  )}
                 </>
               )}
             </>

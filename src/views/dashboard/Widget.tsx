@@ -21,6 +21,7 @@ const Widget: React.FC<WidgetProps> = ({
   scale = 1,
   rotation = 0,
   textOutline,
+  textOutlineStyle = "basic",
   textOutlineSize = 1,
   textOutlineColor = "#000000",
   fontWeight,
@@ -104,34 +105,49 @@ const Widget: React.FC<WidgetProps> = ({
     });
   };
 
-  const renderContent = () => (
-    <div
-      ref={widgetRef}
-      className={`Widget ${fontWeight ? "weight-override" : ""}`}
-      style={styles}
-      onMouseDown={handleDragStart}
-    >
-      {textOutline ? (
-        <>
-          <span style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            color: textOutlineColor,
-            zIndex: 0,
-            WebkitTextStroke: `${textOutlineSize * 2}px ${textOutlineColor}`,
+  const renderContent = () => {
+    const outlineStyle = textOutline ? (textOutlineStyle ?? "basic") : null;
+    
+    return (
+      <div
+        ref={widgetRef}
+        className={`Widget ${fontWeight ? "weight-override" : ""}`}
+        style={styles}
+        onMouseDown={handleDragStart}
+      >
+        {textOutline && outlineStyle === "basic" ? (
+          <div style={{
+            textShadow: `
+              -1px -1px 0 ${textOutlineColor},
+              1px -1px 0 ${textOutlineColor},
+              -1px 1px 0 ${textOutlineColor},
+              1px 1px 0 ${textOutlineColor}
+            `
           }}>
             {children}
-          </span>
-          <span style={{ position: "relative", zIndex: 1 }}>
-            {children}
-          </span>
-        </>
-      ) : children}
-    </div>
-  );
+          </div>
+        ) : textOutline && outlineStyle === "advanced" ? (
+          <>
+            <span style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              color: textOutlineColor,
+              zIndex: 0,
+              WebkitTextStroke: `${textOutlineSize * 2}px ${textOutlineColor}`,
+            }}>
+              {children}
+            </span>
+            <span style={{ position: "relative", zIndex: 1 }}>
+              {children}
+            </span>
+          </>
+        ) : children}
+      </div>
+    );
+  };
 
   return (
     <>

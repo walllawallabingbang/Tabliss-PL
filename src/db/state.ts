@@ -59,6 +59,7 @@ export interface WidgetDisplay {
   rotation?: number;
   isEditingPosition?: boolean;
   textOutline?: boolean;
+  textOutlineStyle?: "basic" | "advanced";
   textOutlineSize?: number;
   textOutlineColor?: string;
   fontWeight?: number;
