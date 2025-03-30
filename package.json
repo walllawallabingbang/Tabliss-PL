@@ -48,6 +48,7 @@
     "react-github-btn": "^1.4.0",
     "react-github-calendar": "^4.5.5",
     "react-intl": "^7.1.6",
+    "react-markdown": "^10.1.0",
     "sass": "^1.85.0",
     "tlds": "^1.255.0",
     "webextension-polyfill": "^0.12.0"
