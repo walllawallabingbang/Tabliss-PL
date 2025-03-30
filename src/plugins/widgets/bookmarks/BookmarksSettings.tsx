@@ -141,11 +141,11 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
 
       {data.shortNames && (
         <label>
-          Maximum Text Length
+          Maximum Text Length (Use 0 for no limit)
           <input
             type="number"
             min="0"
-            value={data.maxTextLength}
+            value={data.maxTextLength || 0}
             onChange={(event) =>
               setData({ ...data, maxTextLength: Number(event.target.value) })
             }

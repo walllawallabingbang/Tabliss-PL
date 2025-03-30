@@ -8,9 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- add(Bookmarks): Favicons, Short Names, Max Text Length. [b514e328](https://github.com/BookCatKid/tabliss-maintained/commit/b514e32898ced0cd6c18b50bb3ce20d272270dda)
+
 - add(background): automatic night dimming time selection. [7d0b1ff](https://github.com/BookCatKid/tabliss-maintained/commit/7d0b1ffe40ef8fecae312fe3b52f853479ff26f3), and [a2c7321](https://github.com/BookCatKid/tabliss-maintained/commit/a2c7321bae8f0374e8588859fcd902009abccabd)
 
-- feat(Widgets): add draggable positioning for widgets. [BETA]. [#05734af](https://github.com/BookCatKid/tabliss-maintained/commit/05734afcb10a95918ab5d091c8f4258830dc04ad)
+- feat(Widgets): add draggable positioning for widgets. [BETA] [#05734af](https://github.com/BookCatKid/tabliss-maintained/commit/05734afcb10a95918ab5d091c8f4258830dc04ad)
 
 ## [1.3.6] - 3/27/2025 | Small bugfix update
 
