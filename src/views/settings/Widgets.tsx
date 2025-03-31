@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { addWidget, removeWidget, reorderWidget } from "../../db/action";
 import { selectWidgets } from "../../db/select";
 import { db } from "../../db/state";
@@ -9,6 +9,16 @@ import Widget from "./Widget";
 
 const Widgets: React.FC = () => {
   const widgets = useSelector(db, selectWidgets);
+  const intl = useIntl();
+
+  const getWidgetName = (key: string) => {
+    const config = widgetConfigs.find(w => w.key === key);
+    if (!config) return key;
+
+    return typeof config.name === 'string'
+      ? config.name
+      : intl.formatMessage(config.name);
+  };
 
   return (
     <div>
@@ -31,7 +41,9 @@ const Widgets: React.FC = () => {
           </option>
           {widgetConfigs.map((plugin) => (
             <option key={plugin.key} value={plugin.key}>
-              {plugin.name}
+              {typeof plugin.name === 'string'
+                ? plugin.name
+                : intl.formatMessage(plugin.name)}
             </option>
           ))}
         </select>

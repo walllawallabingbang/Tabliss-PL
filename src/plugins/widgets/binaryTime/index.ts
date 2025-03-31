@@ -1,13 +1,27 @@
 import { Config } from "../../types";
-import Time from "./BinaryTime";
-import TimeSettings from "./BinaryTimeSettings";
+import { defineMessages } from "react-intl";
+import BinaryTime from "./BinaryTime";
+import BinaryTimeSettings from "./BinaryTimeSettings";
+
+const messages = defineMessages({
+  name: {
+    id: "plugin.binaryTime.name",
+    defaultMessage: "Binary Clock",
+    description: "Name of the Binary Clock widget",
+  },
+  description: {
+    id: "plugin.binaryTime.description",
+    defaultMessage: "Display time in binary format.",
+    description: "Description of the Binary Clock widget",
+  },
+});
 
 const config: Config = {
-  key: "widget/binarytime",
-  name: "Binary Clock",
-  description: "Be on Time in Binary.",
-  dashboardComponent: Time,
-  settingsComponent: TimeSettings,
+  key: "widget/binaryTime",
+  name: messages.name,
+  description: messages.description,
+  dashboardComponent: BinaryTime,
+  settingsComponent: BinaryTimeSettings,
 };
 
 export default config;

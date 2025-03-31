@@ -7,13 +7,27 @@
  * @url https://github.com/JohannesNE/literature-clock
  */
 import { Config } from "../../types";
+import { defineMessages } from "react-intl";
 import LiteratureClock from "./LiteratureClock";
 import LiteratureClockSettings from "./LiteratureClockSettings";
 
+const messages = defineMessages({
+  name: {
+    id: "plugin.literatureClock.name",
+    defaultMessage: "Literature Clock",
+    description: "Name of the Literature Clock widget",
+  },
+  description: {
+    id: "plugin.literatureClock.description",
+    defaultMessage: "Check the time, with sophistication.",
+    description: "Description of the Literature Clock widget",
+  },
+});
+
 const config: Config = {
   key: "widget/literature-clock",
-  name: "Literature Clock",
-  description: "Check the time, with sophistication.",
+  name: messages.name,
+  description: messages.description,
   dashboardComponent: LiteratureClock,
   settingsComponent: LiteratureClockSettings,
 };

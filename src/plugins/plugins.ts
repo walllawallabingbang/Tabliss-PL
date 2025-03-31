@@ -5,8 +5,22 @@ export { widgetConfigs } from "./widgets";
 
 import Unknown from "./widgets/unknown/Unknown";
 import UnknownSettings from "./widgets/unknown/UnknownSettings";
+import { defineMessages } from "react-intl";
 
 const configs = [...backgroundConfigs, ...widgetConfigs];
+
+const unknownMessages = defineMessages({
+  name: {
+    id: "plugin.unknown.name",
+    defaultMessage: "Unknown Widget",
+    description: "Name of the fallback Unknown Widget",
+  },
+  description: {
+    id: "plugin.unknown.description",
+    defaultMessage: "Something went wrong",
+    description: "Description of the fallback Unknown Widget",
+  },
+});
 
 export function getConfig(key: string) {
   const config = configs.find((config) => config.key === key);
@@ -15,8 +29,8 @@ export function getConfig(key: string) {
     console.warn(`Unable to find config for plugin: ${key}`);
     return {
       key: "widget/unknown",
-      name: `Unknown Widget ${key}`,
-      description: `Something went wrong while loading '${key}' (click for details)`,
+      name: unknownMessages.name,
+      description: unknownMessages.description,
       dashboardComponent: Unknown,
       settingsComponent: UnknownSettings,
       supportsBackdrop: false,

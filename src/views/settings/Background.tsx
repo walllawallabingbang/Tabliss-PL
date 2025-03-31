@@ -34,7 +34,7 @@ const Background: React.FC = () => {
         >
           {backgroundConfigs.map((plugin) => (
             <option key={plugin.key} value={plugin.key}>
-              {plugin.name}
+              <FormattedMessage {...plugin.name} />
             </option>
           ))}
         </select>
@@ -42,7 +42,7 @@ const Background: React.FC = () => {
 
       {plugin && (
         <div className="Widget">
-          <h4>{plugin.name}</h4>
+          <h4><FormattedMessage {...plugin.name} /></h4>
 
           {plugin.settingsComponent && (
             <div className="settings">
@@ -161,4 +161,3 @@ const Background: React.FC = () => {
 };
 
 export default Background;
-

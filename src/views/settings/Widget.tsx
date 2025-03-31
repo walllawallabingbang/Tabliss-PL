@@ -8,10 +8,11 @@ import PluginContainer from "../shared/Plugin";
 import ToggleSection from "../shared/ToggleSection";
 import "./Widget.sass";
 import WidgetDisplay from "./WidgetDisplay";
+import { FormattedMessage } from "react-intl";
 
 interface Config {
-  name: string;
-  description: string;
+  name: { id: string; defaultMessage: string };
+  description: { id: string; defaultMessage: string };
   settingsComponent?: React.ComponentType<any>;
 }
 
@@ -60,8 +61,12 @@ const Widget: React.FC<Props> = ({
           </IconButton>
         )}
 
-        <h4 onClick={toggleIsOpen}>{name}</h4>
-        {!isOpen && <p>{description}</p>}
+        <h4 onClick={toggleIsOpen}>
+          <FormattedMessage {...name} />
+        </h4>
+        {!isOpen && <p>
+          <FormattedMessage {...description} />
+        </p>}
       </div>
 
       {isOpen && (

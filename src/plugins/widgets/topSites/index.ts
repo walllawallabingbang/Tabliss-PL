@@ -7,13 +7,27 @@
  * @url https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/topSites
  */
 import { Config } from "../../types";
+import { defineMessages } from "react-intl";
 import { TopSites } from "./TopSites";
 import TopSitesSettings from "./TopSitesSettings";
 
+const messages = defineMessages({
+  name: {
+    id: "plugin.topSites.name",
+    defaultMessage: "Top Sites",
+    description: "Name of the Top Sites widget",
+  },
+  description: {
+    id: "plugin.topSites.description",
+    defaultMessage: "Quick links to your top-visited sites.",
+    description: "Description of the Top Sites widget",
+  },
+});
+
 const config: Config = {
   key: "widget/topSites",
-  name: "Top Sites",
-  description: "Quick links to your top-visited sites.",
+  name: messages.name,
+  description: messages.description,
   dashboardComponent: TopSites,
   settingsComponent: TopSitesSettings,
 };

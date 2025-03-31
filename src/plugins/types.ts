@@ -1,4 +1,5 @@
 import { ComponentType } from "react";
+import { MessageDescriptor } from "react-intl";
 
 export type Cache<Shape = unknown> = {
   /**
@@ -39,8 +40,8 @@ export interface API<D = unknown, C = unknown> extends Data<D>, Cache<C> {
 /** Plugin config object type. */
 export type Config = {
   readonly key: string;
-  readonly name: string;
-  readonly description: string;
+  readonly name: MessageDescriptor;
+  readonly description: MessageDescriptor;
   readonly dashboardComponent: ComponentType<API<any, any>>;
   readonly settingsComponent?: ComponentType<API<any, any>>;
   readonly supportsBackdrop?: boolean;

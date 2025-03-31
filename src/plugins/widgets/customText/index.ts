@@ -1,11 +1,25 @@
 import { Config } from "../../types";
+import { defineMessages } from "react-intl";
 import CustomText from "./CustomText";
 import CustomTextSettings from "./CustomTextSettings";
 
+const messages = defineMessages({
+  name: {
+    id: "plugin.customText.name",
+    defaultMessage: "Custom Text",
+    description: "Name of the Custom Text widget",
+  },
+  description: {
+    id: "plugin.customText.description",
+    defaultMessage: "Custom text from set",
+    description: "Description of the Custom Text widget",
+  },
+});
+
 const config: Config = {
   key: "widget/customText",
-  name: "Custom Text",
-  description: "Custom text from set",
+  name: messages.name,
+  description: messages.description,
   dashboardComponent: CustomText,
   settingsComponent: CustomTextSettings,
 };

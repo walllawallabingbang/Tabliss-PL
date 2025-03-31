@@ -1,12 +1,25 @@
 import { Config } from "../../types";
+import { defineMessages } from "react-intl";
 import Since from "./Since";
 import SinceSettings from "./SinceSettings";
 
+const messages = defineMessages({
+  name: {
+    id: "plugin.since.name",
+    defaultMessage: "Time Since",
+    description: "Name of the Time Since widget",
+  },
+  description: {
+    id: "plugin.since.description",
+    defaultMessage: "Track time elapsed since a specific date.",
+    description: "Description of the Time Since widget",
+  },
+});
+
 const config: Config = {
   key: "widget/since",
-  name: "Since",
-  description:
-    "This widget tracks the time elapsed since or remaining until a specified event.",
+  name: messages.name,
+  description: messages.description,
   dashboardComponent: Since,
   settingsComponent: SinceSettings,
 };

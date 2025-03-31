@@ -6,7 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Icon } from "@iconify/react";
 import "./Notes.sass";
 
-export const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
+const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
   const [isEditing, setIsEditing] = React.useState(false);
 
   return (
@@ -21,7 +21,7 @@ export const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
             onBlur={() => setIsEditing(false)}
           />
         ) : (
-          <div 
+          <div
             onClick={() => setIsEditing(true)}
             style={{ cursor: 'pointer' }}
             className={data.markdownEnabled ? "markdown-content" : ""}
@@ -43,3 +43,5 @@ export const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
     </div>
   );
 };
+
+export default Notes;
