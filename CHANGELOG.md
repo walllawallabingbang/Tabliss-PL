@@ -10,6 +10,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
+- feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED).
+
 - feat(Translation): Add translation opportunity for widget names and descriptions. [#d20d9b4](https://github.com/BookCatKid/tabliss-maintained/commit/d20d9b4dbeada5202a5f7e850b5e9cbb682e60c4)
 
 - feat(Notes): Support markdown, add text alignment option. [#452c0ab](https://github.com/BookCatKid/tabliss-maintained/commit/452c0ab4af6cb9d5c94f51f906ec7dc48d09fe57)
