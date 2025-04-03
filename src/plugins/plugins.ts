@@ -2,7 +2,6 @@ import { backgroundConfigs } from "./backgrounds";
 import { widgetConfigs } from "./widgets";
 export { backgroundConfigs } from "./backgrounds";
 export { widgetConfigs } from "./widgets";
-
 import Unknown from "./widgets/unknown/Unknown";
 import UnknownSettings from "./widgets/unknown/UnknownSettings";
 import { defineMessages } from "react-intl";

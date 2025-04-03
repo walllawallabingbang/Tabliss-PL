@@ -19,7 +19,7 @@ const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
   const { isDark } = useTheme();
-  
+
   const settingsOnRight = settingsIconPosition === "bottomRight" || settingsIconPosition === "topRight";
 
   const handleReset = () => {
@@ -64,7 +64,7 @@ const Settings: React.FC = () => {
             } catch (error) {
               alert(
                 `Invalid import file: ${
-                  error instanceof Error ? error.message : "Uknown error"
+                  error instanceof Error ? error.message : "Unknown error"
                 }`,
               );
             }
