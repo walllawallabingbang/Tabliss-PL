@@ -8,9 +8,17 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ## [Unreleased]
 
+### Changed
+
+- refactor: simplify unknown widget.
+
+### Fixed
+
+- fix: correct typo in settings panel. [#7a9095a](https://github.com/BookCatKid/tabliss-maintained/commit/7a9095a892d46889349eaeb454d7292d962dfc55)
+
 ### Added
 
-- feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED).
+- feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED). [#b926df0](https://github.com/BookCatKid/tabliss-maintained/commit/b926df0945a9bd836dba5291596ce0a9c351cd98)
 
 - feat(Translation): Add translation opportunity for widget names and descriptions. [#d20d9b4](https://github.com/BookCatKid/tabliss-maintained/commit/d20d9b4dbeada5202a5f7e850b5e9cbb682e60c4)
 

@@ -1,7 +1,6 @@
 import { FC, useEffect } from "react";
-import { Props, defaultData } from "./types";
 import React from "react";
-const Unknown: FC<Props> = ({ data = defaultData }) => (
+const Unknown: FC = () => (
   <p>Something has gone wrong</p>
 )
 
