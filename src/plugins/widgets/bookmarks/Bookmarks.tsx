@@ -10,52 +10,80 @@ type NodeProps = {
   node: BookmarkTreeNode;
   depth: number;
   wrap: boolean;
-  navigationStyle: 'drill-down' | 'expand-collapse';
+  navigationStyle: 'drill-down' | 'expand-collapse' | 'auto-expanded';
   onFolderClick?: (folderId: string) => void;
   iconProvider: string;
   shortNames: boolean;
   maxTextLength: number;
+  isRoot?: boolean;
 };
 
-const Node: FC<NodeProps> = ({ 
-  node, 
-  depth, 
-  wrap, 
-  navigationStyle, 
+const Node: FC<NodeProps> = ({
+  node,
+  depth,
+  wrap,
+  navigationStyle,
   onFolderClick,
   iconProvider,
   shortNames,
-  maxTextLength 
+  maxTextLength,
+  isRoot = false
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  // For auto-expanded mode, folders are expanded by default
+  const [isExpanded, setIsExpanded] = useState(navigationStyle === 'auto-expanded');
   const isFolder = !node.url;
   const cls = isFolder ? "folder" : "bookmark";
 
+  // Skip rendering if this is the root node in auto-expanded mode
+  if (navigationStyle === 'auto-expanded' && isRoot && isFolder) {
+    return (
+      <>
+        {node.children?.map(child => (
+          <Node
+            key={child.id}
+            node={child}
+            depth={0} // Start at depth 0 for children of root
+            wrap={wrap}
+            navigationStyle={navigationStyle}
+            onFolderClick={onFolderClick}
+            iconProvider={iconProvider}
+            shortNames={shortNames}
+            maxTextLength={maxTextLength}
+          />
+        ))}
+      </>
+    );
+  }
+
   const handleClick = () => {
     if (!isFolder) return;
-    
+
     if (navigationStyle === 'drill-down') {
       onFolderClick?.(node.id);
-    } else {
+    } else if (navigationStyle === 'expand-collapse') {
       setIsExpanded(!isExpanded);
     }
+    // No action for auto-expanded mode
   };
 
-  const displayTitle = shortNames && node.url 
-    ? truncateText(cleanTitle(node.title, node.url), maxTextLength) 
+  const displayTitle = shortNames && node.url
+    ? truncateText(cleanTitle(node.title, node.url), maxTextLength)
     : node.title;
 
   const domain = node.url ? new URL(node.url).hostname : '';
 
+  // Determine if we should add the 'no-rotate' class for auto-expanded mode
+  const folderClass = `${cls} ${isExpanded ? 'expanded' : ''} ${navigationStyle === 'auto-expanded' ? 'no-rotate' : ''}`;
+
   return (
     <>
-      <div 
-        className={`${cls} ${isExpanded ? 'expanded' : ''}`} 
+      <div
+        className={folderClass}
         style={{
           marginLeft: depth + "em",
           whiteSpace: wrap ? undefined : "pre",
-          cursor: "pointer"
-        }} 
+          cursor: navigationStyle === 'auto-expanded' && isFolder ? "default" : "pointer"
+        }}
         onClick={handleClick}
       >
         {isFolder ? (
@@ -73,8 +101,10 @@ const Node: FC<NodeProps> = ({
         )}
         {node.url ? <a href={node.url}>{displayTitle}</a> : displayTitle}
       </div>
-      
-      {navigationStyle === 'expand-collapse' && isFolder && isExpanded && node.children?.map(child => (
+
+      {/* Render children for both expand-collapse and auto-expanded modes */}
+      {(navigationStyle === 'expand-collapse' || navigationStyle === 'auto-expanded') &&
+       isFolder && isExpanded && node.children?.map(child => (
         <Node
           key={child.id}
           node={child}
@@ -162,7 +192,7 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
   if (!tree) return null;
 
   return (
-    <div className="Bookmarks" style={{ 
+    <div className="Bookmarks" style={{
       maxWidth: data.maxWidth + "em",
       maxHeight: data.maxHeight + "em",
       overflowY: "auto"
@@ -188,6 +218,18 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
             />
           ))}
         </>
+      ) : data.navigationStyle === 'auto-expanded' ? (
+        <Node
+          node={tree}
+          depth={0}
+          wrap={data.wrap}
+          navigationStyle={data.navigationStyle}
+          onFolderClick={navigateToFolder}
+          iconProvider={data.iconProvider}
+          shortNames={data.shortNames}
+          maxTextLength={data.maxTextLength}
+          isRoot={true} // Mark as root node for auto-expanded mode
+        />
       ) : (
         <Node
           node={tree}
@@ -205,4 +247,3 @@ const Bookmarks: FC<Props> = ({ data = defaultData }) => {
 };
 
 export default Bookmarks;
-

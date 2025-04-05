@@ -68,9 +68,10 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
         <select
           value={data.navigationStyle}
           onChange={(evt) =>
-            setData({ ...data, navigationStyle: evt.target.value as 'drill-down' | 'expand-collapse' })}>
+            setData({ ...data, navigationStyle: evt.target.value as 'drill-down' | 'expand-collapse' | 'auto-expanded' })}>
           <option value="drill-down">Drill-down navigation</option>
           <option value="expand-collapse">Expandable folders</option>
+          <option value="auto-expanded">Auto-expanded tree</option>
         </select>
       </label>
 

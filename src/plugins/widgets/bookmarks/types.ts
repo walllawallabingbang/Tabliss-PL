@@ -5,7 +5,7 @@ export type Data = {
   maxWidth: number;
   maxHeight: number;
   wrap: boolean;
-  navigationStyle: "drill-down" | "expand-collapse";
+  navigationStyle: "drill-down" | "expand-collapse" | "auto-expanded";
   iconProvider:
     | "_default"
     | "_favicon_duckduckgo"

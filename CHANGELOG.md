@@ -10,13 +10,15 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Changed
 
-- refactor: simplify unknown widget.
+- refactor: simplify unknown widget. [#a373885](https://github.com/BookCatKid/tabliss-maintained/commit/a373885230de135704c63536a433a53a88a343e7)
 
 ### Fixed
 
 - fix: correct typo in settings panel. [#7a9095a](https://github.com/BookCatKid/tabliss-maintained/commit/7a9095a892d46889349eaeb454d7292d962dfc55)
 
 ### Added
+
+- feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13)
 
 - feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED). [#b926df0](https://github.com/BookCatKid/tabliss-maintained/commit/b926df0945a9bd836dba5291596ce0a9c351cd98)
 
