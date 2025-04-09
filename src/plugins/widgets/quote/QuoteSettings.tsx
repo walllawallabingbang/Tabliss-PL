@@ -1,8 +1,31 @@
 import React, { FC } from "react";
+
+// import categories from "./categories";
 import { Props, defaultData } from "./types";
 
 const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   <div className="QuoteSettings">
+    {/* <h5>Daily Quotes</h5>
+    {categories.map((category) => (
+      <label key={category.key}>
+        <input
+          type="radio"
+          checked={data.category === category.key}
+          onChange={() => setData({ category: category.key })}
+        />{" "}
+        {category.name}
+      </label>
+    ))}
+    <p>
+      Powered by{" "}
+      <a
+        href="https://theysaidso.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        They Said So
+      </a>
+    </p> */}
     <p>Daily Quotes from 'They Said So' are no longer available, I apologize for the inconvenience this may have caused.</p>
 
     <label>
