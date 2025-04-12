@@ -5,12 +5,12 @@ import ColourSettings from "./ColourSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.colour.name",
+    id: "backgrounds.colour.name",
     defaultMessage: "Solid Colour",
     description: "Name of the Solid Colour background",
   },
   description: {
-    id: "background.colour.description",
+    id: "backgrounds.colour.description",
     defaultMessage: "Add a splash of colour.",
     description: "Description of the Solid Colour background",
   },

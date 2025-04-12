@@ -5,12 +5,12 @@ import ImageSettings from "./MediaSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.media.name",
+    id: "backgrounds.media.name",
     defaultMessage: "Upload Images & Videos",
     description: "Name of the Media upload background",
   },
   description: {
-    id: "background.media.description",
+    id: "backgrounds.media.description",
     defaultMessage: "See your own media.",
     description: "Description of the Media upload background",
   },
