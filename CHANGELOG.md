@@ -22,7 +22,7 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
-- feat(Translation): Add translation support for settings panel.
+- feat(Translation): Add translation support for settings panel. [#522df4b](https://github.com/BookCatKid/tabliss-maintained/commit/522df4b9469df2cd60016fab8de32658c2902307)
 
 - feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13)
 

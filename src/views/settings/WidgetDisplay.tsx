@@ -46,7 +46,7 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
 
       <label>
       <FormattedMessage
-          id="size"
+          id="font.size"
           defaultMessage="Font Size"
           description="Font Size slider title"
         />
