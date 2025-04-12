@@ -5,12 +5,12 @@ import WorkHoursSettings from "./WorkHoursSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.workHours.name",
+    id: "plugins.workHours.name",
     defaultMessage: "Work Hours",
     description: "Name of the Work Hours widget",
   },
   description: {
-    id: "plugin.workHours.description",
+    id: "plugins.workHours.description",
     defaultMessage: "Track your working hours and time remaining.",
     description: "Description of the Work Hours widget",
   },

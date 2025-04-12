@@ -5,12 +5,12 @@ import NotesSettings from "./NotesSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.notes.name",
+    id: "plugins.notes.name",
     defaultMessage: "Notes",
     description: "Name of the Notes widget",
   },
   description: {
-    id: "plugin.notes.description",
+    id: "plugins.notes.description",
     defaultMessage: "Keep track of your thoughts and ideas.",
     description: "Description of the Notes widget",
   },

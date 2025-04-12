@@ -5,12 +5,12 @@ import JokeSettings from "./JokeSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.joke.name",
+    id: "plugins.joke.name",
     defaultMessage: "Jokes",
     description: "Name of the Jokes widget",
   },
   description: {
-    id: "plugin.joke.description",
+    id: "plugins.joke.description",
     defaultMessage: "Get a laugh with random jokes.",
     description: "Description of the Jokes widget",
   },

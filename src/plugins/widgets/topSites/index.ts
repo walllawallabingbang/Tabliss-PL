@@ -13,12 +13,12 @@ import TopSitesSettings from "./TopSitesSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.topSites.name",
+    id: "plugins.topSites.name",
     defaultMessage: "Top Sites",
     description: "Name of the Top Sites widget",
   },
   description: {
-    id: "plugin.topSites.description",
+    id: "plugins.topSites.description",
     defaultMessage: "Quick links to your top-visited sites.",
     description: "Description of the Top Sites widget",
   },

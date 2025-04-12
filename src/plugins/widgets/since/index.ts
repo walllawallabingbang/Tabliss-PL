@@ -5,12 +5,12 @@ import SinceSettings from "./SinceSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.since.name",
+    id: "plugins.since.name",
     defaultMessage: "Time Since",
     description: "Name of the Time Since widget",
   },
   description: {
-    id: "plugin.since.description",
+    id: "plugins.since.description",
     defaultMessage: "Track time elapsed since a specific date.",
     description: "Description of the Time Since widget",
   },

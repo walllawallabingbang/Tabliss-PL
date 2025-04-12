@@ -5,12 +5,12 @@ import BitcoinSettings from "./BitcoinSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.bitcoin.name",
+    id: "plugins.bitcoin.name",
     defaultMessage: "Bitcoin Mempool",
     description: "Name of the Bitcoin Mempool widget",
   },
   description: {
-    id: "plugin.bitcoin.description",
+    id: "plugins.bitcoin.description",
     defaultMessage: "Get the current block height.",
     description: "Description of the Bitcoin Mempool widget",
   },

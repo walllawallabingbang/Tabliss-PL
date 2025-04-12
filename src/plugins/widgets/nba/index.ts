@@ -5,12 +5,12 @@ import NbaSettings from "./NbaSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.nba.name",
+    id: "plugins.nba.name",
     defaultMessage: "NBA Scores",
     description: "Name of the NBA Scores widget",
   },
   description: {
-    id: "plugin.nba.description",
+    id: "plugins.nba.description",
     defaultMessage: "Keep up to date with today's NBA games.",
     description: "Description of the NBA Scores widget",
   },

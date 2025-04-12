@@ -5,12 +5,12 @@ import GitHubSettings from "./GitHubSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.github.name",
+    id: "plugins.github.name",
     defaultMessage: "GitHub Calendar",
     description: "Name of the GitHub Calendar widget",
   },
   description: {
-    id: "plugin.github.description",
+    id: "plugins.github.description",
     defaultMessage: "Get motivated by green squares.",
     description: "Description of the GitHub Calendar widget",
   },

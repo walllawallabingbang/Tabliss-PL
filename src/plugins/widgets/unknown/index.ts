@@ -5,12 +5,12 @@ import UnknownSettings from "./UnknownSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.unknown.name",
+    id: "plugins.unknown.name",
     defaultMessage: "Unknown Widget",
     description: "Name of the Unknown Widget",
   },
   description: {
-    id: "plugin.unknown.description",
+    id: "plugins.unknown.description",
     defaultMessage: "Something went wrong.",
     description: "Description of the Unknown Widget",
   },

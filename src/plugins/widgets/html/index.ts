@@ -5,12 +5,12 @@ import HtmlSettings from "./HtmlSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.html.name",
+    id: "plugins.html.name",
     defaultMessage: "Custom HTML",
     description: "Name of the Custom HTML widget",
   },
   description: {
-    id: "plugin.html.description",
+    id: "plugins.html.description",
     defaultMessage: "Add static HTML (advanced users).",
     description: "Description of the Custom HTML widget",
   },

@@ -5,12 +5,12 @@ import JsSettings from "./JsSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.js.name",
+    id: "plugins.js.name",
     defaultMessage: "Custom JS",
     description: "Name of the Custom JS widget",
   },
   description: {
-    id: "plugin.js.description",
+    id: "plugins.js.description",
     defaultMessage: "Program in your program.",
     description: "Description of the Custom JS widget",
   },

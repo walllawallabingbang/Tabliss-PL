@@ -5,12 +5,12 @@ import GreetingSettings from "./GreetingSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.greeting.name",
+    id: "plugins.greeting.name",
     defaultMessage: "Greeting",
     description: "Name of the Greeting widget",
   },
   description: {
-    id: "plugin.greeting.description",
+    id: "plugins.greeting.description",
     defaultMessage: "Be personally greeted all day.",
     description: "Description of the Greeting widget",
   },
