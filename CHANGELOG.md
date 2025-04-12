@@ -24,7 +24,7 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 - feat(Translation): Add translation support for settings panel. [#522df4b](https://github.com/BookCatKid/tabliss-maintained/commit/522df4b9469df2cd60016fab8de32658c2902307)
 
-- feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13)
+- feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13) [#81e4c4e](https://github.com/BookCatKid/tabliss-maintained/commit/81e4c4e5bec3e2e203d52ca355c85aa5f31b07f8)
 
 - feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED). [#b926df0](https://github.com/BookCatKid/tabliss-maintained/commit/b926df0945a9bd836dba5291596ce0a9c351cd98)
 

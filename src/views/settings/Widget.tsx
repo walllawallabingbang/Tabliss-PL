@@ -9,7 +9,6 @@ import PluginContainer from "../shared/Plugin";
 import ToggleSection from "../shared/ToggleSection";
 import "./Widget.sass";
 import WidgetDisplay from "./WidgetDisplay";
-import { FormattedMessage } from "react-intl";
 
 interface Config {
   name: { id: string; defaultMessage: string };
