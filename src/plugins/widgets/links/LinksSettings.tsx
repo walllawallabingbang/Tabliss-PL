@@ -1,5 +1,5 @@
-import React, { FC, useState, useMemo } from "react";
-
+import React, { FC, useMemo } from "react";
+import { FormattedMessage } from "react-intl";
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
 import { addLink, removeLink, reorderLink, updateLink } from "./actions";
@@ -12,7 +12,7 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
 
   const sortedLinks = useMemo(() => {
     if (data.sortBy === 'none') return data.links;
-    
+
     return [...data.links].sort((a, b) => {
       switch (data.sortBy) {
         case 'name':
@@ -32,7 +32,11 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
   return (
     <div className="LinksSettings">
       <label>
-        Number of columns
+      <FormattedMessage
+          id="plugins.links.numberOfColumns"
+          defaultMessage="Number of columns"
+          description="Number of columns title"
+        />
         <input
           type="number"
           value={data.columns}
@@ -64,7 +68,12 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
           checked={data.visible}
           onChange={() => setData({ ...data, visible: !data.visible })}
         />
-        Links are always visible
+        <FormattedMessage
+          id="plugins.links.areAlwaysVisible"
+          defaultMessage="Links are always visible"
+          description="Links are always visible title"
+        />
+
       </label>
 
       <label>
@@ -75,7 +84,11 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
             setData({ ...data, linkOpenStyle: !data.linkOpenStyle })
           }
         />
-        Links open in a new tab
+        <FormattedMessage
+          id="plugins.links.openInANewTab"
+          defaultMessage="Links open in a new tab"
+          description="Links open in a new tab title"
+        />
       </label>
 
       <label>
@@ -121,7 +134,12 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
           className="button button--primary"
           onClick={() => dispatch(addLink())}
         >
-          Add link
+          <FormattedMessage
+          id="plugins.links.AddLink"
+          defaultMessage="Add link"
+          description="Add link title"
+        />
+
         </button>
       </p>
     </div>

@@ -1,5 +1,7 @@
 import icons from "feather-icons/dist/icons.json";
 import React, { FC, useState, useRef, useEffect } from "react";
+import { FormattedMessage, defineMessages, useIntl } from "react-intl";
+
 import {
   IconButton,
   RemoveIcon,
@@ -28,6 +30,7 @@ const Input: FC<Props> = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const selectRef = useRef<HTMLSelectElement>(null);
+  const intl = useIntl();
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -133,26 +136,44 @@ const Input: FC<Props> = (props) => {
     <div className="LinkInput">
       <h5>
         <div className="title--buttons">
-          <IconButton onClick={props.onRemove} title="Remove link">
+          <IconButton onClick={props.onRemove} title={intl.formatMessage({
+            id: "plugins.links.input.removeLink",
+            defaultMessage: "Remove link"
+          })}>
             <RemoveIcon />
           </IconButton>
           {props.onMoveDown && (
-            <IconButton onClick={props.onMoveDown} title="Move link down">
+            <IconButton onClick={props.onMoveDown} title={intl.formatMessage({
+              id: "plugins.links.input.moveDown",
+              defaultMessage: "Move link down"
+            })}>
               <DownIcon />
             </IconButton>
           )}
           {props.onMoveUp && (
-            <IconButton onClick={props.onMoveUp} title="Move link up">
+            <IconButton onClick={props.onMoveUp} title={intl.formatMessage({
+              id: "plugins.links.input.moveUp",
+              defaultMessage: "Move link up"
+            })}>
               <UpIcon />
             </IconButton>
           )}
         </div>
 
-        {props.number <= 9 ? `Keyboard shortcut ${props.number}` : "Shortcut"}
+        {props.number <= 9
+          ? <FormattedMessage
+              id="plugins.links.input.keyboardShortcut"
+              defaultMessage="Keyboard shortcut {number}"
+              values={{ number: props.number }}
+            />
+          : <FormattedMessage
+              id="plugins.links.input.shortcut"
+              defaultMessage="Shortcut"
+            />}
       </h5>
 
       <label>
-        URL
+        <FormattedMessage id="plugins.links.input.url" defaultMessage="URL" />
         <input
           type="url"
           value={urlValue}
@@ -162,7 +183,11 @@ const Input: FC<Props> = (props) => {
       </label>
 
       <label>
-        Name <span className="text--grey">(optional)</span>
+        <FormattedMessage id="plugins.links.input.name" defaultMessage="Name" />
+        {" "}
+        <span className="text--grey">
+          (<FormattedMessage id="plugins.links.input.optional" defaultMessage="optional" />)
+        </span>
         <input
           type="text"
           value={props.name}
@@ -171,33 +196,58 @@ const Input: FC<Props> = (props) => {
       </label>
 
       <label>
-        Icon <span className="text--grey">(optional)</span>
+        <FormattedMessage id="plugins.links.input.icon" defaultMessage="Icon" />
+        {" "}
+        <span className="text--grey">
+          (<FormattedMessage id="plugins.links.input.optional" defaultMessage="optional" />)
+        </span>
         <select
           ref={selectRef}
           value={props.icon}
           onChange={(event) => props.onChange({ icon: event.target.value })}
         >
-          <option value={""}>None</option>
-          <optgroup label="Website Icons">
-            <option value="_favicon_google">From Google</option>
-            <option value="_favicon_duckduckgo">From DuckDuckGo</option>
-            <option value="_favicon_favicone">From Favicone</option>
+          <option value="">
+            <FormattedMessage id="plugins.links.input.none" defaultMessage="None" />
+          </option>
+          <optgroup label={intl.formatMessage({ id: "plugins.links.input.websiteIcons", defaultMessage: "Website Icons" })}>
+            <option value="_favicon_google">
+              <FormattedMessage id="plugins.links.input.fromGoogle" defaultMessage="From Google" />
+            </option>
+            <option value="_favicon_duckduckgo">
+              <FormattedMessage id="plugins.links.input.fromDuckDuckGo" defaultMessage="From DuckDuckGo" />
+            </option>
+            <option value="_favicon_favicone">
+              <FormattedMessage id="plugins.links.input.fromFavicone" defaultMessage="From Favicone" />
+            </option>
           </optgroup>
-          <optgroup label="Custom">
-            <option value="_custom_iconify">From Iconify</option>
-            <option value="_custom_svg">Custom SVG HTML</option>
-            <option value="_custom_ico">Custom Image URL</option>
-            <option value="_custom_upload">Upload Custom Icon</option>
+          <optgroup label={intl.formatMessage({ id: "plugins.links.input.custom", defaultMessage: "Custom" })}>
+            <option value="_custom_iconify">
+              <FormattedMessage id="plugins.links.input.fromIconify" defaultMessage="From Iconify" />
+            </option>
+            <option value="_custom_svg">
+              <FormattedMessage id="plugins.links.input.customSvgHtml" defaultMessage="Custom SVG HTML" />
+            </option>
+            <option value="_custom_ico">
+              <FormattedMessage id="plugins.links.input.customImageUrl" defaultMessage="Custom Image URL" />
+            </option>
+            <option value="_custom_upload">
+              <FormattedMessage id="plugins.links.input.uploadCustomIcon" defaultMessage="Upload Custom Icon" />
+            </option>
           </optgroup>
-          <optgroup label="Iconify Icons">
-            <option value="_feather">Feather</option>
+          <optgroup label={intl.formatMessage({ id: "plugins.links.input.iconifyIcons", defaultMessage: "Iconify Icons" })}>
+            <option value="_feather">
+              <FormattedMessage id="plugins.links.input.feather" defaultMessage="Feather" />
+            </option>
           </optgroup>
         </select>
       </label>
 
       {isCustomIconify && (
         <label>
-          Custom Iconify Identifier
+          <FormattedMessage
+            id="plugins.links.input.customIconifyIdentifier"
+            defaultMessage="Custom Iconify Identifier"
+          />
           <input
             type="text"
             value={props.IconString}
@@ -206,14 +256,20 @@ const Input: FC<Props> = (props) => {
             }
           />
           <p>
-            Enter the iconify identifier for the icon you want to use in your
-            links. For more detailed info see&nbsp;
+            <FormattedMessage
+              id="plugins.links.input.iconifyHelp"
+              defaultMessage="Enter the iconify identifier for the icon you want to use in your links. For more detailed info see "
+            />
+            &nbsp;
             <a
               href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
               target="_blank"
               rel="noopener noreferrer"
             >
-              this GitHub issue
+              <FormattedMessage
+                id="plugins.links.input.githubIssue"
+                defaultMessage="this GitHub issue"
+              />
             </a>
             .
           </p>
@@ -222,7 +278,10 @@ const Input: FC<Props> = (props) => {
 
       {isCustomSvg && (
         <label>
-          Custom SVG HTML
+          <FormattedMessage
+            id="plugins.links.input.customSvgHtmlLabel"
+            defaultMessage="Custom SVG HTML"
+          />
           <textarea
             value={props.SvgString}
             onChange={(event) =>
@@ -230,14 +289,20 @@ const Input: FC<Props> = (props) => {
             }
           />
           <p>
-            Enter your custom SVG HTML code above to use an icon in your links.
-            For more detailed info see&nbsp;
+            <FormattedMessage
+              id="plugins.links.input.customSvgHelp"
+              defaultMessage="Enter your custom SVG HTML code above to use an icon in your links. For more detailed info see "
+            />
+            &nbsp;
             <a
               href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
               target="_blank"
               rel="noopener noreferrer"
             >
-              this GitHub issue
+              <FormattedMessage
+                id="plugins.links.input.githubIssue"
+                defaultMessage="this GitHub issue"
+              />
             </a>
             .
           </p>
@@ -246,7 +311,10 @@ const Input: FC<Props> = (props) => {
 
       {isCustomICON && (
         <label>
-          Custom Image URL
+          <FormattedMessage
+            id="plugins.links.input.customImageUrlLabel"
+            defaultMessage="Custom Image URL"
+          />
           <input
             type="text"
             value={props.IconStringIco}
@@ -254,14 +322,22 @@ const Input: FC<Props> = (props) => {
               props.onChange({ IconStringIco: event.target.value })
             }
           />
-          <p>Enter a url on the internet for an image file</p>
+          <p>
+            <FormattedMessage
+              id="plugins.links.input.customImageUrlHelp"
+              defaultMessage="Enter a url on the internet for an image file"
+            />
+          </p>
         </label>
       )}
 
       {isCustomUpload && (
         <div>
           <label>
-            Upload Icon
+            <FormattedMessage
+              id="plugins.links.input.uploadIcon"
+              defaultMessage="Upload Icon"
+            />
             <input
               type="file"
               accept=".svg,.ico,image/*"
@@ -274,7 +350,16 @@ const Input: FC<Props> = (props) => {
       {isFeather && (
         <div className="icon-picker">
           <button onClick={handleOpenModal} className="custom-select">
-            {props.icon ? `Open icon picker` : "Choose an Icon"}
+            {props.icon ?
+              <FormattedMessage
+                id="plugins.links.input.openIconPicker"
+                defaultMessage="Open icon picker"
+              /> :
+              <FormattedMessage
+                id="plugins.links.input.chooseIcon"
+                defaultMessage="Choose an Icon"
+              />
+            }
           </button>
         </div>
       )}
@@ -286,7 +371,10 @@ const Input: FC<Props> = (props) => {
           props.cache[props.iconCacheKey]?.type !== "svg")) && (
         <>
           <label>
-            Conserve Aspect Ratio
+            <FormattedMessage
+              id="plugins.links.input.conserveAspectRatio"
+              defaultMessage="Conserve Aspect Ratio"
+            />
             <input
               className="conserveAspectRatioButton"
               type="checkbox"
@@ -298,7 +386,10 @@ const Input: FC<Props> = (props) => {
           </label>
           {props.conserveAspectRatio ? (
             <label>
-              Scale
+              <FormattedMessage
+                id="plugins.links.input.scale"
+                defaultMessage="Scale"
+              />
               <input
                 type="number"
                 value={props.customWidth}
@@ -313,7 +404,10 @@ const Input: FC<Props> = (props) => {
           ) : (
             <>
               <label>
-                Icon Width
+                <FormattedMessage
+                  id="plugins.links.input.iconWidth"
+                  defaultMessage="Icon Width"
+                />
                 <input
                   type="number"
                   value={props.customWidth ?? 24}
@@ -323,7 +417,10 @@ const Input: FC<Props> = (props) => {
                 />
               </label>
               <label>
-                Icon Height
+                <FormattedMessage
+                  id="plugins.links.input.iconHeight"
+                  defaultMessage="Icon Height"
+                />
                 <input
                   type="number"
                   value={props.customHeight ?? 24}
@@ -344,7 +441,10 @@ const Input: FC<Props> = (props) => {
           props.cache[props.iconCacheKey]?.type === "svg")) && (
         <div>
           <label>
-            Icon Size
+            <FormattedMessage
+              id="plugins.links.input.iconSize"
+              defaultMessage="Icon Size"
+            />
             <input
               type="number"
               value={props.customWidth ?? 24}
@@ -357,7 +457,10 @@ const Input: FC<Props> = (props) => {
             />
           </label>
           <p className="no-svg-scaling-warning">
-            Currently svgs do not support custom dimensions.
+            <FormattedMessage
+              id="plugins.links.input.svgScalingWarning"
+              defaultMessage="Currently svgs do not support custom dimensions."
+            />
           </p>
         </div>
       )}
@@ -383,11 +486,19 @@ const Input: FC<Props> = (props) => {
       {isModalOpen && (
         <div className="Modal-container" onClick={handleCloseModal}>
           <div className="Modal" onClick={(event) => event.stopPropagation()}>
-            <h2>Select an Icon</h2>
+            <h2>
+              <FormattedMessage
+                id="plugins.links.input.selectIcon"
+                defaultMessage="Select an Icon"
+              />
+            </h2>
 
             <input
               type="text"
-              placeholder="Search icons..."
+              placeholder={intl.formatMessage({
+                id: "plugins.links.input.searchIcons",
+                defaultMessage: "Search icons..."
+              })}
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               className="search-bar"
@@ -406,12 +517,20 @@ const Input: FC<Props> = (props) => {
                   </button>
                 ))
               ) : (
-                <p className="no-results">No icons found</p>
+                <p className="no-results">
+                  <FormattedMessage
+                    id="plugins.links.input.noIconsFound"
+                    defaultMessage="No icons found"
+                  />
+                </p>
               )}
             </div>
 
             <button className="close-button" onClick={handleCloseModal}>
-              Cancel
+              <FormattedMessage
+                id="plugins.links.input.cancel"
+                defaultMessage="Cancel"
+              />
             </button>
           </div>
         </div>

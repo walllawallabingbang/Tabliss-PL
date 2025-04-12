@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { WidgetDisplay as WidgetDisplayType } from "../../db/state";
 import PositionInput from "./PositionInput";
 import "./WidgetDisplay.css";
@@ -14,7 +15,7 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
       <PositionInput
         value={display.position}
         onChange={(position) => {
-          onChange({ 
+          onChange({
             position,
             isEditingPosition: false,
           });
@@ -24,7 +25,7 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
       {display.position === "free" && (
         <div>
           <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-            <button 
+            <button
               onClick={() => onChange({ isEditingPosition: !display.isEditingPosition })}
               className={`button button--primary ${display.isEditingPosition ? "active" : ""}`}
             >
@@ -44,7 +45,11 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
       )}
 
       <label>
-        Font Size
+      <FormattedMessage
+          id="size"
+          defaultMessage="Font Size"
+          description="Font Size slider title"
+        />
         <br />
         <input
           type="range"

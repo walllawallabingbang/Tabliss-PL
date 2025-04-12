@@ -10,6 +10,10 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Changed
 
+- refactor(i18n): standardize translation IDs to use "backgrounds." prefix. [#12f5b59](https://github.com/BookCatKid/tabliss-maintained/commit/12f5b59c7d87917f64cd1a56ac15eaa5728b0278)
+
+- refactor(i18n): standardize translation IDs to use "plugins." prefix. [#e385751](https://github.com/BookCatKid/tabliss-maintained/commit/e385751a4c1cc03fb29b4970d29a52ff110a0d83)
+
 - refactor: simplify unknown widget. [#a373885](https://github.com/BookCatKid/tabliss-maintained/commit/a373885230de135704c63536a433a53a88a343e7)
 
 ### Fixed
@@ -17,6 +21,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 - fix: correct typo in settings panel. [#7a9095a](https://github.com/BookCatKid/tabliss-maintained/commit/7a9095a892d46889349eaeb454d7292d962dfc55)
 
 ### Added
+
+- feat(Translation): Add translation support for settings panel.
 
 - feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13)
 

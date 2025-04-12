@@ -135,13 +135,37 @@ const Settings: React.FC = () => {
         <Widgets />
         <System />
         <p style={{ marginBottom: "2rem" }}>
-          <a onClick={handleImport}>Import</a>,{" "}
-          <a onClick={handleExport}>export</a> or{" "}
-          <a onClick={handleReset}>reset</a> your settings
+          <a onClick={handleImport}><FormattedMessage
+          id="settings.import"
+          defaultMessage="Import"
+          description="Import title"
+        /></a>,{" "}
+          <a onClick={handleExport}><FormattedMessage
+          id="settings.export"
+          defaultMessage="export"
+          description="Export title"
+        /></a> <FormattedMessage
+      id="settings.or"
+      defaultMessage="or"
+      description="your settings title"
+    /> {" "}
+          <a onClick={handleReset}><FormattedMessage
+          id="settings.reset"
+          defaultMessage="reset"
+          description="Reset title"
+        /></a> <FormattedMessage
+        id="settings.description"
+        defaultMessage="your settings"
+        description="your settings title"
+      />
         </p>
         <Persist />
         <div style={{ textAlign: "center" }} className="Widget">
-          <h4>Support Tabliss - Maintained</h4>
+          <h4><FormattedMessage
+          id="support"
+          defaultMessage="Support Tabliss - Maintained"
+          description="Support Tabliss - Maintained button text"
+        /></h4>
           <p>
             <a
               href="https://github.com/BookCatKid/tabliss-maintained"
@@ -149,7 +173,11 @@ const Settings: React.FC = () => {
               rel="noopener noreferrer"
               className="button button--primary"
             >
-              <Icon icon="feather:github" /> Star the github repository! 🌟😍
+              <Icon icon="feather:github" /> <FormattedMessage
+                id="settings.support.star"
+                defaultMessage="Star the github repository! 🌟😍"
+                description="Call to action to star the GitHub repository"
+              />
             </a>
           </p>
           <p style={{ marginTop: "1rem" }} className="Widget">
@@ -159,7 +187,11 @@ const Settings: React.FC = () => {
               rel="noopener noreferrer"
               className="button button--primary"
             >
-              <Icon icon="feather:code" /> Contribute to the project! 😍🌟
+              <Icon icon="feather:code" /> <FormattedMessage
+                id="settings.support.contribute"
+                defaultMessage="Contribute to the project! 😍🌟"
+                description="Call to action to contribute to the project"
+              />
             </a>
           </p>
         </div>
