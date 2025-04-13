@@ -10,12 +10,12 @@ const configs = [...backgroundConfigs, ...widgetConfigs];
 
 const unknownMessages = defineMessages({
   name: {
-    id: "plugin.unknown.name",
+    id: "plugins.unknown.name",
     defaultMessage: "Unknown Widget",
     description: "Name of the fallback Unknown Widget",
   },
   description: {
-    id: "plugin.unknown.description",
+    id: "plugins.unknown.description",
     defaultMessage: "Something went wrong",
     description: "Description of the fallback Unknown Widget",
   },

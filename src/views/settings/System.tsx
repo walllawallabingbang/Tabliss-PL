@@ -72,13 +72,20 @@ const System: React.FC = () => {
           margin: 0,
         }}
       >
-        <span>Language</span>
+        <span><FormattedMessage
+          id="language"
+          defaultMessage="Language"
+          description="Language title"
+        /></span>
         <select
           value={locale}
           onChange={(event) => setLocale(event.target.value)}
         >
           <option value="ar" title="Arabic">
             العربية
+          </option>
+          <option value="be" title="Belorussian">
+            Беларуская
           </option>
           <option value="ca-ES" title="Catalan">
             Català
@@ -225,7 +232,11 @@ const System: React.FC = () => {
           margin: 0,
         }}
       >
-        Time Zone
+        <FormattedMessage
+          id="timeZone"
+          defaultMessage="Time zone"
+          description="Time zone title"
+        />
         <TimeZoneInput timeZone={timeZone} onChange={setTimeZone} />
       </label>
 
