@@ -16,12 +16,7 @@ function getRandomBibleVerse() {
 const Quote: React.FC<Props> = ({ cache, data = defaultData, setCache, loader }) => {
   useCachedEffect(
     () => {
-      if (data.category === "bible") {
-        const verse = getRandomBibleVerse();
-        setCache({ quote: verse.quote, author: verse.author, timestamp: Date.now() });
-      } else {
-        getQuote(loader, data.category ?? "quotable").then(setCache);
-      }
+      getQuote(loader, data.category ?? "quotable").then(setCache);
     },
     cache ? cache.timestamp + EXPIRE_IN : 0,
     [data.category],
