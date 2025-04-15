@@ -5,12 +5,12 @@ import CustomTextSettings from "./CustomTextSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.customText.name",
+    id: "plugins.customText.name",
     defaultMessage: "Custom Text",
     description: "Name of the Custom Text widget",
   },
   description: {
-    id: "plugin.customText.description",
+    id: "plugins.customText.description",
     defaultMessage: "Custom text from set",
     description: "Description of the Custom Text widget",
   },

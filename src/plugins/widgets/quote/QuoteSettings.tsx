@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-
 // import categories from "./categories";
 import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";
@@ -81,10 +80,18 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.category === "bible"}
         onChange={() => setData({ category: "bible" })}
       />{" "}
-      Random Bible Verse
+      <FormattedMessage
+        id="plugins.quotes.bibleVerse"
+        defaultMessage="Random Bible Verse"
+        description="Bible verse option"
+      />
     </label>
     <p>
-      Top inspirational verses from the Bible.
+      <FormattedMessage
+        id="plugins.quotes.bibleVerseDescription"
+        defaultMessage="Top inspirational verses from the Bible."
+        description="Bible verse description"
+      />
     </p>
 
     <h5><FormattedMessage
@@ -107,7 +114,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
           description="Powered by title"
         />{" "}
       <a
-        href="http://www.developerexcuses.com/"
+        href="http://www.developerexcises.com/"
         target="_blank"
         rel="noopener noreferrer"
       >

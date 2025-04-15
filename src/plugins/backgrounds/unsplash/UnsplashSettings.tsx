@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { FormattedMessage } from "react-intl";
 import { DebounceInput } from "../../shared";
 import topics from "./topics.json";
 import { defaultData, Props } from "./types";
@@ -14,19 +15,47 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
           <Icon icon={`feather:${data.paused ? "play" : "pause"}`} />
         </a>
       </span>
-      Show a new photo
+      <FormattedMessage
+          id="backgrounds.unsplash.showNewPhoto"
+          defaultMessage="Show a new photo"
+          description="Show a new photo title"
+        />
       <select
         value={data.timeout}
         onChange={(event) =>
           setData({ ...data, timeout: Number(event.target.value) })
         }
       >
-        <option value="0">Every new tab</option>
-        <option value="300">Every 5 minutes</option>
-        <option value="900">Every 15 minutes</option>
-        <option value="3600">Every hour</option>
-        <option value="86400">Every day</option>
-        <option value="604800">Every week</option>
+        <option value="0"><FormattedMessage
+          id="backgrounds.unsplash.everyNewTab"
+          defaultMessage="Every new tab"
+          description="Every new tab title"
+        /></option>
+        <option value="300"><FormattedMessage
+          id="plugins.every5min"
+          defaultMessage="Every 5 minutes"
+          description="Every 5 minutes< title"
+        /></option>
+        <option value="900"><FormattedMessage
+          id="plugins.every15min"
+          defaultMessage="Every 15 minutes"
+          description="Every 15 minutes title"
+        /></option>
+        <option value="3600"><FormattedMessage
+          id="plugins.everyHour"
+          defaultMessage="Every hour"
+          description="Every hour title"
+        /></option>
+        <option value="86400"><FormattedMessage
+          id="plugins.everyDay"
+          defaultMessage="Every day"
+          description="Every day title"
+        /></option>
+        <option value="604800"><FormattedMessage
+          id="plugins.everyWeek"
+          defaultMessage="Every week"
+          description="Every week title"
+        /></option>
       </select>
     </label>
 
@@ -36,7 +65,11 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.by === "official"}
         onChange={() => setData({ ...data, by: "official" })}
       />{" "}
-      Official Collection
+      <FormattedMessage
+          id="backgrounds.unsplash.officialCollection"
+          defaultMessage="Official Collection"
+          description="Official Collection title"
+        />
     </label>
 
     <label>
@@ -45,7 +78,11 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.by === "topics"}
         onChange={() => setData({ ...data, by: "topics" })}
       />{" "}
-      Topics
+      <FormattedMessage
+          id="backgrounds.unsplash.topic"
+          defaultMessage="Topic"
+          description="Unsplash label for searching by topics"
+        />
     </label>
 
     <label>
@@ -54,7 +91,11 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.by === "search"}
         onChange={() => setData({ ...data, by: "search" })}
       />{" "}
-      Search
+      <FormattedMessage
+          id="backgrounds.unsplash.search"
+          defaultMessage="Search"
+          description="Search title"
+        />
     </label>
 
     <label>
@@ -63,12 +104,20 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         checked={data.by === "collections"}
         onChange={() => setData({ ...data, by: "collections" })}
       />{" "}
-      Collection
+      <FormattedMessage
+          id="backgrounds.unsplash.collection"
+          defaultMessage="Collection"
+          description="Collection title"
+        />
     </label>
 
     {data.by === "topics" && (
       <label>
-        Topics
+        <FormattedMessage
+          id="backgrounds.unsplash.topics"
+          defaultMessage="Topics"
+          description="Unsplash label for topic multiselect"
+        />
         <Select
           options={topics.map(topic => ({ value: topic.id, label: topic.title }))}
           values={topics
@@ -89,11 +138,21 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
             borderRadius: '0.2em',
           }}
           contentRenderer={({ props }) => {
-            if (props.values.length === 0) return <div>Select topics...</div>;
+            if (props.values.length === 0) {
+              return (
+                <div>
+                  <FormattedMessage
+                    id="backgrounds.unsplash.topics.placeholder"
+                    defaultMessage="Select topics..."
+                    description="Placeholder text for empty topic selection"
+                  />
+                </div>
+              );
+            }
             return (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25em', padding: '0.25em' }}>
                 {props.values.map((item: any) => (
-                  <span 
+                  <span
                     key={item.value}
                     style={{
                       background: '#3498db',
@@ -110,14 +169,24 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
             );
           }}
         />
-        <i>Select one or more topics</i>
+        <i>
+          <FormattedMessage
+            id="backgrounds.unsplash.topics.help"
+            defaultMessage="Select one or more topics"
+            description="Help text for topic selection"
+          />
+        </i>
       </label>
     )}
 
     {data.by === "search" && (
       <>
         <label>
-          Tags
+          <FormattedMessage
+          id="backgrounds.unsplash.tags"
+          defaultMessage="Tags"
+          description="Tags title"
+        />
           <DebounceInput
             type="text"
             value={data.search}
@@ -133,14 +202,23 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
             checked={data.featured}
             onChange={(event) => setData({ ...data, featured: !data.featured })}
           />{" "}
-          Only featured images
+          <FormattedMessage
+          id="backgrounds.unsplash.onlyFeaturedImages"
+          defaultMessage="Only featured images"
+          description="Only featured images title"
+        />
         </label>
       </>
     )}
 
     {data.by === "collections" && (
       <label>
-        Collection
+        <FormattedMessage
+          id="backgrounds.unsplash.collectionid"
+          defaultMessage="Collection"
+          description="Collection id input title"
+        />
+
         <DebounceInput
           type="text"
           value={data.collections}
@@ -152,19 +230,46 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
     )}
 
     <label>
-      Location On-Click Source
+      <FormattedMessage
+        id="backgrounds.unsplash.locationSource"
+        defaultMessage="Location On-Click Source"
+        description="Label for selecting where location clicks go to"
+      />
       <select
         value={data.locationSource}
         onChange={(event) => setData({ ...data, locationSource: event.target.value })}
       >
-        <option value="google-maps">Google Maps</option>
-        <option value="google">Google Search</option>
-        <option value="duckduckgo">DuckDuckGo Search</option>
-        <option value="unsplash">Unsplash Photos</option>
+        <option value="google-maps">
+          <FormattedMessage
+            id="backgrounds.unsplash.locationSource.googleMaps"
+            defaultMessage="Google Maps"
+            description="Google Maps option for location source"
+          />
+        </option>
+        <option value="google">
+          <FormattedMessage
+            id="backgrounds.unsplash.locationSource.google"
+            defaultMessage="Google Search"
+            description="Google Search option for location source"
+          />
+        </option>
+        <option value="duckduckgo">
+          <FormattedMessage
+            id="backgrounds.unsplash.locationSource.duckduckgo"
+            defaultMessage="DuckDuckGo Search"
+            description="DuckDuckGo Search option for location source"
+          />
+        </option>
+        <option value="unsplash">
+          <FormattedMessage
+            id="backgrounds.unsplash.locationSource.unsplash"
+            defaultMessage="Unsplash Photos"
+            description="Unsplash Photos option for location source"
+          />
+        </option>
       </select>
     </label>
   </div>
 );
 
 export default UnsplashSettings;
-

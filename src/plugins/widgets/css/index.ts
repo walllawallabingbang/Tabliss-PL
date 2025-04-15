@@ -5,12 +5,12 @@ import CssSettings from "./CssSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.css.name",
+    id: "plugins.css.name",
     defaultMessage: "Custom CSS",
     description: "Name of the Custom CSS widget",
   },
   description: {
-    id: "plugin.css.description",
+    id: "plugins.css.description",
     defaultMessage: "Make your new tab more style-ish (advanced users).",
     description: "Description of the Custom CSS widget",
   },

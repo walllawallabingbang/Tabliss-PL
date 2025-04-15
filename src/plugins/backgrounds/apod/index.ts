@@ -5,12 +5,12 @@ import ApodSettings from "./ApodSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.apod.name",
+    id: "backgrounds.apod.name",
     defaultMessage: "Astronomy Picture of the Day",
     description: "Name of the APOD background",
   },
   description: {
-    id: "background.apod.description",
+    id: "backgrounds.apod.description",
     defaultMessage: "NASA's sky pictures",
     description: "Description of the APOD background",
   },

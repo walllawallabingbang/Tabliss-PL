@@ -5,12 +5,12 @@ import GiphySettings from "./GiphySettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.giphy.name",
+    id: "backgrounds.giphy.name",
     defaultMessage: "GIPHY",
     description: "Name of the GIPHY background",
   },
   description: {
-    id: "background.giphy.description",
+    id: "backgrounds.giphy.description",
     defaultMessage: "Hurt your eyes in every new tab.",
     description: "Description of the GIPHY background",
   },

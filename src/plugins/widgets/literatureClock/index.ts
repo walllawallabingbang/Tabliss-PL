@@ -13,12 +13,12 @@ import LiteratureClockSettings from "./LiteratureClockSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.literatureClock.name",
+    id: "plugins.literatureClock.name",
     defaultMessage: "Literature Clock",
     description: "Name of the Literature Clock widget",
   },
   description: {
-    id: "plugin.literatureClock.description",
+    id: "plugins.literatureClock.description",
     defaultMessage: "Check the time, with sophistication.",
     description: "Description of the Literature Clock widget",
   },

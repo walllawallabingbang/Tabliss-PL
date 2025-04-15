@@ -5,12 +5,12 @@ import SearchSettings from "./SearchSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.search.name",
+    id: "plugins.search.name",
     defaultMessage: "Search",
     description: "Name of the Search widget",
   },
   description: {
-    id: "plugin.search.description",
+    id: "plugins.search.description",
     defaultMessage: "Search the web using your favorite engine.",
     description: "Description of the Search widget",
   },

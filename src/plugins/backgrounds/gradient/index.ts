@@ -5,12 +5,12 @@ import GradientSettings from "./GradientSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.gradient.name",
+    id: "backgrounds.gradient.name",
     defaultMessage: "Colour Gradient",
     description: "Name of the Colour Gradient background",
   },
   description: {
-    id: "background.gradient.description",
+    id: "backgrounds.gradient.description",
     defaultMessage: "Add more splashes of colour.",
     description: "Description of the Colour Gradient background",
   },

@@ -10,6 +10,10 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Changed
 
+- refactor(i18n): standardize translation IDs to use "backgrounds." prefix. [#12f5b59](https://github.com/BookCatKid/tabliss-maintained/commit/12f5b59c7d87917f64cd1a56ac15eaa5728b0278)
+
+- refactor(i18n): standardize translation IDs to use "plugins." prefix. [#e385751](https://github.com/BookCatKid/tabliss-maintained/commit/e385751a4c1cc03fb29b4970d29a52ff110a0d83)
+
 - refactor: simplify unknown widget. [#a373885](https://github.com/BookCatKid/tabliss-maintained/commit/a373885230de135704c63536a433a53a88a343e7)
 
 ### Fixed
@@ -18,7 +22,9 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
-- feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13)
+- feat(Translation): Add translation support for settings panel. [#522df4b](https://github.com/BookCatKid/tabliss-maintained/commit/522df4b9469df2cd60016fab8de32658c2902307)
+
+- feat(Bookmarks): Add auto-expanded navigation style. [#13](https://github.com/BookCatKid/tabliss-maintained/issues/13) [#81e4c4e](https://github.com/BookCatKid/tabliss-maintained/commit/81e4c4e5bec3e2e203d52ca355c85aa5f31b07f8)
 
 - feat(Links): Add handling for special URLs (FIREFOX NOT SUPPORTED). [#b926df0](https://github.com/BookCatKid/tabliss-maintained/commit/b926df0945a9bd836dba5291596ce0a9c351cd98)
 

@@ -5,12 +5,12 @@ import BookmarksSettings from "./BookmarksSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.bookmarks.name",
+    id: "plugins.bookmarks.name",
     defaultMessage: "Bookmarks",
     description: "Name of the Bookmarks widget",
   },
   description: {
-    id: "plugin.bookmarks.description",
+    id: "plugins.bookmarks.description",
     defaultMessage: "Quick access to your browser bookmarks.",
     description: "Description of the Bookmarks widget",
   },

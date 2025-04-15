@@ -5,12 +5,12 @@ import WeatherSettings from "./WeatherSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.weather.name",
+    id: "plugins.weather.name",
     defaultMessage: "Weather",
     description: "Name of the Weather widget",
   },
   description: {
-    id: "plugin.weather.description",
+    id: "plugins.weather.description",
     defaultMessage: "Display current weather conditions for your location.",
     description: "Description of the Weather widget",
   },

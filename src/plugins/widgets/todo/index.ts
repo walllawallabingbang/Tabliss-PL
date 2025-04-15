@@ -5,12 +5,12 @@ import TodoSettings from "./TodoSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.todo.name",
+    id: "plugins.todo.name",
     defaultMessage: "Todos",
     description: "Name of the Todo widget",
   },
   description: {
-    id: "plugin.todo.description",
+    id: "plugins.todo.description",
     defaultMessage: "Add reminders to procrastinate.",
     description: "Description of the Todo widget",
   },

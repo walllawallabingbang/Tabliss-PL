@@ -5,12 +5,12 @@ import BinaryTimeSettings from "./BinaryTimeSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.binaryTime.name",
+    id: "plugins.binaryTime.name",
     defaultMessage: "Binary Clock",
     description: "Name of the Binary Clock widget",
   },
   description: {
-    id: "plugin.binaryTime.description",
+    id: "plugins.binaryTime.description",
     defaultMessage: "Display time in binary format.",
     description: "Description of the Binary Clock widget",
   },

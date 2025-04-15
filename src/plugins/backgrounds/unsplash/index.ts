@@ -5,12 +5,12 @@ import UnsplashSettings from "./UnsplashSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.unsplash.name",
+    id: "backgrounds.unsplash.name",
     defaultMessage: "Unsplash",
     description: "Name of the Unsplash background",
   },
   description: {
-    id: "background.unsplash.description",
+    id: "backgrounds.unsplash.description",
     defaultMessage: "Who has time to find their own images.",
     description: "Description of the Unsplash background",
   },

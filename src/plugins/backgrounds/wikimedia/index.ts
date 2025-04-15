@@ -5,12 +5,12 @@ import WikimediaSettings from "./WikimediaSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.wikimedia.name",
+    id: "backgrounds.wikimedia.name",
     defaultMessage: "Wikimedia Image of the Day",
     description: "Name of the Wikimedia background",
   },
   description: {
-    id: "background.wikimedia.description",
+    id: "backgrounds.wikimedia.description",
     defaultMessage: "Get the image of the day from Wikimedia Commons.",
     description: "Description of the Wikimedia background",
   },

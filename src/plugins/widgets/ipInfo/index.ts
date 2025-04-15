@@ -5,14 +5,14 @@ import IpInfoSettings from "./IpInfoSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.ipInfo.name",
-    defaultMessage: "IP Information",
-    description: "Name of the IP Information widget",
+    id: "plugins.ipInfo.name",
+    defaultMessage: "IP Info",
+    description: "Name of the IP Info widget",
   },
   description: {
-    id: "plugin.ipInfo.description",
+    id: "plugins.ipInfo.description",
     defaultMessage: "Display your IP address and location details.",
-    description: "Description of the IP Information widget",
+    description: "Description of the IP Info widget",
   },
 });
 

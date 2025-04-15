@@ -5,12 +5,12 @@ import OnlineSettings from "./OnlineSettings";
 
 const messages = defineMessages({
   name: {
-    id: "background.online.name",
+    id: "backgrounds.online.name",
     defaultMessage: "Online Image",
     description: "Name of the Online Image background",
   },
   description: {
-    id: "background.online.description",
+    id: "backgrounds.online.description",
     defaultMessage: "Show online image",
     description: "Description of the Online Image background",
   },

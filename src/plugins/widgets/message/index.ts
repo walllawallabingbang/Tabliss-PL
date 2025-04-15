@@ -5,12 +5,12 @@ import MessageSettings from "./MessageSettings";
 
 const messages = defineMessages({
   name: {
-    id: "plugin.message.name",
+    id: "plugins.message.name",
     defaultMessage: "Message",
     description: "Name of the Message widget",
   },
   description: {
-    id: "plugin.message.description",
+    id: "plugins.message.description",
     defaultMessage: "Add your own text.",
     description: "Description of the Message widget",
   },
