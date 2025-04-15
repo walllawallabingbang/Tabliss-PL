@@ -77,8 +77,8 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
     <label>
       <input
         type="radio"
-        checked={data.category === "bible"}
-        onChange={() => setData({ category: "bible" })}
+        checked={data.category === "randomBible"}
+        onChange={() => setData({ category: "randomBible" })}
       />{" "}
       <FormattedMessage
         id="plugins.quotes.randomBibleVerse"

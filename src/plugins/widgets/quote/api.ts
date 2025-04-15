@@ -166,7 +166,7 @@ export async function getQuote(
   const data =
     category === "developerexcuses"
       ? await getDeveloperExcuse()
-      : category === "bible"
+      : category === "randomBible"
       ? await getRandomBibleVerse()
       : await getRandomQuotableQuote();
   // : category === "bible"
