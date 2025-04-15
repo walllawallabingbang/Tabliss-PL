@@ -81,14 +81,14 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         onChange={() => setData({ category: "bible" })}
       />{" "}
       <FormattedMessage
-        id="plugins.quotes.bibleVerse"
+        id="plugins.quotes.randomBibleVerse"
         defaultMessage="Random Bible Verse"
         description="Bible verse option"
       />
     </label>
     <p>
       <FormattedMessage
-        id="plugins.quotes.bibleVerseDescription"
+        id="plugins.quotes.randomBibleVerseDescription"
         defaultMessage="Top inspirational verses from the Bible."
         description="Bible verse description"
       />
@@ -114,7 +114,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
           description="Powered by title"
         />{" "}
       <a
-        href="http://www.developerexcises.com/"
+        href="http://www.developerexcuses.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
