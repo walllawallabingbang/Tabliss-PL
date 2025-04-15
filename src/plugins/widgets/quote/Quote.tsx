@@ -4,14 +4,8 @@ import { HOURS } from "../../../utils";
 import { getQuote } from "./api";
 import "./Quote.sass";
 import { defaultData, Props } from "./types";
-import { bibleVerses } from "./bibleVerses";
 
 const EXPIRE_IN = 1 * HOURS;
-
-function getRandomBibleVerse() {
-  const index = Math.floor(Math.random() * bibleVerses.length);
-  return bibleVerses[index];
-}
 
 const Quote: React.FC<Props> = ({ cache, data = defaultData, setCache, loader }) => {
   useCachedEffect(
