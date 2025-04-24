@@ -6,11 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 I attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-## [Unreleased]
+## [1.4.0] - 4/24/2025 | Feature Update
 
 ### Changed
 
-- style(Widgets): add BETA badge to free move mode toggle.
+- feat(Widgets): add BETA badge to free move mode toggle. [#7cc79e0](https://github.com/BookCatKid/tabliss-maintained/commit/7cc79e0937aca715c340bcaeac824bf3b6bf2223)
 
 - refactor(i18n): standardize translation IDs to use "backgrounds." prefix. [#12f5b59](https://github.com/BookCatKid/tabliss-maintained/commit/12f5b59c7d87917f64cd1a56ac15eaa5728b0278)
 
