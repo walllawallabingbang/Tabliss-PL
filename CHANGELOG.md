@@ -10,6 +10,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Changed
 
+- style(Widgets): add BETA badge to free move mode toggle.
+
 - refactor(i18n): standardize translation IDs to use "backgrounds." prefix. [#12f5b59](https://github.com/BookCatKid/tabliss-maintained/commit/12f5b59c7d87917f64cd1a56ac15eaa5728b0278)
 
 - refactor(i18n): standardize translation IDs to use "plugins." prefix. [#e385751](https://github.com/BookCatKid/tabliss-maintained/commit/e385751a4c1cc03fb29b4970d29a52ff110a0d83)
@@ -21,6 +23,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 - fix: correct typo in settings panel. [#7a9095a](https://github.com/BookCatKid/tabliss-maintained/commit/7a9095a892d46889349eaeb454d7292d962dfc55)
 
 ### Added
+
+- feat(Quotes widget): Add support for displaying Bible verses. [#14](https://github.com/BookCatKid/tabliss-maintained/pull/14)
 
 - feat(Translation): Add translation support for settings panel. [#522df4b](https://github.com/BookCatKid/tabliss-maintained/commit/522df4b9469df2cd60016fab8de32658c2902307)
 
