@@ -1,6 +1,6 @@
-# Building Tabliss Maintained Extension
+# Building TablissNG
 
-This document provides detailed instructions for building the Tabliss-Maintained browser extension from source code.
+This document provides detailed instructions for building TablissNG from its source code.
 
 ## System Requirements
 
@@ -102,11 +102,5 @@ chmod +x build.sh
 
 If you encounter any issues during the build process, please:
 
-1. Check the [GitHub Issues](https://github.com/BookCatKid/tabliss-maintained/issues) page
+1. Check the [GitHub Issues](https://github.com/BookCatKid/TablissNG/issues) page
 2. Create a new issue if your problem hasn't been reported
-
-## Notes
-
-- The build process requires an active internet connection to download dependencies
-- Build time varies depending on your system specifications (typically 2-5 minutes)
-- Ensure you have at least 2GB of free disk space before building

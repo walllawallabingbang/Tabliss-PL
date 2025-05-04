@@ -182,7 +182,7 @@ export async function getQuote(
       : category === "quotable"
       ? await getRandomQuotableQuote()
       : {
-        quote: "Selected category is invalid, pease create an issue on the <a href='https://github.com/bookcatkid/tabliss-maintained/issues'>github repo</a>.",
+        quote: "Selected category is invalid, pease create an issue on the <a href='https://github.com/bookcatkid/TablissNG/issues'>github repo</a>.",
         author: "Simon"
       };
   // : category === "bible"

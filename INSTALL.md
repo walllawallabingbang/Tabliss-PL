@@ -4,11 +4,11 @@
 
 ### Option 1: Download from GitHub Releases (Recommended)
 
-1. **Go to the [Releases page](https://github.com/BookCatKid/tabliss-maintained/releases)** of the repository
+1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)** of the repository
 2. Find the latest release
 3. Download the appropriate file:
    - For Firefox: `tabliss-firefox-signed.xpi`
-   <!-- node to self: use `powershell curl -O $(curl -s "https://addons.mozilla.org/api/v5/addons/addon/tabliss-maintained/" | jq -r ".current_version.file.url")` to download latest signed version from firefox store. -->
+   <!-- node to self: use `powershell curl -O $(curl -s "https://addons.mozilla.org/api/v5/addons/addon/tablissng/" | jq -r ".current_version.file.url")` to download latest signed version from firefox store. -->
    - For Chrome/Chromium: `tabliss-chromium.zip`
    - For Firefox (unsigned version): `tabliss-firefox.zip` (expert)
 

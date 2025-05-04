@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug in Tabliss
+about: Report a bug in TablissNG
 title: "[BUG] "
 labels: ''
 assignees: ''
@@ -18,9 +18,9 @@ assignees: ''
 
 ## Steps to Reproduce
 <!-- How can the bug be reproduced? -->
-1. 
-2. 
-3. 
+1.
+2.
+3.
 ...
 
 ## Screenshots
@@ -28,5 +28,5 @@ assignees: ''
 
 ## Environment
 - Browser: <!-- e.g. Firefox 123, Chrome 123 -->
-- Tabliss Version: <!-- e.g. 1.3.1 -->
+- TablissNG Version: <!-- e.g. 1.3.1 -->
 - OS: <!-- e.g. Windows 11, macOS 14 -->
