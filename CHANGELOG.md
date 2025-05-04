@@ -10,7 +10,7 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Changed
 
-- chore: project renaming from Tabliss Maintained to TablissNG.
+- chore: update changelog with new project name. [946daa6](https://github.com/BookCatKid/TablissNG/commit/946daa6b59537f8b2780737f3a661be0bd188716)
 
 ### Fixed
 
