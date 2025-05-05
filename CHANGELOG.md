@@ -20,6 +20,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Fixed
 
+- fix(Todos): Daily Routine not working.
+
 - fix: correct typo in settings panel. [#7a9095a](https://github.com/BookCatKid/tabliss-maintained/commit/7a9095a892d46889349eaeb454d7292d962dfc55)
 
 ### Added
