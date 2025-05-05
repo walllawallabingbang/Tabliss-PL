@@ -70,10 +70,9 @@ jobs:
         with:
           api_key: ${{ secrets.AMO_ISSUER }}
           api_secret: ${{ secrets.AMO_SECRET }}
-          guid: "extension@tabliss-maintained"
+          guid: "extension@tablissng"
           xpi_path: release.zip
           src_path: source.zip
-      - run: echo Now go add the changelog at https://addons.mozilla.org/en-US/developers/addon/tabliss-maintained/versions/
 
   create-release:
     needs: [build]
@@ -119,4 +118,3 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
-      - run: echo Now go publish the release at https://github.com/BookCatKid/tabliss-maintained/releases/${{ steps.version.outputs.ref }}

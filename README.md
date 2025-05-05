@@ -1,9 +1,8 @@
+# TablissNG
 
-# Tabliss
+![TablissNG Screenshot](screenshot.png)
 
-![Tabliss Screenshot](screenshot.png)
-
-## 🚀 Maintained Fork of Tabliss
+## Maintained Fork of Tabliss
 
 This repository is a maintained fork of Tabliss, originally a customizable new tab page for Firefox and Chrome. The original project has been abandoned, with no updates for over a year and numerous unmerged pull requests.
 
@@ -19,22 +18,22 @@ I cloned the repository and merged most pending pull requests to bring in improv
 
 If you were a contributor to the original repo or have ideas for improvements, feel free to open an issue or submit a pull request. Let’s keep Tabliss alive!
 
-----------
+---
 
-## 🛠 Installation
+## Installation
 
-The extension is available in the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/tabliss-maintained/), and in the [Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/tabliss-a-beautiful-new/mkaphhbkcccpgkfaifhhdfckagnkcmhm)! Unfortunately, the extension is not available in the Chrome Web Store.
-If you want to install for chrome, want to install the firefox extension manually, or want nightly builds, see [INSTALL.md](INSTALL.md).
+The extension is available in the [Firefox Add-ons Store](https://addons.mozilla.org/en-US/firefox/addon/tablissng/), and in the [Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/tabliss-a-beautiful-new/mkaphhbkcccpgkfaifhhdfckagnkcmhm)(edge addon might be outdated, contact me if you are actually using it.). Unfortunately, the extension is not available in the Chrome Web Store.
+If you want to install for chrome, want to install the firefox/edge extension manually, or want nightly builds, see [INSTALL.md](INSTALL.md).
 
-## 💻 Running Locally
+## Running Locally
 
 For local development, you'll need Node.js and NPM installed. Latest versions should work.
 
 First, clone the repo:
 
 ```sh
-https://github.com/BookCatKid/tabliss-maintained.git
-cd tabliss-maintained
+https://github.com/BookCatKid/TablissNG.git
+cd TablissNG
 ```
 
 If you want a simple build script after cloning the repo, see [BUILDING.md](BUILDING.md).
@@ -75,15 +74,15 @@ UNSPLASH_API_KEY=your_key_here
 NASA_API_KEY=your_key_here
 ```
 
-## 🙌 Credits
+## Credits
 
-Special thanks to **joelshepherd** for originally creating and maintaining this project.  
+Special thanks to **joelshepherd** for originally creating and maintaining this project.
 Also, huge appreciation to everyone who contributed, especially those whose pull requests I merged!
 
-## 🤝 Contributing
+## Contributing
 
 Take a look at the guide to [contributing](CONTRIBUTING.md) before starting.
 
-## 🌍 Translations
+## Translations
 
 Check out the guide to [adding translations](TRANSLATING.md).

@@ -11,7 +11,7 @@ const messages = defineMessages({
   },
   description: {
     id: "plugins.customText.description",
-    defaultMessage: "Custom text from set",
+    defaultMessage: "Display random text from a list.",
     description: "Description of the Custom Text widget",
   },
 });

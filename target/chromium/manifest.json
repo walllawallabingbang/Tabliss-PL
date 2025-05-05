@@ -1,7 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Tabliss - A Beautiful New Tab (Maintained)",
-  "short_name": "Tabliss",
+  "name": "TablissNG",
   "version": "1.4.0",
   "description": "A beautiful, customizable New Tab page with backgrounds and widgets. This is a maintained fork with ongoing updates in the future.",
   "chrome_url_overrides": {
