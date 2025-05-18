@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Icon } from "@iconify/react";
+import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";
 
 const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
@@ -12,12 +13,24 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
     <div className="CustomTextSettings">
       <label>
         <span style={{ float: "right" }}>
-          {data.paused ? <span className="text--grey">(Paused) </span> : null}
+          {data.paused ? (
+            <span className="text--grey">
+              <FormattedMessage
+                id="plugins.customText.paused"
+                defaultMessage="(Paused)"
+                description="Text shown when rotation is paused"
+              />{" "}
+            </span>
+          ) : null}
           <a onClick={() => setData({ ...data, paused: !data.paused })}>
             <Icon icon={`feather:${data.paused ? "play" : "pause"}`} />
           </a>
         </span>
-        Show a new text
+        <FormattedMessage
+          id="plugins.customText.showNewText"
+          defaultMessage="Show a new text"
+          description="Label for text rotation interval dropdown"
+        />
         <select
           value={data.timeout === 0 || data.timeout === 300 || data.timeout === 900 || data.timeout === 3600 || data.timeout === 86400 || data.timeout === 604800 ? data.timeout : -1}
           onChange={handleTimeoutChange}
@@ -35,7 +48,11 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
 
       {data.timeout !== 0 && data.timeout !== 300 && data.timeout !== 900 && data.timeout !== 3600 && data.timeout !== 86400 && data.timeout !== 604800 && (
         <label>
-          Custom Interval (seconds)
+          <FormattedMessage
+            id="plugins.customText.customIntervalSeconds"
+            defaultMessage="Custom Interval (seconds)"
+            description="Label for custom interval input in seconds"
+          />
           <input
             type="number"
             min="0"
@@ -46,7 +63,11 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
       )}
 
       <label>
-        Text
+        <FormattedMessage
+          id="plugins.customText.text"
+          defaultMessage="Text"
+          description="Label for text input"
+        />
         <textarea
           style={{ resize: "none", overflow: "scroll" }}
           value={data.text}
@@ -56,7 +77,11 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
       </label>
 
       <label>
-        Separator
+        <FormattedMessage
+          id="plugins.customText.separator"
+          defaultMessage="Separator"
+          description="Label for separator input"
+        />
         <input
           type="text"
           value={data.separator}
@@ -73,7 +98,11 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
             setData({ ...data, separator: "", atNewline: event.target.checked });
           }}
         />{" "}
-        Separate at newline
+        <FormattedMessage
+          id="plugins.customText.separateAtNewline"
+          defaultMessage="Separate at newline"
+          description="Label for newline separation checkbox"
+        />
       </label>
     </div>
   );

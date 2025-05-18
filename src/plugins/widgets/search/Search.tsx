@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useRef, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import { defineMessages, useIntl } from "react-intl";
 
 import { getSuggestions } from "./getSuggestions";
@@ -7,7 +7,7 @@ import { Props, defaultData } from "./types";
 import { buildUrl, getSearchUrl, getSuggestUrl } from "./utils";
 import "./Search.sass";
 
-const messages = defineMessages({
+export const messages = defineMessages({
   placeholder: {
     id: "plugins.search.placeholder",
     description: "Placeholder text to show in the search box before typing",
@@ -84,7 +84,11 @@ const Search: FC<Props> = ({ data = defaultData }) => {
   };
 
   const search = () => {
-    document.location.assign(
+    if (data.searchEngine == "default") {
+      browser.search.query({ text: searchInput.current!.value });
+      return;
+    }
+    window.location.assign(
       buildUrl(searchInput.current!.value, getSearchUrl(data.searchEngine, data.searchEngineCustom)),
     );
   };

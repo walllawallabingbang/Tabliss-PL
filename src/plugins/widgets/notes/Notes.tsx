@@ -4,6 +4,7 @@ import { Data, defaultData } from "./data";
 import Input from "./Input";
 import ReactMarkdown from 'react-markdown';
 import { Icon } from "@iconify/react";
+import { FormattedMessage } from "react-intl";
 import "./Notes.sass";
 
 const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
@@ -34,7 +35,10 @@ const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
               )
             ) : (
               <div className="placeholder">
-                <Icon icon="feather:edit-3" /> Click to add note
+                <Icon icon="feather:edit-3" /> <FormattedMessage
+                  id="plugins.notes.clickToAdd"
+                  defaultMessage="Click to add note"
+                />
               </div>
             )}
           </div>

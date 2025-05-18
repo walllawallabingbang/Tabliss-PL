@@ -17,7 +17,7 @@ const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => (
 
         <FormattedMessage
           id="plugins.weather.locationName"
-          defaultMessage="Location name"
+          defaultMessage="Location display name"
           description="Location name title"
         />
 
@@ -42,10 +42,10 @@ const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => (
             }
           />{" "}
           <FormattedMessage
-          id="plugins.weather.showDetails"
-          defaultMessage="Show extended details"
-          description="Show extended details title"
-        />
+            id="plugins.weather.showDetails"
+            defaultMessage="Show extended details"
+            description="Show extended details title"
+          />
 
         </label>
 
@@ -57,7 +57,11 @@ const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => (
               setData({ ...data, showCity: !data.showCity })
             }
           />{" "}
-          Show city name
+          <FormattedMessage
+            id="plugins.weather.showCity"
+            defaultMessage="Show city display name"
+            description="Show city display name title"
+          />
         </label>
 
 

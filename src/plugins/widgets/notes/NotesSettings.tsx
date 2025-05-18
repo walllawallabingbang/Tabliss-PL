@@ -2,6 +2,7 @@ import React from "react";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import { Icon, IconButton } from "../../../views/shared";
+import { FormattedMessage } from "react-intl";
 import "./Notes.sass";
 
 const alignments = [
@@ -28,11 +29,17 @@ const NotesSettings: React.FC<API<Data>> = ({ data = defaultData, setData }) => 
           checked={data.markdownEnabled}
           onChange={(e) => setData({ ...data, markdownEnabled: e.target.checked })}
         />{" "}
-        Enable Markdown formatting
+        <FormattedMessage
+          id="plugins.notes.enableMarkdown"
+          defaultMessage="Enable Markdown formatting"
+        />
       </label>
 
       <div>
-        <label>Text Alignment</label>
+        <label><FormattedMessage
+          id="plugins.notes.textAlignment"
+          defaultMessage="Text Alignment"
+        /></label>
         <div className="alignment">
           {alignments.map((alignment) => (
             <IconButton
@@ -50,5 +57,3 @@ const NotesSettings: React.FC<API<Data>> = ({ data = defaultData, setData }) => 
 };
 
 export default NotesSettings;
-
-

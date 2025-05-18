@@ -14,7 +14,8 @@
     "128": "icons/128.png"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "search"
   ],
   "optional_permissions": [
     "bookmarks",

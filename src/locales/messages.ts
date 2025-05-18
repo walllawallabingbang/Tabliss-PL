@@ -30,3 +30,37 @@ export const pluginMessages = defineMessages({
     description: "Attribution text for external services",
   },
 });
+
+export const timeingMessages = defineMessages({
+  everyNewTab: {
+    id: "backgrounds.unsplash.everyNewTab",
+    defaultMessage: "Every new tab",
+    description: "Every new tab title"
+  },
+  every5min: {
+    id: "plugins.every5min",
+    defaultMessage: "Every 5 minutes",
+    description: "Every 5 minutes title"
+  },
+  every15min: {
+    id: "plugins.every15min",
+    defaultMessage: "Every 15 minutes",
+    description: "Every 15 minutes title"
+  },
+  everyHour: {
+    id: "plugins.everyHour",
+    defaultMessage: "Every hour",
+    description: "Every hour title"
+  },
+  everyDay: {
+    id: "plugins.everyDay",
+    defaultMessage: "Every day",
+    description: "Every day title"
+  },
+  everyWeek: {
+    id: "plugins.everyWeek",
+    defaultMessage: "Every week",
+    description: "Every week title"
+  },
+  // everyCustom
+})
