@@ -8,6 +8,10 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ## [Unreleased]
 
+### Added
+
+- feat(Search): Add using browser default search engine.
+
 ### Changed
 
 - chore: update changelog with new project name. [946daa6](https://github.com/BookCatKid/TablissNG/commit/946daa6b59537f8b2780737f3a661be0bd188716)

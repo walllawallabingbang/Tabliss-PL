@@ -17,12 +17,13 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => (
         }
         value={data.searchEngine}
       >
+        <option key="default" value="default">Browser Default</option>
         {engines.map(({ key, name }) => (
           <option key={key} value={key}>
             {name}
           </option>
         ))}
-        <option value={SEARCH_ENGINE_CUSTOM}>
+        <option key={SEARCH_ENGINE_CUSTOM} value={SEARCH_ENGINE_CUSTOM}>
           Custom
         </option>
       </select>

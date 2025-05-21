@@ -84,7 +84,11 @@ const Search: FC<Props> = ({ data = defaultData }) => {
   };
 
   const search = () => {
-    document.location.assign(
+    if (data.searchEngine == "default") {
+      browser.search.query({ text: searchInput.current!.value });
+      return;
+    }
+    window.location.assign(
       buildUrl(searchInput.current!.value, getSearchUrl(data.searchEngine, data.searchEngineCustom)),
     );
   };

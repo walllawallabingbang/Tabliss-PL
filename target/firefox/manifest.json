@@ -23,7 +23,7 @@
   },
   "permissions": [
     "storage",
-    "downloads"
+    "search"
   ],
   "optional_permissions": [
     "bookmarks",
