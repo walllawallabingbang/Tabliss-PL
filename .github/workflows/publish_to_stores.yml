@@ -74,7 +74,7 @@ jobs:
         with:
           api_key: ${{ secrets.AMO_ISSUER }}
           api_secret: ${{ secrets.AMO_SECRET }}
-          guid: "extension@tablissng"
+          guid: "extension@tabliss-maintained"
           xpi_path: release.zip
           src_path: source.zip
 
