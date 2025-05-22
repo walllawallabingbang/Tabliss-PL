@@ -8,18 +8,21 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ## [Unreleased]
 
+## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
+
 ### Added
 
-- feat(Search): Add using browser default search engine.
+- feat(Search): Add using browser default search engine. [b8bd0f4](https://github.com/BookCatKid/TablissNG/commit/b8bd0f4dc988c766ba8f99af97ff7d949c1183ea)
 
 ### Changed
 
-- chore: update changelog with new project name. [946daa6](https://github.com/BookCatKid/TablissNG/commit/946daa6b59537f8b2780737f3a661be0bd188716)
+- chore: project renaming from Tabliss Maintained to TablissNG. [946daa6](https://github.com/BookCatKid/TablissNG/commit/946daa6b59537f8b2780737f3a661be0bd188716)
 
 ### Fixed
 
 - fix(Quotes): typo, dwyl, backup quotable api. [#4faa4d1](https://github.com/BookCatKid/TablissNG/commit/4faa4d107e9dbd1a1c68e992bc3b2883b63cfc9e)
-- fix: make video content centered by default.
+
+- fix: make video content centered by default. [#24](https://github.com/BookCatKid/TablissNG/pull/24)
 
 ## [1.4.0] - 4/24/2025 | Feature Update
 
