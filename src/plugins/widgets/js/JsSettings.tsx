@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";
+import { pluginMessages } from "../../../locales/messages";
 
 const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const [input, setInput] = useState(data.input);
@@ -23,9 +24,7 @@ const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
       </label>
 
       <button onClick={handleSave} className="button button--primary"><FormattedMessage
-          id="plugins.apply"
-          defaultMessage="Apply"
-          description="Apply title"
+          {...pluginMessages.apply}
         /></button>
 
       <p className="info"><FormattedMessage

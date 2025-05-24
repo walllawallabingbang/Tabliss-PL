@@ -29,11 +29,26 @@ export const pluginMessages = defineMessages({
     defaultMessage: "Powered by",
     description: "Attribution text for external services",
   },
+  apply: {
+    id: "plugins.apply",
+    defaultMessage: "Apply",
+    description: "Apply button title",
+  },
+  yourName: {
+    id: "plugins.yourName",
+    defaultMessage: "Your name",
+    description: "Your name title",
+  },
+  namePlaceholder: {
+    id: "plugins.namePlaceholder",
+    defaultMessage: "Optional name",
+    description: "Placeholder text for name input",
+  }
 });
 
-export const timeingMessages = defineMessages({
+export const timingMessages = defineMessages({
   everyNewTab: {
-    id: "backgrounds.unsplash.everyNewTab",
+    id: "plugins.everyNewTab",
     defaultMessage: "Every new tab",
     description: "Every new tab title"
   },

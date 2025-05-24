@@ -2,14 +2,7 @@ import React, { FC } from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 import { Props, defaultData } from "./types";
 import TimeZoneInput from "../../../views/shared/timeZone/TimeZoneInput";
-
-const messages = defineMessages({
-  namePlaceholder: {
-    id: "plugins.binaryTime.namePlaceholder",
-    defaultMessage: "Optional name",
-    description: "Placeholder text for name input"
-  }
-});
+import { pluginMessages } from "../../../locales/messages";
 
 const BinaryTimeSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
@@ -18,13 +11,12 @@ const BinaryTimeSettings: FC<Props> = ({ data = defaultData, setData }) => {
     <div className="TimeSettings">
       <label>
         <FormattedMessage
-          id="plugins.binaryTime.yourName"
-          defaultMessage="Name"
-          description="Label for name input"
+          {...pluginMessages.yourName}
         />
         <input
           type="text"
           value={data.name}
+          placeholder={intl.formatMessage(pluginMessages.namePlaceholder)}
           onChange={(event) => setData({ ...data, name: event.target.value })}
         />
       </label>

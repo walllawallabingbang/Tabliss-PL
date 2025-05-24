@@ -31,6 +31,16 @@ const messages = defineMessages({
     id: "plugins.weather.searchForCity",
     defaultMessage: "Search for city",
     description: "Link text to switch to city search"
+  },
+  unableToFindLocation: {
+    id: "plugins.weather.unableToFindLocation",
+    defaultMessage: "Unable to find location. Please try again.",
+    description: "Message displayed when location cannot be found"
+  },
+  cannotDetermineLocation: {
+    id: "plugins.weather.cannotDetermineLocation",
+    defaultMessage: "Cannot determine your location: {err}",
+    description: "Message displayed when location cannot be determined"
   }
 })
 
@@ -49,7 +59,7 @@ const GeocodeInput: React.FC<Props> = ({ onChange }) => {
     geocodeLocation(query)
       .then((coords) => onChange({ ...coords, name: query }))
       .catch(() => {
-        alert("Unable to find location. Please try again.");
+        alert(intl.formatMessage(messages.unableToFindLocation));
       });
   };
 
@@ -88,7 +98,7 @@ const CoordinateInput: React.FC<Props> = ({
   const handleLocate = () => {
     requestLocation()
       .then(onChange)
-      .catch((err) => alert(`Cannot determine your location: ${err.message}`));
+      .catch((err) => alert(intl.formatMessage(messages.cannotDetermineLocation, { err: err.message })));
   };
 
   return (

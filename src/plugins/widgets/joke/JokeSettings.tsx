@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { MINUTES, HOURS } from "../../../utils";
 import categories from "./categories";
 import { Props, defaultData, JokeAPICategory } from "./types";
-import { pluginMessages } from "../../../locales/messages";
+import { pluginMessages, timingMessages } from "../../../locales/messages";
 
 function updateSelectedCategories(
   existingCategories: Set<JokeAPICategory>,
@@ -57,37 +57,27 @@ const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
         >
           <option value={5 * MINUTES}>
             <FormattedMessage
-              id="plugins.joke.every5min"
-              defaultMessage="Every 5 minutes"
-              description="Every 5 minutes title"
+              {...timingMessages.every5min}
             />
           </option>
           <option value={15 * MINUTES}>
             <FormattedMessage
-              id="plugins.joke.every15min"
-              defaultMessage="Every 15 minutes"
-              description="Every 15 minutes title"
+              {...timingMessages.every15min}
             />
           </option>
           <option value={HOURS}>
             <FormattedMessage
-              id="plugins.joke.everyHour"
-              defaultMessage="Every hour"
-              description="Every hour title"
+              {...timingMessages.everyHour}
             />
           </option>
           <option value={24 * HOURS}>
             <FormattedMessage
-              id="plugins.joke.everyDay"
-              defaultMessage="Every day"
-              description="Every day title"
+              {...timingMessages.everyDay}
             />
           </option>
           <option value={7 * 24 * HOURS}>
             <FormattedMessage
-              id="plugins.joke.everyWeek"
-              defaultMessage="Every week"
-              description="Every week title"
+              {...timingMessages.everyWeek}
             />
           </option>
         </select>

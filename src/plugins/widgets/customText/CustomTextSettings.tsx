@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Icon } from "@iconify/react";
 import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";
+import { timingMessages } from "../../../locales/messages";
 
 const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const handleTimeoutChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -35,14 +36,44 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
           value={data.timeout === 0 || data.timeout === 300 || data.timeout === 900 || data.timeout === 3600 || data.timeout === 86400 || data.timeout === 604800 ? data.timeout : -1}
           onChange={handleTimeoutChange}
         >
-          <option value="0">Every new tab</option>
-          <option value="300">Every 5 minutes</option>
-          <option value="900">Every 15 minutes</option>
-          <option value="3600">Every hour</option>
-          <option value="86400">Every day</option>
-          <option value="604800">Every week</option>
+          <option value="0">
+            <FormattedMessage
+              {...timingMessages.everyNewTab}
+            />
+          </option>
+          <option value="300">
+            <FormattedMessage
+              {...timingMessages.every5min}
+            />
+          </option>
+          <option value="900">
+            <FormattedMessage
+              {...timingMessages.every15min}
+            />
+          </option>
+          <option value="3600">
+            <FormattedMessage
+              {...timingMessages.everyHour}
+            />
+          </option>
+          <option value="86400">
+            <FormattedMessage
+              {...timingMessages.everyDay}
+            />
+          </option>
+          <option value="604800">
+            <FormattedMessage
+              {...timingMessages.everyWeek}
+            />
+          </option>
           {/* TODO: Add the custom interval for the unplash background too */}
-          <option value="-1">Custom Interval</option>
+          <option value="-1">
+            <FormattedMessage
+              id="plugins.customText.customInterval"
+              defaultMessage="Custom Interval"
+              description="Label for custom interval option"
+            />
+          </option>
         </select>
       </label>
 
