@@ -8,9 +8,15 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ## [Unreleased]
 
+### Fixed
+
+- fix(Widgets): sorting with translations.
+
+- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
+
 ### Added
 
-- feat(Notes): icon align and placeholder style.
+- feat(Notes): icon align and placeholder style. [27c1264a0355a5b61cf86feb68ad005f2f7a3bb0](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
 
 - feat: add custom class option to widgets. [2887bb3](https://github.com/BookCatKid/TablissNG/commit/2887bb3957028df2ff9f7a2becd28d6e168ec240)
 

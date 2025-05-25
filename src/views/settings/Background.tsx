@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { setBackground } from "../../db/action";
 import { BackgroundDisplay, db } from "../../db/state";
@@ -11,6 +11,14 @@ const Background: React.FC = () => {
   const [data, setData] = useKey(db, "background");
   const intl = useIntl();
   const plugin = getConfig(data.key);
+
+  const sortedBackgroundConfigs = useMemo(() => {
+    return [...backgroundConfigs].sort((a, b) => {
+      const nameA = intl.formatMessage(a.name);
+      const nameB = intl.formatMessage(b.name);
+      return nameA.localeCompare(nameB);
+    });
+  }, [intl]);
 
   const setBackgroundDisplay = (display: BackgroundDisplay): void => {
     setData({ ...data, display: { ...data.display, ...display } });
@@ -32,7 +40,7 @@ const Background: React.FC = () => {
           onChange={(event) => setBackground(event.target.value)}
           className="primary"
         >
-          {backgroundConfigs.map((plugin) => (
+          {sortedBackgroundConfigs.map((plugin) => (
             <option key={plugin.key} value={plugin.key}>
               <FormattedMessage {...plugin.name} />
             </option>
