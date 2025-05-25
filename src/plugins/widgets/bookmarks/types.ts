@@ -27,3 +27,15 @@ export const defaultData: Data = {
   shortNames: false,
   maxTextLength: 0,
 };
+
+export type BookmarkTreeNode = {
+  id: string;
+  parentId?: string;
+  index?: number;
+  url?: string;
+  title: string;
+  dateAdded?: number;
+  dateGroupModified?: number;
+  children?: BookmarkTreeNode[];
+  type?: 'bookmark' | 'folder' | 'separator';
+};
