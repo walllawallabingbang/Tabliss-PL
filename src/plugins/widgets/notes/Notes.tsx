@@ -2,7 +2,7 @@ import React from "react";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import Input from "./Input";
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 import { Icon } from "@iconify/react";
 import "./Notes.sass";
 
@@ -23,7 +23,7 @@ const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
         ) : (
           <div
             onClick={() => setIsEditing(true)}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: "pointer" }}
             className={data.markdownEnabled ? "markdown-content" : ""}
           >
             {data.notes[0].contents ? (
@@ -33,8 +33,21 @@ const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
                 data.notes[0].contents
               )
             ) : (
-              <div className="placeholder">
-                <Icon icon="feather:edit-3" /> Click to add note
+              <div
+                className="placeholder"
+                style={{
+                  display: "flex",
+                  justifyContent: data.iconAlign || "flex-start",
+                }}
+              >
+                {data.placeholderStyle === "icon" ? (
+                  <Icon icon="feather:edit" />
+                ) : (
+                  <>
+                    <Icon icon="feather:edit-3" />
+                    <span>Click to add note</span>
+                  </>
+                )}
               </div>
             )}
           </div>

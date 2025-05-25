@@ -45,10 +45,42 @@ const NotesSettings: React.FC<API<Data>> = ({ data = defaultData, setData }) => 
           ))}
         </div>
       </div>
+
+      <div>
+        <label>Icon Alignment</label>
+        <div className="alignment">
+          {alignments.map((alignment) => (
+            <IconButton
+              key={alignment.value}
+              onClick={() => setData({ ...data, iconAlign: alignment.value })}
+              primary={data.iconAlign === alignment.value}
+            >
+              <Icon name={alignment.icon} />
+            </IconButton>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label>Placeholder Style</label>
+        <div className="alignment">
+          <IconButton
+            onClick={() => setData({ ...data, placeholderStyle: "icon" })}
+            primary={data.placeholderStyle === "icon"}
+          >
+            <Icon name="edit" />
+          </IconButton>
+          <IconButton
+            onClick={() => setData({ ...data, placeholderStyle: "text" })}
+            primary={data.placeholderStyle === "text"}
+          >
+            <Icon name="edit-3" />
+          </IconButton>
+        </div>
+      </div>
+
     </div>
   );
 };
 
 export default NotesSettings;
-
-

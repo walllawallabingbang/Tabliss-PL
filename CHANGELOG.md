@@ -8,6 +8,12 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ## [Unreleased]
 
+### Added
+
+- feat(Notes): icon align and placeholder style.
+
+- feat: add custom class option to widgets. [2887bb3](https://github.com/BookCatKid/TablissNG/commit/2887bb3957028df2ff9f7a2becd28d6e168ec240)
+
 ## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
 
 ### Added
