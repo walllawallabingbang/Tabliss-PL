@@ -30,7 +30,7 @@ const Settings: React.FC = () => {
       confirm(
         intl.formatMessage({
           id: "settings.reset.confirm",
-          defaultMessage: "Are you sure you want to delete all of your Tabliss settings? This cannot be undone.",
+          defaultMessage: "Are you sure you want to delete all of your TablissNG settings? This cannot be undone.",
           description: "Confirmation message when resetting settings"
         })
       )
@@ -48,7 +48,7 @@ const Settings: React.FC = () => {
     document.body.appendChild(a);
     a.style.display = "none";
     a.href = url;
-    a.download = "tabliss.json";
+    a.download = "tablissng.json";
     a.click();
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
@@ -123,17 +123,17 @@ const Settings: React.FC = () => {
             }}
           >
             <Icon icon="feather:tag" style={{ fontSize: "0.9em" }} />
-            Tabliss Maintained v{VERSION} {DEV ? "DEV " : ""}
+            TablissNG v{VERSION} {DEV ? "DEV " : ""}
           </span>
         </div>
         <p style={{ textAlign: "center", marginTop: 0, marginBottom: 0 }}>
           <GitHubButton
-            href="https://github.com/BookCatKid/tabliss-maintained/subscription"
+            href="https://github.com/BookCatKid/TablissNG/subscription"
             data-icon="octicon-eye"
             data-size="large"
             data-show-count="true"
             data-color-scheme={isDark ? "dark" : "light"}
-            aria-label="Watch BookCatKid/tabliss-maintained on GitHub"
+            aria-label="Watch BookCatKid/TablissNG on GitHub"
           >
             <FormattedMessage
               id="settings.github.watch"
@@ -143,12 +143,12 @@ const Settings: React.FC = () => {
           </GitHubButton>
           <span style={{ margin: "0 1rem" }} />
           <GitHubButton
-            href="https://github.com/BookCatKid/tabliss-maintained"
+            href="https://github.com/BookCatKid/TablissNG"
             data-icon="octicon-star"
             data-size="large"
             data-show-count="true"
             data-color-scheme={isDark ? "dark" : "light"}
-            aria-label="Star BookCatKid/tabliss-maintained on GitHub"
+            aria-label="Star BookCatKid/TablissNG on GitHub"
           >
             <FormattedMessage
               id="settings.github.star"
@@ -205,7 +205,7 @@ const Settings: React.FC = () => {
           </h4>
           <p>
             <a
-              href="https://github.com/BookCatKid/tabliss-maintained"
+              href="https://github.com/BookCatKid/TablissNG/"
               target="_blank"
               rel="noopener noreferrer"
               className="button button--primary"
@@ -220,7 +220,7 @@ const Settings: React.FC = () => {
           </p>
           <p style={{ marginTop: "1rem" }} className="Widget">
             <a
-              href="https://github.com/BookCatKid/tabliss-maintained/blob/master/CONTRIBUTING.md"
+              href="https://github.com/BookCatKid/TablissNG/blob/main/CONTRIBUTING.md"
               target="_blank"
               rel="noopener noreferrer"
               className="button button--primary"

@@ -54,21 +54,27 @@ type Props = {
 
 const PositionInput: React.FC<Props> = ({ value, onChange }) => (
   <div className="PositionInput">
-    <label><FormattedMessage
-          id="settings.position"
-          defaultMessage="Position"
-          description="Position title"
-        /></label>
+    <label>
+      <FormattedMessage
+        id="settings.position"
+        defaultMessage="Position"
+        description="Position title"
+      />
+    </label>
 
     <div className="grid">
       {positions.map((position) => (
-        <IconButton
-          key={position.value}
-          onClick={() => onChange(position.value)}
-          primary={value === position.value}
-        >
-          <Icon name={position.icon} />
-        </IconButton>
+        <div key={position.value} className="position-button-container">
+          <IconButton
+            onClick={() => onChange(position.value)}
+            primary={value === position.value}
+          >
+            <Icon name={position.icon} />
+          </IconButton>
+          {position.value === "free" && (
+            <span className="beta-badge">BETA</span>
+          )}
+        </div>
       ))}
     </div>
   </div>

@@ -1,58 +1,59 @@
-# Tabliss - A Maintained Fork of the Beautiful New Tab Extension
+# TablissNG - A Maintained Fork of the Beautiful New Tab Extension
 
-> **Important**: This is a maintained fork of the original Tabliss project, which was abandoned. I've cloned the repository, merged all existing pull requests, and am actively maintaining it with bug fixes and new features. The original extension is no longer maintained, but this fork keeps Tabliss alive and improving! Github page: <https://github.com/BookCatKid/tabliss-maintained>
+> **Important**: This is a maintained fork of the original Tabliss project, which was abandoned. I've cloned the repository, merged all existing pull requests, and am actively maintaining it with bug fixes and new features. The original extension is no longer maintained, but this fork keeps Tabliss alive and improving! Github page: <https://github.com/BookCatKid/TablissNG>
 
-Transform your new tab page into something beautiful and uniquely yours. Tabliss offers all the customization you love, with the added benefit of no required permissions: your privacy is respected.
+Transform your new tab page into something beautiful and uniquely yours. Choose from many background providers, and be rewarded with stunning, new pictures every time you open a new tab. Add your favourite widgets to stay productive throughout your day. Create your own new tab experience.
 
-## Why This Fork?
+We care about your privacy and your experience. TablissNG is private, fast, and completely free alternative to extensions like Momentum.
 
-- Actively maintained with regular updates
-- All community pull requests have been merged
-- Existing bugs are being fixed
-- New features are being added
-- Completely free and open source
-- Private and secure - requires minimal permissions
-- Settings sync across devices
-- Supports 40+ languages
+## Features
+
+- Hundreds of customisation options
+- Millions of backgrounds
+- Useful widgets that keep you productive
+- Translations for 40+ languages
+- Private, secure, and requires no permissions
+- Settings sync between your devices
+- 100% free and open source
 
 ## Backgrounds
 
-- **Unsplash Photos**: Millions of high-quality, curated photographs
-- **GIPHY**: Endless animated GIFs for a dynamic new tab
-- **NASA APOD**: Daily astronomy pictures with scientific descriptions
-- **Solid Colors & Gradients**: Simple, clean backgrounds
+- **Astronomy Picture of the Day**: Daily astronomy pictures with scientific descriptions
+- **Colour Gradient**: Beautiful gradients to brighten your day
 - **Custom Upload**: Use your own images or videos for a personal touch
-- **Wikimedia Commons**: Daily image of the day from Wikimedia Commons
+- **GIPHY**: Endless animated GIFs for a dynamic new tab
 - **Online Image**: Provide a url to display an image
+- **Solid Color**: Simple, clean backgrounds
+- **Unsplash Photos**: Millions of high-quality, curated photographs
+- **Wikimedia Commons**: Daily image of the day from Wikimedia Commons
 
 ## Widgets
 
-- **Bitcoin Mempool**: Track Bitcoin mempool statistics
-- **Binary Clock**: Time displayed in binary format for the tech-savvy
-- **Bookmarks**: Browser bookmark integration for easy access (requires Bookmarks permission)
-- **Countdown**: Track time until important events or deadlines
-- **Custom CSS**: Full styling control for advanced users
-- **Custom HTML**: Insert your own HTML elements (JS will not run though)
-- **Custom Text**: Display your own text content randomised from a list
-- **GitHub Calendar**: View your GitHub contribution graph
-- **Greeting**: Personalized greetings based on time of day
-- **IP Info**: Detailed information about your current connection
-- **Jokes**: Daily jokes to brighten your new tab
-- **Literature Clock**: Time told through literary quotes - a unique way to check the time
-- **Message**: Display custom text content
-- **NBA Scores**: Live game scores and updates for basketball fans (BROKEN)
-- **Quick Links**: Fast access to your favorite sites with customizable icons
-- **Quotes**: Daily inspirational (or not) quotes with category filtering
-- **Search Box**: Multi-engine search supporting Google, DuckDuckGo, Bing, and more. Also supports custom search engines
-- **Since**: Keep track of time elapsed since specific events and countdown to future events
-- **Time**: Display the current time with timezone support
-- **Todos**: Simple task management with persistent storage
-- **Weather**: Real-time conditions and forecast for your location
-- **Work Hours**: Count down your work day in a percentage with customizable start/end times
+ - **Binary Clock**: Display the current time in binary format.
+ - **Bitcoin Mempool**: Get the current block height.
+ - **Countdown**: Literally counting down the days.
+ - **Custom CSS**: Make your new tab more style-ish (advanced users).
+ - **Custom HTML**: Add static HTML (advanced users).
+ - **Custom Text**: Display random text from a list.
+ - **Github Calendar**: Get motivated by green squares.
+ - **Greeting**: Be personally greeted all day.
+ - **IP Info**: Display your IP address and location details.
+ - **Jokes**: Get a laugh with random jokes.
+ - **Literature Clock**: Check the time, with sophistication.
+ - **Message**: Add your own text.
+ - **Notes**: Keep track of your thoughts and ideas.
+ - **Quick Links**: Add custom links to your favorite sites.
+ - **Quotes**: Be inspired (or not, there's categories).
+ - **Search**: Search the web using your favorite engine.
+ - **Time Since**: Track time elapsed since a specific date.
+ - **Time**: Display the current time in various formats.
+ - **todo**: Add reminders to procrastinate.
+ - **Weather**: Display current weather conditions for your location.
+ - **Work Hours**: Track your working hours and time remaining.
 
 ## Development & Contributing
 
 This fork is actively maintained! Found a bug? Have a feature request? Want to contribute? Visit:
-<https://github.com/BookCatKid/tabliss-maintained>
+<https://github.com/BookCatKid/TablissNG>
 
 Original project by Joel Shepherd ([@joelshepherd](https://github.com/joelshepherd)) - Thank you for creating Tabliss!

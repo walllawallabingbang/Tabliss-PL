@@ -14,14 +14,14 @@ const StoreError: React.FC<Props> = ({ onClose }) => {
         <p style={{ fontSize: "1.25em" }}>
           <FormattedMessage
             id="plugins.storageError"
-            defaultMessage="Tabliss is unable to load or save settings. This is most commonly caused by running in private browsing mode; but low disk space or a corrupt browser profile can also be the problem."
+            defaultMessage="TablissNG is unable to load or save settings. This is most commonly caused by running in private browsing mode; but low disk space or a corrupt browser profile can also be the problem."
             description="Storage error message"
           />
         </p>
         <p>
           <FormattedMessage
             id="plugins.storageError2"
-            defaultMessage="If you have settings saved with Tabliss, it might be a temporary issue. Try restarting your browser and checking if your settings return."
+            defaultMessage="If you have settings saved with TablissNG, it might be a temporary issue. Try restarting your browser and checking if your settings return."
             description="Storage error message"
           />
         </p>
@@ -39,7 +39,7 @@ const StoreError: React.FC<Props> = ({ onClose }) => {
                 </a>
               ),
               githubLink: (
-                <a href="https://github.com/BookCatKid/tabliss-maintained/issues/new">
+                <a href="https://github.com/BookCatKid/tablissNG/issues/new">
                   <FormattedMessage
                     id="plugins.storageError.github"
                     defaultMessage="GitHub"

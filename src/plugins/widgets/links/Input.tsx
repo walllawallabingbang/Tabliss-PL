@@ -292,7 +292,7 @@ const Input: FC<Props> = (props) => {
             />
             &nbsp;
             <a
-              href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
+              href="https://github.com/BookCatKid/TablissNG/issues/3#issuecomment-2676456153"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -322,7 +322,7 @@ const Input: FC<Props> = (props) => {
             />
             &nbsp;
             <a
-              href="https://github.com/BookCatKid/tabliss-maintained/issues/3#issuecomment-2676456153"
+              href="https://github.com/BookCatKid/TablissNG/issues/3#issuecomment-2676456153"
               target="_blank"
               rel="noopener noreferrer"
             >
