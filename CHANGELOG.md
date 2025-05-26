@@ -16,6 +16,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
+- feat: Add key bind to search, notes, and jokes. [c1cc39c](https://github.com/BookCatKid/TablissNG/commit/c1cc39ce8a564f6676c9158a7eb5fad895deee89)
+
 - feat(Notes): icon align and placeholder style. [27c1264a0355a5b61cf86feb68ad005f2f7a3bb0](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
 
 - feat: add custom class option to widgets. [2887bb3](https://github.com/BookCatKid/TablissNG/commit/2887bb3957028df2ff9f7a2becd28d6e168ec240)

@@ -4,10 +4,20 @@ import { Data, defaultData } from "./data";
 import Input from "./Input";
 import ReactMarkdown from "react-markdown";
 import { Icon } from "@iconify/react";
+import { useKeyPress } from "../../../hooks";
 import "./Notes.sass";
 
 const Notes: React.FC<API<Data>> = ({ data = defaultData, setData }) => {
   const [isEditing, setIsEditing] = React.useState(false);
+
+  const keyBind = data.keyBind ?? "N";
+  useKeyPress(
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      setIsEditing(true);
+    },
+    [keyBind.toUpperCase(), keyBind.toLowerCase()],
+  );
 
   return (
     <div className="Notes" style={{ textAlign: data.textAlign || "left" }}>

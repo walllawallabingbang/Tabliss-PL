@@ -8,6 +8,7 @@ export interface Data {
   textAlign: "left" | "center" | "right";
   iconAlign: "left" | "center" | "right";
   placeholderStyle: "icon" | "text";
+  keyBind?: string;
 }
 
 export const defaultData: Data = {
@@ -16,4 +17,5 @@ export const defaultData: Data = {
   textAlign: "left",
   iconAlign: "center",
   placeholderStyle: "icon",
+  keyBind: "N",
 };

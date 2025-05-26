@@ -1,4 +1,5 @@
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import { Icon, IconButton } from "../../../views/shared";
@@ -79,6 +80,19 @@ const NotesSettings: React.FC<API<Data>> = ({ data = defaultData, setData }) => 
         </div>
       </div>
 
+      <label>
+        <FormattedMessage
+          id="plugins.notes.keybind"
+          defaultMessage="Notes keybind"
+          description="Notes keybind title"
+        />
+        <input
+          type="text"
+          maxLength={1}
+          onChange={(event) => setData({ ...data, keyBind: event.target.value })}
+          value={data.keyBind}
+        />
+      </label>
     </div>
   );
 };
