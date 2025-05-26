@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { defaultData, Props, Data } from "./types";
-import { Bookmarks } from "webextension-polyfill";
-import BookmarkTreeNode = Bookmarks.BookmarkTreeNode;
+import { BookmarkTreeNode } from "./types";
 
 const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const [tree, setTree] = useState<BookmarkTreeNode>();

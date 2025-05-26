@@ -64,6 +64,7 @@ export interface WidgetDisplay {
   textOutlineColor?: string;
   fontWeight?: number;
   position: WidgetPosition;
+  customClass?: string;
 }
 
 export type WidgetPosition =

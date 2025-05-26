@@ -6,10 +6,6 @@ import FloatingSaveButton from '../shared/FloatingSaveButton';
 interface WidgetProps extends WidgetDisplay {
   id: string;
   children: React.ReactNode;
-  position: WidgetPosition;
-  x?: number;
-  y?: number;
-  isEditingPosition?: boolean;
 }
 
 const Widget: React.FC<WidgetProps> = ({
@@ -29,6 +25,7 @@ const Widget: React.FC<WidgetProps> = ({
   x = window.innerWidth / 2,
   y = window.innerHeight / 2,
   isEditingPosition = false,
+  customClass
 }) => {
   const widgetRef = React.useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = React.useState(false);
@@ -44,7 +41,7 @@ const Widget: React.FC<WidgetProps> = ({
 
   const handleDragStart = (e: React.MouseEvent) => {
     if (!widgetRef.current || !isEditingPosition || position !== "free") return;
-    
+
     e.preventDefault();
     const rect = widgetRef.current.getBoundingClientRect();
     setIsDragging(true);
@@ -64,11 +61,11 @@ const Widget: React.FC<WidgetProps> = ({
 
   React.useEffect(() => {
     if (!isDragging) return;
-    
+
     document.addEventListener('mousemove', handleDrag);
     const stopDragging = () => setIsDragging(false);
     document.addEventListener('mouseup', stopDragging);
-    
+
     return () => {
       document.removeEventListener('mousemove', handleDrag);
       document.removeEventListener('mouseup', stopDragging);
@@ -105,13 +102,18 @@ const Widget: React.FC<WidgetProps> = ({
     });
   };
 
+  let classNames = `Widget ${fontWeight ? "weight-override" : ""}`;
+  if (customClass) {
+    classNames += ` ${customClass}`;
+  }
+
   const renderContent = () => {
     const outlineStyle = textOutline ? (textOutlineStyle ?? "basic") : null;
-    
+
     return (
       <div
         ref={widgetRef}
-        className={`Widget ${fontWeight ? "weight-override" : ""}`}
+        className={classNames}
         style={styles}
         onMouseDown={handleDragStart}
       >
@@ -158,4 +160,3 @@ const Widget: React.FC<WidgetProps> = ({
 };
 
 export default Widget;
-

@@ -17,12 +17,13 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => (
         }
         value={data.searchEngine}
       >
+        <option key="default" value="default">Browser Default</option>
         {engines.map(({ key, name }) => (
           <option key={key} value={key}>
             {name}
           </option>
         ))}
-        <option value={SEARCH_ENGINE_CUSTOM}>
+        <option key={SEARCH_ENGINE_CUSTOM} value={SEARCH_ENGINE_CUSTOM}>
           Custom
         </option>
       </select>
@@ -63,6 +64,20 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => (
             placeholderText: event.target.value,
           })
         }
+      />
+    </label>
+
+    <label>
+      <FormattedMessage
+        id="plugins.search.keybind"
+        defaultMessage="Search keybind"
+        description="Search keybind title"
+      />
+      <input
+        type="text"
+        maxLength={1}
+        onChange={(event) => setData({ ...data, keyBind: event.target.value })}
+        value={data.keyBind}
       />
     </label>
 

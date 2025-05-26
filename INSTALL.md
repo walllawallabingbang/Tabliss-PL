@@ -7,8 +7,7 @@
 1. **Go to the [Releases page](https://github.com/BookCatKid/TablissNG/releases)** of the repository
 2. Find the latest release
 3. Download the appropriate file:
-   - For Firefox: `tabliss-firefox-signed.xpi`
-   <!-- node to self: use `powershell curl -O $(curl -s "https://addons.mozilla.org/api/v5/addons/addon/tablissng/" | jq -r ".current_version.file.url")` to download latest signed version from firefox store. -->
+   - For Firefox: `tabliss-firefox-signed.xpi` (This file may not exist, if you need it and it is not available, please see [Downloading signed xpi from firefox store](#Downloading-signed-xpi-from-firefox-store))
    - For Chrome/Chromium: `tabliss-chromium.zip`
    - For Firefox (unsigned version): `tabliss-firefox.zip` (expert)
 
@@ -37,6 +36,14 @@
   3. Enable developer mode
   4. Click Load Unpacked
   5. Select the folder you unzipped to. (make sure it has manifest.json in it)
+
+### Downloading signed xpi from firefox store
+
+- You can use the following command to download the latest signed version from the Firefox store:
+```sh
+curl -O $(curl -s "https://addons.mozilla.org/api/v5/addons/addon/tablissng/" | jq -r ".current_version.file.url")
+```
+- This will download the latest signed version of the extension. You can then install it in Firefox by following the steps above.
 
 ## Notes
 

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TablissNG",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A beautiful, customizable New Tab page with backgrounds and widgets. This is a maintained fork with ongoing updates in the future.",
   "chrome_url_overrides": {
     "newtab": "index.html"
@@ -13,7 +13,8 @@
     "128": "icons/128.png"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "search"
   ],
   "optional_permissions": [
     "bookmarks",
