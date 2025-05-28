@@ -141,6 +141,19 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
           <option value="180" label="180°" />
         </datalist>
       </label>
+
+      <label>
+        Custom CSS Class
+        <br />
+        <input
+          type="text"
+          value={display.customClass}
+          placeholder="Enter a custom class for easier styling"
+          onChange={(event) =>
+            onChange({ customClass: event.target.value })
+          }
+        />
+      </label>
     </div>
   );
 };

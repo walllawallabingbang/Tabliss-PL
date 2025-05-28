@@ -94,6 +94,20 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => {
         />
       </label>
 
+    <label>
+      <FormattedMessage
+        id="plugins.search.keybind"
+        defaultMessage="Search keybind"
+        description="Search keybind title"
+      />
+      <input
+        type="text"
+        maxLength={1}
+        onChange={(event) => setData({ ...data, keyBind: event.target.value })}
+        value={data.keyBind}
+      />
+    </label>
+
       {BUILD_TARGET === "web" && (
         <label>
           <FormattedMessage

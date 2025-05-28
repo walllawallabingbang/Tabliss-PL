@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from "react";
 import { defineMessages, useIntl } from "react-intl";
-
+import { useKeyPress } from "../../../hooks";
 import { getSuggestions } from "./getSuggestions";
 import Suggestions from "./Suggestions";
 import { Props, defaultData } from "./types";
@@ -24,6 +24,17 @@ const Search: FC<Props> = ({ data = defaultData }) => {
 
   const intl = useIntl();
   const placeholder = data.placeholderText || intl.formatMessage(messages.placeholder);
+
+  const keyBind = data.keyBind ?? "G";
+  useKeyPress(
+    (event: KeyboardEvent) => {
+      event.preventDefault();
+      if (searchInput.current) {
+        searchInput.current.focus();
+      }
+    },
+    [keyBind.toUpperCase(), keyBind.toLowerCase()],
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     previousValue.current = event.target.value;

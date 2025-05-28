@@ -215,12 +215,11 @@ const Widget: React.FC<Props> = ({
               </label>
 
               <label>
-                <FormattedMessage
-                  id="colour"
-                  defaultMessage="Colour"
-                  description="Colour title"
-                />{" "}
-                <br />
+              <FormattedMessage
+          id="colour"
+          defaultMessage="Colour"
+          description="Colour title"
+        /> <br />
                 <input
                   type="color"
                   value={plugin.display.colour ?? "#ffffff"}

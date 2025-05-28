@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useCachedEffect } from "../../../hooks";
+import { useCachedEffect, useKeyPress } from "../../../hooks";
 import { db } from "../../../db/state";
 import { useValue } from "../../../lib/db/react";
 import { getJoke } from "./api";
@@ -58,18 +58,28 @@ const Joke: React.FC<Props> = ({
     <div className="joke-container">
       {isSingleJoke(cache) && <h5>{cache.joke}</h5>}
 
-      {isTwoPartJoke(cache) && <TwoPartJoke joke={cache} />}
+      {isTwoPartJoke(cache) && <TwoPartJoke joke={cache} keyBind={data.keyBind} />}
     </div>
   );
 };
 
-const TwoPartJoke: React.FC<{ joke: TwoPartJokeAPIResponse }> = ({ joke }) => {
+const TwoPartJoke: React.FC<{ joke: TwoPartJokeAPIResponse; keyBind?: string }> = ({ joke, keyBind = "J" }) => {
   const isJokeAQuestion = joke.setup.slice(-1) === "?";
   const [showAnswer, setShowAnswer] = useState(false);
 
   useEffect(() => {
     setShowAnswer(false);
   }, [joke]);
+
+  useKeyPress(
+    (event: KeyboardEvent) => {
+      if (isJokeAQuestion) {
+        event.preventDefault();
+        setShowAnswer(!showAnswer);
+      }
+    },
+    [keyBind.toUpperCase(), keyBind.toLowerCase()],
+  );
 
   if (!isJokeAQuestion) {
     return (
