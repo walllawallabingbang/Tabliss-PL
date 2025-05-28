@@ -7,7 +7,6 @@ import { backgroundConfigs, getConfig } from "../../plugins";
 import { sectionMessages } from "../../locales/messages";
 import Plugin from "../shared/Plugin";
 import ToggleSection from "../shared/ToggleSection";
-import { Icon } from "@iconify/react";
 
 const messages = defineMessages({
   lighten: {

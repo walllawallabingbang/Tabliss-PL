@@ -8,41 +8,15 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 
 ## [Unreleased]
 
-### Fixed
-
-- fix(Widgets): sorting with translations.
-
-- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
-
 ### Added
+
+- feat(TimeTracker): add new TimeTracker widget. [#3808fa9](https://github.com/BookCatKid/tabliss-maintained/commit/3808fa918da239acf12b2aa949d4e587cb4c628d)
 
 - feat: Add key bind to search, notes, and jokes. [c1cc39c](https://github.com/BookCatKid/TablissNG/commit/c1cc39ce8a564f6676c9158a7eb5fad895deee89)
 
 - feat(Notes): icon align and placeholder style. [27c1264a0355a5b61cf86feb68ad005f2f7a3bb0](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
 
 - feat: add custom class option to widgets. [2887bb3](https://github.com/BookCatKid/TablissNG/commit/2887bb3957028df2ff9f7a2becd28d6e168ec240)
-
-## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
-
-### Added
-
-- feat(Search): Add using browser default search engine. [b8bd0f4](https://github.com/BookCatKid/TablissNG/commit/b8bd0f4dc988c766ba8f99af97ff7d949c1183ea)
-
-### Changed
-
-- chore: project renaming from Tabliss Maintained to TablissNG. [946daa6](https://github.com/BookCatKid/TablissNG/commit/946daa6b59537f8b2780737f3a661be0bd188716)
-
-### Fixed
-
-- fix(Quotes): typo, dwyl, backup quotable api. [#4faa4d1](https://github.com/BookCatKid/TablissNG/commit/4faa4d107e9dbd1a1c68e992bc3b2883b63cfc9e)
-
-- fix: make video content centered by default. [#24](https://github.com/BookCatKid/TablissNG/pull/24)
-
-## [1.4.0] - 4/24/2025 | Feature Update
-
-### Added
-
-- feat(TimeTracker): add new TimeTracker widget. [#3808fa9](https://github.com/BookCatKid/tabliss-maintained/commit/3808fa918da239acf12b2aa949d4e587cb4c628d)
 
 ### Changed
 
@@ -51,6 +25,10 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 ### Fixed
 
 - fix(Todos): Daily Routine not working. [c6b63d1](https://github.com/BookCatKid/tabliss-maintained/commit/c6b63d127151c826116a896e1084e3716fd9eee1)
+
+- fix(Widgets): sorting with translations.
+
+- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
 
 ## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
 
