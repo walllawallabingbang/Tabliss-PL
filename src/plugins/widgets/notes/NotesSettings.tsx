@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import { Icon, IconButton } from "../../../views/shared";
-import { FormattedMessage } from "react-intl";
 import "./Notes.sass";
 
 const alignments = [
