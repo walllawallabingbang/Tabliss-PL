@@ -199,8 +199,8 @@ const Settings: React.FC = () => {
         <div style={{ textAlign: "center" }} className="Widget">
           <h4><FormattedMessage
           id="support"
-          defaultMessage="Support Tabliss - Maintained"
-          description="Support Tabliss - Maintained button text"
+          defaultMessage="Support TablissNG"
+          description="Support TablissNG button text"
         /></h4>
           <p>
             <a
