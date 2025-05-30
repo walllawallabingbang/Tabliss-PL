@@ -80,6 +80,7 @@ const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
         /></option>
         </select>
       </label>
+
       <label>
         <FormattedMessage
           id="plugins.joke.category"
@@ -106,6 +107,20 @@ const JokeSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
             </label>
           );
         })}
+      </label>
+
+      <label>
+        <FormattedMessage
+          id="plugins.joke.keybind"
+          defaultMessage="Reveal answer keybind"
+          description="Reveal answer keybind title"
+        />
+        <input
+          type="text"
+          maxLength={1}
+          onChange={(event) => setData({ ...data, keyBind: event.target.value })}
+          value={data.keyBind}
+        />
       </label>
 
       <p>

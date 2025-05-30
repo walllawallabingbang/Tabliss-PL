@@ -1,5 +1,6 @@
 import { API } from "../../types";
 import { Quote } from "./types";
+import { bibleVerses } from "./bibleVerses";
 
 // Get developer excuse
 async function getDeveloperExcuse(): Promise<{ quote: string }> {
@@ -22,7 +23,16 @@ async function getRandomQuotableQuote(): Promise<{
   author: string | undefined;
 }> {
   try {
-    const res = await fetch("http://api.quotable.io/quotes/random?limit=1");
+    let res;
+    try {
+      res = await fetch("http://api.quotable.io/quotes/random?limit=1");
+    } catch (err) {
+      try {
+        res = await fetch("https://api.quotable.io/quotes/random?limit=1");
+      } catch (err2) {
+        res = await fetch("https://quotable.vercel.app/quotes/random?limit=1");
+      }
+    }
     const body = await res.json();
     const quote = body[0];
 
@@ -32,7 +42,7 @@ async function getRandomQuotableQuote(): Promise<{
     };
   } catch (err) {
     return {
-      quote: "Unable to get qotable quote.",
+      quote: "Unable to get quotable quote.",
       author: undefined,
     };
   }
@@ -50,13 +60,45 @@ async function getRandomDwylQuote(): Promise<{
     const quote = body[Math.floor(Math.random() * body.length)];
 
     return {
-      quote: quote.quote,
+      quote: quote.text,
       author: quote.author,
     };
   } catch (err) {
     return {
       quote: "Unable to get dwyl quote.",
       author: undefined,
+    };
+  }
+}
+
+async function getRandomBibleVerse(): Promise<{
+  quote: string;
+  author: string | undefined;
+}> {
+  try {
+    // Try to fetch from remote source first
+    const res = await fetch("https://raw.githubusercontent.com/lquartararo/versescraper/refs/heads/main/bibleVerses.ts");
+    const text = await res.text();
+
+    // Extract the array from the text content
+    const match = text.match(/export const bibleVerses = (\[[\s\S]*\]);/);
+    if (!match) {
+      throw new Error("Could not parse remote bible verses");
+    }
+
+    const remoteVerses = JSON.parse(match[1]);
+    const verse = remoteVerses[Math.floor(Math.random() * remoteVerses.length)];
+
+    return {
+      quote: verse.quote,
+      author: verse.author,
+    };
+  } catch (err) {
+    // Fall back to local verses if fetch fails
+    const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
+    return {
+      quote: verse.quote,
+      author: verse.author,
     };
   }
 }
@@ -133,7 +175,16 @@ export async function getQuote(
   const data =
     category === "developerexcuses"
       ? await getDeveloperExcuse()
-      : await getRandomQuotableQuote();
+      : category === "randomBible"
+      ? await getRandomBibleVerse()
+      : category === "dwyl"
+      ? await getRandomDwylQuote()
+      : category === "quotable"
+      ? await getRandomQuotableQuote()
+      : {
+        quote: "Selected category is invalid, pease create an issue on the <a href='https://github.com/bookcatkid/TablissNG/issues'>github repo</a>.",
+        author: "Simon"
+      };
   // : category === "bible"
   //   ? await getBibleVerse()
   //   : await getQuoteOfTheDay(category);

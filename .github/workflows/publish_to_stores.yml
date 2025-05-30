@@ -14,6 +14,10 @@ on:
         description: 'Skip GitHub Release creation'
         type: boolean
         default: false
+      skip_chrome_upload:
+        description: 'Skip Chrome Web Store upload'
+        type: boolean
+        default: false
       ref:
         description: 'Git ref (tag/branch) to build from'
         required: false
@@ -36,7 +40,7 @@ jobs:
           ref: ${{ inputs.ref }}
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - run: npm ci
       - run: npm run build:${{ matrix.build_target }}
         env:
@@ -49,14 +53,14 @@ jobs:
           path: dist/${{ matrix.build_target }}
 
   upload-firefox-store:
-    needs: build
+    needs: [build]
     if: ${{ !inputs.skip_firefox_upload }}
     name: Upload extension to Firefox Store
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - uses: actions/download-artifact@v4
         with:
           name: tabliss-firefox
@@ -73,7 +77,28 @@ jobs:
           guid: "extension@tabliss-maintained"
           xpi_path: release.zip
           src_path: source.zip
-      - run: echo Now go add the changelog at https://addons.mozilla.org/en-US/developers/addon/tabliss-maintained/versions/
+
+  upload-chrome-store:
+    needs: [build]
+    if: ${{ !inputs.skip_chrome_upload }}
+    name: Upload extension to Chrome Web Store
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: tabliss-chromium
+      - run: zip -r release.zip ./*
+      - uses: mnao305/chrome-extension-upload@v5.0.0
+        with:
+          file-path: release.zip
+          extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          publish: true
 
   create-release:
     needs: [build]
@@ -119,4 +144,3 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
-      - run: echo Now go publish the release at https://github.com/BookCatKid/tabliss-maintained/releases/${{ steps.version.outputs.ref }}

@@ -155,8 +155,8 @@ const Widget: React.FC<Props> = ({
               <label>
               <FormattedMessage
           id="colour"
-          defaultMessage="Сolour"
-          description="Сolour title"
+          defaultMessage="Colour"
+          description="Colour title"
         /> <br />
                 <input
                   type="color"

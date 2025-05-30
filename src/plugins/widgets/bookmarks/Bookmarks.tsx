@@ -1,9 +1,8 @@
 import React, { FC, ReactNode, useEffect, useState } from "react";
 import { defaultData, Props } from "./types";
-import { Bookmarks } from "webextension-polyfill";
 import "./Bookmarks.sass";
 import Icon from "../../../views/shared/icons/Icon";
-import BookmarkTreeNode = Bookmarks.BookmarkTreeNode;
+import { BookmarkTreeNode } from "./types";
 import { cleanTitle, truncateText } from '../topSites/TopSites';
 
 type NodeProps = {

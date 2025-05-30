@@ -6,13 +6,15 @@ type Data = {
   suggestionsEngine?: string;
   suggestionsQuantity: number;
   placeholderText?: string;
+  keyBind?: string;
 };
 
 export type Props = API<Data>;
 
 export const defaultData: Data = {
-  searchEngine: "google",
+  searchEngine: "default",
   suggestionsQuantity: 4,
+  keyBind: "G",
 };
 
 export const SEARCH_ENGINE_CUSTOM = "CUSTOM";
