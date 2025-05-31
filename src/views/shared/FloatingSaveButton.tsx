@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Icon } from '@iconify/react';
 import './FloatingSaveButton.css';
+import { pluginMessages } from '../../locales/messages';
 
 interface Props {
   onClick: () => void;
@@ -89,10 +90,7 @@ const FloatingSaveButton: React.FC<Props> = ({ onClick }) => {
       }}
     >
       <Icon icon="feather:check" />
-      <FormattedMessage
-       id="plugins.floatingSaveButton.save"
-       defaultMessage="Save Position"
-      />
+      <FormattedMessage {...pluginMessages.freeMoveSave} />
     </button>
   );
 };

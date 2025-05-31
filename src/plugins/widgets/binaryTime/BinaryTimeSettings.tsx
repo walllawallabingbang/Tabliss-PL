@@ -22,11 +22,7 @@ const BinaryTimeSettings: FC<Props> = ({ data = defaultData, setData }) => {
       </label>
 
       <label>
-        <FormattedMessage
-          id="plugins.binaryTime.timeZone"
-          defaultMessage="Time Zone"
-          description="Time Zone title"
-        />
+        <FormattedMessage {...pluginMessages.timeZone} />
         <TimeZoneInput
           timeZone={data.timeZone}
           onChange={(timeZone) => setData({ ...data, timeZone })}

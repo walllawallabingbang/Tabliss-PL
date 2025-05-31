@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import TimeZoneInput from "../../../views/shared/timeZone/TimeZoneInput";
 import { Props, defaultData } from "./types";
 import { messages } from "./messages";
+import { pluginMessages } from "../../../locales/messages";
 
 const TimeTrackerSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
@@ -55,10 +56,7 @@ const TimeTrackerSettings: FC<Props> = ({ data = defaultData, setData }) => {
       </label>
 
       <label>
-        <FormattedMessage
-          id="plugins.timeTracker.timeZone"
-          defaultMessage="Time Zone"
-        />
+        <FormattedMessage  {...pluginMessages.timeZone} />
         <TimeZoneInput
           timeZone={data.timeZone}
           onChange={(timeZone) => setData({ ...data, timeZone })}

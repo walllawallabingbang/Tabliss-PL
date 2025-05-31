@@ -3,14 +3,12 @@ import { FormattedMessage } from "react-intl";
 import "./WikimediaSettings.sass";
 import { DebounceInput } from "../../shared";
 import { WikimediaDate, defaultData, Props } from "./types";
+import { backgroundMessages } from "../../../locales/messages";
 
 const WikimediaSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
   <div className="ApodSettings">
     <label>
-      <FormattedMessage
-        id="backgrounds.wikimedia.date"
-        defaultMessage="Date of the picture"
-      />
+      <FormattedMessage {...backgroundMessages.dateOfPicture} />
       <select
         value={data.date}
         onChange={(event) =>
@@ -18,26 +16,17 @@ const WikimediaSettings: React.FC<Props> = ({ data = defaultData, setData }) => 
         }
       >
         <option value="today">
-          <FormattedMessage
-            id="backgrounds.wikimedia.today"
-            defaultMessage="Today"
-          />
+          <FormattedMessage {...backgroundMessages.today} />
         </option>
         <option value="custom">
-          <FormattedMessage
-            id="backgrounds.wikimedia.customDate"
-            defaultMessage="Custom date"
-          />
+          <FormattedMessage {...backgroundMessages.customDate} />
         </option>
       </select>
     </label>
 
     {data.date === "custom" && (
       <label>
-        <FormattedMessage
-          id="backgrounds.wikimedia.dateLabel"
-          defaultMessage="Date"
-        />
+        <FormattedMessage {...backgroundMessages.date} />
         <DebounceInput
           type="date"
           value={data.customDate}
@@ -55,10 +44,7 @@ const WikimediaSettings: React.FC<Props> = ({ data = defaultData, setData }) => 
         checked={data.showTitle}
         onChange={(event) => setData({ ...data, showTitle: !data.showTitle })}
       />{" "}
-      <FormattedMessage
-        id="backgrounds.wikimedia.showTitle"
-        defaultMessage="Show title"
-      />
+      <FormattedMessage {...backgroundMessages.showTitle} />
     </label>
   </div>
 );

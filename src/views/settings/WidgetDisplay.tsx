@@ -3,6 +3,7 @@ import { FormattedMessage, defineMessages } from "react-intl";
 import { WidgetDisplay as WidgetDisplayType } from "../../db/state";
 import PositionInput from "./PositionInput";
 import "./WidgetDisplay.css";
+import { pluginMessages } from "../../locales/messages";
 
 type Props = {
   display: WidgetDisplayType;
@@ -10,11 +11,6 @@ type Props = {
 };
 
 const messages = defineMessages({
-  savePosition: {
-    id: "settings.position.save",
-    defaultMessage: "Save Position",
-    description: "Button text for saving widget position"
-  },
   editPosition: {
     id: "settings.position.edit",
     defaultMessage: "Edit Position",
@@ -44,7 +40,7 @@ const WidgetDisplay: React.FC<Props> = ({ display, onChange }) => {
             >
               <FormattedMessage
                 {...(display.isEditingPosition
-                  ? messages.savePosition
+                  ? pluginMessages.freeMoveSave
                   : messages.editPosition)}
               />
             </button>

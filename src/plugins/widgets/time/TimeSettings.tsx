@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { FormattedMessage, defineMessages, useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Props, defaultData } from "./types";
 import TimeZoneInput from "../../../views/shared/timeZone/TimeZoneInput";
 import { pluginMessages } from "../../../locales/messages";
@@ -22,11 +22,7 @@ const TimeSettings: FC<Props> = ({ data = defaultData, setData }) => {
     </label>
 
     <label>
-      <FormattedMessage
-          id="plugins.time.zone"
-          defaultMessage="Time Zone"
-          description="Time Zone title"
-        />
+      <FormattedMessage {...pluginMessages.timeZone} />
       <TimeZoneInput
         timeZone={data.timeZone}
         onChange={(timeZone) => setData({ ...data, timeZone })}

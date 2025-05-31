@@ -44,6 +44,16 @@ export const pluginMessages = defineMessages({
     defaultMessage: "Optional name",
     description: "Placeholder text for name input",
   },
+  timeZone: {
+    id: "plugins.timeZone",
+    defaultMessage: "Time Zone",
+    description: "Label for time zone selection",
+  },
+  freeMoveSave: {
+    id: "plugins.freeMove.save",
+    defaultMessage: "Save Position",
+    description: "Save Position button title",
+  }
 });
 
 export const timingMessages = defineMessages({
@@ -78,4 +88,32 @@ export const timingMessages = defineMessages({
     description: "Every week title",
   },
   // everyCustom
+});
+
+export const backgroundMessages = defineMessages({
+  customDate: {
+    id: "backgrounds.customDate",
+    defaultMessage: "Custom date",
+    description: "Label for custom date selection",
+  },
+  dateOfPicture: {
+    id: "backgrounds.dateOfPicture",
+    defaultMessage: "Date of the picture",
+    description: "Label for the date when the picture was taken",
+  },
+  showTitle: {
+    id: "backgrounds.showTitle",
+    defaultMessage: "Show title",
+    description: "Toggle for showing/hiding image titles",
+  },
+  today: {
+    id: "backgrounds.today",
+    defaultMessage: "Today",
+    description: "Label for selecting today's date",
+  },
+  date: {
+    id: "backgrounds.date",
+    defaultMessage: "Date",
+    description: "Label for date input",
+  }
 });
