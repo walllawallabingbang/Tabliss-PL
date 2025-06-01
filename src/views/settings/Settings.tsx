@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { UiContext } from "../../contexts/ui";
 import { exportStore, importStore, resetStore } from "../../db/action";
@@ -18,9 +18,15 @@ import { useTheme } from "../../hooks";
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
+  const [autoHideSettings] = useKey(db, "autoHideSettings");
   const { isDark } = useTheme();
+  const [isHovered, setIsHovered] = useState(true);
 
   const settingsOnRight = settingsIconPosition === "bottomRight" || settingsIconPosition === "topRight";
+
+  useEffect(() => {
+    setIsHovered(true);
+  }, [toggleSettings]);
 
   const handleReset = () => {
     if (
@@ -83,7 +89,34 @@ const Settings: React.FC = () => {
     <div className="Settings">
       <a onClick={toggleSettings} className="fullscreen" />
 
-      <div className="plane" style={{ left: settingsOnRight ? "auto" : 0, right: settingsOnRight ? 0 : "auto", borderRadius: settingsOnRight ? "1rem 0 0 1rem" : "0 1rem 1rem 0" }}>
+      {autoHideSettings && (
+        <div
+          className="settings-hover-area"
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            width: '330px',
+            left: settingsOnRight ? 'auto' : 0,
+            right: settingsOnRight ? 0 : 'auto',
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+        />
+      )}
+
+      <div
+        className="plane"
+        style={{
+          left: settingsOnRight ? "auto" : 0,
+          right: settingsOnRight ? 0 : "auto",
+          borderRadius: settingsOnRight ? "1rem 0 0 1rem" : "0 1rem 1rem 0",
+          opacity: !autoHideSettings || isHovered ? 1 : 0,
+          visibility: !autoHideSettings || isHovered ? "visible" : "hidden",
+          transition: "opacity 0.3s ease, visibility 0.3s ease"
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Logo />
         <div style={{
           textAlign: "center",

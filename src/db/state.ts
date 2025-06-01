@@ -25,6 +25,8 @@ export interface State {
   settingsIconPosition: "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
   /** Theme preference (light/dark/system) */
   themePreference: "light" | "dark" | "system";
+  /** Whether to auto-hide settings menu when not hovering */
+  autoHideSettings: boolean;
 }
 
 export interface BackgroundState {
@@ -116,6 +118,7 @@ const initData: State = {
   hideSettingsIcon: false,
   settingsIconPosition: "topLeft",
   themePreference: "system",
+  autoHideSettings: false,
 };
 
 // Database storage
