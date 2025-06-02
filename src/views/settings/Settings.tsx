@@ -14,6 +14,7 @@ import GitHubButton from "react-github-btn";
 import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
 import { useTheme } from "../../hooks";
+import Favicon from "./Favicon";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
@@ -99,6 +100,9 @@ const Settings: React.FC = () => {
             width: '330px',
             left: settingsOnRight ? 'auto' : 0,
             right: settingsOnRight ? 0 : 'auto',
+            borderRadius: settingsOnRight ? "1rem 0 0 1rem" : "0 1rem 1rem 0",
+            background: isDark ? 'rgba(45, 45, 45, 0.25)' : 'rgba(0, 0, 0, 0.25)',
+            transition: 'background 0.3s ease'
           }}
           onMouseEnter={() => setIsHovered(true)}
         />
@@ -167,6 +171,7 @@ const Settings: React.FC = () => {
         <Background />
         <Widgets />
         <System />
+        <Favicon />
         <p style={{ marginBottom: "2rem" }}>
           <a onClick={handleImport}><FormattedMessage
           id="settings.import"

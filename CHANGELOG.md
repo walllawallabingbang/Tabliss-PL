@@ -16,6 +16,8 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
+- feat(Settings): add auto-hide functionality for settings menu. [de61a07](https://github.com/BookCatKid/TablissNG/commit/de61a07d555bbbb400faf27492176ca59b0f7665)
+
 - feat: Add key bind to search, notes, and jokes. [c1cc39c](https://github.com/BookCatKid/TablissNG/commit/c1cc39ce8a564f6676c9158a7eb5fad895deee89)
 
 - feat(Notes): icon align and placeholder style. [27c1264a0355a5b61cf86feb68ad005f2f7a3bb0](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
