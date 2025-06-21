@@ -14,7 +14,6 @@ import GitHubButton from "react-github-btn";
 import { db } from "../../db/state";
 import { useKey } from "../../lib/db/react";
 import { useTheme } from "../../hooks";
-import Favicon from "./Favicon";
 
 const Settings: React.FC = () => {
   const { toggleSettings } = React.useContext(UiContext);
@@ -171,7 +170,6 @@ const Settings: React.FC = () => {
         <Background />
         <Widgets />
         <System />
-        <Favicon />
         <p style={{ marginBottom: "2rem" }}>
           <a onClick={handleImport}><FormattedMessage
           id="settings.import"
