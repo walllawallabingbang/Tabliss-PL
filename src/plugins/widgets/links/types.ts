@@ -1,6 +1,7 @@
 import { API } from "../../types";
 
 export type Link = {
+  id: string;
   name?: string;
   icon?: string;
   url: string;
@@ -54,7 +55,7 @@ export type DisplayProps = Link & {
 
 export const defaultData: Data = {
   columns: 1,
-  links: [{ url: "https://tabliss.io" }],
+  links: [{ id: 'default-link', url: "https://github.com/BookCatKid/TablissNG", name: "TablissNG" }],
   visible: true,
   linkOpenStyle: false,
   linksNumbered: false,

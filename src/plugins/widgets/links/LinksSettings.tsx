@@ -104,11 +104,11 @@ const LinksSettings: FC<Props> = ({ data = defaultData, setData, cache = default
       <hr />
 
       {sortedLinks.map((link, index) => {
-        const originalIndex = data.links.findIndex(l => l.url === link.url);
+        const originalIndex = data.links.findIndex(l => l.id === link.id);
         return (
           <Input
             {...link}
-            key={link.url}
+            key={link.id}
             number={index + 1}
             onChange={(values) =>
               dispatch(updateLink(originalIndex, { ...link, ...values }))
