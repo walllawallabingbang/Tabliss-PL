@@ -106,6 +106,9 @@ const Widget: React.FC<WidgetProps> = ({
   if (customClass) {
     classNames += ` ${customClass}`;
   }
+  if (isEditingPosition) {
+    classNames += ' drag-selected';
+  }
 
   const renderContent = () => {
     const outlineStyle = textOutline ? (textOutlineStyle ?? "basic") : null;

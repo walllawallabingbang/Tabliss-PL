@@ -9,9 +9,9 @@ import "./Links.sass";
 const Links: FC<Props> = ({ data = defaultData, setData, cache = defaultCache }) => {
   const [visible, toggleVisible] = useToggle();
 
-  const handleLinkClick = (url: string) => {
+  const handleLinkClick = (id: string) => {
     const updatedLinks = [...data.links];
-    const originalIndex = updatedLinks.findIndex(link => link.url === url);
+    const originalIndex = updatedLinks.findIndex(link => link.id === id);
     
     if (originalIndex !== -1) {
       updatedLinks[originalIndex] = {
@@ -65,14 +65,14 @@ const Links: FC<Props> = ({ data = defaultData, setData, cache = defaultCache })
       {data.visible || visible ? (
         sortedLinks.map((link, index) => (
           <Display
-            key={link.url} // Changed from index to url for stable keys
+            key={link.id}
             number={index + 1}
             linkOpenStyle={data.linkOpenStyle}
             linksNumbered={data.linksNumbered}
             customWidth={data.customWidth}
             customHeight={data.customHeight}
             cache={cache}
-            onLinkClick={() => handleLinkClick(link.url)}
+            onLinkClick={() => handleLinkClick(link.id)}
             {...link}
           />
         ))

@@ -32,6 +32,7 @@ const System: React.FC = () => {
   const [hideSettingsIcon, setHideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition, setSettingsIconPosition] = useKey(db, "settingsIconPosition");
   const [themePreference, setThemePreference] = useKey(db, "themePreference");
+  const [autoHideSettings, setAutoHideSettings] = useKey(db, "autoHideSettings");
   const systemIsDark = useSystemTheme();
 
   function setHighlighting(checked: boolean) {
@@ -362,6 +363,23 @@ const System: React.FC = () => {
           type="checkbox"
           checked={hideSettingsIcon}
           onChange={(e) => setHideSettingsIcon(e.target.checked)}
+        />
+      </label>
+
+      <label
+        style={{
+          alignItems: "center",
+          display: "grid",
+          gridGap: "0 0.5rem",
+          gridTemplateColumns: "1fr 1fr",
+          width: "100%",
+        }}
+      >
+        <span>Auto-hide Settings Menu</span>
+        <input
+          type="checkbox"
+          checked={autoHideSettings}
+          onChange={(e) => setAutoHideSettings(e.target.checked)}
         />
       </label>
     </div>
