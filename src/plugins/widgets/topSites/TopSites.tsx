@@ -81,6 +81,7 @@ export const TopSites: FC<Props> = ({ data = defaultData, cache = defaultCache, 
             {cache.sites.map((site, index) => (
                 <Display
                     key={index}
+                    id={site.url + '-' + index}
                     url={site.url}
                     name={truncateText(cleanTitle(site.title || '', site.url), data.maxTextLength)}
                     icon={data.iconProvider}

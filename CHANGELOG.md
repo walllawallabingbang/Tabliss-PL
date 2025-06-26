@@ -18,7 +18,7 @@ I attempt to follow the [Conventional Commits](https://www.conventionalcommits.o
 
 ### Added
 
-- feat: add drag-selected styling for widget free-move mode.
+- feat: add drag-selected styling for widget free-move mode. [2fb005d](https://github.com/BookCatKid/TablissNG/commit/2fb005d234e276743e1a6df0b15d875dbe0e0b9c)
 
 - feat(Settings): add auto-hide functionality for settings menu. [de61a07](https://github.com/BookCatKid/TablissNG/commit/de61a07d555bbbb400faf27492176ca59b0f7665)
 
