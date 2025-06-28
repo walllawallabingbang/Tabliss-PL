@@ -315,7 +315,6 @@
   "plugins.timeTracker.titleOptional": "Title (optional)",
   "plugins.timeTracker.was": "was",
   "plugins.timeZone": "Time Zone",
-  "plugins.timeZone.automatic": "Automatic",
   "plugins.todo.description": "Add reminders to procrastinate.",
   "plugins.todo.name": "Todos",
   "plugins.topSites.description": "Quick links to your top-visited sites.",

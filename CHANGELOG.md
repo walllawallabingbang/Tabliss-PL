@@ -20,7 +20,7 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 
 - feat: add drag-selected styling for widget free-move mode. [2fb005d](https://github.com/BookCatKid/TablissNG/commit/2fb005d234e276743e1a6df0b15d875dbe0e0b9c)
 
-- feat(TimeTracker): add new TimeTracker widget. [#3808fa9](https://github.com/BookCatKid/tabliss-maintained/commit/3808fa918da239acf12b2aa949d4e587cb4c628d)
+- feat(TimeTracker): add new TimeTracker widget. [3808fa9](https://github.com/BookCatKid/tabliss-maintained/commit/3808fa918da239acf12b2aa949d4e587cb4c628d)
 
 - feat(Settings): add auto-hide functionality for settings menu. [de61a07](https://github.com/BookCatKid/TablissNG/commit/de61a07d555bbbb400faf27492176ca59b0f7665)
 
