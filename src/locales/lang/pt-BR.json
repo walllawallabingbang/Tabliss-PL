@@ -308,6 +308,7 @@
   "plugins.timeTracker.italicizeTime": "Itálico no tempo",
   "plugins.timeTracker.minute": "minuto",
   "plugins.timeTracker.minutes": "minutos",
+  "plugins.timeTracker.name": "Time Tracker",
   "plugins.timeTracker.second": "segundo",
   "plugins.timeTracker.seconds": "segundos",
   "plugins.timeTracker.showCompletionMessage": "Mostrar mensagem de conclusão",
