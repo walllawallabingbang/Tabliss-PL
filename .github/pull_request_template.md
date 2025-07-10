@@ -29,3 +29,4 @@
 - [ ] All new and existing tests passed
 - [ ] I have added a changelog entry
 - [ ] I ran `npm run translations`
+- [ ] This PR is ready to be merged
