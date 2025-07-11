@@ -105,13 +105,11 @@ const Display: FC<Props> = ({
       }
 
       if (linkOpenStyle) {
-        // Open in new tab
         browser.tabs.create({
           url: url,
           active: true
         }).catch(console.error);
       } else {
-        // Update current tab
         browser.tabs.update({
           url: url
         }).catch(console.error);

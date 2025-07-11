@@ -4,23 +4,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-I attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+I also attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
 ## [Unreleased]
 
 ### Fixed
 
-- fix(Widgets): sorting with translations.
+- fix(Quick Links): fix broken widget. [0f2dc326](https://github.com/BookCatKid/TablissNG/commit/0f2dc326ec33c75e560352a00f4d4d9906888479)
+
+- fix(Widgets): sorting with translations. [ee01735](https://github.com/BookCatKid/TablissNG/commit/ee0173599dcc942070f3e5d9c19b93f2dbbbcc30)
 
 - fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
 
 ### Added
 
+- feat: add drag-selected styling for widget free-move mode. [2fb005d](https://github.com/BookCatKid/TablissNG/commit/2fb005d234e276743e1a6df0b15d875dbe0e0b9c)
+
+- feat(TimeTracker): add new TimeTracker widget. [3808fa9](https://github.com/BookCatKid/tabliss-maintained/commit/3808fa918da239acf12b2aa949d4e587cb4c628d)
+
+- feat(Settings): add auto-hide functionality for settings menu. [de61a07](https://github.com/BookCatKid/TablissNG/commit/de61a07d555bbbb400faf27492176ca59b0f7665)
+
 - feat: Add key bind to search, notes, and jokes. [c1cc39c](https://github.com/BookCatKid/TablissNG/commit/c1cc39ce8a564f6676c9158a7eb5fad895deee89)
 
-- feat(Notes): icon align and placeholder style. [27c1264a0355a5b61cf86feb68ad005f2f7a3bb0](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
+- feat(Notes): icon align and placeholder style. [27c1264](https://github.com/BookCatKid/TablissNG/commit/27c1264a0355a5b61cf86feb68ad005f2f7a3bb0)
 
 - feat: add custom class option to widgets. [2887bb3](https://github.com/BookCatKid/TablissNG/commit/2887bb3957028df2ff9f7a2becd28d6e168ec240)
+
+### Changed
+
+- feat(Translation): Finish translation support for settings panel. [#20](https://github.com/BookCatKid/tabliss-maintained/pull/20)
+
+### Fixed
+
+- fix(Todos): Daily Routine not working. [c6b63d1](https://github.com/BookCatKid/tabliss-maintained/commit/c6b63d127151c826116a896e1084e3716fd9eee1)
+
+- fix(Widgets): sorting with translations.
+
+- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
 
 ## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
 
