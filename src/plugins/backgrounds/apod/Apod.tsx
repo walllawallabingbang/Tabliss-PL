@@ -22,9 +22,21 @@ const Apod: React.FC<Props> = ({
     mounted.current = true;
   }, [data.customDate, data.date]);
 
+  const extractYouTubeId = React.useCallback((url: string): string | null => {
+    const match = url.match(
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/
+    );
+    return match ? match[1] : null;
+  }, []);
+
   const imageUrl = picture?.media_type === "image"
     ? picture?.hdurl || picture?.url
-    : picture?.thumbnail_url;
+    : (() => {
+        const videoId = extractYouTubeId(picture?.url ?? "");
+        return videoId
+          ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+          : picture?.thumbnail_url || "";
+    })();
 
   return (
     <div className="Apod fullscreen">
