@@ -18,6 +18,10 @@ on:
         description: 'Skip Chrome Web Store upload'
         type: boolean
         default: false
+      skip_edge_upload:
+        description: 'Skip Edge Web Store upload'
+        type: boolean
+        default: false
       ref:
         description: 'Git ref (tag/branch) to build from'
         required: false
