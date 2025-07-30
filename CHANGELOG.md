@@ -6,9 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 I also attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-## [Unreleased]
+## [1.5.0] - 7/30/2025 | Feature and Bugfix Update
 
 ### Fixed
+
+- feat: Refactor Unsplash background image loading logic. [#43](https://github.com/BookCatKid/TablissNG/issues/43) [06a923f](https://github.com/BookCatKid/TablissNG/commit/06a923f8ee22ad3f5959b095572bf0d8f1c84d4b)
+
+- fix(Todos): Daily Routine not working. [c6b63d1](https://github.com/BookCatKid/tabliss-maintained/commit/c6b63d127151c826116a896e1084e3716fd9eee1)
+
+- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
 
 - fix(Quick Links): fix broken widget. [0f2dc326](https://github.com/BookCatKid/TablissNG/commit/0f2dc326ec33c75e560352a00f4d4d9906888479)
 
@@ -35,16 +41,6 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 - feat(Apod): Improve quality of youtube video thumbnail. [#44](https://github.com/BookCatKid/TablissNG/issues/44) [f08f3b1](https://github.com/BookCatKid/TablissNG/commit/f08f3b179dc27db0258a9e7d54d494b6ce880de8)
 
 - feat(Translation): Finish translation support for settings panel. [#20](https://github.com/BookCatKid/tabliss-maintained/pull/20)
-
-### Fixed
-
-- feat: Refactor Unsplash background image loading logic. [#43](https://github.com/BookCatKid/TablissNG/issues/43) [06a923f](https://github.com/BookCatKid/TablissNG/commit/06a923f8ee22ad3f5959b095572bf0d8f1c84d4b)
-
-- fix(Todos): Daily Routine not working. [c6b63d1](https://github.com/BookCatKid/tabliss-maintained/commit/c6b63d127151c826116a896e1084e3716fd9eee1)
-
-- fix(Widgets): sorting with translations.
-
-- fix(Notes): placeholder should inherit color [65b9dee](https://github.com/BookCatKid/TablissNG/commit/65b9dee1fc3493821db682197de8812be87c6d30)
 
 ## [1.4.1] - 5/21/2025 | Project Rename and Bugfix Update
 

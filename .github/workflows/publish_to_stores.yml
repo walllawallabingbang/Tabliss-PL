@@ -100,6 +100,26 @@ jobs:
           refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
           publish: true
 
+  upload-edge-store:
+    needs: [build]
+    if: ${{ !inputs.skip_edge_upload }}
+    name: Upload extension to Edge Store
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: tabliss-chromium
+      - run: zip -r release.zip ./*
+      - uses: wdzeng/edge-addon@v2
+        with:
+          product-id: ${{ secrets.EDGE_PRODUCT_ID }}
+          zip-path: release.zip
+          api-key: ${{ secrets.EDGE_API_KEY }}
+          client-id: ${{ secrets.EDGE_CLIENT_ID }}
+
   create-release:
     needs: [build]
     if: ${{ !inputs.skip_github_release }}
