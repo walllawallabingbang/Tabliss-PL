@@ -32,9 +32,13 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 
 ### Changed
 
+- feat(Apod): Improve quality of youtube video thumbnail. [#44](https://github.com/BookCatKid/TablissNG/issues/44) [f08f3b1](https://github.com/BookCatKid/TablissNG/commit/f08f3b179dc27db0258a9e7d54d494b6ce880de8)
+
 - feat(Translation): Finish translation support for settings panel. [#20](https://github.com/BookCatKid/tabliss-maintained/pull/20)
 
 ### Fixed
+
+- feat: Refactor Unsplash background image loading logic. [#43](https://github.com/BookCatKid/TablissNG/issues/43) [06a923f](https://github.com/BookCatKid/TablissNG/commit/06a923f8ee22ad3f5959b095572bf0d8f1c84d4b)
 
 - fix(Todos): Daily Routine not working. [c6b63d1](https://github.com/BookCatKid/tabliss-maintained/commit/c6b63d127151c826116a896e1084e3716fd9eee1)
 
