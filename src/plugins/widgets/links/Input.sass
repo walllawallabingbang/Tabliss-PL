@@ -57,6 +57,7 @@
     background: #f9f9f9
     cursor: pointer
     transition: background 0.2s ease-in-out
+    max-height: 150px
 
   .icon-box:hover
     background: #e0e0e0
@@ -108,6 +109,31 @@
       &:hover
         background-color: rgba(255, 255, 255, 0.1)
 
+  .selected-icon-display
+    display: flex
+    align-items: center
+    gap: 8px
+    margin-top: 8px
+    padding: 8px
+    border: 1px solid #bdc3c7
+    border-radius: 0.2em
+    background-color: rgba(233, 233, 237, 0.1)
+
+    .icon-preview
+      display: flex
+      align-items: center
+      justify-content: center
+
+    .icon-info
+      .icon-name
+        font-size: 0.9em
+        color: inherit
+        text-transform: capitalize
+
+    .dark &
+      border-color: #444
+      background-color: rgba(255, 255, 255, 0.1)
+
   .conserveAspectRatioButton
     margin-left: 0.5em
 
@@ -115,4 +141,3 @@
     color: #6c757d
     font-size: 0.8rem
     margin-top: 0.5rem
-

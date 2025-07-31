@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useMemo, useEffect } from "react";
 
 import { useKeyPress, useToggle } from "../../../hooks";
 import { Icon } from "@iconify/react";
@@ -8,6 +8,24 @@ import "./Links.sass";
 
 const Links: FC<Props> = ({ data = defaultData, setData, cache = defaultCache }) => {
   const [visible, toggleVisible] = useToggle();
+
+  // Ensure all links have unique IDs to prevent React key errors
+  useEffect(() => {
+    const linksWithIds = data.links.map((link, index) => {
+      if (!link.id || data.links.filter(l => l.id === link.id).length > 1) {
+        return {
+          ...link,
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2) + index
+        };
+      }
+      return link;
+    });
+
+    // Only update if we actually changed something
+    if (JSON.stringify(linksWithIds) !== JSON.stringify(data.links)) {
+      setData({ ...data, links: linksWithIds });
+    }
+  }, [data.links, setData]);
 
   const handleLinkClick = (id: string) => {
     const updatedLinks = [...data.links];
