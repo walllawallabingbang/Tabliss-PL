@@ -374,7 +374,7 @@ const Input: FC<Props> = (props) => {
       {isFeather && (
         <div className="icon-picker">
           <button onClick={handleOpenModal} className="custom-select">
-            {props.icon ?
+            {props.iconifyValue ?
               <FormattedMessage
                 id="plugins.links.input.openIconPicker"
                 defaultMessage="Open icon picker"
@@ -385,6 +385,20 @@ const Input: FC<Props> = (props) => {
               />
             }
           </button>
+          
+          {/* Show currently selected Feather icon with preview */}
+          {props.iconifyValue && (
+            <div className="selected-icon-display">
+              <div className="icon-preview">
+                <Icon 
+                  icon={`feather:${props.iconifyValue}`} 
+                />
+              </div>
+              <div className="icon-info">
+                <span className="icon-name">{props.iconifyValue.replace(/-/g, " ")}</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
