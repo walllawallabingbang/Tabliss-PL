@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 I also attempt to follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
+## [Unreleased]
+
+### Added
+
+- feat: add current selected icon display to quick links icon picker. [7bc9802](https://github.com/BookCatKid/TablissNG/commit/7bc9802c5fd70125ca9b53888227f9172651fad3)
+
+### Fixed
+
+- fix: add key to imported quick links. [6708171](https://github.com/BookCatKid/TablissNG/commit/6708171145fc19adb0ad322c08c4dfcff301ab8b)
+
 ## [1.5.0] - 7/30/2025 | Feature and Bugfix Update
 
 ### Fixed
