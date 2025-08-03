@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import LocationInput from "./LocationInput";
 import { defaultData, Props } from "./types";
-import { messages } from "../../../locales/locales"; 
+import { pluginMessages } from "../../../locales/messages";
 
 const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
@@ -27,7 +27,7 @@ const WeatherSettings: FC<Props> = ({ data = defaultData, setData }) => {
             <input
               type="text"
               value={data.name || ""}
-              placeholder={intl.formatMessage(messages.optionalName)}
+              placeholder={intl.formatMessage(pluginMessages.namePlaceholder)}
               onChange={(event) =>
                 setData({ ...data, name: event.target.value || undefined })
               }
