@@ -16,7 +16,9 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 
 ### Fixed
 
-- fix(unsplash): don't crash if topics is not an array
+- fix(unsplash): don't crash if topics is not an array [dc19b03](https://github.com/BookCatKid/TablissNG/commit/dc19b031d131a8002e1a53d0c47bb637e8d1b04a)
+
+- fix: use correct messages file in weather.tsx [54ea938](https://github.com/BookCatKid/TablissNG/commit/54ea9384bc814245f35752c101e1815c6ff5103c)
 
 - fix: add key to imported quick links. [6708171](https://github.com/BookCatKid/TablissNG/commit/6708171145fc19adb0ad322c08c4dfcff301ab8b)
 
