@@ -108,36 +108,40 @@ const SearchSettings: FC<Props> = ({ data = defaultData, setData }) => {
       />
     </label>
 
-      {BUILD_TARGET === "web" && (
-        <label>
-          <FormattedMessage
-            id="plugins.search.suggestionsProvider"
-            defaultMessage="Suggestions Provider"
-            description="Suggestions Provider title"
-          />
-          <select
-            onChange={(event) =>
-              setData({ ...data, suggestionsEngine: event.target.value })
-            }
-            value={data.suggestionsEngine}
-          >
-            <option key="off" value="">
-              <FormattedMessage
-            id="plugins.off"
-            defaultMessage="Off"
-            description="Off title"
-          />
-            </option>
-            {engines
+      <label>
+        <FormattedMessage
+          id="plugins.search.suggestionsProvider"
+          defaultMessage="Suggestions Provider"
+          description="Suggestions Provider title"
+        />
+        <select
+          onChange={(event) =>
+            setData({ ...data, suggestionsEngine: event.target.value })
+          }
+          value={data.suggestionsEngine}
+        >
+          <option key="off" value="">
+            <FormattedMessage
+              id="plugins.off"
+              defaultMessage="Off"
+              description="Off title"
+            />
+          </option>
+          {BUILD_TARGET === "web" ? (
+            engines
               .filter(({ suggest_url }) => Boolean(suggest_url))
               .map(({ key, name }) => (
                 <option key={key} value={key}>
                   {name}
                 </option>
-              ))}
-          </select>
-        </label>
-      )}
+              ))
+          ) : (
+            <option key="wikipedia" value="wikipedia">
+              Wikipedia
+            </option>
+          )}
+        </select>
+      </label>
 
       {data.suggestionsEngine && (
         <label>

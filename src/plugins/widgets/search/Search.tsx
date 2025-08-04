@@ -1,7 +1,7 @@
 import React, { FC, useRef, useState } from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { useKeyPress } from "../../../hooks";
-import { getSuggestions } from "./getSuggestions";
+import { getSuggestions, getWikipediaSuggestions, WikipediaSuggestionResult } from "./getSuggestions";
 import Suggestions from "./Suggestions";
 import { Props, defaultData } from "./types";
 import { buildUrl, getSearchUrl, getSuggestUrl } from "./utils";
@@ -20,7 +20,7 @@ const Search: FC<Props> = ({ data = defaultData }) => {
   const previousValue = useRef("");
 
   const [active, setActive] = useState<number>();
-  const [suggestions, setSuggestions] = useState<string[]>();
+  const [suggestions, setSuggestions] = useState<(string | WikipediaSuggestionResult)[]>();
 
   const intl = useIntl();
   const placeholder = data.placeholderText || intl.formatMessage(messages.placeholder);
@@ -39,7 +39,14 @@ const Search: FC<Props> = ({ data = defaultData }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     previousValue.current = event.target.value;
 
-    if (BUILD_TARGET === "web") {
+    if (data.suggestionsEngine === "wikipedia") {
+      // Use Wikipedia API for suggestions
+      const url = `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${encodeURIComponent(event.target.value)}&limit=10`;
+      getWikipediaSuggestions(event.target.value, url).then((suggestions) => {
+        setSuggestions(suggestions.slice(0, data.suggestionsQuantity));
+        setActive(undefined);
+      });
+    } else if (BUILD_TARGET === "web") {
       const suggestUrl = getSuggestUrl(data.suggestionsEngine);
       if (suggestUrl) {
         getSuggestions(event.target.value, suggestUrl).then((suggestions) => {
@@ -58,20 +65,26 @@ const Search: FC<Props> = ({ data = defaultData }) => {
     event.preventDefault();
 
     switch (event.key) {
-      case "ArrowUp":
+
+      case "ArrowUp": {
         const upTo = !active ? suggestions.length - 1 : active - 1;
-        searchInput.current!.value = suggestions[upTo];
+        const upSuggestion = suggestions[upTo];
+        searchInput.current!.value = typeof upSuggestion === "string" ? upSuggestion : upSuggestion.title;
         setActive(upTo);
         break;
+      }
 
-      case "ArrowDown":
+
+      case "ArrowDown": {
         const downTo =
           active === undefined || active === suggestions.length - 1
             ? 0
             : active + 1;
-        searchInput.current!.value = suggestions[downTo];
+        const downSuggestion = suggestions[downTo];
+        searchInput.current!.value = typeof downSuggestion === "string" ? downSuggestion : downSuggestion.title;
         setActive(downTo);
         break;
+      }
 
       case "Escape":
         if (active) {
@@ -84,8 +97,12 @@ const Search: FC<Props> = ({ data = defaultData }) => {
     }
   };
 
-  const handleSelect = (suggestion: string) => {
-    searchInput.current!.value = suggestion;
+  const handleSelect = (suggestion: string | WikipediaSuggestionResult) => {
+    if (typeof suggestion === "string") {
+      searchInput.current!.value = suggestion;
+    } else {
+      searchInput.current!.value = suggestion.title;
+    }
     search();
   };
 

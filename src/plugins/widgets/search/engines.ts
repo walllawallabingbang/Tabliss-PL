@@ -102,4 +102,10 @@ export const engines: Engine[] = [
     name: "MetaCrawler",
     search_url: "https://www.metacrawler.com/serp?q={searchTerms}",
   },
+  {
+    key: "wikipedia",
+    name: "Wikipedia",
+    search_url: "https://wikipedia.org/w/index.php?search={searchTerms}",
+    suggest_url: "https://en.wikipedia.org/w/rest.php/v1/search/title?q={searchTerms}&limit=10"
+  }
 ];

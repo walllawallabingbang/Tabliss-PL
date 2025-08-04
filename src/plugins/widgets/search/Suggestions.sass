@@ -1,18 +1,55 @@
 .Suggestions
+
     display: grid
     position: absolute
     margin-top: -1rem
     width: 100%
     background: rgba(0, 0, 0, 0.5)
     border-radius: 0 0 1rem 1rem
+    overflow: hidden
 
     input
         color: inherit
         cursor: pointer
+        padding: 0.5em 1em
+        width: 100%
+        text-align: left
+        font-size: 1em
+
+    .suggestion-item
+        text-align: left
+        display: flex
+        gap: 0.75em
+        padding: 0.5em 1em
+        cursor: pointer
+        width: 100%
+        &:hover, &.active
+            background: rgba(255,255,255,0.2)
+
+        .suggestion-thumb
+            width: 70px
+            height: 70px
+            object-fit: cover
+            border-radius: 0.25em
+
+        .suggestion-content
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            padding: 0.2em 0
+
+            .suggestion-title
+                font-weight: 600
+                font-size: 1.1em
+                color: #fff
+                text-overflow: ellipsis
+                white-space: nowrap
+
+            .suggestion-desc
+                font-size: 0.8em
+                color: #b0b0b0
+                text-overflow: ellipsis
+                white-space: nowrap
 
     .active
         text-decoration: underline
-
-.light
-    .Suggestions
-        background: rgba(255, 255, 255, 0.5)
