@@ -31,7 +31,6 @@ const Unsplash: React.FC<Props> = ({
   }, []);
 
   // Get current item from rotating cache
-  console.log(data.topics)
   const item = useRotatingCache(
     () => {
       loader.push();
