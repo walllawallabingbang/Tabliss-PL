@@ -32,7 +32,7 @@ export const fetchImages = async ({
       break;
 
     case "topics":
-      params.set("topics", topics.join(","));
+      params.set("topics", (Array.isArray(topics) ? topics : [topics]).join(","));
       params.set("orientation", "landscape");
       break;
 

@@ -10,9 +10,13 @@ I also attempt to follow the [Conventional Commits](https://www.conventionalcomm
 
 ### Added
 
+- feat: Add wikipedia search engine and autocomplete [850166f](https://github.com/BookCatKid/TablissNG/commit/850166fd1f9b1d35982eafe9192715f0f7631014)
+
 - feat: add current selected icon display to quick links icon picker. [7bc9802](https://github.com/BookCatKid/TablissNG/commit/7bc9802c5fd70125ca9b53888227f9172651fad3)
 
 ### Fixed
+
+- fix(unsplash): don't crash if topics is not an array
 
 - fix: add key to imported quick links. [6708171](https://github.com/BookCatKid/TablissNG/commit/6708171145fc19adb0ad322c08c4dfcff301ab8b)
 

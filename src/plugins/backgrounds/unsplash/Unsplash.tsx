@@ -31,6 +31,7 @@ const Unsplash: React.FC<Props> = ({
   }, []);
 
   // Get current item from rotating cache
+  console.log(data.topics)
   const item = useRotatingCache(
     () => {
       loader.push();
@@ -38,7 +39,7 @@ const Unsplash: React.FC<Props> = ({
     },
     { cache, setCache },
     data.paused ? Number.MAX_SAFE_INTEGER : data.timeout * 1000,
-    [data.by, data.collections, data.featured, data.search, data.topics.join(',')],
+    [data.by, data.collections, data.featured, data.search, (Array.isArray(data.topics) ? data.topics : [data.topics]).join(',')],
   );
 
   // Populate browser cache with the next image

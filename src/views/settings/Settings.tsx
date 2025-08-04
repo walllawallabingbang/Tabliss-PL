@@ -156,37 +156,39 @@ const Settings: React.FC = () => {
             TablissNG v{VERSION} {DEV ? "DEV " : ""}
           </span>
         </div>
-        <p style={{ textAlign: "center", marginTop: 0, marginBottom: 0 }}>
-          <GitHubButton
-            href="https://github.com/BookCatKid/tablissNG/subscription"
-            data-icon="octicon-eye"
-            data-size="large"
-            data-show-count="true"
-            data-color-scheme={isDark ? "dark" : "light"}
-            aria-label="Watch BookCatKid/tablissNG on GitHub"
-          >
-            <FormattedMessage
-              id="settings.github.watch"
-              defaultMessage="Watch"
-              description="GitHub Watch button text"
-            />
-          </GitHubButton>
-          <span style={{ margin: "0 1rem" }} />
-          <GitHubButton
-            href="https://github.com/BookCatKid/tablissNG"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            data-color-scheme={isDark ? "dark" : "light"}
-            aria-label="Star BookCatKid/tablissNG on GitHub"
-          >
-            <FormattedMessage
-              id="settings.github.star"
-              defaultMessage="Star"
-              description="GitHub Star button text"
-            />
-          </GitHubButton>
-        </p>
+        {React.useMemo(() => (
+          <p style={{ textAlign: "center", marginTop: 0, marginBottom: 0 }}>
+            <GitHubButton
+              href="https://github.com/BookCatKid/tablissNG/subscription"
+              data-icon="octicon-eye"
+              data-size="large"
+              data-show-count="true"
+              data-color-scheme={isDark ? "dark" : "light"}
+              aria-label="Watch BookCatKid/tablissNG on GitHub"
+            >
+              <FormattedMessage
+                id="settings.github.watch"
+                defaultMessage="Watch"
+                description="GitHub Watch button text"
+              />
+            </GitHubButton>
+            <span style={{ margin: "0 1rem" }} />
+            <GitHubButton
+              href="https://github.com/BookCatKid/tablissNG"
+              data-icon="octicon-star"
+              data-size="large"
+              data-show-count="true"
+              data-color-scheme={isDark ? "dark" : "light"}
+              aria-label="Star BookCatKid/tablissNG on GitHub"
+            >
+              <FormattedMessage
+                id="settings.github.star"
+                defaultMessage="Star"
+                description="GitHub Star button text"
+              />
+            </GitHubButton>
+          </p>
+        ), [isDark])}
         <Background />
         <Widgets />
         <System />
