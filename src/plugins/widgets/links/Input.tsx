@@ -311,6 +311,7 @@ const Input: FC<Props> = (props) => {
           />
           <textarea
             value={props.SvgString}
+            style={{ resize: "vertical"}}
             onChange={(event) =>
               props.onChange({ SvgString: event.target.value })
             }

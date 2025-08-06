@@ -100,7 +100,7 @@ const CustomTextSettings: FC<Props> = ({ data = defaultData, setData }) => {
           description="Label for text input"
         />
         <textarea
-          style={{ resize: "none", overflow: "scroll" }}
+          style={{ resize: "vertical", overflow: "scroll" }}
           value={data.text}
           rows={10}
           onChange={(event) => setData({ ...data, text: event.target.value })}

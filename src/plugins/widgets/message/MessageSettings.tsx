@@ -23,6 +23,7 @@ const MessageSettings: FC<Props> = ({ data = defaultData, setData }) => {
         />
         <textarea
           rows={3}
+          style={{ resize: "vertical"}}
           placeholder={intl.formatMessage(messages.messagePlaceholder)}
           value={data.messages[0]}
           onChange={(event) => setData({ messages: [event.target.value] })}

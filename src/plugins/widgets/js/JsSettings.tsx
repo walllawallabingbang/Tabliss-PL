@@ -17,7 +17,7 @@ const JsSettings: FC<Props> = ({ data = defaultData, setData }) => {
         />
         <textarea
           rows={3}
-          style={{ fontFamily: "monospace" }}
+          style={{ resize: "vertical", fontFamily: "monospace" }}
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />
