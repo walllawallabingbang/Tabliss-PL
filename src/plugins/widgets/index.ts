@@ -42,6 +42,7 @@ export const widgetConfigs = [
   literatureClock,
   message,
   notes,
+  premierLeagueScores,
   quote,
   search,
   since,
