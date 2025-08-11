@@ -1,0 +1,28 @@
+.pl-results {
+  font-family: sans-serif;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  width: 250px;
+}
+
+.pl-results h2 {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+
+.pl-scroll {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.pl-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pl-scroll td {
+  padding: 3px 0;
+  font-size: 0.9em;
+}
