@@ -16,6 +16,7 @@ import links from "./links";
 import literatureClock from "./literatureClock";
 import message from "./message";
 import notes from "./notes";
+import premierLeagueScores from "./premierLeagueScores";
 import quote from "./quote";
 import search from "./search";
 import since from "./since";
